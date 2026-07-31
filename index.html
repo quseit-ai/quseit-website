@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QUSEIT — 知识工作者的 AI 发布平台</title>
+<meta name="description" content="把你的知识变成 AI 智能体。创建 Agent，一键发布为独立 App 和 API，让任何人都能使用你的专业知识和技能。">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== 导航 ===== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <span class="brand-name">QUSEIT</span>
+      <span class="brand-tag personal" data-i18n="brand.tag">个人版</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#how" data-i18n="nav.how">发布流程</a>
+      <a href="#audience" data-i18n="nav.audience">适用人群</a>
+      <a href="#features" data-i18n="nav.features">产品特性</a>
+      <a href="#contact" data-i18n="nav.contact">联系我们</a>
+    </nav>
+    <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-solid" data-i18n="nav.try">立即体验</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="top">
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="kicker reveal" data-i18n="hero.kicker"><span class="kicker-dot"></span>AI AGENT PLATFORM · 知识工作者的 AI 发布平台</p>
+      <h1 class="hero-title">
+        <span class="reveal d1" data-i18n="hero.title1">把你的知识</span>
+        <span class="reveal d2" data-i18n="hero.title2">变成</span>
+        <span class="reveal d3" data-i18n="hero.title3"><em>「AI 智能体」</em></span>
+      </h1>
+      <p class="hero-sub reveal d4" data-i18n="hero.sub">创建你的 AI 智能体，<strong>一键发布</strong>为独立 App 和 API，<br>让任何人都能使用你的专业知识和技能。</p>
+      <div class="hero-actions reveal d5">
+        <a href="https://agent.quseit.com" target="_blank" rel="noopener noreferrer" class="btn btn-solid btn-lg" data-i18n="hero.action1">立即体验</a>
+        <a href="#how" class="btn btn-line btn-lg" data-i18n="hero.action2">了解发布流程 <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="hero-visual reveal d4">
+      <figure class="hero-figure">
+        <img src="asset/hero.jpg" alt="QUSEIT 个人版" data-i18n-alt="hero.imgAlt">
+        <figcaption class="hero-caption" data-i18n="hero.caption">
+          <span class="mono">FIG.01</span> 你的知识，即将上线营业
+        </figcaption>
+      </figure>
+      <div class="hero-diamonds" aria-hidden="true">
+        <span class="hd hd-red"></span>
+        <span class="hd hd-green"></span>
+        <span class="hd hd-blue"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 三步发布 ===== -->
+<section class="section values" id="how">
+  <div class="container">
+    <div class="sec-head">
+      <p class="sec-index mono">SECTION 01</p>
+      <h2 class="sec-title" data-i18n="how.title">三步发布你的 AI 智能体<br><span class="sec-sub">从创建到分享，全程不到 5 分钟</span></h2>
+    </div>
+    <div class="value-cards">
+      <article class="value-card reveal">
+        <div class="value-num mono">01</div>
+        <h3 data-i18n="s1.h3">创建 Agent</h3>
+        <p class="value-desc" data-i18n="s1.desc">选择技能模板，配置你的 AI 智能体。内置多种专业场景，开箱即用。</p>
+        <p class="value-foot" data-i18n="s1.foot">无需代码，对话式配置</p>
+      </article>
+      <article class="value-card reveal d1">
+        <div class="value-num mono">02</div>
+        <h3 data-i18n="s2.h3">一键发布</h3>
+        <p class="value-desc" data-i18n="s2.desc">自动生成 Service Page 对话页面和 OpenAI 兼容 API，无需任何部署。</p>
+        <p class="value-foot" data-i18n="s2.foot">零运维，发布即上线</p>
+      </article>
+      <article class="value-card reveal d2">
+        <div class="value-num mono">03</div>
+        <h3 data-i18n="s3.h3">分享链接</h3>
+        <p class="value-desc" data-i18n="s3.desc">通过 Storefront 个人工具箱展示所有 Agent，一个链接分享给任何人。</p>
+        <p class="value-foot" data-i18n="s3.foot">你的知识，开始为你工作</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 适用人群 ===== -->
+<section class="section audience" id="audience">
+  <div class="container">
+    <div class="sec-head">
+      <p class="sec-index mono">SECTION 02</p>
+      <h2 class="sec-title" data-i18n="aud.title">谁在用 QUSEIT<br><span class="sec-sub">任何想把知识和技能产品化的人</span></h2>
+    </div>
+    <div class="value-cards four">
+      <article class="value-card reveal">
+        <h3 data-i18n="a1.h3">教师 / 培训师</h3>
+        <p class="value-desc" data-i18n="a1.desc">把教学经验变成 AI 助教，24 小时为学生答疑、批改作业、制定学习计划。</p>
+        <p class="skill-chip" data-i18n="a1.chip">数学答疑助手</p>
+      </article>
+      <article class="value-card reveal d1">
+        <h3 data-i18n="a2.h3">律师 / 咨询师</h3>
+        <p class="value-desc" data-i18n="a2.desc">把专业知识变成 AI 顾问，为客户提供初步法律分析、合同审查、咨询问答。</p>
+        <p class="skill-chip" data-i18n="a2.chip">合同审查助手</p>
+      </article>
+      <article class="value-card reveal d2">
+        <h3 data-i18n="a3.h3">内容创作者</h3>
+        <p class="value-desc" data-i18n="a3.desc">把创作能力变成 AI 工具，自动生成文案、润色文章、适配多平台内容。</p>
+        <p class="skill-chip" data-i18n="a3.chip">文案创作助手</p>
+      </article>
+      <article class="value-card reveal d3">
+        <h3 data-i18n="a4.h3">开发者 / 工程师</h3>
+        <p class="value-desc" data-i18n="a4.desc">把技术方案变成 AI 智能体，辅助代码审查、文档编写、技术问答。</p>
+        <p class="skill-chip" data-i18n="a4.chip">代码审查助手</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 产品特性 ===== -->
+<section class="section product" id="features">
+  <div class="container">
+    <div class="sec-head light">
+      <p class="sec-index mono">SECTION 03</p>
+      <h2 class="sec-title" data-i18n="feat.title">产品特性<br><span class="sec-sub">从发布到分享，每个环节都为你设计</span></h2>
+    </div>
+    <div class="product-grid">
+      <article class="product-panel reveal">
+        <div class="panel-top">
+          <span class="mono panel-label" data-i18n="f1.label">PUBLISH & INTEGRATE</span>
+          <h3 data-i18n="f1.h3">发布与集成</h3>
+          <p data-i18n="f1.p">你的 Agent 不只是一个对话框，而是可被任何方式使用的能力。</p>
+        </div>
+        <ol class="feature-list">
+          <li data-i18n="f1.a"><b>Service Page</b>独立对话页面，任何人打开链接就能和你的 Agent 聊天；支持密码保护、访问统计</li>
+          <li data-i18n="f1.b"><b>OpenAI 兼容 API</b>自动生成标准 API，Cursor、ChatBox 等第三方工具可直接集成你的 Agent</li>
+        </ol>
+        <p class="panel-foot" data-i18n="f1.foot">发布即上线，无需任何部署</p>
+      </article>
+      <article class="product-panel alt reveal d1">
+        <div class="panel-top">
+          <span class="mono panel-label" data-i18n="f2.label">PERSONAL BRANDING</span>
+          <h3 data-i18n="f2.h3">个人品牌</h3>
+          <p data-i18n="f2.p">让所有 Agent 汇聚成你的个人主页，成为独一无二的知识品牌。</p>
+        </div>
+        <ol class="feature-list">
+          <li data-i18n="f2.a"><b>Storefront</b>个人 AI 工具箱，像 Linktree 一样展示你所有的 Agent；自定义主题色、简介、排序</li>
+          <li data-i18n="f2.b"><b>主题定制</b>5 种主题色可选，打造个人品牌；自定义展示名、头衔、头像</li>
+        </ol>
+        <p class="panel-foot" data-i18n="f2.foot">一个链接，装下你的全部专业</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA + 联系 ===== -->
+<section class="section contact" id="contact">
+  <div class="container contact-inner">
+    <div class="contact-copy reveal">
+      <p class="sec-index mono">GET STARTED</p>
+      <h2 class="contact-title" data-i18n="contact.title">开始创建你的<br><em>AI 智能体</em></h2>
+      <p class="contact-sub" data-i18n="contact.sub">5 分钟，从零到发布。你的知识，值得被更多人使用。</p>
+      <ul class="contact-list">
+        <li data-i18n="contact.l1"><b>立即体验</b>访问 agent.quseit.com，免费创建你的第一个 Agent</li>
+        <li data-i18n="contact.l2"><b>企业部署</b>需要团队版 / 私有化部署？查看企业版方案</li>
+        <li data-i18n="contact.l3"><b>技能定制</b>按你的业务场景定制专属 AI 技能</li>
+      </ul>
+    </div>
+    <div class="contact-channels reveal d1">
+      <div class="channel-card">
+        <span class="mono channel-label" data-i18n="ch1.label">WECHAT · 微信咨询</span>
+        <p class="channel-desc" data-i18n="ch1.desc">搜索添加，备注「QUSEIT」</p>
+        <div class="channel-value">
+          <b>yhc-startup</b>
+          <button class="btn btn-line btn-sm copy-btn" data-copy="yhc-startup" data-tip-key="wechat" data-i18n="ch.btn">复制</button>
+        </div>
+      </div>
+      <div class="channel-card">
+        <span class="mono channel-label" data-i18n="ch2.label">EMAIL · 邮件沟通</span>
+        <p class="channel-desc" data-i18n="ch2.desc">企业部署、技能定制、合作咨询，1 个工作日内回复</p>
+        <div class="channel-value">
+          <b>ceo@quseit.com</b>
+          <button class="btn btn-line btn-sm copy-btn" data-copy="ceo@quseit.com" data-tip-key="email" data-i18n="ch.btn">复制</button>
+        </div>
+      </div>
+      <div class="channel-card company">
+        <span class="mono channel-label" data-i18n="ch3.label">COMPANY · 公司信息</span>
+        <p class="channel-desc" data-i18n="ch3.desc">北京优趣天下信息技术有限公司<br>北京市海淀区永澄北路2号院1号楼一层A1839</p>
+      </div>
+      <p class="channel-tip" id="copyTip" data-i18n="ch.tip">个人体验请直接访问 agent.quseit.com；合作咨询可通过以上方式联系</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <div>
+        <b>QUSEIT · 个人版</b>
+        <p data-i18n="footer.slogan">知识工作者的 AI 智能体平台</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#how" data-i18n="nav.how">发布流程</a>
+      <a href="#audience" data-i18n="nav.audience">适用人群</a>
+      <a href="#features" data-i18n="nav.features">产品特性</a>
+      <a href="https://agent.quseit.com" target="_blank" rel="noopener noreferrer" data-i18n="nav.docs">开发文档</a>
+      <a href="https://github.com/QUSEIT/qagent-image" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <div class="footer-copy-row">
+      <p class="footer-copy mono">© 2026 QUSEIT · ALL RIGHTS RESERVED</p>
+      <a class="footer-icp mono" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17072685号-2</a>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
