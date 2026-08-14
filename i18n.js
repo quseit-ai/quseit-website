@@ -10,7 +10,8 @@
     'nav.features': 'Features',
     'nav.contact': 'Contact',
     'nav.docs': 'Docs',
-    'nav.try': 'Try Now',
+    'nav.try': 'Start',
+    'nav.enterprise': 'Enterprise Agent',
 
     'hero.kicker': '<span class="kicker-dot"></span>AI AGENT PLATFORM FOR KNOWLEDGE WORKERS',
     'hero.title1': 'Turn Your Knowledge',
