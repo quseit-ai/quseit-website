@@ -44,3 +44,19 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
     setTimeout(() => { btn.textContent = QI18N.copyLabel(); }, 2000);
   });
 });
+
+// ===== 下载页：按语言切换截图 src =====
+// 监听 i18n.js 派发的 lang 事件；命中 [data-i18n-img-suffix] 元素时切换 src。
+// 用法：<img data-i18n-img-suffix="cn" data-i18n-img-base="asset/qbuilder-dashboard" data-i18n-img-ext=".png">
+const imgSwapEls = document.querySelectorAll('[data-i18n-img-suffix]');
+function swapImages(lang) {
+  imgSwapEls.forEach(img => {
+    const base = img.dataset.i18nImgBase;
+    const ext = img.dataset.i18nImgExt || '.png';
+    const suffix = lang === 'en' ? 'en' : img.dataset.i18nImgSuffix;
+    const next = `${base}-${suffix}${ext}`;
+    if (img.getAttribute('src') !== next) img.src = next;
+  });
+}
+window.addEventListener('quseit:lang', e => swapImages(e.detail.lang));
+if (imgSwapEls.length) swapImages(QI18N.current());
