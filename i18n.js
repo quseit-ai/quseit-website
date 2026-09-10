@@ -1,10 +1,10 @@
-// ========== QUSEIT 个人版官网国际化（默认简体中文，可切换英文） ==========
+// ========== QUSEIT 创作者官网国际化（默认简体中文，可切换英文） ==========
 (function () {
   const en = {
     'meta.title': 'QUSEIT — AI Publishing Platform for Knowledge Workers',
     'meta.desc': 'Turn your knowledge into AI agents. Create an agent, publish it as a standalone app and API with one click, and let anyone use your expertise and skills.',
 
-    'brand.tag': 'Personal',
+    'brand.tag': 'Creator',
     'nav.how': 'How It Works',
     'nav.audience': 'Who Uses It',
     'nav.features': 'Features',
@@ -20,7 +20,7 @@
     'hero.sub': 'Create your AI agent and <strong>publish with one click</strong> as a standalone app and API,<br>so anyone can use your expertise and skills.',
     'hero.action1': 'Try It Now',
     'hero.action2': 'See the 3 Steps <span class="arrow">→</span>',
-    'hero.imgAlt': 'QUSEIT Personal Edition',
+    'hero.imgAlt': 'QUSEIT Creator Edition',
     'hero.caption': '<span class="mono">FIG.01</span> Your knowledge, open for business',
 
     'how.title': 'Publish Your AI Agent in 3 Steps<br><span class="sec-sub">From creation to sharing — under 5 minutes</span>',
