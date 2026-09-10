@@ -17,7 +17,7 @@
     'nav.contact': 'Contact',
     'nav.docs': 'Docs',
     'nav.try': 'Start Building',
-    'nav.enterprise': 'Enterprise Agent',
+    'nav.enterprise': 'For FDEs',
 
     'hero.kicker': '<span class="kicker-dot"></span>AI AGENT PLATFORM FOR KNOWLEDGE WORKERS',
     'hero.title1': 'Turn Your Knowledge',
@@ -143,7 +143,7 @@
     'nav.contact': '联系我们',
     'nav.docs': '开发文档',
     'nav.try': '立即构建',
-    'nav.enterprise': '企业智能体',
+    'nav.enterprise': '面向 FDE',
 
     'hero.kicker': '<span class="kicker-dot"></span>AI AGENT PLATFORM · 知识工作者的 AI 发布平台',
     'hero.title1': '把你的知识',
