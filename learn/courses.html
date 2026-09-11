@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="learn.tut.meta.title">教程 — QUSEIT 学院</title>
-<meta name="description" data-i18n-attr="content" data-i18n-key="learn.tut.meta.desc" content="从创建到发布,QUSEIT 智能体构建的实战指南。">
-<meta property="page-meta-title" content="learn">
+<title data-i18n="learn.course.meta.title">课程 — QUSEIT 学院</title>
+<meta name="description" data-i18n-attr="content" data-i18n-key="learn.course.meta.desc" content="从新手创作者到企业部署,系统化学习路径。">
+<meta property="page-meta-title" content="course">
 <link rel="icon" type="image/svg+xml" href="../logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 </head>
 <body class="learn-page">
 
-<!-- ===== 导航(跟主页同款 + Learn dropdown 当前态) ===== -->
+<!-- ===== 导航 ===== -->
 <header class="nav" id="nav">
   <div class="nav-inner">
     <a href="../index.html" class="brand">
@@ -28,12 +28,11 @@
       <a href="../index.html#features" data-i18n="nav.features">产品特性</a>
       <a href="../index.html#contact" data-i18n="nav.contact">联系我们</a>
 
-      <!-- Learn dropdown -->
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav.learn">学习</button>
         <div class="nav-dropdown-menu" role="menu">
           <a href="tutorials.html" data-i18n="nav.learn.tutorials">教程</a>
-          <a href="courses.html" data-i18n="nav.learn.courses">课程</a>
+          <a href="courses.html" class="is-active" data-i18n="nav.learn.courses">课程</a>
           <a href="use-cases.html" data-i18n="nav.learn.use-cases">用例</a>
         </div>
       </div>
@@ -52,17 +51,17 @@
 <section class="learn-hero">
   <div class="container">
     <p class="kicker reveal" data-i18n="nav.learn">学习</p>
-    <h1 class="reveal d1" data-i18n="learn.tut.h1">教程</h1>
-    <p class="learn-sub reveal d2" data-i18n="learn.tut.sub">从你的第一个技能到企业级部署,带你跑完 QUSEIT 全流程。</p>
+    <h1 class="reveal d1" data-i18n="learn.course.h1">课程</h1>
+    <p class="learn-sub reveal d2" data-i18n="learn.course.sub">5 条精选路径。从你所在的位置开始,跳过你已经会的。</p>
   </div>
 </section>
 
-<!-- ===== 6 个分类 + 12 张教程卡(JS 注入) ===== -->
-<main class="container learn-categories" id="tutGrid">
-  <!-- 由 learn-page.js 渲染 -->
+<!-- ===== 5 个学习路径(JS 注入) ===== -->
+<main class="container learn-categories" id="pathsGrid">
+  <!-- 由 learn-courses.js 渲染 -->
 </main>
 
-<!-- ===== Footer(与主页一致) ===== -->
+<!-- ===== Footer ===== -->
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
@@ -88,6 +87,6 @@
 
 <script src="../i18n.js"></script>
 <script src="../main.js"></script>
-<script src="learn-page.js"></script>
+<script src="learn-courses.js"></script>
 </body>
 </html>
