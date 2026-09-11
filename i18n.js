@@ -84,6 +84,86 @@
 
     'footer.slogan': 'AI agent platform for knowledge workers',
 
+    // ===== Nav: Learn dropdown =====
+    'nav.learn': 'Learn',
+    'nav.learn.tutorials': 'Tutorials',
+    'nav.learn.courses': 'Courses',
+    'nav.learn.use-cases': 'Use Cases',
+
+    // ===== learn/tutorials.html =====
+    'learn.tut.meta.title': 'Tutorials — QUSEIT Academy',
+    'learn.tut.meta.desc': 'Step-by-step guides for building, testing, and publishing AI agents on QUSEIT.',
+    'learn.tut.h1': 'Tutorials',
+    'learn.tut.sub': 'Hands-on guides covering QUSEIT from your first skill to enterprise deployment.',
+
+    // 6 categories
+    'learn.tut.tag.1': 'Getting Started',
+    'learn.tut.tag.2': 'QBuilder Desktop',
+    'learn.tut.tag.3': 'Skill Building',
+    'learn.tut.tag.4': 'AI Fluency',
+    'learn.tut.tag.5': 'Deliver & Launch',
+    'learn.tut.tag.6': 'More Ways to Use QUSEIT',
+
+    // category 1 — Getting Started (2 cards)
+    'learn.tut.c1.1.t': 'Create your first agent in 5 minutes',
+    'learn.tut.c1.1.d': 'Walk through the wizard, configure a simple Q&A skill, and publish a shareable link.',
+    'learn.tut.c1.1.l': 'Beginner',
+    'learn.tut.c1.1.m': '5 min read',
+    'learn.tut.c1.2.t': 'Tour the QUSEIT dashboard',
+    'learn.tut.c1.2.d': 'A guided tour of the chat surface, skill list, model switcher, and the publish button.',
+    'learn.tut.c1.2.l': 'Beginner',
+    'learn.tut.c1.2.m': '4 min read',
+
+    // category 2 — QBuilder Desktop
+    'learn.tut.c2.1.t': 'Install QBuilder on Windows',
+    'learn.tut.c2.1.d': 'Download the desktop build, configure your provider, and connect it to your QUSEIT account.',
+    'learn.tut.c2.1.l': 'Beginner',
+    'learn.tut.c2.1.m': '6 min read',
+    'learn.tut.c2.2.t': 'Build offline with a local model',
+    'learn.tut.c2.2.d': 'Wire up a local LLM endpoint so you can iterate on skills without burning API credits.',
+    'learn.tut.c2.2.l': 'Intermediate',
+    'learn.tut.c2.2.m': '8 min read',
+
+    // category 3 — Skill Building
+    'learn.tut.c3.1.t': 'Generate a skill from your existing documents',
+    'learn.tut.c3.1.d': 'Drop in PDFs or markdown and let the doc-to-skill pipeline extract reusable knowledge.',
+    'learn.tut.c3.1.l': 'Intermediate',
+    'learn.tut.c3.1.m': '10 min read',
+    'learn.tut.c3.2.t': 'Build a skill via the YAO framework',
+    'learn.tut.c3.2.d': 'Author a skill from scratch using QUSEIT\'s composition framework — inputs, tools, prompts.',
+    'learn.tut.c3.2.l': 'Advanced',
+    'learn.tut.c3.2.m': '15 min read',
+
+    // category 4 — AI Fluency
+    'learn.tut.c4.1.t': 'Add automated QA to your agent',
+    'learn.tut.c4.1.d': 'Set up test cases, compare outputs, and run regression checks before each publish.',
+    'learn.tut.c4.1.l': 'Intermediate',
+    'learn.tut.c4.1.m': '9 min read',
+    'learn.tut.c4.2.t': 'Run a content factory pipeline',
+    'learn.tut.c4.2.d': 'Configure batch generation, quotas, and multi-platform formatting for one-to-many output.',
+    'learn.tut.c4.2.l': 'Advanced',
+    'learn.tut.c4.2.m': '12 min read',
+
+    // category 5 — Deliver & Launch
+    'learn.tut.c5.1.t': 'Publish a Service Page for your agent',
+    'learn.tut.c5.1.d': 'Generate a standalone chat page with password protection, stats, and a custom subdomain.',
+    'learn.tut.c5.1.l': 'Beginner',
+    'learn.tut.c5.1.m': '6 min read',
+    'learn.tut.c5.2.t': 'Wire your agent into a real workflow',
+    'learn.tut.c5.2.d': 'Use the OpenAI-compatible API to plug your agent into Cursor, Slack, or your own backend.',
+    'learn.tut.c5.2.l': 'Intermediate',
+    'learn.tut.c5.2.m': '11 min read',
+
+    // category 6 — More Ways
+    'learn.tut.c6.1.t': 'Five industry playbooks',
+    'learn.tut.c6.1.d': 'Reference architectures for teachers, consultants, creators, developers, and trainers.',
+    'learn.tut.c6.1.l': 'Intermediate',
+    'learn.tut.c6.1.m': '14 min read',
+    'learn.tut.c6.2.t': 'Run a team on QUSEIT Enterprise',
+    'learn.tut.c6.2.d': 'Provision seats, share skills across a workspace, and enforce brand and policy guardrails.',
+    'learn.tut.c6.2.l': 'Advanced',
+    'learn.tut.c6.2.m': '13 min read',
+
     // ===== 下载页(download.html) =====
     'dl.meta.title': 'Download QBuilder — Desktop Builder for AI Agents',
     'dl.meta.desc': 'Download QBuilder to your computer and build AI agents locally. Available for Windows, Linux, and macOS.',
@@ -210,6 +290,86 @@
 
     'footer.slogan': '知识工作者的 AI 智能体平台',
 
+    // ===== Nav: Learn dropdown =====
+    'nav.learn': '学习',
+    'nav.learn.tutorials': '教程',
+    'nav.learn.courses': '课程',
+    'nav.learn.use-cases': '用例',
+
+    // ===== learn/tutorials.html =====
+    'learn.tut.meta.title': '教程 — QUSEIT 学院',
+    'learn.tut.meta.desc': '从创建到发布,QUSEIT 智能体构建的实战指南。',
+    'learn.tut.h1': '教程',
+    'learn.tut.sub': '从你的第一个技能到企业级部署,带你跑完 QUSEIT 全流程。',
+
+    // 6 个分类
+    'learn.tut.tag.1': '创作者入门',
+    'learn.tut.tag.2': 'QBuilder 桌面端',
+    'learn.tut.tag.3': '技能构建',
+    'learn.tut.tag.4': 'AI 进阶',
+    'learn.tut.tag.5': '交付发布',
+    'learn.tut.tag.6': '更多玩法',
+
+    // 分类 1 — 创作者入门
+    'learn.tut.c1.1.t': '5 分钟创建你的第一个智能体',
+    'learn.tut.c1.1.d': '走完新手向导,配置一个简单的问答技能,并发布可分享的链接。',
+    'learn.tut.c1.1.l': '入门',
+    'learn.tut.c1.1.m': '5 分钟阅读',
+    'learn.tut.c1.2.t': 'QUSEIT 仪表盘导览',
+    'learn.tut.c1.2.d': '带你认识对话界面、技能列表、模型切换器和发布按钮。',
+    'learn.tut.c1.2.l': '入门',
+    'learn.tut.c1.2.m': '4 分钟阅读',
+
+    // 分类 2 — QBuilder 桌面端
+    'learn.tut.c2.1.t': '在 Windows 上安装 QBuilder',
+    'learn.tut.c2.1.d': '下载桌面端,配置你的模型服务,并连接到 QUSEIT 账号。',
+    'learn.tut.c2.1.l': '入门',
+    'learn.tut.c2.1.m': '6 分钟阅读',
+    'learn.tut.c2.2.t': '使用本地模型离线构建',
+    'learn.tut.c2.2.d': '接入本地大语言模型端点,无需消耗 API 额度即可调试技能。',
+    'learn.tut.c2.2.l': '进阶',
+    'learn.tut.c2.2.m': '8 分钟阅读',
+
+    // 分类 3 — 技能构建
+    'learn.tut.c3.1.t': '从已有文档生成技能',
+    'learn.tut.c3.1.d': '丢入 PDF 或 Markdown,文档转技能流水线自动抽取可复用的知识。',
+    'learn.tut.c3.1.l': '进阶',
+    'learn.tut.c3.1.m': '10 分钟阅读',
+    'learn.tut.c3.2.t': '用 YAO 框架从零构建技能',
+    'learn.tut.c3.2.d': '使用 QUSEIT 组合框架 —— 输入、工具、提示词 —— 亲手写一个技能。',
+    'learn.tut.c3.2.l': '高级',
+    'learn.tut.c3.2.m': '15 分钟阅读',
+
+    // 分类 4 — AI 进阶
+    'learn.tut.c4.1.t': '为你的智能体加自动化 QA',
+    'learn.tut.c4.1.d': '设置测试用例、对比输出,在每次发布前自动跑回归校验。',
+    'learn.tut.c4.1.l': '进阶',
+    'learn.tut.c4.1.m': '9 分钟阅读',
+    'learn.tut.c4.2.t': '运行内容工厂流水线',
+    'learn.tut.c4.2.d': '配置批处理、配额管理、多平台格式适配,把单一技能放大为产线。',
+    'learn.tut.c4.2.l': '高级',
+    'learn.tut.c4.2.m': '12 分钟阅读',
+
+    // 分类 5 — 交付发布
+    'learn.tut.c5.1.t': '为你的智能体发布 Service Page',
+    'learn.tut.c5.1.d': '生成独立的对话页面,支持密码保护、访问统计和自定义子域名。',
+    'learn.tut.c5.1.l': '入门',
+    'learn.tut.c5.1.m': '6 分钟阅读',
+    'learn.tut.c5.2.t': '把智能体接到真实业务流',
+    'learn.tut.c5.2.d': '用 OpenAI 兼容 API 把智能体接入 Cursor、Slack 或你自己的后端。',
+    'learn.tut.c5.2.l': '进阶',
+    'learn.tut.c5.2.m': '11 分钟阅读',
+
+    // 分类 6 — 更多玩法
+    'learn.tut.c6.1.t': '五大行业实战手册',
+    'learn.tut.c6.1.d': '面向教师、咨询师、内容创作者、开发者、培训师的可参考架构。',
+    'learn.tut.c6.1.l': '进阶',
+    'learn.tut.c6.1.m': '14 分钟阅读',
+    'learn.tut.c6.2.t': '在 QUSEIT 企业版上运营团队',
+    'learn.tut.c6.2.d': '分配席位、跨工作空间共享技能,统一品牌与合规策略。',
+    'learn.tut.c6.2.l': '高级',
+    'learn.tut.c6.2.m': '13 分钟阅读',
+
     // ===== 下载页(download.html) =====
     'dl.meta.title': '下载 QBuilder — 桌面端智能体构建工具',
     'dl.meta.desc': '把 QBuilder 桌面端下载到你的电脑,本地构建你的 AI 智能体。支持 Windows / Linux / macOS。',
@@ -293,10 +453,12 @@
   const pageKey = initPageTitle; // download.html 通过 <meta property="page-meta-title" content="dl"> 标注
   function pickMetaTitle() {
     if (pageKey === 'dl') return lang === 'en' ? en['dl.meta.title'] : zh['dl.meta.title'];
+    if (pageKey === 'learn') return lang === 'en' ? en['learn.tut.meta.title'] : zh['learn.tut.meta.title'];
     return lang === 'en' ? en['meta.title'] : zh['meta.title'];
   }
   function pickMetaDesc() {
     if (pageKey === 'dl') return lang === 'en' ? en['dl.meta.desc'] : zh['dl.meta.desc'];
+    if (pageKey === 'learn') return lang === 'en' ? en['learn.tut.meta.desc'] : zh['learn.tut.meta.desc'];
     return lang === 'en' ? en['meta.desc'] : zh['meta.desc'];
   }
 
@@ -334,6 +496,10 @@
     copyLabel: () => (lang === 'en' ? 'Copy' : '复制'),
     current: () => lang
   };
+
+  // 暴露完整字典给页面级 JS(learn-page.js 等)使用
+  // 注意:仅在浏览器环境暴露,不要在 server-side import 时被引用
+  window._QDict = { en, zh };
 
   if (lang === 'en') apply('en');
 })();
