@@ -302,6 +302,18 @@
     'learn.use.6.s4': 'Add escalation triggers and SLAs',
     'learn.use.6.s5': 'Weekly review: what the agent got wrong',
 
+    // ===== Footer nav: replace 开发文档 with 学习教程 on learn pages =====
+    'nav.tutorials': 'Tutorials',
+
+    // ===== 上一篇/下一篇跨页导航(learn 3 子页互链) =====
+    'learn.pager.label': 'Continue learning',
+    'learn.pager.tut.prev': 'Use Cases',
+    'learn.pager.tut.next': 'Courses',
+    'learn.pager.course.prev': 'Tutorials',
+    'learn.pager.course.next': 'Use Cases',
+    'learn.pager.use.prev': 'Courses',
+    'learn.pager.use.next': 'Tutorials',
+
     // ===== 下载页(download.html) =====
     'dl.meta.title': 'Download QBuilder — Desktop Builder for AI Agents',
     'dl.meta.desc': 'Download QBuilder to your computer and build AI agents locally. Available for Windows, Linux, and macOS.',
@@ -645,6 +657,18 @@
     'learn.use.6.s3': '通过 OpenAI API 接入收件箱',
     'learn.use.6.s4': '加升级触发器与 SLA 规则',
     'learn.use.6.s5': '每周复盘智能体答错的问题',
+
+    // ===== Footer nav: learn 页把「开发文档」改为「学习教程」指向 learn/tutorials.html =====
+    'nav.tutorials': '学习教程',
+
+    // ===== 上一篇/下一篇跨页导航 =====
+    'learn.pager.label': '继续学习',
+    'learn.pager.tut.prev': '用例',
+    'learn.pager.tut.next': '课程',
+    'learn.pager.course.prev': '教程',
+    'learn.pager.course.next': '用例',
+    'learn.pager.use.prev': '课程',
+    'learn.pager.use.next': '教程',
 
     // ===== 下载页(download.html) =====
     'dl.meta.title': '下载 QBuilder — 桌面端智能体构建工具',
