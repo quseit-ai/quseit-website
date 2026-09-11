@@ -15,7 +15,6 @@
     'nav.audience': 'Who Uses It',
     'nav.features': 'Features',
     'nav.contact': 'Contact',
-    'nav.docs': 'Docs',
     'nav.try': 'Start Building',
     'nav.enterprise': 'For FDEs',
 
@@ -302,7 +301,7 @@
     'learn.use.6.s4': 'Add escalation triggers and SLAs',
     'learn.use.6.s5': 'Weekly review: what the agent got wrong',
 
-    // ===== Footer nav: replace 开发文档 with 学习教程 on learn pages =====
+    // ===== Footer nav: 学习教程指向 learn/tutorials.html =====
     'nav.tutorials': 'Tutorials',
 
     // ===== 上一篇/下一篇跨页导航(learn 3 子页互链) =====
@@ -371,7 +370,6 @@
     'nav.audience': '适用人群',
     'nav.features': '产品特性',
     'nav.contact': '联系我们',
-    'nav.docs': '开发文档',
     'nav.try': '立即构建',
     'nav.enterprise': '面向 FDE',
 
@@ -658,7 +656,7 @@
     'learn.use.6.s4': '加升级触发器与 SLA 规则',
     'learn.use.6.s5': '每周复盘智能体答错的问题',
 
-    // ===== Footer nav: learn 页把「开发文档」改为「学习教程」指向 learn/tutorials.html =====
+    // ===== Footer nav: 改为「学习教程」指向 learn/tutorials.html =====
     'nav.tutorials': '学习教程',
 
     // ===== 上一篇/下一篇跨页导航 =====
