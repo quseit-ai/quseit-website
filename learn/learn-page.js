@@ -13,6 +13,13 @@
   const D = window._QDict;
   if (!D) { console.warn('learn-page: window._QDict missing'); return; }
 
+  // 卡片 → 详情页 映射(cat-index + '-' + card-index)。
+  // 没在表里的卡片保持 href="#"(尚未发布对应教程)。
+  // 改这里不需要碰 i18n 字典。
+  const LINK_MAP = {
+    '1-1': 'tutorials/first-skill-5min.html',  // 创作者入门 > 5 分钟创建第一个智能体
+  };
+
   const lang = QI18N.current();
   const pick = (k) => D[lang][k] || D.zh[k] || k;
 
@@ -32,7 +39,8 @@
       const d = pick(`learn.tut.c${n}.${m}.d`);
       const l = pick(`learn.tut.c${n}.${m}.l`);
       const tm = pick(`learn.tut.c${n}.${m}.m`);
-      html += `<a class="tut-card" href="#" data-i18n-skip>`;
+      const href = LINK_MAP[`${n}-${m}`] || '#';
+      html += `<a class="tut-card" href="${href}" data-i18n-skip>`;
       html += `<div class="tut-card-tags"><span class="tut-level">${l}</span><span class="tut-time">· ${tm}</span></div>`;
       html += `<h3>${t}</h3>`;
       html += `<p>${d}</p>`;
