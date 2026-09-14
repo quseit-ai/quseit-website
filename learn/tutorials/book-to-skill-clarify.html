@@ -14,6 +14,11 @@
   /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
   /* fixed nav 高度约 64px + 留 32px 视觉缓冲 → top padding 至少 96px */
   .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
   .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
   .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
   .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
@@ -81,6 +86,13 @@
 
 <article class="tut-doc">
 
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../tutorials.html">教程</a>
+  <span class="sep">/</span>
+  <span class="current">book-to-skill 多轮澄清</span>
+</nav>
 <h1>用 book-to-skill 把文档转为智能体技能</h1>
 <p class="tut-doc-sub">在 QBuilder Desktop 里,走多轮澄清 + ⚡ YOLO 模式,把你手里那份文档(PDF / Markdown / EPUB)转为可加载的智能体技能。本教程以一份 4 页扫描型 PDF 为真实案例,带你看到 book-to-skill 的 11 步流水线在 Desktop 里是如何被压成几张卡片对话的。</p>
 

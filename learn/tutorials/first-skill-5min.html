@@ -14,6 +14,11 @@
   /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
   /* fixed nav 高度约 64px + 留 32px 视觉缓冲 → top padding 至少 96px */
   .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
   .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
   .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
   .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
@@ -81,6 +86,13 @@
 
 <article class="tut-doc">
 
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../tutorials.html">教程</a>
+  <span class="sep">/</span>
+  <span class="current">5 分钟创建智能体</span>
+</nav>
 <h1>5 分钟创建你的第一个智能体</h1>
 <p class="tut-doc-sub">手把手带你跑完:开启网关 → 在 Skill Studio 通过持续问答完成 5 维度评估 → 把需求交给 yao-meta-skill 生成最终技能。</p>
 
