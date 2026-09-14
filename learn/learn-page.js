@@ -18,6 +18,7 @@
   // 改这里不需要碰 i18n 字典。
   const LINK_MAP = {
     '1-1': 'tutorials/first-skill-5min.html',  // 创作者入门 > 5 分钟创建第一个智能体
+    '3-1': 'tutorials/book-to-skill-clarify.html',  // 技能构建 > 从已有文档生成技能
   };
 
   const lang = QI18N.current();
