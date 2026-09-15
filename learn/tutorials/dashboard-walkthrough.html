@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QBuilder Desktop 控制面板完全指南 — QUSEIT 教程</title>
+<meta name="description" content="面向普通用户的 QBuilder Desktop 控制面板说明。逐个介绍 Dashboard、Chat、Tasks、Channels、Skills、Memory、Spaces、Agent profiles、Skill Studio、Settings 这 10 个核心模块的作用、入口和常见用法,帮你从零熟悉控制面板。">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
+  /* fixed nav 高度约 64px + 留 32px 视觉缓冲 → top padding 至少 96px */
+  .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
+  .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
+  .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
+  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .tut-doc .tut-doc-meta .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; background: rgba(184, 134, 11, 0.12); color: #8b6508; font-weight: 600; }
+  .tut-doc .tut-doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: 0.5; }
+  .tut-doc h2 { font-family: "Noto Serif SC", serif; font-size: 26px; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--text); }
+  .tut-doc h3 { font-family: "Noto Sans SC", sans-serif; font-size: 19px; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+  .tut-doc p { line-height: 1.75; margin: 0 0 16px; color: var(--text); }
+  .tut-doc ol, .tut-doc ul { line-height: 1.75; margin: 0 0 20px; padding-left: 28px; }
+  .tut-doc li { margin: 6px 0; }
+  .tut-doc code { background: rgba(0,0,0,.05); padding: 2px 6px; border-radius: 4px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #b0480a; }
+  .tut-doc pre { background: #1a1610; color: #f5e9c8; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.6; margin: 16px 0 24px; }
+  .tut-doc pre code { background: none; padding: 0; color: inherit; }
+  .tut-doc blockquote { margin: 20px 0; padding: 14px 22px; border-left: 4px solid #b8860b; background: rgba(184, 134, 11, 0.05); border-radius: 0 8px 8px 0; color: var(--text); font-style: italic; }
+  .tut-doc .step { background: var(--card-bg, #fff); border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 24px 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tut-doc .step-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #8b6508; background: rgba(184, 134, 11, 0.15); padding: 4px 10px; border-radius: 6px; }
+  .tut-doc .step-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; margin: 0; color: var(--text); }
+  .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
+  .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout strong { color: #0288a8; }
+  .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
+  .tut-doc .figure img { display: block; width: 100%; height: auto; }
+  .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
+  .tut-doc .checklist { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .checklist li::before { content: "✓"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(46, 125, 50, 0.15); color: #2e7d32; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .redline { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .redline li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
+
+  /* 模块索引表 */
+  .tut-doc .module-index { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 14px; }
+  .tut-doc .module-index th, .tut-doc .module-index td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+  .tut-doc .module-index th { background: rgba(184, 134, 11, 0.08); font-family: "Noto Sans SC", sans-serif; font-weight: 600; }
+  .tut-doc .module-index td:first-child { font-family: "IBM Plex Mono", monospace; font-weight: 600; color: #8b6508; white-space: nowrap; }
+  .tut-doc .module-index tbody tr:hover { background: rgba(0,0,0,.02); }
+  .tut-doc .module-index .tag { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-right: 6px; }
+  .tut-doc .module-index .tag.on  { background: rgba(46, 125, 50, 0.15); color: #2e7d32; }
+  .tut-doc .module-index .tag.off { background: rgba(120, 120, 120, 0.15); color: #555; }
+</style>
+</head>
+<body class="learn-page">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <span class="brand-name">QUSEIT</span>
+      <span class="brand-tag personal" data-i18n="brand.tag">创作者</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../../index.html#contact">联系我们</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../tutorials.html" class="is-active">教程</a>
+          <a href="../courses.html">课程</a>
+          <a href="../use-cases.html">用例</a>
+        </div>
+      </div>
+      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">面向 FDE</a>
+    </nav>
+    <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
+    <div class="nav-cta">
+      <a href="../../download.html" class="btn btn-solid">立即构建</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+
+<article class="tut-doc">
+
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../tutorials.html">教程</a>
+  <span class="sep">/</span>
+  <span class="current">控制面板完全指南</span>
+</nav>
+<h1>QBuilder Desktop 控制面板完全指南</h1>
+<p class="tut-doc-sub">面向普通用户的控制面板说明。逐个介绍 Dashboard、Chat、Tasks、Channels、Skills、Memory、Spaces、Agent profiles、Skill Studio、Settings 共 10 个核心模块的作用、入口与典型用法,帮你从零熟悉 QBuilder 的工作台。</p>
+
+<div class="tut-doc-meta">
+  <span class="badge">入门 · BEGINNER</span>
+  <span class="dot"></span>
+  <span>约 8 分钟读完</span>
+  <span class="dot"></span>
+  <span>实操约 15 分钟</span>
+  <span class="dot"></span>
+  <span>最后更新 2026-09</span>
+</div>
+
+<div class="callout">
+  <strong>本教程适合谁?</strong> 刚装好 QBuilder Desktop、第一次打开浏览器看到左侧一列图标的用户。读完后能:
+  <ul style="margin: 8px 0 0;">
+    <li>知道每个导航图标对应什么功能、什么时候该用</li>
+    <li>理解 Dashboard 与 Chat 的关系(同一份 composer,两套上下文)</li>
+    <li>在 Skills / Skill Studio / Settings 之间找到正确的入口</li>
+  </ul>
+</div>
+
+<h2>模块总览</h2>
+<p>QBuilder Desktop 的左侧导航栏一共有 <strong>10 个图标</strong>(顶部 8 个主视图 + 底部 2 个工具入口)。下面这张表先用一句话说清每个模块干什么,然后下面一节一节展开。</p>
+
+<table class="module-index">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>图标位置</th>
+      <th>模块</th>
+      <th>一句话作用</th>
+      <th>默认</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>左侧</td><td><strong>仪表盘 (Dashboard)</strong></td><td>启动首页:5 类工作流入口卡 + 共享输入框</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>2</td><td>左侧</td><td><strong>对话 (Chat)</strong></td><td>主对话区:消息流、附件、模型/工作区/推理 chip</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>3</td><td>左侧</td><td><strong>任务 (Tasks)</strong></td><td>定时任务(cron):自动跑对话或脚本的调度表</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>4</td><td>左侧</td><td><strong>渠道 (Channels)</strong></td><td>网关渠道:把对话接到 Telegram/微信/企微 等第三方</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>5</td><td>左侧</td><td><strong>技能 (Skills)</strong></td><td>技能库:本机已装技能 + 技能商店</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>6</td><td>左侧</td><td><strong>记忆 (Memory)</strong></td><td>记忆:我的备注、用户画像、智能体灵魂等持久记忆</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>7</td><td>左侧</td><td><strong>工作区 (Spaces)</strong></td><td>工作区:多目录项目切换器</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>8</td><td>左侧</td><td><strong>代理配置 (Agent profiles)</strong></td><td>配置档案:同一台机器上多个 Agent 预设(模型 + 提示词 + 工具)</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>9</td><td>左侧</td><td><strong>技能创作 (Skill Studio)</strong></td><td>技能创作:用 AI 把想法/文档/导入物变成可加载技能</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>10</td><td>左侧</td><td><strong>设置 (Settings)</strong></td><td>设置:9 个子分页(外观、偏好、提供商、账户…)</td><td><span class="tag on">显示</span></td></tr>
+  </tbody>
+</table>
+
+<h2 id="dashboard">1 · Dashboard — 启动首页</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">01</span>
+    <h3 class="step-title">Dashboard 是什么?</h3>
+  </div>
+
+  <p>Dashboard 是打开 QBuilder Desktop 后的第一个页面。它把整个产品最常用的入口摆在你面前,不必到处找。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/01-dashboard.png" alt="Dashboard 启动首页">
+    <div class="figure-cap">01-dashboard.png · Dashboard 启动态:5 类工作流入口卡 + 共享 composer</div>
+  </div>
+
+  <h3>典型元素</h3>
+  <ul>
+    <li><strong>侧栏</strong>:左侧 10 个图标,本教程后续每个模块都会讲到。</li>
+    <li><strong>历史会话列表</strong>:左下侧是按「今天 / 昨天 / 上周 / 更早」分组的历史对话,点击可恢复。</li>
+    <li><strong>5 类工作流入口卡</strong>:中央上半部分是 5 张大卡片 —
+      <ul>
+        <li>🚀 <strong>技能构建</strong>:创建智能体技能的最快路径</li>
+        <li>⚙️ <strong>软件项目</strong>:面向开发者的项目型工作流</li>
+        <li>🔬 <strong>质量保障</strong>:测试 / 评审 / 审计场景</li>
+        <li>🎨 <strong>内容工厂</strong>:写作 / 设计 / 媒体生产</li>
+        <li>📦 <strong>交付上线</strong>:发布 / 部署 / 上架</li>
+      </ul>
+    </li>
+    <li><strong>共享 composer(输入框)</strong>:Dashboard 中央下半部分就是 Chat 用的同一个输入框 — 在 Dashboard 里输入并发送,会自动切到 Chat 继续对话。</li>
+    <li><strong>底部工具条</strong>:右下角的 profile chip(显示当前 Agent)、模型 chip、推理强度 chip、发送按钮。</li>
+    <li><strong>右下角 User Guide 入口</strong>:新手指引卡,首次启动会弹出。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 不知道从哪开始时,首选 Dashboard — 它是「引导 + 入口 + 快速提问」三合一的首页。
+  </div>
+</div>
+
+<h2 id="chat">2 · Chat — 主对话区</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">02</span>
+    <h3 class="step-title">Chat 是什么?</h3>
+  </div>
+
+  <p>Chat 是真正发生对话的地方。Dashboard 上的 composer 点发送后会跳到 Chat 并继续;直接从侧栏进 Chat 也是同一个界面。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/02-chat.png" alt="Chat 主对话区">
+    <div class="figure-cap">02-chat.png · Chat 区:历史会话侧栏 + 消息流 + 完整工具条</div>
+  </div>
+
+  <h3>典型元素</h3>
+  <ul>
+    <li><strong>历史会话侧栏</strong>:左下侧列出本工作区下的全部对话,带时间分组 + 工作区标签。</li>
+    <li><strong>工作区切换</strong>:顶部「全部 / workspace」chip,点 <code>+</code> 可以建新工作区(对话分类)。</li>
+    <li><strong>消息流</strong>:主区域。AI 回复、人类消息、工具调用卡片、审批请求都会按时间顺序显示。</li>
+    <li><strong>快速建议卡</strong>:新会话时会出现 4–5 张快捷任务卡(如「从向导构建技能」「从文档生成技能」「通过 YAO 框架构建技能」「转换为 Workbuddy 技能」)。</li>
+    <li><strong>输入框(composer)</strong>:支持多行输入、回车发送、Shift+回车换行。</li>
+    <li><strong>工具条</strong>:
+      <ul>
+        <li>📎 <strong>附件按钮</strong>:挂文件 / PDF / 图片</li>
+        <li>🎙️ <strong>听写按钮</strong>:语音转文字输入</li>
+        <li><strong>Saved prompts</strong>:常用提示词模板</li>
+        <li><strong>profile chip</strong>:切换 Agent 配置档案</li>
+        <li><strong>workspace chip</strong>:切换当前工作目录</li>
+        <li><strong>model chip</strong>:切换模型(如 MiniMax-M3 / Claude / GPT)</li>
+        <li><strong>reasoning chip</strong>:切换推理强度(Default / High / Off)</li>
+        <li>↑ <strong>发送键</strong>:发送消息</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 几乎所有「我想让 AI 干活」的场景都在 Chat 里。Dashboard 是入口,Chat 才是执行。
+  </div>
+</div>
+
+<h2 id="tasks">3 · Tasks — 定时任务</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">03</span>
+    <h3 class="step-title">Tasks 是什么?</h3>
+  </div>
+
+  <p>Tasks 是 QBuilder 的「定时任务调度器」,学名 <em>cron jobs</em>。它让你设定一些「每天早上 8 点跑一次」「每小时汇总一次数据」之类的自动化任务,QBuilder 会按计划自动启动新的对话或脚本。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/03-tasks.png" alt="Tasks 定时任务页">
+    <div class="figure-cap">03-tasks.png · Tasks 侧栏 + 主区「选择一个计划任务」占位</div>
+  </div>
+
+  <h3>典型元素</h3>
+  <ul>
+    <li><strong>侧栏列表</strong>:按 <code>active(运行中)</code> / <code>paused(已暂停)</code> 分组。右上角 ↻ <strong>刷新</strong> + <code>+</code> <strong>新建任务</strong>。</li>
+    <li><strong>主区详情</strong>:点击左侧某个任务,右侧会展示它的运行记录(成功 / 失败 / 重试)与配置(触发时间、提示词、目标工作区)。</li>
+    <li><strong>网关依赖提示</strong>:Channels 没启动时,这里会显示一条提示告诉你先去配网关。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 你需要「让 AI 定期做某事」时 — 比如每天总结前一天的工作、每周汇总 GitHub Issue、定时抓取某个页面。
+  </div>
+</div>
+
+<h2 id="channels">4 · Channels — 网关渠道</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">04</span>
+    <h3 class="step-title">Channels 是什么?</h3>
+  </div>
+
+  <p>Channels 是把 QBuilder 对接第三方聊天平台的入口。它背后是一个 <em>gateway 网关</em>,可以监听 Telegram / Discord / Slack / 企业微信 / 微信 等渠道的消息,把对话路由到本机的 Agent。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/04-channels.png" alt="Channels 网关渠道页">
+    <div class="figure-cap">04-channels.png · Channels 加载中:网关配置占位 + 主区加载提示</div>
+  </div>
+
+  <h3>典型元素</h3>
+  <ul>
+    <li><strong>侧栏「网关配置」</strong>:网关整体状态(已连接 / 离线 / 启动中)。</li>
+    <li><strong>主区「网关渠道」</strong>:渠道卡片网格 — 每张卡对应一个第三方平台,显示连接状态、配对链接、最近消息时间。</li>
+    <li><strong>配对按钮</strong>:首次接入某个渠道时,点配对会显示二维码或一次性配对码。</li>
+    <li><strong>右上角 ↻</strong>:手动刷新网关状态。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 你想在手机上的微信 / 企微 / Telegram 直接给 QBuilder 发消息时。
+  </div>
+</div>
+
+<h2 id="skills">5 · Skills — 技能库</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">05</span>
+    <h3 class="step-title">Skills 是什么?</h3>
+  </div>
+
+  <p>Skills 是 QBuilder 已经装好、可直接调用的技能合集。每个技能是一段 markdown 说明书 + 一组脚本,告诉 AI 「遇到这类问题应该这样做」。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/05-skills.png" alt="Skills 技能库页">
+    <div class="figure-cap">05-skills.png · Skills 双 tab:我的 Skill / 商店,左侧按 category 分组</div>
+  </div>
+
+  <h3>典型元素</h3>
+  <ul>
+    <li><strong>两个 tab</strong>:<code>我的 Skill</code>(本机已装)与 <code>商店</code>(可在线安装)。</li>
+    <li><strong>左侧分类</strong>:<code>GENERAL</code> / <code>AUTONOMOUS-AI-AGENTS</code> / <code>CREATIVE</code> / <code>EMAIL</code> / <code>HUB</code> 等,每类下面挂具体技能。</li>
+    <li><strong>搜索框</strong>:按名称模糊过滤。</li>
+    <li><strong>开关</strong>:每条技能右侧有一个开关 — 关掉后,AI 在对话里就不会调用这条技能。</li>
+    <li><strong>主区详情</strong>:点具体技能后,右侧会展示它的 <code>SKILL.md</code>、触发词、调用示例。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 你想知道「AI 现在会做哪些事」或者临时关掉某个技能时。
+  </div>
+</div>
+
+<h2 id="memory">6 · Memory — 持久记忆</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">06</span>
+    <h3 class="step-title">Memory 是什么?</h3>
+  </div>
+
+  <p>Memory 是 QBuilder 跨会话的「长期记忆」。聊天时 AI 会自动读写这里的条目,下次再开会话它仍然记得。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/06-memory.png" alt="Memory 记忆页">
+    <div class="figure-cap">06-memory.png · Memory 5 分项:我的备注 / 用户画像 / 智能体灵魂 / 项目上下文 / 外部笔记</div>
+  </div>
+
+  <h3>5 个分项</h3>
+  <ul>
+    <li><strong>我的备注 (memory)</strong>:你给 AI 留的笔记、复述规则。</li>
+    <li><strong>用户画像 (user)</strong>:AI 眼中的「你是谁」 — 偏好、习惯、角色。</li>
+    <li><strong>智能体灵魂 (soul)</strong>:AI 自己的设定 — 人格、语气、底线。</li>
+    <li><strong>项目上下文 (project_context)</strong>:只读,展示当前 workspace 的项目背景。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 你希望 AI 「越用越懂你」,主动维护这几栏就行 — 用户画像里写「我不喜欢 Markdown 表格」,AI 后续就不会再贴表格。
+  </div>
+</div>
+
+<h2 id="spaces">7 · Spaces — 工作区</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">07</span>
+    <h3 class="step-title">Spaces 是什么?</h3>
+  </div>
+
+  <p>Spaces(也叫 Workspaces)是「项目目录」。它把你电脑上不同的项目文件夹(比如 <code>D:\Workspace\quseit-website</code> 和 <code>D:\Projects\qagent-desktop</code>)区分开,切换工作区 = 切换 AI 当前能看到、操作的目录。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/07-spaces.png" alt="Spaces 工作区页">
+    <div class="figure-cap">07-spaces.png · Spaces 侧栏:17 个工作区列表 + 「+」新建</div>
+  </div>
+
+  <h3>典型元素</h3>
+  <ul>
+    <li><strong>侧栏</strong>:工作区列表 + 「+」新建按钮,每条显示名称 + 路径。</li>
+    <li><strong>工作区详情</strong>:点某个工作区,右侧展示该工作区的设置(默认模型、关联技能、文件树预览)。</li>
+    <li><strong>新建工作区</strong>:点 <code>+</code> 选本地文件夹,QBuilder 会把它注册成独立工作区,后续对话自动 scope 到该目录。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 同一个机器上跑多个项目时 — 不同项目的依赖、配置、文件互不污染。
+  </div>
+</div>
+
+<h2 id="profiles">8 · Agent profiles — 配置档案</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">08</span>
+    <h3 class="step-title">Agent profiles 是什么?</h3>
+  </div>
+
+  <p>Agent profiles 让你为不同场景准备多个「Agent 预设」 — 每套预设 = (模型 + 系统提示词 + 启用技能 + 工具集)。切换 profile 就像换了一个「不同性格 + 不同技能」的助手。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/08-agent-profiles.png" alt="Agent profiles 配置档案页">
+    <div class="figure-cap">08-agent-profiles.png · Profiles 默认档案:`default` · MiniMax-M3 · 153/153 个技能</div>
+  </div>
+
+  <h3>典型元素</h3>
+  <ul>
+    <li><strong>档案列表</strong>:左侧列出全部 profile,当前激活的会被高亮。</li>
+    <li><strong>档案详情</strong>:右侧展示该 profile 用了哪个模型、哪些技能开关、系统提示词摘要。</li>
+    <li><strong>新建档案</strong>:通常隐藏在高级菜单 — 单 profile 模式下不会显示。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 你希望「开发场景用一个严谨的 agent、写作场景用一个随性的 agent」时 — 每个场景建一个 profile,一键切换。
+  </div>
+</div>
+
+<h2 id="studio">9 · Skill Studio — 技能创作工坊</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">09</span>
+    <h3 class="step-title">Skill Studio 是什么?</h3>
+  </div>
+
+  <p>Skill Studio 是 Skills 面板的「创作端」 — Skills 管使用,Studio 管创建。一句话区别:<strong>Hub consumes / Skills manages / Studio creates</strong>(商店消费 / 技能管用 / 工坊生产)。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/09-skill-studio.png" alt="Skill Studio 技能创作工坊">
+    <div class="figure-cap">09-skill-studio.png · Studio 主页:4 张入口卡 + 侧栏 4 个子操作</div>
+  </div>
+
+  <h3>4 个主要子入口</h3>
+  <ul>
+    <li><strong>导入技能</strong>:从已有目录(<code>SKILL.md</code> + 脚本)导入。</li>
+    <li><strong>从文档学习</strong>:上传 PDF / Markdown / EPUB,AI 把文档蒸馏成技能(走 book-to-skill)。</li>
+    <li><strong>AI 创建技能</strong>:跟 AI 多轮对话,把 5 维度需求整理出来,生成技能(走 yao-meta-skill)。</li>
+    <li><strong>新建工作流</strong>:<em>Coming soon</em> — 尚未开放。</li>
+  </ul>
+
+  <h3>另外两个即将推出的能力</h3>
+  <ul>
+    <li><strong>Skill optimizer</strong>:技能优化器,自动诊断技能并提出建议 — Coming soon。</li>
+    <li><strong>改用空白新建技能</strong>:跳过 AI,自己写 <code>SKILL.md</code> 起手。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>什么时候用?</strong> 你想让 AI 帮你做一个新技能(把流程固化下来,不必每次重新教它)。
+  </div>
+</div>
+
+<h2 id="settings">10 · Settings — 设置中心</h2>
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">10</span>
+    <h3 class="step-title">Settings 是什么?</h3>
+  </div>
+
+  <p>Settings 不是单一页,而是 <strong>9 个子分页</strong>。点击 Settings 后,左侧会出现子菜单,右侧是具体设置项。</p>
+
+  <div class="figure">
+    <img src="../../tutorials/screenshots/dashboard/10-settings.png" alt="Settings 设置中心">
+    <div class="figure-cap">10-settings.png · Settings 9 子菜单,默认进入「对话」分页</div>
+  </div>
+
+  <h3>9 个子分页</h3>
+  <ul>
+    <li><strong>对话 (Conversation)</strong>:当前会话的导出(记录 / JSON)、导入、清空。</li>
+    <li><strong>外观 (Appearance)</strong>:主题(light / dark / system)、皮肤(<em>hermes-skin</em> 18 种)、字体大小、accent 颜色、跳转按钮开关。</li>
+    <li><strong>偏好 (Preferences)</strong>:默认模型、reasoning 默认、context threshold、流式模式、队列行为、压缩策略。</li>
+    <li><strong>提供商 (Providers)</strong>:API 密钥管理 — 添加 / 编辑 / 删除每个 AI provider。</li>
+    <li><strong>插件 (Plugins)</strong>(默认隐藏):已安装的 QAgent 插件 + 生命周期钩子只读视图。</li>
+    <li><strong>扩展 (Extensions)</strong>:WebUI 扩展管理(三个子 tab:Gallery / Installed / Diagnostics)。</li>
+    <li><strong>系统 (System)</strong>:实例版本、访问控制(密码 / passkey / 登录方式)。</li>
+    <li><strong>账户 (Account)</strong>:账号信息(用户名 / 邮箱 / 登录方式)、登出。</li>
+    <li><strong>帮助 (Help)</strong>:文档链接、工单 / 支持联系方式、版本信息。</li>
+  </ul>
+
+  <div class="callout">
+    <strong>右上角小圆点:</strong> 如果你的登录态有异常,Settings 右上角会出现一个红色小圆点 — 点开 Settings,系统会指引你完成修复。
+  </div>
+</div>
+
+<h2 id="conventions">关键约定 · 第一次用 QBuilder 必须知道</h2>
+<ul class="checklist">
+  <li><strong>技能创作 / 设置两个图标不是普通导航</strong> — 技能创作是「生产」、设置是「配置」,它们被故意放在左侧导航的偏下位置,提醒你这是工具不是主流程。</li>
+  <li><strong>Dashboard 与 Chat 共享输入框</strong> — 在 Dashboard 输入并发送,会自动跳到 Chat 继续,不会有两套输入体验要适应。</li>
+  <li><strong>技能 / 工作区 / 配置档案 三者正交</strong> — 一个 profile 可以跨多个 workspace 用,一个 workspace 里可以装多个技能。混搭任意。</li>
+  <li><strong>Memory 自动读写</strong> — 你不需要每次手动喂背景,AI 在合适的时机自动调 memory 工具。</li>
+  <li><strong>Tasks 调度需要 Channels 网关在跑</strong> — 如果你发现任务没自动触发,先去 Channels 看看网关状态。</li>
+  <li><strong>Skill Studio 的 4 个入口对应 4 种创建场景</strong> — 导入 = 已有技能 / 学习 = 文档转技能 / AI 创建 = 想法转技能 / 工作流(即将推出)。</li>
+</ul>
+
+<h2 id="next">下一步</h2>
+<ul>
+  <li>想跑一遍「AI 创建技能」全流程?看 <a href="./first-skill-5min.html">5 分钟创建你的第一个智能体</a>。</li>
+  <li>手上有 PDF / Markdown 想转技能?看 <a href="./book-to-skill-clarify.html">用 book-to-skill 把文档转为智能体技能</a>。</li>
+  <li>想了解整个产品的发布流程?回到 <a href="../../index.html">首页</a> 看「发布流程」一节。</li>
+</ul>
+
+</article>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <div>
+        <b>QUSEIT · 创作者</b>
+        <p>知识工作者的 AI 智能体平台</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../tutorials.html">学习教程</a>
+      <a href="https://github.com/QUSEIT/qagent-image" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <div class="footer-copy-row">
+      <p class="footer-copy mono">© 2026 QUSEIT · ALL RIGHTS RESERVED</p>
+      <a class="footer-icp mono" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17072685号-11</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../i18n.js"></script>
+<script src="../../main.js"></script>
+</body>
+</html>
