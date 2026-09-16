@@ -326,6 +326,16 @@
     'partner.1.name': 'Silk Road (Guangxi) Technology Co., Ltd.',
     'partner.1.short': 'Silk Road Guangxi',
     'partner.1.desc': 'A Guangxi-rooted technology company focused on empowering e-commerce, education and other industries with AI, helping traditional sectors upgrade to intelligent operations.',
+    'partner.2.tier': 'Systems integrator',
+    'partner.2.region': 'Nanning, Guangxi',
+    'partner.2.name': 'Nanning Ullr Intelligent Technology Co., Ltd.',
+    'partner.2.short': 'UllrAI',
+    'partner.2.desc': 'A Nanning-based AI product and engineering team building and operating AI tools for global users. Specialists in integrating agent capabilities into e-commerce, content creation, and enterprise systems — serving over 170,000 users.',
+    'partner.3.tier': 'Education & training',
+    'partner.3.region': 'Guangxi, China',
+    'partner.3.name': 'Guangxi Kewellsoon Internet Technology Co., Ltd.',
+    'partner.3.short': 'Kewellsoon',
+    'partner.3.desc': 'A Guangxi-based AI growth service provider focused on hands-on AI training, intelligent application development and operations — solving customer-acquisition pain points for local SMBs through AI.',
 
     // ===== 上一篇/下一篇跨页导航(learn 3 子页互链) =====
     'learn.pager.label': 'Continue learning',
@@ -704,6 +714,16 @@
     'partner.1.name': '丝路（广西）科技有限公司',
     'partner.1.short': '丝路广西',
     'partner.1.desc': '一家立足广西的技术企业,专注于以 AI 技术赋能电商、教育等各行各业,助力产业智能化升级。',
+    'partner.2.tier': '系统集成商',
+    'partner.2.region': '中国 广西 南宁',
+    'partner.2.name': '南宁乌拉智能科技有限责任公司',
+    'partner.2.short': '乌拉智能',
+    'partner.2.desc': '立足南宁的 AI 产品与工程团队,自研并运营多款面向全球用户的 AI 工具,擅长把智能体能力集成到电商、内容创作与企业系统中,累计服务用户超 17 万。',
+    'partner.3.tier': '教育培训',
+    'partner.3.region': '中国 广西',
+    'partner.3.name': '广西科威讯互联网科技有限公司',
+    'partner.3.short': '科威讯',
+    'partner.3.desc': '广西本土 AI 增长服务商。专注 AI 实战培训、智能应用开发与运营,聚焦本地中小企业 AI 流量获客痛点。',
 
 
     // ===== 上一篇/下一篇跨页导航 =====
