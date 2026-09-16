@@ -303,6 +303,29 @@
 
     // ===== Footer nav: 学习教程指向 learn/tutorials.html =====
     'nav.tutorials': 'Tutorials',
+    'nav.partners': 'Partners',
+    'nav.github': 'GitHub',
+    'nav.home': 'Home',
+
+    // ===== partner.html =====
+    'partner.meta.title': 'Partners — QUSEIT',
+    'partner.meta.desc': 'Regional agents, integrators, and ecosystem allies who help bring QUSEIT agents to every industry.',
+    'partner.eyebrow': 'Partner network',
+    'partner.title': 'The QUSEIT partner network',
+    'partner.subtitle': 'Certified regional agents and systems integrators bringing QUSEIT agents into e-commerce, education, finance, public service and more.',
+    'partner.hero.join': '→ Become a partner',
+    'partner.filter.all': 'All partners',
+    'partner.filter.region': 'Regional agent',
+    'partner.filter.si': 'Systems integrator',
+    'partner.filter.edu': 'Education',
+    'partner.empty.title': 'No partners match your filters',
+    'partner.empty.body': 'Try a different filter, or clear them to see every partner in the directory.',
+    'partner.empty.clear': 'Clear filters',
+    'partner.1.tier': 'Regional agent',
+    'partner.1.region': 'Guangxi, China',
+    'partner.1.name': 'Silk Road (Guangxi) Technology Co., Ltd.',
+    'partner.1.short': 'Silk Road Guangxi',
+    'partner.1.desc': 'A Guangxi-rooted technology company focused on empowering e-commerce, education and other industries with AI, helping traditional sectors upgrade to intelligent operations.',
 
     // ===== 上一篇/下一篇跨页导航(learn 3 子页互链) =====
     'learn.pager.label': 'Continue learning',
@@ -658,6 +681,30 @@
 
     // ===== Footer nav: 改为「学习教程」指向 learn/tutorials.html =====
     'nav.tutorials': '学习教程',
+    'nav.partners': '合作伙伴',
+    'nav.github': 'GitHub',
+    'nav.home': '首页',
+
+    // ===== partner.html =====
+    'partner.meta.title': '合作伙伴 — QUSEIT',
+    'partner.meta.desc': '地区总代理、系统集成商与生态伙伴,把 QUSEIT 智能体带到各行各业。',
+    'partner.eyebrow': '合作伙伴网络',
+    'partner.title': 'QUSEIT 合作伙伴网络',
+    'partner.subtitle': '经过认证的地区总代理与系统集成商,把 QUSEIT 智能体带入电商、教育、金融与公共服务等行业。',
+    'partner.hero.join': '→ 成为合作伙伴',
+    'partner.filter.all': '全部合作伙伴',
+    'partner.filter.region': '地区总代理',
+    'partner.filter.si': '系统集成商',
+    'partner.filter.edu': '教育培训',
+    'partner.empty.title': '没有匹配的合作伙伴',
+    'partner.empty.body': '尝试其它筛选,或清除筛选查看完整目录。',
+    'partner.empty.clear': '清除筛选',
+    'partner.1.tier': '地区总代理',
+    'partner.1.region': '中国 广西',
+    'partner.1.name': '丝路（广西）科技有限公司',
+    'partner.1.short': '丝路广西',
+    'partner.1.desc': '一家立足广西的技术企业,专注于以 AI 技术赋能电商、教育等各行各业,助力产业智能化升级。',
+
 
     // ===== 上一篇/下一篇跨页导航 =====
     'learn.pager.label': '继续学习',
@@ -754,6 +801,7 @@
     if (pageKey === 'learn') return lang === 'en' ? en['learn.tut.meta.title'] : zh['learn.tut.meta.title'];
     if (pageKey === 'course') return lang === 'en' ? en['learn.course.meta.title'] : zh['learn.course.meta.title'];
     if (pageKey === 'usecase') return lang === 'en' ? en['learn.use.meta.title'] : zh['learn.use.meta.title'];
+    if (pageKey === 'partner') return lang === 'en' ? en['partner.meta.title'] : zh['partner.meta.title'];
     return lang === 'en' ? en['meta.title'] : zh['meta.title'];
   }
   function pickMetaDesc() {
@@ -761,6 +809,7 @@
     if (pageKey === 'learn') return lang === 'en' ? en['learn.tut.meta.desc'] : zh['learn.tut.meta.desc'];
     if (pageKey === 'course') return lang === 'en' ? en['learn.course.meta.desc'] : zh['learn.course.meta.desc'];
     if (pageKey === 'usecase') return lang === 'en' ? en['learn.use.meta.desc'] : zh['learn.use.meta.desc'];
+    if (pageKey === 'partner') return lang === 'en' ? en['partner.meta.desc'] : zh['partner.meta.desc'];
     return lang === 'en' ? en['meta.desc'] : zh['meta.desc'];
   }
 
