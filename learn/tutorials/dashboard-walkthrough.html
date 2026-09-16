@@ -117,7 +117,8 @@
 </div>
 
 <div class="callout">
-  <strong>本教程适合谁?</strong> 刚装好 QBuilder Desktop、第一次打开浏览器看到左侧一列图标的用户。读完后能:
+  <strong>QBuilder 是给谁的?</strong> 给<strong>知识工作者</strong>的「AI 工作室」 — 教师、咨询师、律师、销售、培训师、独立顾问这类日常产出是「问答、建议、内容、方案」、而不是软件的人。它解决的不是「如何写 prompt」,而是「如何把『我脑子里那套方法论』变成一个能被客户随时用的产品」。
+  <p style="margin: 10px 0 0;"><strong>本教程适合谁?</strong> 刚装好 QBuilder Desktop、第一次打开浏览器看到左侧一列图标的用户。读完后能:</p>
   <ul style="margin: 8px 0 0;">
     <li>知道每个导航图标对应什么功能、什么时候该用</li>
     <li>理解 Dashboard 与 Chat 的关系(同一份 composer,两套上下文)</li>
@@ -125,8 +126,8 @@
   </ul>
 </div>
 
-<h2>模块总览</h2>
-<p>QBuilder Desktop 的左侧导航栏一共有 <strong>10 个图标</strong>(顶部 8 个主视图 + 底部 2 个工具入口)。下面这张表先用一句话说清每个模块干什么,然后下面一节一节展开。</p>
+<h2 id="overview">模块总览</h2>
+<p>QBuilder Desktop 的左侧导航栏一共有 <strong>10 个图标</strong>(8 个主视图 + 2 个工具入口)。下面这张表先用一句话说清每个模块干什么,然后下面一节一节展开。</p>
 
 <table class="module-index">
   <thead>
@@ -135,28 +136,38 @@
       <th>图标位置</th>
       <th>模块</th>
       <th>一句话作用</th>
-      <th>默认</th>
+      <th>常驻</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td>左侧</td><td><strong>仪表盘 (Dashboard)</strong></td><td>启动首页:5 类工作流入口卡 + 共享输入框</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>2</td><td>左侧</td><td><strong>对话 (Chat)</strong></td><td>主对话区:消息流、附件、模型/工作区/推理 chip</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>3</td><td>左侧</td><td><strong>任务 (Tasks)</strong></td><td>定时任务(cron):自动跑对话或脚本的调度表</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>4</td><td>左侧</td><td><strong>渠道 (Channels)</strong></td><td>网关渠道:把对话接到 Telegram/微信/企微 等第三方</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>5</td><td>左侧</td><td><strong>技能 (Skills)</strong></td><td>技能库:本机已装技能 + 技能商店</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>6</td><td>左侧</td><td><strong>记忆 (Memory)</strong></td><td>记忆:我的备注、用户画像、智能体灵魂等持久记忆</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>7</td><td>左侧</td><td><strong>工作区 (Spaces)</strong></td><td>工作区:多目录项目切换器</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>8</td><td>左侧</td><td><strong>代理配置 (Agent profiles)</strong></td><td>配置档案:同一台机器上多个 Agent 预设(模型 + 提示词 + 工具)</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>9</td><td>左侧</td><td><strong>技能创作 (Skill Studio)</strong></td><td>技能创作:用 AI 把想法/文档/导入物变成可加载技能</td><td><span class="tag on">显示</span></td></tr>
-    <tr><td>10</td><td>左侧</td><td><strong>设置 (Settings)</strong></td><td>设置:9 个子分页(外观、偏好、提供商、账户…)</td><td><span class="tag on">显示</span></td></tr>
+    <tr><td>1</td><td>左侧</td><td><strong>仪表盘 (Dashboard)</strong></td><td>启动首页:5 类工作流入口卡 + 共享输入框</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>2</td><td>左侧</td><td><strong>对话 (Chat)</strong></td><td>主对话区:消息流、附件、模型/工作区/推理 chip</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>3</td><td>左侧</td><td><strong>任务 (Tasks)</strong></td><td>定时任务(cron):自动跑对话或脚本的调度表</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>4</td><td>左侧</td><td><strong>渠道 (Channels)</strong></td><td>网关渠道:把对话接到 Telegram/微信/企微 等第三方</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>5</td><td>左侧</td><td><strong>技能 (Skills)</strong></td><td>技能库:本机已装技能 + 技能商店</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>6</td><td>左侧</td><td><strong>记忆 (Memory)</strong></td><td>记忆:我的备注、用户画像、智能体灵魂等持久记忆</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>7</td><td>左侧</td><td><strong>工作区 (Spaces)</strong></td><td>工作区:多目录项目切换器</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>8</td><td>左侧</td><td><strong>代理配置 (Agent profiles)</strong></td><td>配置档案:同一台机器上多个 Agent 预设(模型 + 提示词 + 工具)</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>9</td><td>左侧</td><td><strong>技能创作 (Skill Studio)</strong></td><td>技能创作:用 AI 把想法/文档/导入物变成可加载技能</td><td><span class="tag on">常驻</span></td></tr>
+    <tr><td>10</td><td>左侧</td><td><strong>设置 (Settings)</strong></td><td>设置:9 个子分页(外观、偏好、提供商、账户…)</td><td><span class="tag on">常驻</span></td></tr>
   </tbody>
 </table>
 
-<h2 id="dashboard">1 · Dashboard — 启动首页</h2>
+<h2 id="conventions">关键约定 · 第一次用 QBuilder 必须知道</h2>
+<ul class="checklist">
+  <li><strong>技能创作 / 设置两个图标不是普通导航</strong> — 技能创作是「生产」、设置是「配置」,它们被故意放在左侧导航的偏下位置,提醒你这是工具不是主流程。</li>
+  <li><strong>仪表盘与对话共享输入框</strong> — 在仪表盘输入并发送,会自动跳到对话继续,不会有两套输入体验要适应。</li>
+  <li><strong>技能 / 工作区 / 配置档案 三者正交</strong> — 一个 profile 可以跨多个 workspace 用,一个 workspace 里可以装多个技能。混搭任意。</li>
+  <li><strong>记忆自动读写</strong> — 你不需要每次手动喂背景,AI 在合适的时机自动调 memory 工具。</li>
+  <li><strong>任务调度需要渠道网关在跑</strong> — 如果你发现任务没自动触发,先去渠道看看网关状态。</li>
+  <li><strong>技能创作的 4 个入口对应 4 种创建场景</strong> — 导入 = 已有技能 / 学习 = 文档转技能 / AI 创建 = 想法转技能 / 工作流(即将推出)。</li>
+</ul>
+
+<h2 id="dashboard">1 · 仪表盘 (Dashboard) — 启动首页</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">01</span>
-    <h3 class="step-title">Dashboard 是什么?</h3>
+    <h3 class="step-title">仪表盘 (Dashboard) 是什么?</h3>
   </div>
 
   <p>Dashboard 是打开 QBuilder Desktop 后的第一个页面。它把整个产品最常用的入口摆在你面前,不必到处找。</p>
@@ -170,15 +181,7 @@
   <ul>
     <li><strong>侧栏</strong>:左侧 10 个图标,本教程后续每个模块都会讲到。</li>
     <li><strong>历史会话列表</strong>:左下侧是按「今天 / 昨天 / 上周 / 更早」分组的历史对话,点击可恢复。</li>
-    <li><strong>5 类工作流入口卡</strong>:中央上半部分是 5 张大卡片 —
-      <ul>
-        <li>🚀 <strong>技能构建</strong>:创建智能体技能的最快路径</li>
-        <li>⚙️ <strong>软件项目</strong>:面向开发者的项目型工作流</li>
-        <li>🔬 <strong>质量保障</strong>:测试 / 评审 / 审计场景</li>
-        <li>🎨 <strong>内容工厂</strong>:写作 / 设计 / 媒体生产</li>
-        <li>📦 <strong>交付上线</strong>:发布 / 部署 / 上架</li>
-      </ul>
-    </li>
+    <li><strong>5 类工作流入口卡</strong>:中央上半部分是 5 张大卡片。本指南只展开其中「🚀 技能构建」(对应第 9 节「技能创作」);「⚙️ 软件项目 / 🔬 质量保障 / 🎨 内容工厂 / 📦 交付上线」对应 QUSEIT 五大行业实战手册场景,在 <a href="./use-cases.html">用例库</a> 里展开,本篇不深入。</li>
     <li><strong>共享 composer(输入框)</strong>:Dashboard 中央下半部分就是 Chat 用的同一个输入框 — 在 Dashboard 里输入并发送,会自动切到 Chat 继续对话。</li>
     <li><strong>底部工具条</strong>:右下角的 profile chip(显示当前 Agent)、模型 chip、推理强度 chip、发送按钮。</li>
     <li><strong>右下角 User Guide 入口</strong>:新手指引卡,首次启动会弹出。</li>
@@ -189,11 +192,11 @@
   </div>
 </div>
 
-<h2 id="chat">2 · Chat — 主对话区</h2>
+<h2 id="chat">2 · 对话 (Chat) — 主对话区</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">02</span>
-    <h3 class="step-title">Chat 是什么?</h3>
+    <h3 class="step-title">对话 (Chat) 是什么?</h3>
   </div>
 
   <p>Chat 是真正发生对话的地方。Dashboard 上的 composer 点发送后会跳到 Chat 并继续;直接从侧栏进 Chat 也是同一个界面。</p>
@@ -229,11 +232,11 @@
   </div>
 </div>
 
-<h2 id="tasks">3 · Tasks — 定时任务</h2>
+<h2 id="tasks">3 · 任务 (Tasks) — 定时任务</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">03</span>
-    <h3 class="step-title">Tasks 是什么?</h3>
+    <h3 class="step-title">任务 (Tasks) 是什么?</h3>
   </div>
 
   <p>Tasks 是 QBuilder 的「定时任务调度器」,学名 <em>cron jobs</em>。它让你设定一些「每天早上 8 点跑一次」「每小时汇总一次数据」之类的自动化任务,QBuilder 会按计划自动启动新的对话或脚本。</p>
@@ -251,22 +254,22 @@
   </ul>
 
   <div class="callout">
-    <strong>什么时候用?</strong> 你需要「让 AI 定期做某事」时 — 比如每天总结前一天的工作、每周汇总 GitHub Issue、定时抓取某个页面。
+    <strong>典型场景:</strong> 你希望 AI 每天 9 点自动跑一遍前一天的工作总结,或者每周一汇总本周 GitHub Issues — 设好 cron,QBuilder 不用你开浏览器就会按节奏自动启动对话。
   </div>
 </div>
 
-<h2 id="channels">4 · Channels — 网关渠道</h2>
+<h2 id="channels">4 · 渠道 (Channels) — 网关渠道</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">04</span>
-    <h3 class="step-title">Channels 是什么?</h3>
+    <h3 class="step-title">渠道 (Channels) 是什么?</h3>
   </div>
 
   <p>Channels 是把 QBuilder 对接第三方聊天平台的入口。它背后是一个 <em>gateway 网关</em>,可以监听 Telegram / Discord / Slack / 企业微信 / 微信 等渠道的消息,把对话路由到本机的 Agent。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/dashboard/04-channels.png" alt="Channels 网关渠道页">
-    <div class="figure-cap">04-channels.png · Channels 加载中:网关配置占位 + 主区加载提示</div>
+    <div class="figure-cap">04-channels.png · Channels 加载完成:网关配置侧栏(API 密钥 / Start) + 主区 4 张渠道卡(WhatsApp / 飞书 / 企业微信 / 微信) + 顶部「网关当前未运行」提示</div>
   </div>
 
   <h3>典型元素</h3>
@@ -278,22 +281,22 @@
   </ul>
 
   <div class="callout">
-    <strong>什么时候用?</strong> 你想在手机上的微信 / 企微 / Telegram 直接给 QBuilder 发消息时。
+    <strong>典型场景:</strong> 你希望客户在微信里直接问 AI 产品规格,而你不必每次手动转述;或者家长在企微群里直接问学生作业问题,AI 自动按你训练好的口径答复。
   </div>
 </div>
 
-<h2 id="skills">5 · Skills — 技能库</h2>
+<h2 id="skills">5 · 技能 (Skills) — 技能库</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">05</span>
-    <h3 class="step-title">Skills 是什么?</h3>
+    <h3 class="step-title">技能 (Skills) 是什么?</h3>
   </div>
 
   <p>Skills 是 QBuilder 已经装好、可直接调用的技能合集。每个技能是一段 markdown 说明书 + 一组脚本,告诉 AI 「遇到这类问题应该这样做」。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/dashboard/05-skills.png" alt="Skills 技能库页">
-    <div class="figure-cap">05-skills.png · Skills 双 tab:我的 Skill / 商店,左侧按 category 分组</div>
+    <div class="figure-cap">05-skills.png · Skills「商店」tab + 首个技能 book-to-skill 详情卡(描述、版本、作者、SKILL.md 全文、安装按钮)</div>
   </div>
 
   <h3>典型元素</h3>
@@ -306,25 +309,25 @@
   </ul>
 
   <div class="callout">
-    <strong>什么时候用?</strong> 你想知道「AI 现在会做哪些事」或者临时关掉某个技能时。
+    <strong>典型场景:</strong> 你想给 AI 装上一组扩展技能,让工作流程与处理能力贴合你的行业 / 团队需要 — 在这里启用、禁用、安装、搜索各类技能,AI 在后续对话里会自动调用它们。
   </div>
 </div>
 
-<h2 id="memory">6 · Memory — 持久记忆</h2>
+<h2 id="memory">6 · 记忆 (Memory) — 持久记忆</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">06</span>
-    <h3 class="step-title">Memory 是什么?</h3>
+    <h3 class="step-title">记忆 (Memory) 是什么?</h3>
   </div>
 
   <p>Memory 是 QBuilder 跨会话的「长期记忆」。聊天时 AI 会自动读写这里的条目,下次再开会话它仍然记得。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/dashboard/06-memory.png" alt="Memory 记忆页">
-    <div class="figure-cap">06-memory.png · Memory 5 分项:我的备注 / 用户画像 / 智能体灵魂 / 项目上下文 / 外部笔记</div>
+    <div class="figure-cap">06-memory.png · Memory 4 分项:我的备注 / 用户画像 / 智能体灵魂 / 项目上下文;「我的备注」选中,主区展示 MEMORY.md 真实条目</div>
   </div>
 
-  <h3>5 个分项</h3>
+  <h3>4 个分项</h3>
   <ul>
     <li><strong>我的备注 (memory)</strong>:你给 AI 留的笔记、复述规则。</li>
     <li><strong>用户画像 (user)</strong>:AI 眼中的「你是谁」 — 偏好、习惯、角色。</li>
@@ -333,22 +336,22 @@
   </ul>
 
   <div class="callout">
-    <strong>什么时候用?</strong> 你希望 AI 「越用越懂你」,主动维护这几栏就行 — 用户画像里写「我不喜欢 Markdown 表格」,AI 后续就不会再贴表格。
+    <strong>典型场景:</strong> 你希望 AI 越聊越懂你 — 在用户画像里写「我不喜欢 Markdown 表格」「回答用中文优先」,在智能体灵魂里调语气,这些会跨会话生效。
   </div>
 </div>
 
-<h2 id="spaces">7 · Spaces — 工作区</h2>
+<h2 id="spaces">7 · 工作区 (Spaces) — 项目目录</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">07</span>
-    <h3 class="step-title">Spaces 是什么?</h3>
+    <h3 class="step-title">工作区 (Spaces) 是什么?</h3>
   </div>
 
   <p>Spaces(也叫 Workspaces)是「项目目录」。它把你电脑上不同的项目文件夹(比如 <code>D:\Workspace\quseit-website</code> 和 <code>D:\Projects\qagent-desktop</code>)区分开,切换工作区 = 切换 AI 当前能看到、操作的目录。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/dashboard/07-spaces.png" alt="Spaces 工作区页">
-    <div class="figure-cap">07-spaces.png · Spaces 侧栏:17 个工作区列表 + 「+」新建</div>
+    <div class="figure-cap">07-spaces.png · Spaces 第一个工作区 QBuilderWorkspace 详情:Name / Path / Status(Inactive)+ 检查点 section</div>
   </div>
 
   <h3>典型元素</h3>
@@ -359,22 +362,22 @@
   </ul>
 
   <div class="callout">
-    <strong>什么时候用?</strong> 同一个机器上跑多个项目时 — 不同项目的依赖、配置、文件互不污染。
+    <strong>典型场景:</strong> 你同时在做多个项目(比如 quseit-website + qagent-desktop),每个项目有不同的依赖和文件,切换工作区 = AI 的视野自动切到对应目录。
   </div>
 </div>
 
-<h2 id="profiles">8 · Agent profiles — 配置档案</h2>
+<h2 id="profiles">8 · 代理配置 (Agent profiles) — 配置档案</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">08</span>
-    <h3 class="step-title">Agent profiles 是什么?</h3>
+    <h3 class="step-title">代理配置 (Agent profiles) 是什么?</h3>
   </div>
 
   <p>Agent profiles 让你为不同场景准备多个「Agent 预设」 — 每套预设 = (模型 + 系统提示词 + 启用技能 + 工具集)。切换 profile 就像换了一个「不同性格 + 不同技能」的助手。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/dashboard/08-agent-profiles.png" alt="Agent profiles 配置档案页">
-    <div class="figure-cap">08-agent-profiles.png · Profiles 默认档案:`default` · MiniMax-M3 · 153/153 个技能</div>
+    <div class="figure-cap">08-agent-profiles.png · Profiles default 档案详情:Status / Gateway(已停止) / Model(MiniMax-M3) / Provider(minimax-cn) / API key / Skills</div>
   </div>
 
   <h3>典型元素</h3>
@@ -385,15 +388,15 @@
   </ul>
 
   <div class="callout">
-    <strong>什么时候用?</strong> 你希望「开发场景用一个严谨的 agent、写作场景用一个随性的 agent」时 — 每个场景建一个 profile,一键切换。
+    <strong>典型场景:</strong> 你希望「开发场景用一个严谨的 agent,写作场景用一个随性的 agent」,每个场景建一个 profile,一键切换 — 不同场景的人格、模型、技能组合可以完全不同。
   </div>
 </div>
 
-<h2 id="studio">9 · Skill Studio — 技能创作工坊</h2>
+<h2 id="studio">9 · 技能创作 (Skill Studio) — 技能创作工坊</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">09</span>
-    <h3 class="step-title">Skill Studio 是什么?</h3>
+    <h3 class="step-title">技能创作 (Skill Studio) 是什么?</h3>
   </div>
 
   <p>Skill Studio 是 Skills 面板的「创作端」 — Skills 管使用,Studio 管创建。一句话区别:<strong>Hub consumes / Skills manages / Studio creates</strong>(商店消费 / 技能管用 / 工坊生产)。</p>
@@ -418,15 +421,15 @@
   </ul>
 
   <div class="callout">
-    <strong>什么时候用?</strong> 你想让 AI 帮你做一个新技能(把流程固化下来,不必每次重新教它)。
+    <strong>典型场景:</strong> 你希望把某个流程固化下来,不必每次重新教 AI — 把 SOP 丢进「从文档学习」、把需求丢进「AI 创建技能」、把已有脚本丢进「导入技能」,都会产出一个可复用的技能。
   </div>
 </div>
 
-<h2 id="settings">10 · Settings — 设置中心</h2>
+<h2 id="settings">10 · 设置 (Settings) — 设置中心</h2>
 <div class="step">
   <div class="step-head">
     <span class="step-num">10</span>
-    <h3 class="step-title">Settings 是什么?</h3>
+    <h3 class="step-title">设置 (Settings) 是什么?</h3>
   </div>
 
   <p>Settings 不是单一页,而是 <strong>9 个子分页</strong>。点击 Settings 后,左侧会出现子菜单,右侧是具体设置项。</p>
@@ -450,25 +453,28 @@
   </ul>
 
   <div class="callout">
-    <strong>右上角小圆点:</strong> 如果你的登录态有异常,Settings 右上角会出现一个红色小圆点 — 点开 Settings,系统会指引你完成修复。
+    <strong>异常状态提示:</strong> 如果你的登录态有异常,Settings 右上角会出现一个红色小圆点 — 点开 Settings,系统会指引你完成修复。
   </div>
 </div>
 
-<h2 id="conventions">关键约定 · 第一次用 QBuilder 必须知道</h2>
-<ul class="checklist">
-  <li><strong>技能创作 / 设置两个图标不是普通导航</strong> — 技能创作是「生产」、设置是「配置」,它们被故意放在左侧导航的偏下位置,提醒你这是工具不是主流程。</li>
-  <li><strong>Dashboard 与 Chat 共享输入框</strong> — 在 Dashboard 输入并发送,会自动跳到 Chat 继续,不会有两套输入体验要适应。</li>
-  <li><strong>技能 / 工作区 / 配置档案 三者正交</strong> — 一个 profile 可以跨多个 workspace 用,一个 workspace 里可以装多个技能。混搭任意。</li>
-  <li><strong>Memory 自动读写</strong> — 你不需要每次手动喂背景,AI 在合适的时机自动调 memory 工具。</li>
-  <li><strong>Tasks 调度需要 Channels 网关在跑</strong> — 如果你发现任务没自动触发,先去 Channels 看看网关状态。</li>
-  <li><strong>Skill Studio 的 4 个入口对应 4 种创建场景</strong> — 导入 = 已有技能 / 学习 = 文档转技能 / AI 创建 = 想法转技能 / 工作流(即将推出)。</li>
-</ul>
+<h2 id="summary">总结 · 这 4 个模块机制是如何解决问题的</h2>
+<p>前面 10 个模块是 UI 形态。从设计机制的角度看,QBuilder 的核心只做四件事,各自对应一组模块的组合:</p>
+
+<ol>
+  <li><strong>让 AI 跨会话持续学习你 — Memory</strong>。「我的备注 / 用户画像 / 智能体灵魂 / 项目上下文」四栏把零散的偏好、判断、人格、项目背景变成 AI 跨对话可读的结构化记忆。下次开会话,它带着这些继续。</li>
+  <li><strong>把行业 know-how 固化成可插拔资产 — Skills + Skill Studio</strong>。Skills 是带 <code>SKILL.md</code> + 脚本的完整技能包,可从文档蒸馏生成(从文档学习)、AI 多轮问答生成(AI 创建技能)、本地目录导入(导入技能),由 Skill Studio 统一生产。Skills 是 Skills,Skill Studio 是 Skills 的制造车间 — 一边消费、一边生产。</li>
+  <li><strong>让智能体进入用户已有的工具 — Channels</strong>。Channels 把 QBuilder 对接到微信 / 企微 / Telegram 等用户已经在用的聊天平台,客户 / 学生不必切换工具。Service Page(交付发布)是另一种「交付渠道」,给独立 chat 页面 + 自定义子域名。</li>
+  <li><strong>把重复劳动交给调度系统 — Tasks + 多工作区 + 多 Agent profile</strong>。Tasks 让对话按 cron 跑(每天 9 点自动跑客户日报),多工作区让多个项目目录独立不互相污染,多 Agent profile 让同一台机器上不同场景用不同的「人格 + 模型 + 技能组合」。Skill Studio 即将推出的「工作流」会继续补这块 — 但当前这三层已经能撑住 80% 的自动化场景。</li>
+</ol>
+
+<p>这四件事不是孤立的。用户在 Chat 提问时,Memory 自动注入上下文;Skills 让回答贴你的行业;Tasks 帮你定时跑日报;Channels 让你的客户在微信里直接跟这个智能体聊 — 四组模块首尾相接,拼成「把你脑里的方法论变成客户可用的产品」这一条完整业务闭环。这也是开头那句定位 — 「把『我脑子里那套方法论』变成一个能被客户随时用的产品」 — 在控制面板层面的具体落地路径。</p>
 
 <h2 id="next">下一步</h2>
 <ul>
   <li>想跑一遍「AI 创建技能」全流程?看 <a href="./first-skill-5min.html">5 分钟创建你的第一个智能体</a>。</li>
   <li>手上有 PDF / Markdown 想转技能?看 <a href="./book-to-skill-clarify.html">用 book-to-skill 把文档转为智能体技能</a>。</li>
   <li>想了解整个产品的发布流程?回到 <a href="../../index.html">首页</a> 看「发布流程」一节。</li>
+  <li>需要快速跳到某个模块?回到顶部 <a href="#overview">模块总览</a>。</li>
 </ul>
 
 </article>
