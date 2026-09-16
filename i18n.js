@@ -77,7 +77,7 @@
     'ch2.label': 'EMAIL · CONTACT',
     'ch2.desc': 'Enterprise deployment, custom skills, partnerships — reply within 1 business day',
     'ch3.label': 'COMPANY · ABOUT US',
-    'ch3.desc': 'Beijing Qingzhi Intelligent Technology Co., Ltd.<br>A1839, 1/F, Building 1, Yard 2, Yongcheng North Road, Haidian, Beijing',
+    'ch3.desc': 'Beijing Youqu Tianxia Technology Co., Ltd.<br>A1839, 1/F, Building 1, Yard 2, Yongcheng North Road, Haidian, Beijing',
     'ch.btn': 'Copy',
     'ch.tip': 'Try it yourself at agent.quseit.com; for partnerships, reach us via the channels above',
 
@@ -366,7 +366,7 @@
     'privacy.h.contact': 'Contact Us',
     'privacy.h.contact.p1': 'If you have questions about this Policy or wish to exercise your rights, please reach us through the channels below:',
     'privacy.h.contact.l1': 'Email: <a href="mailto:privacy@quseit.com">privacy@quseit.com</a>',
-    'privacy.h.contact.l2': 'Company: Beijing Qingzhi Intelligent Technology Co., Ltd. (QUSEIT)',
+    'privacy.h.contact.l2': 'Company: Beijing Youqu Tianxia Technology Co., Ltd. (QUSEIT)',
 
     // ===== partner.html =====
     'partner.meta.title': 'Partners — QUSEIT',
@@ -520,7 +520,7 @@
     'ch2.label': 'EMAIL · 邮件沟通',
     'ch2.desc': '企业部署、技能定制、合作咨询,1 个工作日内回复',
     'ch3.label': 'COMPANY · 公司信息',
-    'ch3.desc': '北京清智智能科技有限公司<br>北京市海淀区永澄北路2号院1号楼一层A1839',
+    'ch3.desc': '北京优趣天下信息技术有限公司<br>北京市海淀区永澄北路2号院1号楼一层A1839',
     'ch.btn': '复制',
     'ch.tip': '个人体验请直接访问 agent.quseit.com;合作咨询可通过以上方式联系',
 
@@ -809,7 +809,7 @@
     'privacy.h.contact': '联系我们',
     'privacy.h.contact.p1': '如果你对本政策有任何疑问,或希望行使你的权利,请通过以下方式联系我们:',
     'privacy.h.contact.l1': '邮箱:<a href="mailto:privacy@quseit.com">privacy@quseit.com</a>',
-    'privacy.h.contact.l2': '公司:北京清智智能科技有限公司 (QUSEIT)',
+    'privacy.h.contact.l2': '公司:北京优趣天下信息技术有限公司 (QUSEIT)',
     // ===== partner.html =====
     'partner.meta.title': '合作伙伴 — QUSEIT',
     'partner.meta.desc': '地区总代理、系统集成商与生态伙伴,把 QUSEIT 智能体带到各行各业。',
