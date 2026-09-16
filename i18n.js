@@ -77,7 +77,7 @@
     'ch2.label': 'EMAIL · CONTACT',
     'ch2.desc': 'Enterprise deployment, custom skills, partnerships — reply within 1 business day',
     'ch3.label': 'COMPANY · ABOUT US',
-    'ch3.desc': 'Beijing Quseit Information Technology Co., Ltd.<br>A1839, 1/F, Building 1, Yard 2, Yongcheng North Road, Haidian, Beijing',
+    'ch3.desc': 'Beijing Qingzhi Intelligent Technology Co., Ltd.<br>A1839, 1/F, Building 1, Yard 2, Yongcheng North Road, Haidian, Beijing',
     'ch.btn': 'Copy',
     'ch.tip': 'Try it yourself at agent.quseit.com; for partnerships, reach us via the channels above',
 
@@ -311,7 +311,6 @@
     // ===== privacy.html =====
     'privacy.meta.title': 'QBuilder Privacy Policy — QUSEIT',
     'privacy.meta.desc': 'How the QBuilder desktop app collects, uses, and protects your personal information.',
-    'privacy.eyebrow': '// Privacy Policy',
     'privacy.title': 'QBuilder Privacy Policy',
     'privacy.updated': 'LAST UPDATED · 2026-09-16',
     'privacy.intro1': 'This Privacy Policy ("Policy") describes what personal information QUSEIT ("we", "us", or "our") may collect, use, and protect when you download, install, sign in to, or use the QBuilder desktop application ("QBuilder" or "the application"), and what choices and rights you have over that information.',
@@ -521,7 +520,7 @@
     'ch2.label': 'EMAIL · 邮件沟通',
     'ch2.desc': '企业部署、技能定制、合作咨询,1 个工作日内回复',
     'ch3.label': 'COMPANY · 公司信息',
-    'ch3.desc': '北京优趣天下信息技术有限公司<br>北京市海淀区永澄北路2号院1号楼一层A1839',
+    'ch3.desc': '北京清智智能科技有限公司<br>北京市海淀区永澄北路2号院1号楼一层A1839',
     'ch.btn': '复制',
     'ch.tip': '个人体验请直接访问 agent.quseit.com;合作咨询可通过以上方式联系',
 
@@ -755,7 +754,6 @@
     // ===== privacy.html =====
     'privacy.meta.title': 'QBuilder 隐私政策 — QUSEIT',
     'privacy.meta.desc': 'QBuilder 桌面端如何收集、使用与保护你的个人信息。',
-    'privacy.eyebrow': '// Privacy Policy',
     'privacy.title': 'QBuilder 隐私政策',
     'privacy.updated': '最后更新 · 2026-09-16',
     'privacy.intro1': '本隐私政策（「政策」）说明 QUSEIT（「我们」「我们的」）在你下载、安装、登录或使用 QBuilder 桌面端（以下简称「QBuilder」或「本应用」）过程中,可能会收集、使用与保护哪些个人信息,以及你享有怎样的选择与权利。',

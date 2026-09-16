@@ -12,72 +12,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-/* privacy 页面专用样式: 紧凑浅底 hero + 长文正文 */
-.privacy-page .privacy-hero {
-  padding: 140px 0 36px;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
+/* privacy 详情页 — 头部轻量化,对齐 learn/tutorials/first-skill-5min.html */
+.privacy-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+
+.privacy-crumbs {
+  display: flex; align-items: center; gap: 6px; margin: 0 0 14px;
+  font-family: var(--mono); font-size: 12px; color: var(--ink-3);
 }
-.privacy-hero-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+.privacy-crumbs a { color: var(--ink-3); text-decoration: none; transition: color .15s ease; }
+.privacy-crumbs a:hover { color: var(--accent); text-decoration: underline; }
+.privacy-crumbs .sep { opacity: .45; }
+.privacy-crumbs .current { color: var(--ink-2); }
+
+.privacy-doc h1 {
+  font-family: var(--serif); font-weight: 700; font-size: 38px;
+  line-height: 1.25; margin: 0 0 8px; color: var(--ink);
 }
-.privacy-hero-inner h1 {
-  font-family: var(--serif);
-  font-weight: 900;
-  font-size: clamp(32px, 3.6vw, 44px);
-  line-height: 1.25;
-  letter-spacing: .01em;
-  margin: 0;
-  color: var(--ink);
-  max-width: 720px;
-}
-.privacy-hero-inner .sub {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--ink-3);
-  font-family: var(--mono);
-  letter-spacing: .04em;
-  margin: 0;
+.privacy-meta {
+  display: flex; gap: 12px; align-items: center; margin: 0 0 40px;
+  font-family: var(--mono); font-size: 13px; color: var(--ink-3);
 }
 
-.privacy-section { padding: 56px 0 80px; }
-.privacy-body {
-  max-width: 760px;
-  margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.85;
-  color: var(--ink-2);
-}
-.privacy-body h2 {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 1.4;
-  color: var(--ink);
-  margin: 48px 0 16px;
-}
-.privacy-body h2:first-child { margin-top: 0; }
-.privacy-body p { margin: 0 0 16px; }
-.privacy-body ul { padding-left: 22px; margin: 0 0 20px; }
-.privacy-body li { margin-bottom: 8px; }
-.privacy-body strong { color: var(--ink); font-weight: 600; }
-.privacy-body .meta {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink-3);
-  letter-spacing: .04em;
-  margin: 0 0 36px;
-  padding-bottom: 24px;
+.privacy-doc h2 {
+  font-family: var(--serif); font-weight: 700; font-size: 26px;
+  line-height: 1.4; color: var(--ink);
+  margin: 56px 0 18px; padding-bottom: 8px;
   border-bottom: 1px solid var(--line);
 }
+.privacy-doc p { font-size: 16px; line-height: 1.85; color: var(--ink-2); margin: 0 0 16px; }
+.privacy-doc ul { padding-left: 22px; margin: 0 0 20px; }
+.privacy-doc li { font-size: 16px; line-height: 1.85; color: var(--ink-2); margin-bottom: 8px; }
+.privacy-doc strong { color: var(--ink); font-weight: 600; }
+.privacy-doc a { color: var(--accent); text-decoration: none; }
+.privacy-doc a:hover { text-decoration: underline; }
 
 @media (max-width: 720px) {
-  .privacy-page .privacy-hero { padding: 120px 0 28px; }
+  .privacy-doc { padding: 96px 20px 72px; }
+  .privacy-doc h1 { font-size: 30px; }
+  .privacy-doc h2 { font-size: 22px; margin-top: 44px; }
 }
 </style>
 </head>
@@ -116,105 +88,99 @@
   </div>
 </header>
 
-<!-- ===== Hero ===== -->
-<section class="privacy-hero">
-  <div class="container privacy-hero-inner">
-    <p class="kicker">
-      <span class="kicker-dot"></span>
-      <span data-i18n="privacy.eyebrow">// Privacy Policy</span>
-    </p>
-    <h1 data-i18n="privacy.title">QBuilder 隐私政策</h1>
-    <p class="sub" data-i18n="privacy.updated">LAST UPDATED · 2026-09-16</p>
-  </div>
-</section>
+<!-- ===== 正文 (头部样式对齐 learn/tutorials/first-skill-5min.html) ===== -->
+<article class="privacy-doc">
 
-<!-- ===== 正文 ===== -->
-<section class="privacy-section">
-  <div class="container">
-    <article class="privacy-body">
+<nav class="privacy-crumbs" aria-label="面包屑">
+  <a href="index.html" data-i18n="nav.home">首页</a>
+  <span class="sep">/</span>
+  <span class="current" data-i18n="nav.privacy">隐私政策</span>
+</nav>
+<h1 data-i18n="privacy.title">QBuilder 隐私政策</h1>
+<div class="privacy-meta">
+  <span data-i18n="privacy.updated">LAST UPDATED · 2026-09-16</span>
+</div>
 
-      <p data-i18n="privacy.intro1">本隐私政策（「政策」）说明 QUSEIT（「我们」「我们的」）在你下载、安装、登录或使用 QBuilder 桌面端（以下简称「QBuilder」或「本应用」）过程中,可能会收集、使用与保护哪些个人信息,以及你享有怎样的选择与权利。</p>
+<p data-i18n="privacy.intro1">本隐私政策（「政策」）说明 QUSEIT（「我们」「我们的」）在你下载、安装、登录或使用 QBuilder 桌面端（以下简称「QBuilder」或「本应用」）过程中,可能会收集、使用与保护哪些个人信息,以及你享有怎样的选择与权利。</p>
 
-      <p data-i18n="privacy.intro2">QBuilder 是一款本地优先的智能体构建工具。你可以在完全离线、只连接本地模型的环境下使用它的全部核心能力;只有在显式开启云端功能(例如登录 QUSEIT 账号、同步技能、调用云端模型)时,才会向我们的服务端发送数据。使用本应用即表示你同意本政策中描述的数据收集与使用方式,以及 QUSEIT 的服务条款。</p>
+<p data-i18n="privacy.intro2">QBuilder 是一款本地优先的智能体构建工具。你可以在完全离线、只连接本地模型的环境下使用它的全部核心能力;只有在显式开启云端功能(例如登录 QUSEIT 账号、同步技能、调用云端模型)时,才会向我们的服务端发送数据。使用本应用即表示你同意本政策中描述的数据收集与使用方式,以及 QUSEIT 的服务条款。</p>
 
-      <h2 data-i18n="privacy.h.information">我们收集哪些信息</h2>
-      <p data-i18n="privacy.h.information.p1">我们会从以下来源收集你的个人信息,具体取决于你如何使用 QBuilder:</p>
-      <ul>
-        <li data-i18n="privacy.h.information.l1"><strong>账号与身份信息</strong>:当你注册或登录 QUSEIT 账号时收集,例如用户名、邮箱地址、组织名称、头像 URL。</li>
-        <li data-i18n="privacy.h.information.l2"><strong>设备与运行环境信息</strong>:操作系统版本、CPU/GPU 架构、QBuilder 版本号、界面语言、安装渠道标识,用于兼容性诊断与版本规划。</li>
-        <li data-i18n="privacy.h.information.l3"><strong>本地工作流元数据</strong>:你创建的技能数量、调用次数、最近一次运行时间 —— 仅在你启用匿名使用统计时收集,关闭后不会发送任何内容。</li>
-        <li data-i18n="privacy.h.information.l4"><strong>云端调用内容</strong>:当你显式调用云端模型或同步技能到 QUSEIT 平台时,本次调用涉及的提示词、消息、工具参数、响应内容会被传输到我们的服务端以完成该次请求。</li>
-        <li data-i18n="privacy.h.information.l5"><strong>反馈与支持信息</strong>:你主动提交的崩溃日志、错误复现描述、支持工单内容、社区帖子。</li>
-        <li data-i18n="privacy.h.information.l6"><strong>支付与订阅信息</strong>:仅在你购买付费套餐时收集,由第三方支付服务商处理,我们不直接存储完整卡号。</li>
-      </ul>
-      <p data-i18n="privacy.h.information.p2">需要强调:QBuilder <strong>不会</strong>在你未明确启用云端功能时,把你本地的工作流数据(技能源文件、提示词草稿、私有文档)发送到我们的服务端。</p>
+<h2 data-i18n="privacy.h.information">我们收集哪些信息</h2>
+<p data-i18n="privacy.h.information.p1">我们会从以下来源收集你的个人信息,具体取决于你如何使用 QBuilder:</p>
+<ul>
+  <li data-i18n="privacy.h.information.l1"><strong>账号与身份信息</strong>:当你注册或登录 QUSEIT 账号时收集,例如用户名、邮箱地址、组织名称、头像 URL。</li>
+  <li data-i18n="privacy.h.information.l2"><strong>设备与运行环境信息</strong>:操作系统版本、CPU/GPU 架构、QBuilder 版本号、界面语言、安装渠道标识,用于兼容性诊断与版本规划。</li>
+  <li data-i18n="privacy.h.information.l3"><strong>本地工作流元数据</strong>:你创建的技能数量、调用次数、最近一次运行时间 —— 仅在你启用匿名使用统计时收集,关闭后不会发送任何内容。</li>
+  <li data-i18n="privacy.h.information.l4"><strong>云端调用内容</strong>:当你显式调用云端模型或同步技能到 QUSEIT 平台时,本次调用涉及的提示词、消息、工具参数、响应内容会被传输到我们的服务端以完成该次请求。</li>
+  <li data-i18n="privacy.h.information.l5"><strong>反馈与支持信息</strong>:你主动提交的崩溃日志、错误复现描述、支持工单内容、社区帖子。</li>
+  <li data-i18n="privacy.h.information.l6"><strong>支付与订阅信息</strong>:仅在你购买付费套餐时收集,由第三方支付服务商处理,我们不直接存储完整卡号。</li>
+</ul>
+<p data-i18n="privacy.h.information.p2">需要强调:QBuilder <strong>不会</strong>在你未明确启用云端功能时,把你本地的工作流数据(技能源文件、提示词草稿、私有文档)发送到我们的服务端。</p>
 
-      <h2 data-i18n="privacy.h.usage">我们如何使用这些信息</h2>
-      <p data-i18n="privacy.h.usage.p1">我们使用收集到的信息来:</p>
-      <ul>
-        <li data-i18n="privacy.h.usage.l1">提供、维护、改进并保护 QBuilder 的核心功能;</li>
-        <li data-i18n="privacy.h.usage.l2">响应你的请求、为你提供支持;</li>
-        <li data-i18n="privacy.h.usage.l3">在你启用云端功能时,把请求路由到相应的模型服务端并返回结果;</li>
-        <li data-i18n="privacy.h.usage.l4">在你启用匿名使用统计时,了解哪些功能被使用、哪些需要改进;</li>
-        <li data-i18n="privacy.h.usage.l5">检测、预防和应对欺诈、滥用、违反服务条款的行为;</li>
-        <li data-i18n="privacy.h.usage.l6">在你订阅时处理付款,并向你发送与服务相关的通知。</li>
-      </ul>
+<h2 data-i18n="privacy.h.usage">我们如何使用这些信息</h2>
+<p data-i18n="privacy.h.usage.p1">我们使用收集到的信息来:</p>
+<ul>
+  <li data-i18n="privacy.h.usage.l1">提供、维护、改进并保护 QBuilder 的核心功能;</li>
+  <li data-i18n="privacy.h.usage.l2">响应你的请求、为你提供支持;</li>
+  <li data-i18n="privacy.h.usage.l3">在你启用云端功能时,把请求路由到相应的模型服务端并返回结果;</li>
+  <li data-i18n="privacy.h.usage.l4">在你启用匿名使用统计时,了解哪些功能被使用、哪些需要改进;</li>
+  <li data-i18n="privacy.h.usage.l5">检测、预防和应对欺诈、滥用、违反服务条款的行为;</li>
+  <li data-i18n="privacy.h.usage.l6">在你订阅时处理付款,并向你发送与服务相关的通知。</li>
+</ul>
 
-      <h2 data-i18n="privacy.h.share">我们与谁共享信息</h2>
-      <p data-i18n="privacy.h.share.p1">我们不会出售你的个人信息。我们仅在以下情况下共享你的信息:</p>
-      <ul>
-        <li data-i18n="privacy.h.share.l1"><strong>模型服务商</strong>:当你调用云端模型时,该次调用的提示词与响应会发送给相应的模型服务提供商(例如 OpenAI、Anthropic 或自托管端点),用于完成本次推理。</li>
-        <li data-i18n="privacy.h.share.l2"><strong>基础设施服务商</strong>:用于运行 QUSEIT 服务的云基础设施、数据库、支付处理、邮件发送等第三方供应商,他们仅在为我们提供服务的必要范围内接触信息。</li>
-        <li data-i18n="privacy.h.share.l3"><strong>法律要求</strong>:在法律要求或政府正式请求时,我们可能依法披露信息。</li>
-        <li data-i18n="privacy.h.share.l4"><strong>企业重组</strong>:如果 QUSEIT 涉及合并、收购或资产出售,你的信息可能作为交易资产的一部分转让,届时我们会以适当方式提前通知。</li>
-      </ul>
+<h2 data-i18n="privacy.h.share">我们与谁共享信息</h2>
+<p data-i18n="privacy.h.share.p1">我们不会出售你的个人信息。我们仅在以下情况下共享你的信息:</p>
+<ul>
+  <li data-i18n="privacy.h.share.l1"><strong>模型服务商</strong>:当你调用云端模型时,该次调用的提示词与响应会发送给相应的模型服务提供商(例如 OpenAI、Anthropic 或自托管端点),用于完成本次推理。</li>
+  <li data-i18n="privacy.h.share.l2"><strong>基础设施服务商</strong>:用于运行 QUSEIT 服务的云基础设施、数据库、支付处理、邮件发送等第三方供应商,他们仅在为我们提供服务的必要范围内接触信息。</li>
+  <li data-i18n="privacy.h.share.l3"><strong>法律要求</strong>:在法律要求或政府正式请求时,我们可能依法披露信息。</li>
+  <li data-i18n="privacy.h.share.l4"><strong>企业重组</strong>:如果 QUSEIT 涉及合并、收购或资产出售,你的信息可能作为交易资产的一部分转让,届时我们会以适当方式提前通知。</li>
+</ul>
 
-      <h2 data-i18n="privacy.h.local">本地优先与你的数据控制权</h2>
-      <p data-i18n="privacy.h.local.p1">QBuilder 的设计原则是「本地优先,云端可选」:</p>
-      <ul>
-        <li data-i18n="privacy.h.local.l1">所有技能源文件、提示词、私有知识库默认只存在于你的设备本地,我们不主动同步;</li>
-        <li data-i18n="privacy.h.local.l2">你可以在设置中随时关闭匿名使用统计;</li>
-        <li data-i18n="privacy.h.local.l3">你可以随时删除本地的工作目录与缓存,我们提供「一键清除本地数据」选项;</li>
-        <li data-i18n="privacy.h.local.l4">你可以随时登出 QUSEIT账号并请求删除账号关联的所有云端数据。</li>
-      </ul>
+<h2 data-i18n="privacy.h.local">本地优先与你的数据控制权</h2>
+<p data-i18n="privacy.h.local.p1">QBuilder 的设计原则是「本地优先,云端可选」:</p>
+<ul>
+  <li data-i18n="privacy.h.local.l1">所有技能源文件、提示词、私有知识库默认只存在于你的设备本地,我们不主动同步;</li>
+  <li data-i18n="privacy.h.local.l2">你可以在设置中随时关闭匿名使用统计;</li>
+  <li data-i18n="privacy.h.local.l3">你可以随时删除本地的工作目录与缓存,我们提供「一键清除本地数据」选项;</li>
+  <li data-i18n="privacy.h.local.l4">你可以随时登出 QUSEIT账号并请求删除账号关联的所有云端数据。</li>
+</ul>
 
-      <h2 data-i18n="privacy.h.cookies">Cookies 与本地存储</h2>
-      <p data-i18n="privacy.h.cookies.p1">QBuilder 桌面端主要使用本地文件与本地配置目录,而不是浏览器 cookie。仅在你登录 QUSEIT 账号或访问 QUSEIT 网站(例如 quseit.com、portal.quseit.com)时,才可能使用 cookie 或 localStorage 来维持登录态、记录语言偏好。</p>
+<h2 data-i18n="privacy.h.cookies">Cookies 与本地存储</h2>
+<p data-i18n="privacy.h.cookies.p1">QBuilder 桌面端主要使用本地文件与本地配置目录,而不是浏览器 cookie。仅在你登录 QUSEIT 账号或访问 QUSEIT 网站(例如 quseit.com、portal.quseit.com)时,才可能使用 cookie 或 localStorage 来维持登录态、记录语言偏好。</p>
 
-      <h2 data-i18n="privacy.h.minors">未成年人</h2>
-      <p data-i18n="privacy.h.minors.p1">QBuilder 不面向 13 岁以下儿童,我们也不会明知地收集 13 岁以下儿童的个人信息。如果发现误收集,我们会尽快删除相关数据。</p>
+<h2 data-i18n="privacy.h.minors">未成年人</h2>
+<p data-i18n="privacy.h.minors.p1">QBuilder 不面向 13 岁以下儿童,我们也不会明知地收集 13 岁以下儿童的个人信息。如果发现误收集,我们会尽快删除相关数据。</p>
 
-      <h2 data-i18n="privacy.h.security">数据安全</h2>
-      <p data-i18n="privacy.h.security.p1">我们采用业界普遍接受的技术与组织措施来保护你的信息,包括传输层加密(TLS)、最小化收集与保留、严格的内部访问控制。云端数据存储在受信的云服务商处,并启用访问审计与日志记录。</p>
-      <p data-i18n="privacy.h.security.p2">然而,没有任何系统是 100% 安全的。如果发生影响你权益的安全事件,我们会依法及时通知你。</p>
+<h2 data-i18n="privacy.h.security">数据安全</h2>
+<p data-i18n="privacy.h.security.p1">我们采用业界普遍接受的技术与组织措施来保护你的信息,包括传输层加密(TLS)、最小化收集与保留、严格的内部访问控制。云端数据存储在受信的云服务商处,并启用访问审计与日志记录。</p>
+<p data-i18n="privacy.h.security.p2">然而,没有任何系统是 100% 安全的。如果发生影响你权益的安全事件,我们会依法及时通知你。</p>
 
-      <h2 data-i18n="privacy.h.rights">你的权利与选择</h2>
-      <p data-i18n="privacy.h.rights.p1">你对自己的个人信息享有以下权利:</p>
-      <ul>
-        <li data-i18n="privacy.h.rights.l1"><strong>访问</strong>:你可以查看 QUSEIT 账号关联的云端数据;</li>
-        <li data-i18n="privacy.h.rights.l2"><strong>更正</strong>:你可以在账号设置中更新或更正信息;</li>
-        <li data-i18n="privacy.h.rights.l3"><strong>删除</strong>:你可以随时请求删除账号及关联数据;</li>
-        <li data-i18n="privacy.h.rights.l4"><strong>关闭匿名统计</strong>:在 QBuilder 设置的「隐私」区域一键关闭;</li>
-        <li data-i18n="privacy.h.rights.l5"><strong>退出营销邮件</strong>:每封营销邮件底部都有退订链接。</li>
-      </ul>
-      <p data-i18n="privacy.h.rights.p2">如果你希望行使上述权利,请通过下方「联系我们」中的邮箱与我们联系,我们会在合理期限内(通常不超过 30 天)回复。</p>
+<h2 data-i18n="privacy.h.rights">你的权利与选择</h2>
+<p data-i18n="privacy.h.rights.p1">你对自己的个人信息享有以下权利:</p>
+<ul>
+  <li data-i18n="privacy.h.rights.l1"><strong>访问</strong>:你可以查看 QUSEIT 账号关联的云端数据;</li>
+  <li data-i18n="privacy.h.rights.l2"><strong>更正</strong>:你可以在账号设置中更新或更正信息;</li>
+  <li data-i18n="privacy.h.rights.l3"><strong>删除</strong>:你可以随时请求删除账号及关联数据;</li>
+  <li data-i18n="privacy.h.rights.l4"><strong>关闭匿名统计</strong>:在 QBuilder 设置的「隐私」区域一键关闭;</li>
+  <li data-i18n="privacy.h.rights.l5"><strong>退出营销邮件</strong>:每封营销邮件底部都有退订链接。</li>
+</ul>
+<p data-i18n="privacy.h.rights.p2">如果你希望行使上述权利,请通过下方「联系我们」中的邮箱与我们联系,我们会在合理期限内(通常不超过 30 天)回复。</p>
 
-      <h2 data-i18n="privacy.h.thirdparty">第三方链接</h2>
-      <p data-i18n="privacy.h.thirdparty.p1">QBuilder 界面可能包含第三方网站或服务的链接。QUSEIT 不对第三方的隐私实践负责,建议你阅读它们的隐私政策。</p>
+<h2 data-i18n="privacy.h.thirdparty">第三方链接</h2>
+<p data-i18n="privacy.h.thirdparty.p1">QBuilder 界面可能包含第三方网站或服务的链接。QUSEIT 不对第三方的隐私实践负责,建议你阅读它们的隐私政策。</p>
 
-      <h2 data-i18n="privacy.h.changes">政策的变更</h2>
-      <p data-i18n="privacy.h.changes.p1">如果本政策发生重大变更,我们会在 QBuilder 内发布显著通知,并更新本页面顶部的「最后更新日期」。继续使用 QBuilder 即视为你接受变更后的政策。</p>
+<h2 data-i18n="privacy.h.changes">政策的变更</h2>
+<p data-i18n="privacy.h.changes.p1">如果本政策发生重大变更,我们会在 QBuilder 内发布显著通知,并更新本页面顶部的「最后更新日期」。继续使用 QBuilder 即视为你接受变更后的政策。</p>
 
-      <h2 data-i18n="privacy.h.contact">联系我们</h2>
-      <p data-i18n="privacy.h.contact.p1">如果你对本政策有任何疑问,或希望行使你的权利,请通过以下方式联系我们:</p>
-      <ul>
-        <li data-i18n="privacy.h.contact.l1">邮箱:<a href="mailto:privacy@quseit.com">privacy@quseit.com</a></li>
-        <li data-i18n="privacy.h.contact.l2">公司:北京清智智能科技有限公司 (QUSEIT)</li>
-      </ul>
+<h2 data-i18n="privacy.h.contact">联系我们</h2>
+<p data-i18n="privacy.h.contact.p1">如果你对本政策有任何疑问,或希望行使你的权利,请通过以下方式联系我们:</p>
+<ul>
+  <li data-i18n="privacy.h.contact.l1">邮箱:<a href="mailto:privacy@quseit.com">privacy@quseit.com</a></li>
+  <li data-i18n="privacy.h.contact.l2">公司:北京清智智能科技有限公司 (QUSEIT)</li>
+</ul>
 
-    </article>
-  </div>
-</section>
+</article>
 
 <!-- ===== Footer ===== -->
 <footer class="footer">
