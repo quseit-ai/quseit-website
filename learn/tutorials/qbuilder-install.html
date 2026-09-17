@@ -161,16 +161,17 @@
         <rect width="250" height="140" rx="10" fill="#fafafa" stroke="#d8d1c2"/>
         <text x="20" y="32" font-family="ui-monospace, monospace" font-size="12" fill="#8a8172">MACOS</text>
         <text x="20" y="62" font-family="ui-sans-serif, sans-serif" font-size="16" font-weight="700" fill="#1a1610">macOS 12+ · Apple Silicon / Intel</text>
-        <rect x="20" y="80" width="210" height="34" rx="4" fill="none" stroke="#d8d1c2"/>
-        <text x="125" y="103" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="13" fill="#8a8172">即将推出</text>
+        <rect x="20" y="80" width="210" height="34" rx="4" fill="none" stroke="#1a1610"/>
+        <text x="112" y="103" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="13" font-weight="700" fill="#1a1610">下载 .dmg</text>
+        <path d="M152 95 l5 5 5 -5" fill="none" stroke="#1a1610" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </g>
-      <text x="40" y="225" font-family="ui-sans-serif, sans-serif" font-size="13" fill="#5c5344">目前仅 Windows 卡片可下载 · macOS / Linux 暂未正式发布</text>
+      <text x="40" y="225" font-family="ui-sans-serif, sans-serif" font-size="13" fill="#5c5344">Windows 与 macOS 可下载 · Linux 暂未正式发布</text>
     </svg>
-    <div class="figure-cap">下载页 · 三平台卡片示意 · 仅 Windows 可下载,macOS / Linux 暂未发布</div>
+    <div class="figure-cap">下载页 · 三平台卡片示意 · Windows / macOS 可下载,Linux 暂未发布</div>
   </div>
 
   <div class="callout">
-    <strong>目前的状态:</strong> 截至本文档,只有 <strong>Windows 10 / 11 x64</strong> 提供正式下载包(<code>QBuilder-Setup-&lt;最新版本&gt;-Windows.zip</code>);macOS 和 Linux 在下载页面上明确标为"即将推出"。后两步会按 macOS / Linux 的标准路径分别说明 — 这些步骤在桌面端正式发布后即可直接套用。
+    <strong>目前的状态:</strong> 截至本文档,<strong>Windows 10 / 11 x64</strong>(<code>QBuilder-Setup-&lt;最新版本&gt;-Windows.zip</code>)与 <strong>macOS 12+</strong> 都提供正式下载包。macOS 的按钮是<strong>下拉菜单</strong>,按芯片二选一:<code>QBuilder-&lt;最新版本&gt;-Darwin-arm64.dmg</code>(Apple Silicon)或 <code>QBuilder-&lt;最新版本&gt;-Darwin.dmg</code>(Intel)。Linux 在下载页上仍标为"即将推出",第 3 步按标准路径说明,Linux 包发布后即可直接套用。
   </div>
 </div>
 
@@ -246,7 +247,7 @@
     <span class="step-time">~3 分钟</span>
   </div>
 
-  <p><span class="coming-soon">(macOS 包暂未发布,以下为发布后的标准路径。)</span></p>
+  <p><strong>先确认芯片再下载:</strong> 下载页的 macOS 按钮点开会展开两项,<strong>Apple Silicon 芯片</strong>选 <code>arm64</code>、<strong>Intel 芯片</strong>选 <code>x64</code>。不确定就看左上角 <strong>苹果菜单 → 关于本机 → 芯片</strong>那一行 — 写着 "Apple M…" 是 Apple Silicon,写着 "Intel" 则是 Intel。</p>
 
   <h3>2.1 启动 macOS 版 QBuilder 一次</h3>
   <p>从下载的 <code>.dmg</code> 拖入 <code>/Applications</code> 后,双击 <strong>QBuilder.app</strong> 启动一次。系统会弹"<em>QBuilder 是从互联网下载的 App,您确定要打开吗?</em>"或 "<em>无法打开,因为 Apple 无法检查其是否包含恶意软件</em>",点 <strong>取消</strong>(先不要强行打开)。</p>

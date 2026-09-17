@@ -408,6 +408,53 @@ a{color:inherit;text-decoration:none}
 }
 .dl-platform-tip a{color:var(--accent);border-bottom:1px solid var(--accent)}
 
+/* ===== 平台下载:macOS 多架构下拉(点击展开,复用 nav-dropdown 视觉语言) ===== */
+.dl-platform-card .dl-dropdown{margin-top:auto;position:relative}
+.dl-dropdown-toggle::after{
+  content:"";width:6px;height:6px;
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .2s;
+  margin-bottom:3px;
+}
+.dl-dropdown.is-open .dl-dropdown-toggle::after{
+  transform:rotate(225deg) translate(-2px,-2px);
+}
+.dl-dropdown-menu{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;
+  background:#fff;border:1.5px solid var(--ink);
+  box-shadow:6px 6px 0 var(--accent-soft);
+  padding:6px 0;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .2s,transform .2s,visibility .2s;
+  z-index:200;text-align:left;
+}
+.dl-dropdown.is-open .dl-dropdown-menu{
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+.dl-dropdown-menu a{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 16px;font-size:14px;color:var(--ink-2);
+  transition:background .2s,color .2s;
+}
+.dl-dropdown-menu a:hover,
+.dl-dropdown-menu a:focus-visible{background:var(--accent);color:#fff;outline:none}
+.dl-dropdown-tag{
+  font-size:10px;letter-spacing:.1em;color:var(--ink-3);
+  border:1px solid var(--line);padding:1px 5px;
+  transition:color .2s,border-color .2s;
+}
+.dl-dropdown-menu a:hover .dl-dropdown-tag,
+.dl-dropdown-menu a:focus-visible .dl-dropdown-tag{
+  color:#fff;border-color:rgba(255,255,255,.55);
+}
+.dl-dropdown-hint{
+  margin:6px 16px 4px;padding-top:8px;
+  border-top:1px dashed var(--line);
+  font-size:11px;line-height:1.6;color:var(--ink-3);
+}
+
 @media(max-width:1024px){
   .dl-platform-grid{grid-template-columns:repeat(2,1fr)}
 }

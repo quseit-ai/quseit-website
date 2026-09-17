@@ -60,3 +60,27 @@ function swapImages(lang) {
 }
 window.addEventListener('quseit:lang', e => swapImages(e.detail.lang));
 if (imgSwapEls.length) swapImages(QI18N.current());
+
+// ===== 平台下载:macOS 下拉(点击展开 / 点外部关闭 / Esc 关闭) =====
+document.querySelectorAll('.dl-dropdown').forEach(wrap => {
+  const toggle = wrap.querySelector('.dl-dropdown-toggle');
+  if (!toggle) return;
+  const setOpen = open => {
+    wrap.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+  toggle.addEventListener('click', e => {
+    e.stopPropagation();
+    setOpen(!wrap.classList.contains('is-open'));
+  });
+  document.addEventListener('click', e => {
+    if (!wrap.contains(e.target)) setOpen(false);
+  });
+  wrap.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { setOpen(false); toggle.focus(); }
+  });
+  // 选中某一项后收起,避免回到页面时菜单还挂着
+  wrap.querySelectorAll('.dl-dropdown-menu a').forEach(a =>
+    a.addEventListener('click', () => setOpen(false))
+  );
+});

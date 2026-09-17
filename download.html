@@ -133,7 +133,7 @@
   <div class="container">
     <div class="sec-head">
       <p class="sec-index mono">SECTION 02</p>
-      <h2 class="sec-title" data-i18n="dl.pl.title">下载桌面端<br><span class="sec-sub" data-i18n="dl.pl.sub">Windows 正式版已上线 · Linux 与 macOS 正在路上</span></h2>
+      <h2 class="sec-title" data-i18n="dl.pl.title">下载桌面端<br><span class="sec-sub" data-i18n="dl.pl.sub">Windows 与 macOS 已上线 · Linux 正在路上</span></h2>
     </div>
     <div class="dl-platform-grid">
 
@@ -145,8 +145,8 @@
           <h3 data-i18n="dl.pl.win.h3">Windows</h3>
           <p class="dl-platform-note" data-i18n="dl.pl.win.note">Windows 10 / 11 · x64</p>
         </div>
-        <a class="btn btn-solid btn-block" href="https://quseit.aipy.org/qbuilder/QBuilder-Setup-1.0.0-Windows.zip" target="_blank" rel="noopener noreferrer" data-i18n="dl.pl.win.btn">下载 .zip</a>
-        <p class="dl-platform-foot mono" data-i18n="dl.pl.win.foot">v1.0.0 · 2026-09</p>
+        <a class="btn btn-solid btn-block" href="https://quseit.aipy.org/QBuilder-Setup-1.1.0-Windows.zip" target="_blank" rel="noopener noreferrer" data-i18n="dl.pl.win.btn">下载 .zip</a>
+        <p class="dl-platform-foot mono" data-i18n="dl.pl.win.foot">v1.1.0 · 2026-09</p>
       </article>
 
       <article class="dl-platform-card reveal d1">
@@ -169,8 +169,21 @@
           <h3 data-i18n="dl.pl.mac.h3">macOS</h3>
           <p class="dl-platform-note" data-i18n="dl.pl.mac.note">macOS 12+ · Apple Silicon / Intel</p>
         </div>
-        <a class="btn btn-line btn-block disabled" aria-disabled="true" tabindex="-1" data-i18n="dl.pl.mac.btn">即将推出</a>
-        <p class="dl-platform-foot mono" data-i18n="dl.pl.mac.foot">COMING SOON</p>
+        <div class="dl-dropdown">
+          <button type="button" class="btn btn-line btn-block dl-dropdown-toggle" aria-expanded="false" aria-controls="macDlMenu" data-i18n="dl.pl.mac.btn">下载 .dmg</button>
+          <div class="dl-dropdown-menu" id="macDlMenu">
+            <a href="https://quseit.aipy.org/QBuilder-1.1.0-Darwin-arm64.dmg" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="dl.pl.mac.arm64">Apple Silicon 芯片</span>
+              <span class="dl-dropdown-tag mono">arm64</span>
+            </a>
+            <a href="https://quseit.aipy.org/QBuilder-1.1.0-Darwin.dmg" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="dl.pl.mac.intel">Intel 芯片</span>
+              <span class="dl-dropdown-tag mono">x64</span>
+            </a>
+            <p class="dl-dropdown-hint" data-i18n="dl.pl.mac.howto">不确定?左上角 苹果菜单 → 关于本机 → 芯片</p>
+          </div>
+        </div>
+        <p class="dl-platform-foot mono" data-i18n="dl.pl.mac.foot">v1.1.0 · 2026-09</p>
       </article>
 
     </div>
