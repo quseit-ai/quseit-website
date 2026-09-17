@@ -170,7 +170,7 @@
   </div>
 
   <div class="callout">
-    <strong>目前的状态:</strong> 截至本文档,只有 <strong>Windows 10 / 11 x64</strong> 提供正式下载包(<code>QBuilder-Setup-1.0.0-Windows.zip</code>);macOS 和 Linux 在下载页面上明确标为"即将推出"。后两步会按 macOS / Linux 的标准路径分别说明 — 这些步骤在桌面端正式发布后即可直接套用。
+    <strong>目前的状态:</strong> 截至本文档,只有 <strong>Windows 10 / 11 x64</strong> 提供正式下载包(<code>QBuilder-Setup-&lt;最新版本&gt;-Windows.zip</code>);macOS 和 Linux 在下载页面上明确标为"即将推出"。后两步会按 macOS / Linux 的标准路径分别说明 — 这些步骤在桌面端正式发布后即可直接套用。
   </div>
 </div>
 
@@ -186,10 +186,10 @@
   <p>Windows 版是 <code>.zip</code> 压缩包,<strong>先解压再装</strong>。</p>
 
   <h3>1.1 解压下载的 zip</h3>
-  <p>在浏览器下载目录里找到 <code>QBuilder-Setup-1.0.0-Windows.zip</code>,右键 → <strong>全部解压</strong> → 选个目录(桌面或 <code>D:\Apps\</code> 都行)。解压后你会看到 <code>QBuilder-Setup-1.0.0.exe</code> 这样的安装包。</p>
+  <p>在浏览器下载目录里找到 <code>QBuilder-Setup-&lt;最新版本&gt;-Windows.zip</code>,右键 → <strong>全部解压</strong> → 选个目录(桌面或 <code>D:\Apps\</code> 都行)。解压后你会看到 <code>QBuilder-Setup-&lt;最新版本&gt;.exe</code> 这样的安装包。</p>
 
   <h3>1.2 双击安装包</h3>
-  <p>双击 <code>QBuilder-Setup-1.0.0.exe</code>,弹出 <em>"你要允许此应用对设备进行更改吗?"</em> 的 UAC 提示时,点 <strong>是</strong>。</p>
+  <p>双击 <code>QBuilder-Setup-&lt;最新版本&gt;.exe</code>,弹出 <em>"你要允许此应用对设备进行更改吗?"</em> 的 UAC 提示时,点 <strong>是</strong>。</p>
 
   <h3>1.3 走完安装向导</h3>
   <p>安装器会依次弹:</p>
@@ -308,16 +308,17 @@
   <p>QBuilder 当前支持 <strong>Ubuntu / Debian 系</strong>(含 Ubuntu 22.04+、Debian 12+)。其它发行版可以用 <code>.deb</code> 工具转 <code>.rpm</code> 等,但官方仓库暂未覆盖。</p>
 
   <h3>3.2 用 apt 安装</h3>
+  <p>把下面命令里的 <code>&lt;最新版本&gt;</code> 换成下载页上标注的当前版本号即可。</p>
   <pre><code># 1. 下载安装包(到 ~/Downloads)
 cd ~/Downloads
-wget https://quseit.aipy.org/qbuilder/QBuilder-1.0.0.deb
+wget https://quseit.aipy.org/qbuilder/QBuilder-&lt;最新版本&gt;-1ubuntu1_amd64.deb
 
 # 2. 装包(会自动解包依赖并放到 /opt/qbuilder)
-sudo apt install ./QBuilder-1.0.0.deb
+sudo apt install ./QBuilder-&lt;最新版本&gt;-1ubuntu1_amd64.deb
 
 # 3. 验证:二进制路径 + 版本
 which qbuilder       # /usr/bin/qbuilder
-qbuilder --version   # 期望输出 QBuilder 1.0.0</code></pre>
+qbuilder --version   # 期望输出 QBuilder &lt;最新版本&gt;</code></pre>
 
   <h3>3.3 启动 GUI</h3>
   <p>安装完后有两种启动方式:</p>
@@ -351,7 +352,7 @@ qbuilder --version   # 期望输出 QBuilder 1.0.0</code></pre>
     <li><strong>忘记密码</strong>链接</li>
   </ul>
 
-  <blockquote>已有 QUSEIT 账号?直接填邮箱密码 → 点 <strong>登录</strong> → 进入 Dashboard,跳到第 6 步。没账号?继续第 5 步。</blockquote>
+  <blockquote>已有 QUSEIT 账号?直接填邮箱密码 → 点 <strong>登录</strong> → 进入 Dashboard,可跳过第 5 步。没账号?继续往下。</blockquote>
 </div>
 
 <h2 id="step-5">第 5 步 · 注册(含机构码)</h2>
@@ -367,7 +368,7 @@ qbuilder --version   # 期望输出 QBuilder 1.0.0</code></pre>
 
   <h3>5.1 基本字段</h3>
   <ul>
-    <li><strong>邮箱</strong> — 用真实邮箱(收验证邮件用)。</li>
+    <li><strong>邮箱</strong> — 用常用邮箱,作为你的登录账号。</li>
     <li><strong>密码</strong> — 至少 8 位,字母 + 数字组合。</li>
     <li><strong>确认密码</strong> — 再输一次。</li>
     <li><strong>显示名</strong> — 出现在你发布的智能体 Storefront 顶部的名字,后续可在设置里改。</li>
@@ -388,19 +389,9 @@ qbuilder --version   # 期望输出 QBuilder 1.0.0</code></pre>
   <h3>5.3 提交注册</h3>
   <ol>
     <li>勾选 <em>"我已阅读并同意《用户协议》和《隐私政策》"</em>(链接会展开对应文档)。</li>
-    <li>点 <strong>创建账号</strong>。</li>
-    <li>几秒后邮箱收到验证邮件 → 打开邮件 → 点 <strong>验证邮箱</strong> 按钮。</li>
-    <li>浏览器自动跳回 QBuilder Desktop → 已登录状态。</li>
+    <li>点 <strong>创建账号</strong> — 注册不需要邮箱验证,提交即完成。</li>
+    <li>系统自动登录,直接进入 QBuilder Desktop。</li>
   </ol>
-
-  <div class="callout callout-warn">
-    <strong>验证邮件没收到?</strong>
-    <ul style="margin: 8px 0 0;">
-      <li>等 1–2 分钟(尤其是 Gmail,有时会延迟)。</li>
-      <li>翻一下垃圾邮件 / 推广分类。</li>
-      <li>仍没有就点登录页的 <strong>重新发送验证邮件</strong>。</li>
-    </ul>
-  </div>
 </div>
 
 <h2 id="result">下一步 · QBuilder 控制面板怎么用</h2>
@@ -417,8 +408,6 @@ qbuilder --version   # 期望输出 QBuilder 1.0.0</code></pre>
   <li><strong>下载后没解压就双击 zip</strong> — Windows 默认会用资源管理器查看 zip,双击是预览不是解压。右键 → 全部解压。</li>
   <li><strong>macOS 上双击 .dmg 后没把 App 拖入 /Applications</strong> — 拖进去才算"安装",不然 .dmg 卸载后 App 也消失了。</li>
   <li><strong>Linux 用 <code>dpkg -i</code> 装 .deb</strong> — 缺依赖时 dpkg 不会自动拉,要手动 <code>apt install -f</code>。直接用 <code>sudo apt install ./xxx.deb</code> 让 apt 一把搞定。</li>
-  <li><strong>注册后没验证邮箱就直接登录</strong> — 系统会让你先完成邮箱验证才能进 Dashboard。</li>
-  <li><strong>机构码填错</strong> — 注册完成后机构码<strong>不可更改</strong>(防止渠道作弊)。如果你确认填错了,联系 <code>support@quseit.com</code> 重置。</li>
 </ul>
 
 </article>
