@@ -144,7 +144,7 @@
     'learn.tut.c4.2.m': '12 min read',
 
     // category 5 — Deliver & Launch
-    'learn.tut.c5.1.t': 'Publish a Service Page for your agent',
+    'learn.tut.c5.1.t': 'Publish an Agent for your client',
     'learn.tut.c5.1.d': 'Generate a standalone chat page with password protection, stats, and a custom subdomain.',
     'learn.tut.c5.1.l': 'Beginner',
     'learn.tut.c5.1.m': '6 min read',
@@ -179,7 +179,7 @@
     'learn.course.path.3.desc': 'From templates to the YAO framework. Build skills that are reusable, testable, shareable.',
     'learn.course.path.3.count': '5 lessons · 45 min',
     'learn.course.path.4.title': 'Deliver & Launch',
-    'learn.course.path.4.desc': 'Ship your agent: Service Pages, OpenAI-compatible APIs, Storefront, analytics, embed anywhere.',
+    'learn.course.path.4.desc': 'Ship your agent: Agents, OpenAI-compatible APIs, Agent Space, analytics, embed anywhere.',
     'learn.course.path.4.count': '5 lessons · 38 min',
     'learn.course.path.5.title': 'Enterprise in Practice',
     'learn.course.path.5.desc': 'Private deployment, team workspaces, brand guardrails, SSO, compliance — what FDEs actually do.',
@@ -192,9 +192,9 @@
     'learn.course.p1.l2.d': 'Walk through the wizard end-to-end.',
     'learn.course.p1.l3.t': 'Configure prompts and tools',
     'learn.course.p1.l3.d': 'Where the system prompt lives, how tools attach.',
-    'learn.course.p1.l4.t': 'Publish a Service Page',
+    'learn.course.p1.l4.t': 'Publish an Agent',
     'learn.course.p1.l4.d': 'A shareable chat page in under 2 minutes.',
-    'learn.course.p1.l5.t': 'Set up your Storefront',
+    'learn.course.p1.l5.t': 'Set up your Agent Space',
     'learn.course.p1.l5.d': 'One link for all your agents, branded.',
     // path 2 — QBuilder Desktop lessons
     'learn.course.p2.l1.t': 'Install QBuilder',
@@ -219,11 +219,11 @@
     'learn.course.p3.l5.t': 'Reuse and version skills',
     'learn.course.p3.l5.d': 'Fork, snapshot, and roll back safely.',
     // path 4 — Deliver & Launch lessons
-    'learn.course.p4.l1.t': 'Service Page essentials',
+    'learn.course.p4.l1.t': 'Agent essentials',
     'learn.course.p4.l1.d': 'Subdomain, password, stats — what each toggle does.',
     'learn.course.p4.l2.t': 'OpenAI-compatible API',
     'learn.course.p4.l2.d': 'Generate the API, wire it into Cursor, ChatBox, your backend.',
-    'learn.course.p4.l3.t': 'Storefront design',
+    'learn.course.p4.l3.t': 'Agent Space design',
     'learn.course.p4.l3.d': 'Theme, bio, ordering, avatar.',
     'learn.course.p4.l4.t': 'Embed on your site',
     'learn.course.p4.l4.d': 'iframe, popup, or full page — pick the right shape.',
@@ -253,7 +253,7 @@
     'learn.use.1.s1': 'Upload 80 past worksheets and answer keys',
     'learn.use.1.s2': 'Configure a Q&A agent scoped to your syllabus',
     'learn.use.1.s3': 'Add a "human handoff" trigger for novel questions',
-    'learn.use.1.s4': 'Publish to a class-only Service Page',
+    'learn.use.1.s4': 'Publish to a class-only Agent',
     'learn.use.1.s5': 'Read weekly analytics to spot misconceptions',
 
     'learn.use.2.tag': 'LEGAL',
@@ -279,7 +279,7 @@
     'learn.use.4.scenario': 'A solo founder has 12 product ideas and 0 time. They use QUSEIT to spin up clickable prototypes and validated user flows in days, not months.',
     'learn.use.4.s1': 'Write a one-page spec for each idea',
     'learn.use.4.s2': 'Build a chat-first prototype for the top 3',
-    'learn.use.4.s3': 'Ship a Service Page behind an email gate',
+    'learn.use.4.s3': 'Ship an Agent behind an email gate',
     'learn.use.4.s4': 'Read the conversation logs to find the pain',
     'learn.use.4.s5': 'Pick the winner, hard-build the rest',
 
@@ -590,7 +590,7 @@
     'learn.tut.c4.2.m': '12 分钟阅读',
 
     // 分类 5 — 交付发布
-    'learn.tut.c5.1.t': '为你的智能体发布 Service Page',
+    'learn.tut.c5.1.t': '为你的客户发布智能体',
     'learn.tut.c5.1.d': '生成独立的对话页面,支持密码保护、访问统计和自定义子域名。',
     'learn.tut.c5.1.l': '入门',
     'learn.tut.c5.1.m': '6 分钟阅读',
@@ -625,7 +625,7 @@
     'learn.course.path.3.desc': '从模板到 YAO 框架,构建可复用、可测试、可分享的技能。',
     'learn.course.path.3.count': '5 节课 · 45 分钟',
     'learn.course.path.4.title': '交付发布',
-    'learn.course.path.4.desc': '把智能体送出去:Service Page、OpenAI 兼容 API、Storefront、数据分析、嵌入到任何地方。',
+    'learn.course.path.4.desc': '把智能体送出去:智能体、OpenAI 兼容 API、智空间、数据分析、嵌入到任何地方。',
     'learn.course.path.4.count': '5 节课 · 38 分钟',
     'learn.course.path.5.title': '企业实战',
     'learn.course.path.5.desc': '私有部署、团队工作空间、品牌与合规护栏、SSO —— FDE 真正在做的事。',
@@ -638,9 +638,9 @@
     'learn.course.p1.l2.d': '走完新手向导。',
     'learn.course.p1.l3.t': '配置提示词与工具',
     'learn.course.p1.l3.d': '系统提示词放在哪,工具如何挂载。',
-    'learn.course.p1.l4.t': '发布一个 Service Page',
+    'learn.course.p1.l4.t': '发布一个智能体',
     'learn.course.p1.l4.d': '2 分钟内拿到一个可分享的对话页面。',
-    'learn.course.p1.l5.t': '搭建你的 Storefront',
+    'learn.course.p1.l5.t': '搭建你的智空间',
     'learn.course.p1.l5.d': '一个链接聚合所有智能体,带品牌调性。',
     // 路径 2 — QBuilder 桌面端
     'learn.course.p2.l1.t': '安装 QBuilder',
@@ -665,11 +665,11 @@
     'learn.course.p3.l5.t': '复用与版本管理',
     'learn.course.p3.l5.d': 'fork、快照、安全回滚。',
     // 路径 4 — 交付发布
-    'learn.course.p4.l1.t': 'Service Page 要点',
+    'learn.course.p4.l1.t': '智能体要点',
     'learn.course.p4.l1.d': '子域名、密码保护、统计 —— 每个开关的作用。',
     'learn.course.p4.l2.t': 'OpenAI 兼容 API',
     'learn.course.p4.l2.d': '生成 API,接入 Cursor、ChatBox 或你自己的后端。',
-    'learn.course.p4.l3.t': 'Storefront 设计',
+    'learn.course.p4.l3.t': '智空间设计',
     'learn.course.p4.l3.d': '主题色、简介、排序、头像。',
     'learn.course.p4.l4.t': '嵌入到你的网站',
     'learn.course.p4.l4.d': 'iframe、弹窗或整页 —— 选最合适的形态。',
@@ -699,7 +699,7 @@
     'learn.use.1.s1': '上传 80 份历史试卷与答案',
     'learn.use.1.s2': '配置一个限定教学大纲的问答智能体',
     'learn.use.1.s3': '为新问题加上「转人工」触发器',
-    'learn.use.1.s4': '发布为班级专属 Service Page',
+    'learn.use.1.s4': '发布为班级专属智能体',
     'learn.use.1.s5': '每周看一次分析,定位共性误解',
 
     'learn.use.2.tag': '法律',
@@ -725,7 +725,7 @@
     'learn.use.4.scenario': '一位 solo founder 有 12 个产品想法但没时间。他们用 QUSEIT 在几天内搭出可点击原型和被验证过的用户流,而不是几个月。',
     'learn.use.4.s1': '为每个想法写一页规格说明',
     'learn.use.4.s2': '为前 3 个想法做对话式原型',
-    'learn.use.4.s3': '把原型放到需要邮件注册才能用的 Service Page',
+    'learn.use.4.s3': '把原型放到需要邮件注册才能用的智能体',
     'learn.use.4.s4': '看对话日志,找用户痛点',
     'learn.use.4.s5': '选赢家,剩下硬开发',
 
