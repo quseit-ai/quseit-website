@@ -8,7 +8,7 @@
 (function () {
   const en = {
     'meta.title': 'QUSEIT — AI Publishing Platform for Knowledge Workers',
-    'meta.desc': 'Turn your knowledge into AI agents. Create an agent, publish it to your personal Agent Space, and let anyone use your expertise and skills.',
+    'meta.desc': 'Turn your knowledge into AI agents. Create an agent, publish it to your personal Agent Space, and let anyone <strong>buy and use</strong> your expertise and skills.',
 
     'brand.tag': 'Creator',
     'nav.how': 'How It Works',
@@ -22,7 +22,7 @@
     'hero.title1': 'Turn Your Knowledge',
     'hero.title2': 'Into Your Own',
     'hero.title3': '<em>“AI Agent”</em>',
-    'hero.sub': 'Create your AI agent and <strong>publish it to your personal Agent Space</strong>,<br>so anyone can use your expertise and skills.',
+    'hero.sub': 'Create your AI agent and <strong>publish it to your personal Agent Space</strong>,<br>so anyone can <strong>buy and use</strong> your expertise and skills.',
     'hero.action1': 'Start Building',
     'hero.action2': 'See the 3 Steps <span class="arrow">→</span>',
     'hero.imgAlt': 'QUSEIT Creator Edition',
@@ -454,7 +454,7 @@
 
   const zh = {
     'meta.title': 'QUSEIT — AI 发布平台 · 知识工作者的 AI 智能体平台',
-    'meta.desc': '把你的知识变成 AI 智能体。创建智能体,发布到个人的智空间,让任何人都能使用你的专业知识和技能。',
+    'meta.desc': '把你的知识变成 AI 智能体。创建智能体,发布到个人的智空间,让任何人都能<strong>购买和使用</strong>你的专业知识和技能。',
 
     'brand.tag': '创作者',
     'nav.how': '发布流程',
@@ -468,7 +468,7 @@
     'hero.title1': '把你的知识',
     'hero.title2': '变成',
     'hero.title3': '<em>「AI 智能体」</em>',
-    'hero.sub': '创建你的 AI 智能体,<strong>发布到个人的智空间</strong>,<br>让任何人都能使用你的专业知识和技能。',
+    'hero.sub': '创建你的 AI 智能体,<strong>发布到个人的智空间</strong>,<br>让任何人都能<strong>购买和使用</strong>你的专业知识和技能。',
     'hero.action1': '立即构建',
     'hero.action2': '了解发布流程 <span class="arrow">→</span>',
     'hero.imgAlt': 'QUSEIT 创作者',
