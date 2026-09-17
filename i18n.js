@@ -114,10 +114,10 @@
     'learn.tut.c1.2.m': '4 min read',
 
     // category 2 — QBuilder Desktop
-    'learn.tut.c2.1.t': 'Install QBuilder on Windows',
-    'learn.tut.c2.1.d': 'Download the desktop build, configure your provider, and connect it to your QUSEIT account.',
+    'learn.tut.c2.1.t': 'QBuilder download, install & account setup',
+    'learn.tut.c2.1.d': 'Pick the right desktop build for your OS, install it, then sign up or sign in to a QUSEIT account to start using QBuilder.',
     'learn.tut.c2.1.l': 'Beginner',
-    'learn.tut.c2.1.m': '6 min read',
+    'learn.tut.c2.1.m': '8 min read',
     'learn.tut.c2.2.t': 'Build offline with a local model',
     'learn.tut.c2.2.d': 'Wire up a local LLM endpoint so you can iterate on skills without burning API credits.',
     'learn.tut.c2.2.l': 'Intermediate',
@@ -557,10 +557,10 @@
     'learn.tut.c1.2.m': '4 分钟阅读',
 
     // 分类 2 — QBuilder 桌面端
-    'learn.tut.c2.1.t': '在 Windows 上安装 QBuilder',
-    'learn.tut.c2.1.d': '下载桌面端,配置你的模型服务,并连接到 QUSEIT 账号。',
+    'learn.tut.c2.1.t': 'QBuilder 下载安装与账户注册',
+    'learn.tut.c2.1.d': '按操作系统选对安装包并装好后,通过 QUSEIT 账号登录 QBuilder,即可上手使用。',
     'learn.tut.c2.1.l': '入门',
-    'learn.tut.c2.1.m': '6 分钟阅读',
+    'learn.tut.c2.1.m': '8 分钟阅读',
     'learn.tut.c2.2.t': '使用本地模型离线构建',
     'learn.tut.c2.2.d': '接入本地大语言模型端点,无需消耗 API 额度即可调试技能。',
     'learn.tut.c2.2.l': '进阶',
