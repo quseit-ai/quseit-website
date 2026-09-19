@@ -17,10 +17,11 @@
   // 没在表里的卡片保持 href="#"(尚未发布对应教程)。
   // 改这里不需要碰 i18n 字典。
   const LINK_MAP = {
-    '1-1': 'tutorials/first-skill-5min.html',  // 创作者入门 > 5 分钟创建第一个智能体
-    '1-2': 'tutorials/dashboard-walkthrough.html',  // 创作者入门 > QUSEIT 仪表盘导览
-    '2-1': 'tutorials/qbuilder-install.html',  // QBuilder Desktop > 下载安装与账户注册
-    '3-1': 'tutorials/book-to-skill-clarify.html',  // 技能构建 > 从已有文档生成技能
+    '1-1': 'tutorials/qbuilder-install.html',     // QBuilder Desktop > 下载安装与账户注册
+    '1-2': '#',                                    // QBuilder Desktop > 如何配置大语言模型(教程未发布)
+    '2-1': 'tutorials/first-skill-5min.html',     // Getting Started > 5 分钟创建第一个智能体
+    '2-2': 'tutorials/dashboard-walkthrough.html', // Getting Started > QUSEIT 仪表盘导览
+    '3-1': 'tutorials/book-to-skill-clarify.html', // Skill Building > 从已有文档生成技能
   };
 
   const lang = QI18N.current();

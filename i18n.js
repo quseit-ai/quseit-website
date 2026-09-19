@@ -96,32 +96,32 @@
     'learn.tut.sub': 'Hands-on guides covering QUSEIT from your first skill to enterprise deployment.',
 
     // 6 categories
-    'learn.tut.tag.1': 'Getting Started',
-    'learn.tut.tag.2': 'QBuilder Desktop',
+    'learn.tut.tag.1': 'QBuilder Desktop',
+    'learn.tut.tag.2': 'Getting Started',
     'learn.tut.tag.3': 'Skill Building',
     'learn.tut.tag.4': 'AI Fluency',
     'learn.tut.tag.5': 'Deliver & Launch',
     'learn.tut.tag.6': 'More Ways to Use QUSEIT',
 
-    // category 1 — Getting Started (2 cards)
-    'learn.tut.c1.1.t': 'Create your first agent in 5 minutes',
-    'learn.tut.c1.1.d': 'Walk through the wizard, configure a simple Q&A skill, and publish a shareable link.',
+    // category 1 -- QBuilder Desktop (2 cards)
+    'learn.tut.c1.1.t': 'QBuilder download, install & account setup',
+    'learn.tut.c1.1.d': 'Pick the right desktop build for your OS, install it, then sign up or sign in to a QUSEIT account to start using QBuilder.',
     'learn.tut.c1.1.l': 'Beginner',
-    'learn.tut.c1.1.m': '5 min read',
-    'learn.tut.c1.2.t': 'Tour the QUSEIT Builder dashboard',
-    'learn.tut.c1.2.d': 'A guided tour of the chat surface, skill list, model switcher, and the publish button.',
-    'learn.tut.c1.2.l': 'Beginner',
-    'learn.tut.c1.2.m': '4 min read',
+    'learn.tut.c1.1.m': '8 min read',
+    'learn.tut.c1.2.t': 'How to configure a large language model in QBuilder',
+    'learn.tut.c1.2.d': 'How to wire up a local or remote LLM endpoint in QBuilder so skills can iterate without burning API credits.',
+    'learn.tut.c1.2.l': 'Intermediate',
+    'learn.tut.c1.2.m': '8 min read',
 
-    // category 2 — QBuilder Desktop
-    'learn.tut.c2.1.t': 'QBuilder download, install & account setup',
-    'learn.tut.c2.1.d': 'Pick the right desktop build for your OS, install it, then sign up or sign in to a QUSEIT account to start using QBuilder.',
+    // category 2 -- Getting Started (2 cards)
+    'learn.tut.c2.1.t': 'Create your first agent in 5 minutes',
+    'learn.tut.c2.1.d': 'Walk through the wizard, configure a simple Q&A skill, and publish a shareable link.',
     'learn.tut.c2.1.l': 'Beginner',
-    'learn.tut.c2.1.m': '8 min read',
-    'learn.tut.c2.2.t': 'Build offline with a local model',
-    'learn.tut.c2.2.d': 'Wire up a local LLM endpoint so you can iterate on skills without burning API credits.',
-    'learn.tut.c2.2.l': 'Intermediate',
-    'learn.tut.c2.2.m': '8 min read',
+    'learn.tut.c2.1.m': '5 min read',
+    'learn.tut.c2.2.t': 'Tour the QUSEIT Builder dashboard',
+    'learn.tut.c2.2.d': 'A guided tour of the chat surface, skill list, model switcher, and the publish button.',
+    'learn.tut.c2.2.l': 'Beginner',
+    'learn.tut.c2.2.m': '4 min read',
 
     // category 3 — Skill Building
     'learn.tut.c3.1.t': 'Generate a skill from your existing documents',
@@ -542,32 +542,32 @@
     'learn.tut.sub': '从你的第一个技能到企业级部署,带你跑完 QUSEIT 全流程。',
 
     // 6 个分类
-    'learn.tut.tag.1': '创作者入门',
-    'learn.tut.tag.2': 'QBuilder 桌面端',
+    'learn.tut.tag.1': 'QBuilder 桌面端',
+    'learn.tut.tag.2': '创作者入门',
     'learn.tut.tag.3': '技能构建',
     'learn.tut.tag.4': 'AI 进阶',
     'learn.tut.tag.5': '交付发布',
     'learn.tut.tag.6': '更多玩法',
 
-    // 分类 1 — 创作者入门
-    'learn.tut.c1.1.t': '5 分钟创建你的第一个智能体',
-    'learn.tut.c1.1.d': '走完新手向导,配置一个简单的问答技能,并发布可分享的链接。',
+    // 分类 1 — QBuilder 桌面端
+    'learn.tut.c1.1.t': 'QBuilder 下载安装与账户注册',
+    'learn.tut.c1.1.d': '按操作系统选对安装包并装好后,通过 QUSEIT 账号登录 QBuilder,即可上手使用。',
     'learn.tut.c1.1.l': '入门',
-    'learn.tut.c1.1.m': '5 分钟阅读',
-    'learn.tut.c1.2.t': 'QUSEIT Builder仪表盘导览',
-    'learn.tut.c1.2.d': '带你认识对话界面、技能列表、模型切换器和发布按钮。',
-    'learn.tut.c1.2.l': '入门',
-    'learn.tut.c1.2.m': '4 分钟阅读',
+    'learn.tut.c1.1.m': '8 分钟阅读',
+    'learn.tut.c1.2.t': '在 QBuilder 中如何配置大语言模型',
+    'learn.tut.c1.2.d': '在 QBuilder 中如何接入本地或远端大语言模型端点,让技能调试不消耗 API 额度。',
+    'learn.tut.c1.2.l': '进阶',
+    'learn.tut.c1.2.m': '8 分钟阅读',
 
-    // 分类 2 — QBuilder 桌面端
-    'learn.tut.c2.1.t': 'QBuilder 下载安装与账户注册',
-    'learn.tut.c2.1.d': '按操作系统选对安装包并装好后,通过 QUSEIT 账号登录 QBuilder,即可上手使用。',
+    // 分类 2 — 创作者入门
+    'learn.tut.c2.1.t': '5 分钟创建你的第一个智能体',
+    'learn.tut.c2.1.d': '走完新手向导,配置一个简单的问答技能,并发布可分享的链接。',
     'learn.tut.c2.1.l': '入门',
-    'learn.tut.c2.1.m': '8 分钟阅读',
-    'learn.tut.c2.2.t': '使用本地模型离线构建',
-    'learn.tut.c2.2.d': '接入本地大语言模型端点,无需消耗 API 额度即可调试技能。',
-    'learn.tut.c2.2.l': '进阶',
-    'learn.tut.c2.2.m': '8 分钟阅读',
+    'learn.tut.c2.1.m': '5 分钟阅读',
+    'learn.tut.c2.2.t': 'QUSEIT Builder仪表盘导览',
+    'learn.tut.c2.2.d': '带你认识对话界面、技能列表、模型切换器和发布按钮。',
+    'learn.tut.c2.2.l': '入门',
+    'learn.tut.c2.2.m': '4 分钟阅读',
 
     // 分类 3 — 技能构建
     'learn.tut.c3.1.t': '从已有文档生成技能',
