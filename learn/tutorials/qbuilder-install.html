@@ -96,7 +96,7 @@
   <span class="current">QBuilder 下载安装与账户注册</span>
 </nav>
 <h1>QBuilder 下载安装与账户注册</h1>
-<p class="tut-doc-sub">从下载页挑对系统的安装包,装好后启动 QBuilder Desktop,通过邮箱注册一个 QUSEIT 账号,即可上手使用。Windows / macOS / Linux 三平台的步骤都在这里。</p>
+<p class="tut-doc-sub">挑对系统的安装包,装好后启动并注册 QUSEIT 账号。</p>
 
 <div class="tut-doc-meta">
   <span class="badge">入门 · BEGINNER</span>
@@ -108,16 +108,6 @@
   <span>最后更新 2026-09</span>
 </div>
 
-<div class="callout">
-  <strong>本教程适合谁?</strong> 已经决定要用 QBuilder Desktop、还没下载或刚下载完不知道下一步怎么做的用户。读完你会知道:
-  <ul style="margin: 8px 0 0;">
-    <li>在 <a href="../../download.html">下载页</a> 选哪个包</li>
-    <li>三大主流系统的安装细节差异</li>
-    <li>怎么用 QUSEIT 账号登录,没账号时怎么注册(<strong>含机构码</strong>)</li>
-    <li>登录之后的下一步 — QBuilder 控制面板怎么用</li>
-  </ul>
-</div>
-
 <h2 id="overview">流程一览</h2>
 <p>整个过程分四段:</p>
 <ol>
@@ -126,7 +116,6 @@
   <li><strong>第 4 步</strong>:启动 QBuilder Desktop,点 <strong>登录</strong>。</li>
   <li><strong>第 5 步</strong>:没账号点 <strong>注册</strong>,填邮箱密码 + 机构码(<em>默认可填 <code>C2372QJ2</code></em>),完成后自动登录。</li>
 </ol>
-<blockquote>注册时填的"机构码"是 QUSEIT 给推荐渠道的合作识别码。已通过推荐人安装的会自动附带;没有推荐人的话填默认的 <code>C2372QJ2</code> 即可,不影响功能使用。</blockquote>
 
 <h2 id="step-0">第 0 步 · 从下载页选对安装包</h2>
 
@@ -169,10 +158,6 @@
     </svg>
     <div class="figure-cap">下载页 · 三平台卡片示意 · Windows / macOS 可下载,Linux 暂未发布</div>
   </div>
-
-  <div class="callout">
-    <strong>目前的状态:</strong> 截至本文档,<strong>Windows 10 / 11 x64</strong>(<code>QBuilder-Setup-&lt;最新版本&gt;-Windows.zip</code>)与 <strong>macOS 12+</strong> 都提供正式下载包。macOS 的按钮是<strong>下拉菜单</strong>,按芯片二选一:<code>QBuilder-&lt;最新版本&gt;-Darwin-arm64.dmg</code>(Apple Silicon)或 <code>QBuilder-&lt;最新版本&gt;-Darwin.dmg</code>(Intel)。Linux 在下载页上仍标为"即将推出",第 3 步按标准路径说明,Linux 包发布后即可直接套用。
-  </div>
 </div>
 
 <h2 id="step-1">第 1 步 · Windows 安装</h2>
@@ -184,13 +169,10 @@
     <span class="step-time">~3 分钟</span>
   </div>
 
-  <p>Windows 版是 <code>.zip</code> 压缩包,<strong>先解压再装</strong>。</p>
+  <p>Windows 版是 <code>.zip</code> 压缩包,<strong>先解压再装</strong>。在下载目录里右键 <code>QBuilder-Setup-<最新版本>-Windows.zip</code> → <strong>全部解压</strong>,你会看到 <code>QBuilder-Setup-<最新版本>.exe</code>。</p>
 
-  <h3>1.1 解压下载的 zip</h3>
-  <p>在浏览器下载目录里找到 <code>QBuilder-Setup-&lt;最新版本&gt;-Windows.zip</code>,右键 → <strong>全部解压</strong> → 选个目录(桌面或 <code>D:\Apps\</code> 都行)。解压后你会看到 <code>QBuilder-Setup-&lt;最新版本&gt;.exe</code> 这样的安装包。</p>
-
-  <h3>1.2 双击安装包</h3>
-  <p>双击 <code>QBuilder-Setup-&lt;最新版本&gt;.exe</code>,弹出 <em>"你要允许此应用对设备进行更改吗?"</em> 的 UAC 提示时,点 <strong>是</strong>。</p>
+  <h3>1.1 解压后双击安装包</h3>
+  <p>双击 <code>QBuilder-Setup-<最新版本>.exe</code>,弹出 <em>"你要允许此应用对设备进行更改吗?"</em> 的 UAC 提示时,点 <strong>是</strong>。</p>
 
   <h3>1.3 走完安装向导</h3>
   <p>安装器会依次弹:</p>
@@ -285,11 +267,7 @@
   </div>
 
   <h3>2.3 再次启动 QBuilder</h3>
-  <p>回到 Finder 双击 <strong>QBuilder.app</strong>,系统会再问一次指纹 / 密码,确认后 QBuilder 就启动了。</p>
-
-  <div class="callout">
-    <strong>提示:</strong> 之后这个应用会被系统记住,以后双击直接启动,不再问。
-  </div>
+  <p>回到 Finder 双击 <strong>QBuilder.app</strong>,系统会再问一次指纹 / 密码,确认后 QBuilder 就启动了。<em>之后这个应用会被系统记住,以后双击直接启动,不再问。</em></p>
 </div>
 
 <h2 id="step-3">第 3 步 · Linux 安装</h2>
@@ -322,15 +300,7 @@ which qbuilder       # /usr/bin/qbuilder
 qbuilder --version   # 期望输出 QBuilder &lt;最新版本&gt;</code></pre>
 
   <h3>3.3 启动 GUI</h3>
-  <p>安装完后有两种启动方式:</p>
-  <ul>
-    <li><strong>桌面图标</strong> — 多数桌面环境(GNOME / KDE)会自动在应用菜单创建 QBuilder 图标。</li>
-    <li><strong>命令行</strong> — 直接跑 <code>qbuilder</code>(它会启动 GUI 主进程)。</li>
-  </ul>
-
-  <div class="callout">
-    <strong>依赖缺失怎么办?</strong> <code>sudo apt install</code> 会自动拉依赖,但如果你看到 <em>"缺 libxxx"</em> 报错,把错误最后两行截图发到 <code>support@quseit.com</code>,官方会给你补一份依赖安装脚本。
-  </div>
+  <p>安装完后,从应用菜单点 QBuilder 图标启动 GUI 主进程,或在命令行直接跑 <code>qbuilder</code>。</p>
 </div>
 
 <h2 id="step-4">第 4 步 · 启动 QBuilder 并点击「登录」</h2>
@@ -342,9 +312,7 @@ qbuilder --version   # 期望输出 QBuilder &lt;最新版本&gt;</code></pre>
     <span class="step-time">~30 秒</span>
   </div>
 
-  <p>从桌面快捷方式 / 开始菜单 / 应用程序目录 / 命令行启动 QBuilder。首次启动需要 10–15 秒。</p>
-
-  <p>启动后先进入主界面,界面上会提示 <strong>「请先登录,再继续使用。」</strong>。点击旁边的 <strong>登录</strong> 按钮,弹出登录对话框:</p>
+  <p>从桌面快捷方式 / 开始菜单 / 应用程序目录 / 命令行启动 QBuilder,首次启动约 10–15 秒。进入主界面后,提示 <strong>「请先登录,再继续使用。」</strong> — 点旁边的 <strong>登录</strong> 按钮,弹出登录对话框:</p>
   <ul>
     <li><strong>邮箱</strong>输入框</li>
     <li><strong>密码</strong>输入框(右侧有显示 / 隐藏密码的眼睛按钮)</li>
@@ -357,8 +325,6 @@ qbuilder --version   # 期望输出 QBuilder &lt;最新版本&gt;</code></pre>
     <img src="../../tutorials/screenshots/dashboard/11-login.png" alt="点击「登录」后弹出的登录对话框:邮箱与密码输入框、登录按钮、注册新账号与忘记密码入口">
     <div class="figure-cap">11-login.png · 点击「登录」后弹出的登录对话框</div>
   </div>
-
-  <blockquote>已有 QUSEIT 账号?直接填邮箱密码 → 点 <strong>登录</strong> → 进入 Dashboard,可跳过第 5 步。没账号?继续往下。</blockquote>
 </div>
 
 <h2 id="step-5">第 5 步 · 注册(含机构码)</h2>
