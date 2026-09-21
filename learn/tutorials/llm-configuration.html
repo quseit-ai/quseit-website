@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QBuilder 中如何配置大语言模型 — QUSEIT 教程</title>
+<meta name="description" content="QBuilder 不绑定单一 LLM 供应商:从设置 → 提供商 填入 API Key(或用 QAgent Custom 接中转/自部署),再到偏好设置默认模型,首次输入 hi 测试模型。">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  /* ── 教程详情页 (跟兄弟教程对齐) ───────────────────────── */
+  .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
+  .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
+  .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
+  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .tut-doc .tut-doc-meta .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; background: rgba(184, 134, 11, 0.12); color: #8b6508; font-weight: 600; }
+  .tut-doc .tut-doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: 0.5; }
+  .tut-doc h2 { font-family: "Noto Serif SC", serif; font-size: 26px; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--text); }
+  .tut-doc h3 { font-family: "Noto Sans SC", sans-serif; font-size: 19px; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+  .tut-doc p { line-height: 1.75; margin: 0 0 16px; color: var(--text); }
+  .tut-doc ol, .tut-doc ul { line-height: 1.75; margin: 0 0 20px; padding-left: 28px; }
+  .tut-doc li { margin: 6px 0; }
+  .tut-doc code { background: rgba(0,0,0,.05); padding: 2px 6px; border-radius: 4px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #b0480a; }
+  .tut-doc pre { background: #1a1610; color: #f5e9c8; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.6; margin: 16px 0 24px; }
+  .tut-doc pre code { background: none; padding: 0; color: inherit; }
+  .tut-doc blockquote { margin: 20px 0; padding: 14px 22px; border-left: 4px solid #b8860b; background: rgba(184, 134, 11, 0.05); border-radius: 0 8px 8px 0; color: var(--text); font-style: italic; }
+  .tut-doc .step { background: var(--card-bg, #fff); border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 24px 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tut-doc .step-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #8b6508; background: rgba(184, 134, 11, 0.15); padding: 4px 10px; border-radius: 6px; }
+  .tut-doc .step-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; margin: 0; color: var(--text); }
+  .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
+  .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout strong { color: #0288a8; }
+  .tut-doc .callout-warn { background: rgba(232, 137, 12, 0.08); border-color: rgba(232, 137, 12, 0.3); }
+  .tut-doc .callout-warn strong { color: #b0480a; }
+  .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
+  .tut-doc .figure img { display: block; width: 100%; height: auto; }
+  .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
+  .tut-doc .checklist { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .checklist li::before { content: "✓"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(46, 125, 50, 0.15); color: #2e7d32; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .redline { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .redline li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
+
+  /* 提供商对比表 */
+  .tut-doc .provider-table { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 14px; }
+  .tut-doc .provider-table th, .tut-doc .provider-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+  .tut-doc .provider-table th { background: rgba(184, 134, 11, 0.08); font-family: "Noto Sans SC", sans-serif; font-weight: 600; }
+  .tut-doc .provider-table td:first-child { font-family: "IBM Plex Mono", monospace; font-weight: 600; color: #8b6508; white-space: nowrap; }
+  .tut-doc .provider-table tbody tr:hover { background: rgba(0,0,0,.02); }
+</style>
+</head>
+<body class="learn-page">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <span class="brand-name">QUSEIT</span>
+      <span class="brand-tag personal">创作者</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../../index.html#contact">联系我们</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../tutorials.html" class="is-active">教程</a>
+          <a href="../courses.html">课程</a>
+          <a href="../use-cases.html">用例</a>
+        </div>
+      </div>
+      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">面向 FDE</a>
+    </nav>
+    <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
+    <div class="nav-cta">
+      <a href="../../download.html" class="btn btn-solid">立即构建</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+
+<article class="tut-doc">
+
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../tutorials.html">教程</a>
+  <span class="sep">/</span>
+  <span class="current">QBuilder 中如何配置大语言模型</span>
+</nav>
+<h1>QBuilder 中如何配置大语言模型</h1>
+<p class="tut-doc-sub">从设置 → 提供商 填 API Key,再到偏好选默认模型,首次输入 hi 完成联通测试。</p>
+
+<div class="tut-doc-meta">
+  <span class="badge">入门 · BEGINNER</span>
+  <span class="dot"></span>
+  <span>约 6 分钟读完</span>
+  <span class="dot"></span>
+  <span>实操约 5–8 分钟</span>
+  <span class="dot"></span>
+  <span>最后更新 2026-09</span>
+</div>
+
+<h2 id="overview">为什么 QBuilder 要"先配 LLM 才能用"?</h2>
+<p>QBuilder 采用了<strong>LLM 供应商不绑定</strong>的策略 — 也就是说,默认它不替你挑模型,也不替你付 API 账单。听起来起步麻烦一些,但是给了用户充分的选择空间:DeepSeek、Qwen、Kimi、MiniMax、OpenAI、Anthropic、Gemini、本地 Ollama、自部署网关……你想用哪个都行,只要你手里有对应的 API Key。</p>
+<p>带来的好处是直接的:</p>
+<ul>
+  <li><strong>成本可控</strong>:比价比哪家便宜就用哪家,不被某个供应商绑定。</li>
+  <li><strong>数据合规</strong>:可以接自部署或本地中转,数据不外发。</li>
+  <li><strong>容灾切换</strong>:某个供应商挂了可以马上切到另一个,不影响日常工作。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>首次登录后第一件事就是配 Key。</strong> 没配置 LLM 之前,新对话是发不出去的 — 输入框右下角的发送按钮会一直置灰,所以下面这几步是真正"开始用 QBuilder"的前置条件。
+</div>
+
+<h2 id="flow">整体流程</h2>
+<p>整个配置分四段:</p>
+<ol>
+  <li><strong>第 0 步</strong>:进设置页 — 点左侧最下角的齿轮图标进入。</li>
+  <li><strong>第 1 步</strong>:进「提供商」页 — 在设置页中间的菜单里点 <strong>提供商</strong>。</li>
+  <li><strong>第 2 步</strong>:配 Key — 找到想用的供应商,展开条目填 API Key 并保存。</li>
+  <li><strong>第 3 步</strong>:设默认模型 — 切到设置页里的「偏好」,刷新模型列表,挑你想默认使用的那个,滚到底部点保存设置。</li>
+  <li><strong>第 4 步</strong>:回仪表盘输入 <code>hi</code> 验证。</li>
+</ol>
+
+<h2 id="step-0">第 0 步 · 进入 Settings</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 00</span>
+    <h3 class="step-title">登录之后,点击左侧最下方的 Setting</h3>
+    <span class="step-time">~10 秒</span>
+  </div>
+
+  <p>登录后你直接落在<strong>仪表盘</strong>(Dashboard),中央是一个问候语 + 五个场景按钮 + 输入框。先不要急着对话 — 没有 Key 是发不出去的。</p>
+  <p>QBuilder 主界面在左侧最下方有一个<strong>齿轮图标</strong>(Settings),它是整套系统配置的入口。点它进入设置页。</p>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/02-settings-page-overview.png" alt="QBuilder 设置页:左侧是设置中间菜单,提供商、偏好等依次排列">
+    <div class="figure-cap">02-settings-page-overview.png · 设置页中间的菜单,「提供商」在第 4 项</div>
+  </div>
+</div>
+
+<h2 id="step-1">第 1 步 · 选择「提供商」菜单</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 01</span>
+    <h3 class="step-title">在设置页中间的菜单里,点击「提供商」</h3>
+    <span class="step-time">~10 秒</span>
+  </div>
+
+  <p>进入设置页后,你会看到左侧中间列出了<strong>设置的中间菜单</strong>(整个设置系统的二级导航):</p>
+  <ul>
+    <li>对话 / 外观 / <strong>偏好</strong> / <strong>提供商</strong> / 配置 / 扩展 / 系统 / 账户 / Help</li>
+  </ul>
+  <p>点 <strong>提供商</strong> 这一项,页面右侧就会切换到 LLM 供应商列表。</p>
+
+  <p>提供商页面里会铺出来所有 QBuilder 内置支持的供应商,每个条目都告诉你:</p>
+  <ul>
+    <li><strong>供应商名称</strong>(如 DeepSeek、Qwen Cloud、MiniMax、Anthropic、Gemini、OpenAI 等)。</li>
+    <li>如果所填写的 LLM KEY 有效,则会进一步列出<strong>支持模型数</strong>(如 <em>5 models</em>、<em>10 models</em>)。</li>
+    <li><strong>当前状态</strong>:<em>未配置</em>(还没填 Key)或 <em>API 密钥已配置</em>(已经填过)。</li>
+  </ul>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/03-providers-list.png" alt="提供商页面:一长串供应商卡片,DeepSeek 位于第 4 项,显示 5 models · 未配置">
+    <div class="figure-cap">03-providers-list.png · 全部供应商,DeepSeek 在第 4 行(5 models · 未配置)</div>
+  </div>
+</div>
+
+<h2 id="step-2">第 2 步 · 配置一个供应商(以 DeepSeek 为例)</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 02</span>
+    <h3 class="step-title">展开 DeepSeek 条目,填入 API Key 并保存</h3>
+    <span class="step-time">~1 分钟</span>
+  </div>
+
+  <p>假设我们想要使用 <strong>DeepSeek</strong> 的模型,并且已经拿到了一个形如下面的密钥:</p>
+  <pre><code>sk-ABABABABABABABABABABABABABABABAB</code></pre>
+
+  <p>下面把这串 Key 接进 QBuilder:</p>
+
+  <h3>2.1 点击 DeepSeek 条目展开</h3>
+  <p>在提供商列表里找到 <strong>DeepSeek</strong> 这一行,点一下卡片本身(不是右侧的箭头图标)。卡片会展开成一个输入区。</p>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/04-deepseek-expand.png" alt="DeepSeek 展开后:顶部是 API 密钥输入框(密码掩码)+ Show + 保存;下面是 5 个模型标签 + Refresh models 按钮">
+    <div class="figure-cap">04-deepseek-expand.png · DeepSeek 展开后的样子</div>
+  </div>
+
+  <p>展开后你会看到:</p>
+  <ul>
+    <li><strong>API 密钥</strong>输入框(密码掩码,默认看不到明文)。</li>
+    <li><strong>Show</strong> 按钮 — 点击可在明文 / 掩码之间切换,方便确认有没有输错。</li>
+    <li><strong>保存</strong> 按钮 — 没填 Key 之前是置灰的,填了之后才能点。</li>
+    <li><strong>Models</strong> 区域:DeepSeek 这个供应商支持的全部模型,以标签形式列出(初始是 QBuilder 内置的默认 5 个)。</li>
+    <li><strong>Refresh models</strong> 按钮 — 重新从供应商那边拉一遍最新模型清单。</li>
+  </ul>
+
+  <h3>2.2 粘贴 Key</h3>
+  <p>把准备好的 <code>sk-...</code> 密钥整串粘进 <strong>API 密钥</strong> 输入框。输入框默认是密码掩码(显示为圆点),看不到明文,避免被别人偷看。</p>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/06-deepseek-key-filled.png" alt="API 密钥输入框里已经填了内容,保存按钮从灰色变成可点击的黄色">
+    <div class="figure-cap">06-deepseek-key-filled.png · Key 已填好,「保存」按钮变成可点击的深黄色</div>
+  </div>
+
+  <p>看到右下角的 <strong>保存</strong> 按钮从灰色变成深黄色就说明输入合法、可以保存了。</p>
+
+  <div class="callout callout-warn">
+    <strong>注意大小写和前后空格。</strong> API Key 一般是大小写敏感的字符串,直接复制粘贴最稳;不要手敲,容易把 <code>0</code> 和 <code>O</code>、<code>1</code> 和 <code>l</code> 搞混。复制之后建议点一下 <strong>Show</strong> 临时显示明文,核对一次再保存。
+  </div>
+
+  <h3>2.3 点「保存」</h3>
+  <p>点 <strong>保存</strong>。保存成功后卡片右上角的状态会从 <em>未配置</em> 变成 <em>API 密钥已配置</em>。这一瞬间 Key 就生效了 — 任何依赖 DeepSeek 的对话都可以立即使用它。</p>
+
+  <div class="callout">
+    <strong>Key 在 QBuilder 里是怎么存的?</strong> 平台会按你的账户隔离加密保存,只在出站调用 DeepSeek 时取出使用。<em>在 API 响应中隐藏敏感数据</em> 这个设置默认开启(偏好页里),所以你看到的所有日志和回放都看不到明文 Key。
+  </div>
+</div>
+
+<h2 id="step-2-custom">第 2 步(进阶)· 用 QAgent Custom 接中转或自部署</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 02+</span>
+    <h3 class="step-title">LLM 中转站 / 自部署接口:走 QAgent Custom</h3>
+    <span class="step-time">~1 分钟</span>
+  </div>
+
+  <p>如果我们想要使用一些<strong>有独立 Base URL 的 LLM 中转站</strong>,或者<strong>我们自己部署的 LLM 接口</strong>(Ollama / vLLM / OpenAI 兼容网关),它们对 QBuilder 来说不是"标准供应商",但可以通过 <strong>QAgent Custom</strong> 这个特殊供应商接进去。</p>
+
+  <p>QAgent Custom 与普通供应商相比,多了一个 <strong>Base URL</strong> 字段 — 这个字段告诉 QBuilder"请求发到哪个地址"。</p>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/05-qagent-custom-with-baseurl.png" alt="QAgent Custom 展开:除了 API 密钥,还有一个 Base URL 输入框,默认 https://api.quseit.cn/llm/v1,旁边是独立的保存按钮">
+    <div class="figure-cap">05-qagent-custom-with-baseurl.png · QAgent Custom 多了一个 Base URL 字段</div>
+  </div>
+
+  <h3>2+.1 字段说明</h3>
+  <ul>
+    <li><strong>API 密钥</strong> — 同样需要,中转站或自部署通常也会有自己的 key。</li>
+    <li><strong>Base URL</strong> — 中转站的接入地址,如 <code>https://your-proxy.example.com/v1</code>;自部署的话填你的网关地址,如 <code>http://localhost:11434/v1</code>(Ollama)。</li>
+  </ul>
+
+  <h3>2+.2 常见场景怎么填</h3>
+  <table class="provider-table">
+    <thead>
+      <tr><th>场景</th><th>Base URL 例子</th><th>Key 形态</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>自建 OpenAI 兼容网关</td><td><code>https://gw.example.com/v1</code></td><td>中转站发的字符串</td></tr>
+      <tr><td>本地 Ollama</td><td><code>http://localhost:11434/v1</code></td><td>任意非空字符串(本地无鉴权填 <code>ollama</code>)</td></tr>
+      <tr><td>本地 vLLM</td><td><code>http://localhost:8000/v1</code></td><td>同上</td></tr>
+      <tr><td>三方聚合中转</td><td>中转站提供的 URL</td><td>中转站发的 sk-... 字符串</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-warn">
+    <strong>Base URL 要写到 /v1。</strong> OpenAI 兼容接口的 chat completions 路径通常是 <code>/v1/chat/completions</code>,所以 Base URL 只要写到 <code>/v1</code> 这一层,QBuilder 会自动拼接剩下的路径。如果你只给了 <code>https://x.com</code> 没写 <code>/v1</code>,会出现 404。
+  </div>
+
+  <p>填好 <strong>API 密钥</strong> 和 <strong>Base URL</strong> 之后,分别点各自右侧的 <strong>保存</strong>。保存成功同样会把状态从 <em>未配置</em> 变成 <em>API 密钥已配置</em>。</p>
+</div>
+
+<h2 id="step-3">第 3 步 · 在「偏好」里设默认模型</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 03</span>
+    <h3 class="step-title">刷新模型列表 + 选默认模型 + 滚到底部保存</h3>
+    <span class="step-time">~1 分钟</span>
+  </div>
+
+  <p>供应商 Key 配好之后,对话就能用了 — 但每次开新对话都要手动从下拉框里挑一次模型,有点烦。我们可以让 QBuilder <strong>记住一个默认模型</strong>,新对话自动用它。</p>
+
+  <h3>3.1 切到「偏好」菜单</h3>
+  <p>回到设置页中间的菜单,这次点 <strong>偏好</strong>(在 <em>提供商</em> 上一行)。</p>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/07-preferences-default-model.png" alt="偏好页:顶部一个大的默认模型下拉框,旁边有刷新 icon 和高级选项 icon;下面是一长串辅助模型(视觉、压缩、Web 抽取、会话搜索等)">
+    <div class="figure-cap">07-preferences-default-model.png · 偏好页顶部,默认模型下拉框右侧带刷新 icon</div>
+  </div>
+
+  <p>偏好页顶部第一项就是 <strong>默认模型</strong>,它右侧有两个小图标:</p>
+  <ul>
+    <li><strong>刷新 icon</strong>(↻):从所有已配置 Key 的供应商那里拉一遍模型清单,确保下拉框里的选项是最新的。</li>
+    <li><strong>高级选项 icon</strong>(齿轮):展开默认模型的温度、最大 token 等细粒度参数。</li>
+  </ul>
+
+  <h3>3.2 点刷新 → 让新配置的模型出现在下拉框里</h3>
+  <p>先点 <strong>刷新 icon</strong>。点完之后页面右上角会出现一个 <em>"模型列表已刷新"</em> 的提示。下拉框里的内容会自动重新加载 — 这次会包含你刚刚配好的供应商的所有模型。</p>
+
+  <div class="callout">
+    <strong>为什么一定要刷新?</strong> QBuilder 出于性能考虑,默认模型下拉框是<em>缓存</em>的:你刚配好的新供应商(比如 DeepSeek),即便 Key 已经保存,默认模型下拉框里也未必马上出现 — 除非你点一下刷新让它重新拉一遍。这一步是新手最容易忘的,所以把它养成习惯:每次新增/修改供应商之后,都来偏好页点一下刷新。
+  </div>
+
+  <h3>3.3 选你希望默认使用的模型</h3>
+  <p>点默认模型那个下拉框,从里选一个。下拉框里会<em>按供应商分组</em>,比如:</p>
+  <ul>
+    <li><strong>DeepSeek</strong> — deepseek-v4-flash / deepseek-v4-pro / deepseek-chat-v3-0324 / deepseek-reasoner / deepseek-flash</li>
+    <li><strong>Qwen Cloud</strong> — Qwen3.6 Plus / Qwen3 Omini Flash / Qwen Plus / Qwen3.7 Plus</li>
+    <li><strong>MiniMax (China)</strong> — Minimax M3 / M2.7 / M2.5 / M2.1 / M2 / M3</li>
+  </ul>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/08-default-model-dropdown.png" alt="默认模型下拉框已展开,按供应商分组(MiniMax (China)、Qwen Cloud 等),每组里有多个具体模型">
+    <div class="figure-cap">08-default-model-dropdown.png · 下拉框里按供应商分组,选你想要的模型</div>
+  </div>
+
+  <p>点一下某个具体模型,选中状态会回填到下拉框顶部。</p>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/09-default-model-selected.png" alt="默认模型下拉框现在显示选中的模型名,例如 MiniMax M2.7">
+    <div class="figure-cap">09-default-model-selected.png · 选好之后,默认值就显示在下拉框里</div>
+  </div>
+
+  <h3>3.4 滚到底部,点「保存设置」</h3>
+  <p>选完默认模型后,<em>不要急着关页面</em>。把偏好页<strong>滚到最底部</strong>,你会看到一个 <strong>保存设置</strong> 按钮 — 点它,刚才的选择才会真正落盘。</p>
+
+  <div class="callout callout-warn">
+    <strong>改了任何设置项,都得点保存。</strong> 偏好页的逻辑是"先选好 → 再保存",而不是"选了就生效"。如果你选完默认模型直接跳回仪表盘,顶部会冒出 <em>"你有未保存的更改。放弃 / 保存"</em> 的横条 — 这时候记得点 <strong>保存</strong>,否则下次再回来还得重新选。
+  </div>
+</div>
+
+<h2 id="step-4">第 4 步 · 回仪表盘,输入 hi 验证</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 04</span>
+    <h3 class="step-title">回仪表盘,发一句 hi,看模型能不能答上来</h3>
+    <span class="step-time">~30 秒</span>
+  </div>
+
+  <p>配置到这里,QBuilder 就可以正常使用了。回到 <strong>仪表盘</strong>(左侧导航第一个,九宫格图标),在中央的输入框里随便发一句测试,比如 <code>hi</code>:</p>
+
+  <div class="figure">
+    <img src="screenshots/llm-configuration/10-dashboard-test-hi.png" alt="仪表盘中央输入框里打了 hi 两个字,右下方发送按钮变成可点击的深黄色,模型下拉显示默认模型">
+    <div class="figure-cap">10-dashboard-test-hi.png · 输入框里输入 hi,发送按钮已激活,默认模型也已选定</div>
+  </div>
+
+  <p>按下发送(回车),稍等一两秒,如果对端模型正常,你会看到一段自然语言的问候回复。这就说明:</p>
+  <ul class="checklist">
+    <li>你选的供应商 Key 是有效的 — 没被拒。</li>
+    <li>默认模型下拉框里的模型真的能被调到。</li>
+    <li>从"配 Key → 选默认模型 → 实际对话"这条链路是通的。</li>
+  </ul>
+
+  <p>配置过程结束。</p>
+</div>
+
+<h2 id="pitfalls">常见踩坑</h2>
+<ul class="redline">
+  <li><strong>配了 Key 但默认模型下拉框里没出现</strong> — 没在偏好页点 <strong>刷新 icon</strong>,下拉框还是缓存的旧清单。点一下刷新,新模型就会出现。</li>
+  <li><strong>选了默认模型但跳走后又回到原始值</strong> — 没点偏好页最底部的 <strong>保存设置</strong>。可以直接用顶部跳出的横条上的 <strong>保存</strong> 按钮。</li>
+  <li><strong>填了 Key 但一直 401</strong> — 复制粘贴时多带了换行 / 空格,或者把 <code>sk-</code> 前缀也漏了。点输入框右侧的 <strong>Show</strong> 显示明文核对一次。</li>
+  <li><strong>QAgent Custom 接中转站 404</strong> — Base URL 没写全到 <code>/v1</code>,或者网关地址带不带 <code>https://</code> 前缀。OpenAI 兼容接口的 chat completions 路径一般在 <code>/v1/chat/completions</code>。</li>
+  <li><strong>用 MiniMax 国际版 Key 配 MiniMax (China) 节点</strong> — 国际版与中国版是两套独立账号,Key 不能互通。注意看设置页右上角的 <em>当前提供商配额</em> 显示的是哪个区域。</li>
+</ul>
+
+</article>
+
+<nav class="learn-pager" aria-label="tutorial pager">
+  <div class="container learn-pager-inner">
+    <a class="learn-pager-link prev" href="qbuilder-install.html">
+      <span class="learn-pager-arrow">←</span>
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">上一步</span>
+        <span class="learn-pager-title">QBuilder 下载安装与账户注册</span>
+      </span>
+    </a>
+    <span class="learn-pager-label mono">继续学习</span>
+    <a class="learn-pager-link next" href="dashboard-walkthrough.html">
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">下一步</span>
+        <span class="learn-pager-title">QUSEIT Builder 仪表盘导览</span>
+      </span>
+      <span class="learn-pager-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <div>
+        <b>QUSEIT · 创作者</b>
+        <p>知识工作者的 AI 智能体平台</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../tutorials.html">学习教程</a>
+      <a href="../../privacy.html" data-i18n="nav.privacy">隐私政策</a>
+      <a href="https://github.com/quseit-ai/" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+    </div>
+    <div class="footer-copy-row">
+      <p class="footer-copy mono">© 2026 QUSEIT · ALL RIGHTS RESERVED</p>
+      <a class="footer-icp mono" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17072685号-11</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../i18n.js"></script>
+<script src="../../main.js"></script>
+</body>
+</html>
