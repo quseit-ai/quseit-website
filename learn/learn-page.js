@@ -18,7 +18,7 @@
   // 改这里不需要碰 i18n 字典。
   const LINK_MAP = {
     '1-1': 'tutorials/qbuilder-install.html',     // QBuilder Desktop > 下载安装与账户注册
-    '1-2': '#',                                    // QBuilder Desktop > 如何配置大语言模型(教程未发布)
+    '1-2': 'tutorials/llm-configuration.html',    // QBuilder Desktop > 如何配置大语言模型
     '2-1': 'tutorials/first-skill-5min.html',     // Getting Started > 5 分钟创建第一个智能体
     '2-2': 'tutorials/dashboard-walkthrough.html', // Getting Started > QUSEIT 仪表盘导览
     '3-1': 'tutorials/book-to-skill-clarify.html', // Skill Building > 从已有文档生成技能
@@ -38,18 +38,32 @@
     html += `<h2 class="learn-cat-title">${tag}</h2>`;
     html += `</div>`;
     html += `<div class="tut-grid">`;
-    for (let m = 1; m <= perCat; m++) {
+    // SECTION 02 的卡片需要左→右倒序(仪表盘导览在前,5 分钟第一个智能体在后),
+    // 其余 section 保持 m=1..2 的自然顺序。
+    const order = (n === 2) ? [2, 1] : [1, 2];
+    for (const m of order) {
       const t = pick(`learn.tut.c${n}.${m}.t`);
       const d = pick(`learn.tut.c${n}.${m}.d`);
       const l = pick(`learn.tut.c${n}.${m}.l`);
       const tm = pick(`learn.tut.c${n}.${m}.m`);
       const href = LINK_MAP[`${n}-${m}`] || '#';
-      html += `<a class="tut-card" href="${href}" data-i18n-skip>`;
-      html += `<div class="tut-card-tags"><span class="tut-level">${l}</span><span class="tut-time">· ${tm}</span></div>`;
-      html += `<h3>${t}</h3>`;
-      html += `<p>${d}</p>`;
-      html += `<span class="tut-cta">READ MORE</span>`;
-      html += `</a>`;
+      const isSoon = (n >= 4) || !LINK_MAP[`${n}-${m}`];
+      if (isSoon) {
+        // 待发布:不渲染链接,显示 COMING SOON 标记
+        html += `<div class="tut-card tut-card-soon" data-i18n-skip>`;
+        html += `<div class="tut-card-tags"><span class="tut-level">${l}</span><span class="tut-time">· ${tm}</span></div>`;
+        html += `<h3>${t}</h3>`;
+        html += `<p>${d}</p>`;
+        html += `<span class="tut-cta tut-cta-soon">COMING SOON</span>`;
+        html += `</div>`;
+      } else {
+        html += `<a class="tut-card" href="${href}" data-i18n-skip>`;
+        html += `<div class="tut-card-tags"><span class="tut-level">${l}</span><span class="tut-time">· ${tm}</span></div>`;
+        html += `<h3>${t}</h3>`;
+        html += `<p>${d}</p>`;
+        html += `<span class="tut-cta">READ MORE</span>`;
+        html += `</a>`;
+      }
     }
     html += `</div></section>`;
   }
@@ -63,7 +77,8 @@
       const n = cat.dataset.cat;
       cat.querySelector('.learn-cat-title').textContent = newPick(`learn.tut.tag.${n}`);
       cat.querySelectorAll('.tut-card').forEach((card, idx) => {
-        const m = idx + 1;
+        // SECTION 02 的渲染顺序是倒序的 (m=2 先, m=1 后),其余 section 是自然顺序。
+        const m = (n === '2') ? (2 - idx) : (idx + 1);
         const tags = card.querySelectorAll('.tut-card-tags span');
         tags[0].textContent = newPick(`learn.tut.c${n}.${m}.l`);
         tags[1].textContent = '· ' + newPick(`learn.tut.c${n}.${m}.m`);

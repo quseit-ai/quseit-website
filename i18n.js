@@ -105,32 +105,32 @@
 
     // category 1 -- QBuilder Desktop (2 cards)
     'learn.tut.c1.1.t': 'QBuilder download, install & account setup',
-    'learn.tut.c1.1.d': 'Pick the right desktop build for your OS, install it, then sign up or sign in to a QUSEIT account to start using QBuilder.',
+    'learn.tut.c1.1.d': 'Get the desktop build for your OS, install it, and sign up or sign in to a QUSEIT account — your QBuilder is ready in minutes.',
     'learn.tut.c1.1.l': 'Beginner',
     'learn.tut.c1.1.m': '8 min read',
     'learn.tut.c1.2.t': 'How to configure a large language model in QBuilder',
-    'learn.tut.c1.2.d': 'How to wire up a local or remote LLM endpoint in QBuilder so skills can iterate without burning API credits.',
-    'learn.tut.c1.2.l': 'Intermediate',
+    'learn.tut.c1.2.d': 'Wire up any local or remote LLM endpoint and switch models freely — no vendor lock-in, your QBuilder stays yours.',
+    'learn.tut.c1.2.l': 'Beginner',
     'learn.tut.c1.2.m': '8 min read',
 
     // category 2 -- Getting Started (2 cards)
     'learn.tut.c2.1.t': 'Create your first agent in 5 minutes',
-    'learn.tut.c2.1.d': 'Walk through the wizard, configure a simple Q&A skill, and publish a shareable link.',
+    'learn.tut.c2.1.d': 'Walk through the wizard, configure a simple Q&A skill, and publish a shareable link to your first agent.',
     'learn.tut.c2.1.l': 'Beginner',
     'learn.tut.c2.1.m': '5 min read',
     'learn.tut.c2.2.t': 'Tour the QUSEIT Builder dashboard',
-    'learn.tut.c2.2.d': 'A guided tour of the chat surface, skill list, model switcher, and the publish button.',
+    'learn.tut.c2.2.d': 'Get oriented across chat, skills, model switcher, and the publish button — the four corners of the dashboard.',
     'learn.tut.c2.2.l': 'Beginner',
     'learn.tut.c2.2.m': '4 min read',
 
     // category 3 — Skill Building
     'learn.tut.c3.1.t': 'Generate a skill from your existing documents',
-    'learn.tut.c3.1.d': 'Drop in PDFs or markdown and let the doc-to-skill pipeline extract reusable knowledge.',
-    'learn.tut.c3.1.l': 'Intermediate',
+    'learn.tut.c3.1.d': 'Drop in PDFs or markdown and let doc-to-skill extract the reusable knowledge for your skill.',
+    'learn.tut.c3.1.l': 'Beginner',
     'learn.tut.c3.1.m': '10 min read',
     'learn.tut.c3.2.t': 'Build a skill via the YAO framework',
-    'learn.tut.c3.2.d': 'Author a skill from scratch using QUSEIT\'s composition framework — inputs, tools, prompts.',
-    'learn.tut.c3.2.l': 'Advanced',
+    'learn.tut.c3.2.d': 'Author a skill from scratch using QUSEIT\'s composition framework — inputs, tools, and prompts.',
+    'learn.tut.c3.2.l': 'Beginner',
     'learn.tut.c3.2.m': '15 min read',
 
     // category 4 — AI Fluency
@@ -551,32 +551,32 @@
 
     // 分类 1 — QBuilder 桌面端
     'learn.tut.c1.1.t': 'QBuilder 下载安装与账户注册',
-    'learn.tut.c1.1.d': '按操作系统选对安装包并装好后,通过 QUSEIT 账号登录 QBuilder,即可上手使用。',
+    'learn.tut.c1.1.d': '按操作系统选对安装包并装好后,用 QUSEIT 账号登录 QBuilder,即可立即上手使用。',
     'learn.tut.c1.1.l': '入门',
     'learn.tut.c1.1.m': '8 分钟阅读',
     'learn.tut.c1.2.t': '在 QBuilder 中如何配置大语言模型',
-    'learn.tut.c1.2.d': '在 QBuilder 中如何接入本地或远端大语言模型端点,让技能调试不消耗 API 额度。',
-    'learn.tut.c1.2.l': '进阶',
+    'learn.tut.c1.2.d': '接入任意本地或远端大语言模型端点,模型灵活可换,不绑定任何供应商。',
+    'learn.tut.c1.2.l': '入门',
     'learn.tut.c1.2.m': '8 分钟阅读',
 
     // 分类 2 — 创作者入门
     'learn.tut.c2.1.t': '5 分钟创建你的第一个智能体',
-    'learn.tut.c2.1.d': '走完新手向导,配置一个简单的问答技能,并发布可分享的链接。',
+    'learn.tut.c2.1.d': '走完新手向导,配置一个简单问答技能,并发布可分享的第一个智能体链接。',
     'learn.tut.c2.1.l': '入门',
     'learn.tut.c2.1.m': '5 分钟阅读',
     'learn.tut.c2.2.t': 'QUSEIT Builder仪表盘导览',
-    'learn.tut.c2.2.d': '带你认识对话界面、技能列表、模型切换器和发布按钮。',
+    'learn.tut.c2.2.d': '带你认全对话区、技能库、模型切换与发布按钮 —— 仪表盘的四大角落。',
     'learn.tut.c2.2.l': '入门',
     'learn.tut.c2.2.m': '4 分钟阅读',
 
     // 分类 3 — 技能构建
     'learn.tut.c3.1.t': '从已有文档生成技能',
-    'learn.tut.c3.1.d': '丢入 PDF 或 Markdown,文档转技能流水线自动抽取可复用的知识。',
-    'learn.tut.c3.1.l': '进阶',
+    'learn.tut.c3.1.d': '丢入 PDF 或 Markdown,文档转技能流水线自动抽取出可复用的知识。',
+    'learn.tut.c3.1.l': '入门',
     'learn.tut.c3.1.m': '10 分钟阅读',
     'learn.tut.c3.2.t': '用 YAO 框架从零构建技能',
-    'learn.tut.c3.2.d': '使用 QUSEIT 组合框架 —— 输入、工具、提示词 —— 亲手写一个技能。',
-    'learn.tut.c3.2.l': '高级',
+    'learn.tut.c3.2.d': '使用 QUSEIT 组合框架 —— 输入、工具、提示词 —— 亲手写出一个技能。',
+    'learn.tut.c3.2.l': '入门',
     'learn.tut.c3.2.m': '15 分钟阅读',
 
     // 分类 4 — AI 进阶

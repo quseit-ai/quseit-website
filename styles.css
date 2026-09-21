@@ -614,6 +614,13 @@ a{color:inherit;text-decoration:none}
 .tut-cta::after{content:"→";transition:transform .2s}
 .tut-card:hover .tut-cta::after{transform:translateX(3px)}
 
+/* 待发布卡片(无链接,COMING SOON) */
+.tut-card-soon{cursor:default;opacity:.78}
+.tut-card-soon:hover{transform:none;box-shadow:none;border-color:rgba(0,0,0,.08)}
+.tut-cta-soon{color:var(--ink-3);letter-spacing:.08em;font-size:11px}
+.tut-cta-soon::after{content:""}
+.tut-card-soon:hover .tut-cta-soon::after{transform:none}
+
 /* ===== 课程页(courses.html) ===== */
 .path-intro{
   font-size:15px;color:var(--ink-2);line-height:1.7;
@@ -727,6 +734,20 @@ a{color:inherit;text-decoration:none}
   font-size:11px;letter-spacing:.18em;color:var(--ink-3);
   text-transform:uppercase;
 }
+/* 教程详情页:上一步/下一步 pager(带标题) */
+.learn-pager-text{
+  display:inline-flex;flex-direction:column;gap:4px;
+  font-family:var(--serif);font-weight:900;font-size:20px;
+  line-height:1.25;
+}
+.learn-pager-link.prev .learn-pager-text{align-items:flex-start;text-align:left}
+.learn-pager-link.next .learn-pager-text{align-items:flex-end;text-align:right}
+.learn-pager-eyebrow{
+  font-family:var(--mono);font-weight:400;font-size:11px;
+  letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase;
+}
+/* 占位槽,用于单边 pager(只有下一步 / 只有上一步) */
+.learn-pager-empty{display:block}
 
 @media(max-width:1024px){
   .learn-pager-inner{grid-template-columns:1fr;text-align:center;gap:18px}
