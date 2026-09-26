@@ -16,7 +16,7 @@
     'nav.features': 'Features',
     'nav.contact': 'Contact',
     'nav.try': 'Start Building',
-    'nav.enterprise': 'For FDEs',
+    'nav.enterprise': 'Enterprise',
 
     'hero.kicker': '<span class="kicker-dot"></span>AI AGENT PLATFORM FOR KNOWLEDGE WORKERS',
     'hero.title1': 'Turn Your Knowledge',
@@ -85,9 +85,9 @@
 
     // ===== Nav: Learn dropdown =====
     'nav.learn': 'Learn',
-    'nav.learn.tutorials': 'Tutorials',
-    'nav.learn.courses': 'Courses',
-    'nav.learn.use-cases': 'Use Cases',
+    'nav.learn.tutorials': 'QBuilder Tutorials',
+    'nav.learn.courses': 'AgentSpace Tutorials',
+    'nav.learn.use-cases': 'Case Studies',
 
     // ===== learn/tutorials.html =====
     'learn.tut.meta.title': 'Tutorials — QUSEIT Academy',
@@ -462,7 +462,7 @@
     'nav.features': '产品特性',
     'nav.contact': '联系我们',
     'nav.try': '立即构建',
-    'nav.enterprise': '面向 FDE',
+    'nav.enterprise': '企业版',
 
     'hero.kicker': '<span class="kicker-dot"></span>AI AGENT PLATFORM · 知识工作者的 AI 发布平台',
     'hero.title1': '把你的知识',
@@ -531,9 +531,9 @@
 
     // ===== Nav: Learn dropdown =====
     'nav.learn': '学习',
-    'nav.learn.tutorials': '教程',
-    'nav.learn.courses': '课程',
-    'nav.learn.use-cases': '用例',
+    'nav.learn.tutorials': 'QBuilder教程',
+    'nav.learn.courses': '智空间教程',
+    'nav.learn.use-cases': '案例',
 
     // ===== learn/tutorials.html =====
     'learn.tut.meta.title': '教程 — QUSEIT 学院',
