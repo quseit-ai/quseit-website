@@ -9,6 +9,13 @@
   const total = 5;
   const perPath = 5;
 
+  // 卡片 → 详情页 映射(path-index + '-' + lesson-index)。
+  // 没在表里的卡片保持不带链接(占位)。
+  // 改这里不需要碰 i18n 字典。
+  const LINK_MAP = {
+    '1-1': 'agentspace/01-sync-skill-to-quseit.html',
+  };
+
   function render(lang) {
     const p = k => pick(k, lang);
     let html = '';
@@ -27,9 +34,16 @@
       for (let m = 1; m <= perPath; m++) {
         const t = p(`learn.course.p${n}.l${m}.t`);
         const d = p(`learn.course.p${n}.l${m}.d`);
+        const href = LINK_MAP[`${n}-${m}`];
         html += `<li class="path-lesson">`;
         html += `<span class="lesson-num mono">${String(m).padStart(2,'0')}</span>`;
-        html += `<div class="lesson-body"><h4>${t}</h4><p>${d}</p></div>`;
+        html += `<div class="lesson-body">`;
+        if (href) {
+          html += `<h4><a href="${href}">${t}</a></h4>`;
+        } else {
+          html += `<h4>${t}</h4>`;
+        }
+        html += `<p>${d}</p></div>`;
         html += `</li>`;
       }
       html += `</ol></section>`;

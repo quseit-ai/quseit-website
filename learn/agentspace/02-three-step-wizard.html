@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三步发布向导:身份 · 收费 · 上线 — QUSEIT 智空间教程</title>
+<meta name="description" content="PATH 01 第 2 课:走完身份(你是谁、怎么开场) → 收费(免费还是按轮扣点) → 上线(地址、主题色、密码、出现在智空间)三步,搞定一个能对外服务的智能体。">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
+  .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
+  .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
+  .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
+  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
+  .tut-doc .tut-doc-meta .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; background: rgba(184, 134, 11, 0.12); color: #8b6508; font-weight: 600; }
+  .tut-doc .tut-doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: 0.5; }
+  .tut-doc h2 { font-family: "Noto Serif SC", serif; font-size: 26px; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--text); }
+  .tut-doc h3 { font-family: "Noto Sans SC", sans-serif; font-size: 19px; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+  .tut-doc p { line-height: 1.75; margin: 0 0 16px; color: var(--text); }
+  .tut-doc ol, .tut-doc ul { line-height: 1.75; margin: 0 0 20px; padding-left: 28px; }
+  .tut-doc li { margin: 6px 0; }
+  .tut-doc code { background: rgba(0,0,0,.05); padding: 2px 6px; border-radius: 4px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #b0480a; }
+  .tut-doc pre { background: #1a1610; color: #f5e9c8; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.6; margin: 16px 0 24px; }
+  .tut-doc pre code { background: none; padding: 0; color: inherit; }
+  .tut-doc blockquote { margin: 20px 0; padding: 14px 22px; border-left: 4px solid #b8860b; background: rgba(184, 134, 11, 0.05); border-radius: 0 8px 8px 0; color: var(--text); font-style: italic; }
+  .tut-doc .step { background: var(--card-bg, #fff); border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 24px 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .tut-doc .step-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #8b6508; background: rgba(184, 134, 11, 0.15); padding: 4px 10px; border-radius: 6px; }
+  .tut-doc .step-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; margin: 0; color: var(--text); }
+  .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
+  .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout strong { color: #0288a8; }
+  .tut-doc .callout-red { background: rgba(198, 40, 40, 0.06); border: 1px solid rgba(198, 40, 40, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout-red strong { color: #c62828; }
+  .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
+  .tut-doc .figure img { display: block; width: 100%; height: auto; }
+  .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
+  .tut-doc .checklist { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .checklist li::before { content: "✓"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(46, 125, 50, 0.15); color: #2e7d32; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .redline { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .redline li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
+</style>
+</head>
+<body class="learn-page">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <span class="brand-name">QUSEIT</span>
+      <span class="brand-tag personal" data-i18n="brand.tag">创作者</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../../index.html#contact">联系我们</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../qbuilder-tutorial.html" data-i18n="nav.learn.tutorials">QBuilder教程</a>
+          <a href="../agentspace-tutorial.html" class="is-active" data-i18n="nav.learn.courses">智空间教程</a>
+          <a href="../use-cases.html" data-i18n="nav.learn.use-cases">案例</a>
+        </div>
+      </div>
+      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">企业版</a>
+    </nav>
+    <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
+    <div class="nav-cta">
+      <a href="../../download.html" class="btn btn-solid">立即构建</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+
+<article class="tut-doc">
+
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../agentspace-tutorial.html">智空间教程</a>
+  <span class="sep">/</span>
+  <span class="current">PATH 01 · 发布向导</span>
+</nav>
+<h1>三步发布向导:身份 · 收费 · 上线</h1>
+<p class="tut-doc-sub">从「技能库」页勾选的卡点进来,走完身份 → 收费 → 上线三步,你的智能体就正式对外了。</p>
+
+<div class="tut-doc-meta">
+  <span class="badge">PATH 01 · 启程</span>
+  <span class="dot"></span>
+  <span>约 5 分钟读完</span>
+  <span class="dot"></span>
+  <span>实操约 5–10 分钟</span>
+  <span class="dot"></span>
+  <span>最后更新 2026-09</span>
+</div>
+
+<div class="callout">
+  <strong>本教程适合谁?</strong> 已经在「技能库」页勾选了一张卡(或几张)、准备好让智能体对外服务的创作者。读完你会知道三步里每一步都填什么、哪些字段留空也允许、以及点「确认上线」那一刻可能遇到的三种失败。
+</div>
+
+<p>这是 PATH 01「启程」的第 2 课。整条路径:</p>
+
+<ol>
+  <li><a href="01-sync-skill-to-quseit.html">把技能同步进 QUSEIT</a>(上一课)</li>
+  <li><strong>三步发布向导:身份 · 收费 · 上线</strong>(本课)</li>
+  <li><a href="#">拿到第一个链接与二维码</a>(下一课)</li>
+  <li><a href="#">走查访问者视角</a></li>
+  <li><a href="#">改完「更新版本」才生效</a></li>
+</ol>
+
+<h2 id="before-you-start">开始之前</h2>
+
+<p>从「技能库」页勾选一张卡 + 点右下角的「发布为智能体」,会进入「发布向导」页(在浏览器里)。这个向导分三步 — 你可以随时点上方的步骤标签来回切,但「确认上线」只能在第三步点。</p>
+
+<div class="callout-red">
+  <strong>关键前置</strong>: 如果你部署的是 <strong>direct 模式</strong>(没有平台模型网关),第一步顶部会出现一张<strong>红色提示卡</strong>,强制你点「去配置密钥」配自己的模型密钥 — 没配就不能往下走。如果你已经配好,这张卡不会出现。
+</div>
+
+<h2 id="step-1">步 1:身份</h2>
+
+<p>这一步把所有"让访问者一眼认识这个智能体"的字段填齐。表单从上到下分六块:</p>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">必填</span>
+    <h3 class="step-title">智能体名称</h3>
+    <span class="step-time">必填</span>
+  </div>
+  <p>会显示在卡片标题、对话窗口标题、以及访问者分享链接时看到的第一行字。给个能让人秒懂"这智能体能干啥"的名字 — 后续所有页面的引用、消息推送、智空间卡片都用这个名字。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">选填</span>
+    <h3 class="step-title">角色设定</h3>
+    <span class="step-time">多行文本</span>
+  </div>
+  <p>告诉智能体"你是谁、你能做什么、什么时候该拒绝"。留空也允许 — 但开场会更机械,像个无差别助手;写几句话,后面整个对话的气质都会不一样。</p>
+  <p>写得越具体越好。比如不要写"我是一个写作助手",而是写"我是一名资深科技作者,擅长把复杂技术概念改成 200 字以内的口语化解释,只回答与编程 / AI / 工程实践相关的问题,其他话题礼貌推掉"。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">选填</span>
+    <h3 class="step-title">开场白</h3>
+    <span class="step-time">一行</span>
+  </div>
+  <p>访问者第一眼看到的大字。留空时回落成智能体名称 — 比如智能体叫"代码审计员",访问者看到的就是"代码审计员",不再多一行欢迎语。建议写一句"我是做什么 + 我能帮你 + 一个具体例子",例如:</p>
+  <blockquote>你好,我是 Code Auditor — 把你的 diff 贴给我,我帮你找出潜在的并发、边界条件、安全问题。一段 diff 通常 30 秒内能给到意见。</blockquote>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">选填</span>
+    <h3 class="step-title">输入框提示语</h3>
+    <span class="step-time">一行</span>
+  </div>
+  <p>桌面输入框里的灰色占位符。留空用默认值 <code>「把你的问题告诉我。」</code>。可逐智能体定制 — 让访问者知道"这里是用来问什么的"。比如写作类智能体可以填 <code>「贴一段文字,我帮你改。」</code>。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">选填</span>
+    <h3 class="step-title">引导问题</h3>
+    <span class="step-time">0–3 个</span>
+  </div>
+  <p>冷启动页面(访问者第一次打开 智能体访问页 时)会渲染成卡片,点哪个就触发哪个对话。0–3 个都行 — 写得好可以显著降低访问者的"第一次对话成本"。</p>
+  <p>卡片标题和实际发出去的提问填一样的就行(都是给访问者看的)。例如:</p>
+  <ul class="checklist">
+    <li>卡片标题和实际提问都填 <code>「帮我审一段 Python 代码」</code></li>
+    <li>卡片标题和实际提问都填 <code>「找一处并发 bug」</code></li>
+    <li>卡片标题和实际提问都填 <code>「讲讲这函数的时间复杂度」</code></li>
+  </ul>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">必选</span>
+    <h3 class="step-title">运行引擎</h3>
+    <span class="step-time">二选一</span>
+  </div>
+  <p>两个选项,首次发布建议选 <strong>opencode</strong>(兜底更稳):</p>
+
+  <table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
+    <thead>
+      <tr style="border-bottom:1.5px solid var(--ink);">
+        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">引擎</th>
+        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">适合</th>
+        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">成本</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+        <td style="padding:12px 8px; font-weight:600;"><strong>opencode</strong></td>
+        <td style="padding:12px 8px;">通用编码、资料检索、问答、文档生成 — 大多数场景</td>
+        <td style="padding:12px 8px;">基线</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+        <td style="padding:12px 8px; font-weight:600;"><strong>hermes</strong></td>
+        <td style="padding:12px 8px;">需要"产出文件、报表、文档"等实物的工作流</td>
+        <td style="padding:12px 8px;">同类任务 token 消耗约为 opencode 的 <strong>3 倍</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>后续想换引擎 — 不是这一步能改的,要去「智能体详情 · 配置」编辑对话框里改(详见 PATH 05 进阶)。</p>
+</div>
+
+<h2 id="step-2">步 2:收费</h2>
+
+<p>这一步只有两个选项 — 二选一,没法同时存在。</p>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">选项 A</span>
+    <h3 class="step-title">免费</h3>
+    <span class="step-time">默认</span>
+  </div>
+  <p>智能体的每一轮都不扣点,访问者也不会看到任何价格。如果你刚上线想先试水,先用这个。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">选项 B</span>
+    <h3 class="step-title">按轮扣点</h3>
+    <span class="step-time">两件套</span>
+  </div>
+  <p>同一访问者<strong>前 N 轮免费,第 N+1 轮起每轮扣 单价 点</strong>。</p>
+
+  <ul>
+    <li><strong>免费轮次</strong>:默认 <strong>0</strong>(立即开始扣)。可填 1、2、3 … 给新访问者一点"试聊"机会。</li>
+    <li><strong>单价</strong>:允许两位小数。展示形如「2 点 / 轮」(约 ¥0.02 / 轮)。</li>
+  </ul>
+
+  <p>三个常见组合:</p>
+  <table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
+    <thead>
+      <tr style="border-bottom:1.5px solid var(--ink);">
+        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;"></th>
+        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">单价</th>
+        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">访问者体验</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+        <td style="padding:12px 8px;"><code>0</code></td>
+        <td style="padding:12px 8px;"><code>2</code></td>
+        <td style="padding:12px 8px;">每一轮扣 2 点</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+        <td style="padding:12px 8px;"><code>3</code></td>
+        <td style="padding:12px 8px;"><code>1</code></td>
+        <td style="padding:12px 8px;">前 3 轮免费,第 4 轮起每轮扣 1 点</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+        <td style="padding:12px 8px;"><code>10</code></td>
+        <td style="padding:12px 8px;"><code>5</code></td>
+        <td style="padding:12px 8px;">前 10 轮免费,第 11 轮起每轮扣 5 点 — 用作"先深度体验"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>关于钱的两条事实</strong>:
+    <ul style="margin: 8px 0 0;">
+      <li>扣的是<strong>你自己的</strong>点数(创作者钱包),不是访问者付钱给你 — 没有第三方支付、没有平台服务费、没有提现。</li>
+      <li>扣点在<strong>回合结束时</strong>执行,所以最后一轮可能把你的余额扣成负数,但 UI 仍会显示余额。</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="step-3">步 3:上线</h2>
+
+<p>这一步决定智能体怎么"对外被找到"。四个开关,前两个必看,后两个看你的运营策略。</p>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">字段 1</span>
+    <h3 class="step-title">地址后缀</h3>
+    <span class="step-time">2–50 位字符串</span>
+  </div>
+  <p>智能体的访问地址由「<strong>你的域名</strong> + <strong>智能体访问页路径</strong>」组成。<strong>地址后缀留空会让后端自动生成</strong>(可后续改),但自动生成的字符串通常不那么好记 — 建议自己想一个。</p>
+  <p>命名规则:</p>
+  <ul class="checklist">
+    <li>小写字母、数字、连字符(<code>-</code>)</li>
+    <li>以字母或数字开头(不能以 <code>-</code> 开头)</li>
+    <li>总长度 2–50 位</li>
+    <li>已被你的其他智能体占用的话,会被实时拒绝(输入框会变红)</li>
+  </ul>
+  <p>几个示例:</p>
+  <ul>
+    <li><code>code-auditor</code> · <code>writing-coach</code> · <code>math-tutor-7</code></li>
+  </ul>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">字段 2</span>
+    <h3 class="step-title">主题色</h3>
+    <span class="step-time">五色单选</span>
+  </div>
+  <p>五色单选:amber(金) / blue(蓝) / emerald(绿) / rose(粉) / violet(紫)。主题色会出现在两个地方:</p>
+  <ul>
+    <li>智能体页 智能体访问页 — 冷启动能力块、按钮、产出侧栏强调色。</li>
+    <li>智空间卡片 — 头像字颜色和"推荐"角标颜色。</li>
+  </ul>
+  <p>主题色是品牌气质的一部分,跟你的定位/受众有关 — 教学类常用 blue 或 emerald,情感/创作类常用 rose 或 amber,工具/技术类常用 violet。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">开关 1</span>
+    <h3 class="step-title">需要密码访问?</h3>
+    <span class="step-time">可选开关</span>
+  </div>
+  <p>开启后,弹窗让你输入 4 位以上密码 — 访问者必须先输对密码才能进对话页。适合:</p>
+  <ul>
+    <li>内测阶段不想公开链接</li>
+    <li>只对特定客户群开放的咨询类智能体</li>
+    <li>教学场景里只给某班学生</li>
+  </ul>
+  <p>密码错会返回 <strong>passwordInvalid</strong>(HTTP 403)— <strong>不是</strong> 401,所以不会触发刷新流程;用户重输就好。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">开关 2</span>
+    <h3 class="step-title">出现在智空间?</h3>
+    <span class="step-time">默认勾选</span>
+  </div>
+  <p>如果你已经建过智空间,这里默认勾选 — 勾上之后,智能体 ID 会被加到智空间的 智空间的智能体顺序 顶端,自动出现在 <code>你的智空间主页</code> 的列表最前面。</p>
+  <div class="callout">
+    <strong>还没建智空间?</strong> 这个开关即使勾了也不会生效 — 因为没有 智空间配置 可以挂。要先到 <strong>「智空间」配置页</strong>(顶栏「智空间」)建好之后,这个开关才真正起作用。
+  </div>
+</div>
+
+<h2 id="confirm-launch">点「确认上线」之后会发生什么</h2>
+
+<p>点完「确认上线」,向导会按以下顺序提交:</p>
+
+<ol>
+  <li>把 6 个身份字段 + 运行引擎一次性写进智能体配置</li>
+  <li>把 收费三件套(免费 / 按轮扣点 + 免费轮次数 + 单价)写进去(保存即生效,不必等「更新版本」)</li>
+  <li>把 地址 / 主题色 / 密码 写入</li>
+  <li>(可选)如果勾了「出现在智空间」,把这个智能体加到智空间主页列表的最前面</li>
+</ol>
+
+<p>成功时:toast 提示 + 跳到「智能体详情 · 概览」页。</p>
+
+<p>失败时,有三种分支:</p>
+
+<ul class="redline">
+  <li><strong>engine_not_supported</strong>(后端不接受你选的引擎):<strong>自动退回步 1</strong>,引擎选择器旁边就地显示错误提示 — 不会弹 toast。改个引擎再点上线。</li>
+  <li><strong>llm_credential_missing</strong>(direct 模式下模型密钥缺失):<strong>留在步 1</strong>,顶部那张红色提示卡就地显示(带 trace_id),也不会弹 toast。回「账号设置 → 模型与密钥」页面配好再来。</li>
+  <li><strong>其它失败</strong>:toast 提示(同样带 trace_id),留在步 3 让你改完再试。</li>
+</ul>
+
+<h2 id="after-publish">上线完,接下来能干什么</h2>
+
+<p>点完「确认上线」跳到「智能体详情 · 概览」页。这个页面有 7 个 tab,你会在后续 PATH 学到 — 这里先告诉你哪个 tab 改什么、要不要"更新版本":</p>
+
+<table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
+  <thead>
+    <tr style="border-bottom:1.5px solid var(--ink);">
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">tab</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">改的东西</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">要不要"更新版本"</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px;"><strong>概览 overview</strong></td>
+      <td style="padding:12px 8px;">看今日对话 / 累计对话 / 本月消耗</td>
+      <td style="padding:12px 8px;">—</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px;"><strong>配置 config</strong></td>
+      <td style="padding:12px 8px;">身份、开场、主题色、引导问题 + 已装配技能</td>
+      <td style="padding:12px 8px;">要</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px;"><strong>技能 skills</strong></td>
+      <td style="padding:12px 8px;">全技能库 + 勾选 + 保存</td>
+      <td style="padding:12px 8px;">要</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px;"><strong>版本 versions</strong></td>
+      <td style="padding:12px 8px;">回滚到某一版(把那个 bundle 重新激活)</td>
+      <td style="padding:12px 8px;">—</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px;"><strong>数据 data</strong></td>
+      <td style="padding:12px 8px;">看 N 日对话 / 热门任务 / 最近任务</td>
+      <td style="padding:12px 8px;">—</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px;"><strong>收费 pricing</strong></td>
+      <td style="padding:12px 8px;">修改收费三件套</td>
+      <td style="padding:12px 8px;">不用 — 保存即生效</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px;"><strong>分享 share</strong></td>
+      <td style="padding:12px 8px;">访问地址、二维码、链接预览卡、API 密钥</td>
+      <td style="padding:12px 8px;">—</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>第三课 <a href="#">拿到第一个链接与二维码</a> 会聚焦 share tab — 拿到对外可分享的链接和二维码,这才算 PATH 01 走完。</p>
+
+<h2 id="pitfalls">常见踩坑</h2>
+
+<ul>
+  <li><strong>地址后缀已被占用</strong>: 输入框会实时变红 + 显示「已被使用」;换一个新的就好。</li>
+  <li><strong>不写角色设定直接发布</strong>: 不是错,但开场会很机械 — 访问者会问"你是谁"得到一个无差别的回答。建议至少花 30 秒写 2 句话。</li>
+  <li><strong>选了 hermes 但没意识到成本</strong>: hermes 同类任务 token 消耗约为 opencode 的 3 倍 — 如果你钱包余额不多,先用 opencode 跑一段时间,看数据再决定。</li>
+  <li><strong>勾了"出现在智空间"但智空间还没建</strong>: 不会有错误提示,但功能也没生效 — 你会发现 智空间主页 看不到这张卡。回「智空间」配置页先把智空间建好。</li>
+  <li><strong>改完「确认上线」发现忘了字段</strong>: 直接去「智能体详情 · 配置」编辑 — 改完点右上角的「更新版本」对访问者生效;改收费直接保存即可。</li>
+</ul>
+
+</article>
+
+<nav class="learn-pager" aria-label="tutorial pager">
+  <div class="container learn-pager-inner">
+    <a class="learn-pager-link prev" href="01-sync-skill-to-quseit.html">
+      <span class="learn-pager-arrow">←</span>
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">上一步</span>
+        <span class="learn-pager-title">把技能同步进 QUSEIT</span>
+      </span>
+    </a>
+    <span class="learn-pager-label mono">继续学习</span>
+    <a class="learn-pager-link next" href="03-link-and-qr.html">
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">下一步</span>
+        <span class="learn-pager-title">拿到第一个链接与二维码</span>
+      </span>
+      <span class="learn-pager-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <div>
+        <b>QUSEIT · 创作者</b>
+        <p>知识工作者的 AI 智能体平台</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../agentspace-tutorial.html">学习教程</a>
+      <a href="../../privacy.html" data-i18n="nav.privacy">隐私政策</a>
+      <a href="https://github.com/quseit-ai/" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+    </div>
+    <div class="footer-copy-row">
+      <p class="footer-copy mono">© 2026 QUSEIT · ALL RIGHTS RESERVED</p>
+      <a class="footer-icp mono" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17072685号-11</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../i18n.js"></script>
+<script src="../../main.js"></script>
+</body>
+</html>

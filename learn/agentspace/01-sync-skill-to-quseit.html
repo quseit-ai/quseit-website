@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>把技能同步进 QUSEIT — QUSEIT 智空间教程</title>
+<meta name="description" content="从 QBuilder 对话触发同步技能包,或手动把 .zip 上传到技能库 — 两种路径的取舍、上传后怎么核对「来自 QBuilder」与「自建」标记、以及怎么勾选并发布成智空间智能体。">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
+  /* fixed nav 高度约 64px + 留 32px 视觉缓冲 → top padding 至少 96px */
+  .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
+  .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
+  .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
+  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
+  .tut-doc .tut-doc-meta .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; background: rgba(184, 134, 11, 0.12); color: #8b6508; font-weight: 600; }
+  .tut-doc .tut-doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: 0.5; }
+  .tut-doc h2 { font-family: "Noto Serif SC", serif; font-size: 26px; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--text); }
+  .tut-doc h3 { font-family: "Noto Sans SC", sans-serif; font-size: 19px; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+  .tut-doc p { line-height: 1.75; margin: 0 0 16px; color: var(--text); }
+  .tut-doc ol, .tut-doc ul { line-height: 1.75; margin: 0 0 20px; padding-left: 28px; }
+  .tut-doc li { margin: 6px 0; }
+  .tut-doc code { background: rgba(0,0,0,.05); padding: 2px 6px; border-radius: 4px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #b0480a; }
+  .tut-doc pre { background: #1a1610; color: #f5e9c8; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.6; margin: 16px 0 24px; }
+  .tut-doc pre code { background: none; padding: 0; color: inherit; }
+  .tut-doc blockquote { margin: 20px 0; padding: 14px 22px; border-left: 4px solid #b8860b; background: rgba(184, 134, 11, 0.05); border-radius: 0 8px 8px 0; color: var(--text); font-style: italic; }
+  .tut-doc .step { background: var(--card-bg, #fff); border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 24px 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .tut-doc .step-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #8b6508; background: rgba(184, 134, 11, 0.15); padding: 4px 10px; border-radius: 6px; }
+  .tut-doc .step-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; margin: 0; color: var(--text); }
+  .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
+  .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout strong { color: #0288a8; }
+  .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
+  .tut-doc .figure img { display: block; width: 100%; height: auto; }
+  .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
+  .tut-doc .checklist { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .checklist li::before { content: "✓"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(46, 125, 50, 0.15); color: #2e7d32; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .redline { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .redline li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
+</style>
+</head>
+<body class="learn-page">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <span class="brand-name">QUSEIT</span>
+      <span class="brand-tag personal" data-i18n="brand.tag">创作者</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../../index.html#contact">联系我们</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../qbuilder-tutorial.html" data-i18n="nav.learn.tutorials">QBuilder教程</a>
+          <a href="../agentspace-tutorial.html" class="is-active" data-i18n="nav.learn.courses">智空间教程</a>
+          <a href="../use-cases.html" data-i18n="nav.learn.use-cases">案例</a>
+        </div>
+      </div>
+      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">企业版</a>
+    </nav>
+    <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
+    <div class="nav-cta">
+      <a href="../../download.html" class="btn btn-solid">立即构建</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+
+<article class="tut-doc">
+
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../agentspace-tutorial.html">智空间教程</a>
+  <span class="sep">/</span>
+  <span class="current">PATH 01 · 同步技能</span>
+</nav>
+<h1>把技能同步进 QUSEIT</h1>
+<p class="tut-doc-sub">从 QBuilder 客户端一键推送技能包,或手动把 <code>.zip</code> 上传到技能库 — 两分钟让你的第一个技能入库。</p>
+
+<div class="tut-doc-meta">
+  <span class="badge">PATH 01 · 启程</span>
+  <span class="dot"></span>
+  <span>约 3 分钟读完</span>
+  <span class="dot"></span>
+  <span>实操约 2 分钟</span>
+  <span class="dot"></span>
+  <span>最后更新 2026-09</span>
+</div>
+
+<div class="callout">
+  <strong>本教程适合谁?</strong> 刚在 QBuilder 里做出第一个技能、准备把它发到 QUSEIT 的创作者。读完你会知道两条同步路径怎么选、上传后怎么在「技能库」页核对标记,以及怎么勾选发布成智能体。
+</div>
+
+<p>这是 PATH 01「启程」的第 1 课。后面还有 4 课,跑完你就会拿到第一个上线链接:</p>
+
+<ol>
+  <li><strong>把技能同步进 QUSEIT</strong>(本课)</li>
+  <li>三步发布向导:身份 · 收费 · 上线</li>
+  <li>拿到第一个链接与二维码</li>
+  <li>走查访问者视角</li>
+  <li>改完「更新版本」才生效</li>
+</ol>
+
+<h2 id="before-you-start">开始之前</h2>
+
+<p>无论走哪条路,你的技能包必须满足一个硬条件:<strong>包里要有 <code>SKILL.md</code></strong>。</p>
+
+<ul class="checklist">
+  <li>技能包根目录有 <code>SKILL.md</code>(大小写敏感)。</li>
+  <li><code>SKILL.md</code> 里写了 name / description / instructions 三件套,具体怎么写见 QBuilder 教程的「5 分钟创建你的第一个智能体」。</li>
+  <li>整个压缩包 <strong>≤ 200 MB</strong>(超过会被前端直接拦截)。</li>
+</ul>
+
+<div class="callout">
+  <strong>直连还是走网关?</strong> 如果你部署的是 <strong>direct 模式</strong>(没有平台模型网关),这一课要确保你已经在 <strong>「账号设置 → 模型与密钥」页面</strong>配了自己的模型密钥 — 否则后面第 2 课的发布按钮会被红卡拦截,这里先查好。
+</div>
+
+<h2 id="pick-a-path">两条路,先选一条</h2>
+
+<p>QUSEIT 的<strong>「发布技能」页</strong>给了两条同步路径:</p>
+
+<table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
+  <thead>
+    <tr style="border-bottom:1.5px solid var(--ink);">
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">路径</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">触发方式</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">技能标记</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">适合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">路径 A · QBuilder 对话触发同步</td>
+      <td style="padding:12px 8px;">在 QBuilder 对话里让 Agent 推送</td>
+      <td style="padding:12px 8px;"><code>来自 QBuilder</code></td>
+      <td style="padding:12px 8px;">日常迭代、改了再发(顺带直接发布成智能体)</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">路径 B · 手动上传 zip</td>
+      <td style="padding:12px 8px;">在「发布技能」页拖文件</td>
+      <td style="padding:12px 8px;"><code>自建</code>(默认类别 <code>未分类</code>)</td>
+      <td style="padding:12px 8px;">没有客户端、一次性导入</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>默认推荐路径 A</strong>:它带上你的登录态,服务端无需再做身份校验,而且技能标记是「来自 QBuilder」 — 后面在技能库里筛选时一眼就能找出本地迭代的版本。路径 B 是给「我只有个 zip 包、没有 QBuilder 客户端」这种场景准备的。</p>
+
+<h2 id="path-a">路径 A · 从 QBuilder 对话触发同步(推荐)</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 01</span>
+    <h3 class="step-title">在 QBuilder 里完成技能的构建</h3>
+    <span class="step-time">几分钟到几十分钟</span>
+  </div>
+  <p>在 QBuilder 桌面端里把技能写到能跑通:本地的 <code>SKILL.md</code>、示例输入输出、必要的工具挂载 — 这些都在 QBuilder 客户端里完成,具体怎么写见 QBuilder 教程的「5 分钟创建你的第一个智能体」。</p>
+  <div class="callout">
+    <strong>关于登录态:</strong> 第一次同步前,客户端会引导你关联 QUSEIT 账号(凭票 + SSO,10 分钟内有效);关联完成后,以后每次同步都不用再输密码。
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 02</span>
+    <h3 class="step-title">在 QBuilder 对话里让 Agent「将技能发布到智能体空间」</h3>
+    <span class="step-time">约 1 分钟</span>
+  </div>
+  <p>技能构建完成后,继续在 QBuilder 对话里跟 Agent 协作,告诉它「将技能发布到智能体空间」。客户端会带登录态,主动把技能包推过来;服务端按 <code>SKILL.md</code> 校验后入库。</p>
+  <p>同步完成后,技能自动出现在「技能库」页,卡片上会标记「来自 QBuilder」。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 03</span>
+    <h3 class="step-title">在「技能库」页勾选技能,点击右下角的「发布为智能体」</h3>
+    <span class="step-time">约 2 分钟</span>
+  </div>
+  <p>在「技能库」页找到刚才从 QBuilder 推过来的那张卡(标记「来自 QBuilder」),勾选卡片右上角的复选框 — 至少勾 1 个时,底部会出现常驻条,右下角的主按钮是「发布为智能体」。点击后进入三步发布向导(身份 → 收费 → 上线),这部分的细节会在 PATH 01 第 2 课展开。</p>
+  <ul>
+    <li>若列表没出现 — 看 QBuilder 对话里的报错;常见原因是 <code>SKILL.md</code> 缺字段或包结构有问题。</li>
+    <li>勾选后没看到「发布为智能体」按钮 — 检查是否真的勾上了(卡片会变成金色描边)。</li>
+  </ul>
+</div>
+
+<blockquote>
+  <strong>注意</strong>:你这次看到的是<strong>「技能库」页</strong>(不是浏览器里那个「发布技能」页)。同步动作由 QBuilder 客户端发起;勾选 + 「发布为智能体」这条动作在浏览器里完成。
+</blockquote>
+
+<h2 id="path-b">路径 B · 手动上传 zip</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 01</span>
+    <h3 class="step-title">把技能打包成 .zip</h3>
+    <span class="step-time">约 1 分钟</span>
+  </div>
+  <p>把整个技能目录打包成 <code>.zip</code>。包根目录必须直接包含 <code>SKILL.md</code> — 不要把它再套一层目录。</p>
+  <ul>
+    <li>macOS / Linux: <code>zip -r my-skill.zip ./my-skill</code></li>
+    <li>Windows: 在资源管理器里右键 → 压缩到 <code>.zip</code></li>
+  </ul>
+  <ul class="redline">
+    <li>把 <code>SKILL.md</code> 放到子目录里 → 服务端找不到,直接报错。</li>
+    <li>压缩包超过 <strong>200 MB</strong> → 前端直接拦截,后端根本收不到。</li>
+  </ul>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 02</span>
+    <h3 class="step-title">拖到上传卡片</h3>
+    <span class="step-time">约 30 秒</span>
+  </div>
+  <p>在<strong>「发布技能」页</strong>,有两种交互:点「选择文件」按钮弹出文件选择器,或者直接把 <code>.zip</code> 拖到卡片上。单文件 ≤ 200 MB。</p>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 03</span>
+    <h3 class="step-title">跳回技能库核对</h3>
+    <span class="step-time">约 30 秒</span>
+  </div>
+  <p>上传成功后会自动跳回<strong>「技能库」页</strong>。新技能显示在列表里,标记为「自建」、默认类别「未分类」(你需要后续手动给它分类)。下一步:勾选这张卡,点右下角的「发布为智能体」,走三步发布向导。</p>
+</div>
+
+<h2 id="after-upload">上传完,接下来该看哪里</h2>
+
+<p>走完本课你已经在「技能库」页看到那张卡。<strong>路径 A</strong> 通常在三步发布向导里就能直接发布成智能体;<strong>路径 B</strong> 需要回到「技能库」页,勾选后点「发布成智能体」,才走完从「技能」到「智能体」的最后一步。</p>
+
+<p>在「技能库」页核对一下,这张卡应该是这样:</p>
+
+<ul class="checklist">
+  <li>来源标记正确(「来自 QBuilder」/「自建」)</li>
+  <li>分类已设置(路径 A 通常自动跟 QBuilder 一致;路径 B 默认「未分类」,需要手动改)</li>
+  <li>技能详情里 <code>SKILL.md</code> 全文可读</li>
+  <li><strong>暂未</strong>被任何智能体使用(下一步才会勾选)</li>
+</ul>
+
+<p>核对完毕 → 进入第 2 课「三步发布向导」,详细走一遍身份 / 收费 / 上线三件事。</p>
+
+<h2 id="pitfalls">常见踩坑</h2>
+
+<ul>
+  <li><strong>想用路径 A 但客户端没登录</strong>: 第一次同步会被引导走 SSO 关联(凭票跳到 SSO 登录页,10 分钟内有效)。密码连续输错会让凭据失效,得回客户端重发。</li>
+  <li><strong>路径 B 上传后看到「未分类」</strong>: 这是预期行为 — zip 上传没有客户端携带的分类元数据,服务端给一个「未分类」占位,需要你在技能库里手动改。</li>
+  <li><strong>想删技能但删不掉</strong>: 弹窗底部会显示「正在被 N 个智能体使用」 — 凡是还有引用的都不能删,先去那些智能体里换掉再回来删。</li>
+</ul>
+
+</article>
+
+<nav class="learn-pager" aria-label="tutorial pager">
+  <div class="container learn-pager-inner">
+    <span class="learn-pager-empty" aria-hidden="true"></span>
+    <span class="learn-pager-label mono">继续学习</span>
+    <a class="learn-pager-link next" href="02-three-step-wizard.html">
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">下一步</span>
+        <span class="learn-pager-title">三步发布向导:身份 · 收费 · 上线</span>
+      </span>
+      <span class="learn-pager-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <div>
+        <b>QUSEIT · 创作者</b>
+        <p>知识工作者的 AI 智能体平台</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../agentspace-tutorial.html">学习教程</a>
+      <a href="../../privacy.html" data-i18n="nav.privacy">隐私政策</a>
+      <a href="https://github.com/quseit-ai/" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+    </div>
+    <div class="footer-copy-row">
+      <p class="footer-copy mono">© 2026 QUSEIT · ALL RIGHTS RESERVED</p>
+      <a class="footer-icp mono" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17072685号-11</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../i18n.js"></script>
+<script src="../../main.js"></script>
+</body>
+</html>
