@@ -191,7 +191,7 @@
     'learn.course.path.5.count': '5 lessons · ~40 min',
 
     // path 1 — Launch
-    'learn.course.p1.l1.t': 'Sync your skill into QUSEIT',
+    'learn.course.p1.l1.t': 'Sync your skill into Agent Space',
     'learn.course.p1.l1.d': 'Trade-offs between QBuilder one-click sync and manual zip upload. SKILL.md authoring lives in the QBuilder tutorial (/learn/qbuilder-tutorial.html).',
     'learn.course.p1.l2.t': 'Three-step wizard: identity · pricing · launch',
     'learn.course.p1.l2.d': 'How to write soul, greeting, starter questions, and accent color without feeling empty; direct mode blocks publish until API keys are set.',
@@ -633,7 +633,7 @@
     'learn.course.path.5.count': '5 节课 · 约 40 分钟',
 
     // 路径 1 — 启程
-    'learn.course.p1.l1.t': '把技能同步进 QUSEIT',
+    'learn.course.p1.l1.t': '把技能同步进智空间',
     'learn.course.p1.l1.d': 'QBuilder 一键同步 vs 手动 zip 上传两条路的取舍。SKILL.md 写法见 QBuilder 教程(/learn/qbuilder-tutorial.html)。',
     'learn.course.p1.l2.t': '三步发布向导:身份 · 收费 · 上线',
     'learn.course.p1.l2.d': '角色设定、开场白、引导问题、主题色怎么写不空;direct 模式未配密钥会被红卡拦截。',

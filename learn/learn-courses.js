@@ -14,6 +14,7 @@
   // 改这里不需要碰 i18n 字典。
   const LINK_MAP = {
     '1-1': 'agentspace/01-sync-skill-to-quseit.html',
+    '1-2': 'agentspace/02-three-step-wizard.html',
   };
 
   function render(lang) {
