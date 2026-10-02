@@ -4,15 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>把技能同步进智空间 — 智空间教程</title>
-<meta name="description" content="从 QBuilder 对话触发同步技能包,或手动把 .zip 上传到技能库 — 两种路径的取舍、上传后怎么核对「来自 QBuilder」与「自建」标记、以及怎么勾选并发布成智空间智能体。">
+<meta name="description" content="PATH 01 第 1 课:把第一个技能放进 QUSEIT 技能库,准备好勾选发布。">
 <link rel="icon" type="image/svg+xml" href="../../logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css">
 <style>
-  /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
-  /* fixed nav 高度约 64px + 留 32px 视觉缓冲 → top padding 至少 96px */
   .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
   .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
   .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
@@ -94,176 +92,120 @@
   <span class="current">PATH 01 · 同步技能</span>
 </nav>
 <h1>把技能同步进智空间</h1>
-<p class="tut-doc-sub">从 QBuilder 客户端一键推送技能包,或手动把 <code>.zip</code> 上传到技能库 — 两分钟让你的第一个技能入库。</p>
+<p class="tut-doc-sub">PATH 01 第 1 课。本课介绍将本地技能导入 QUSEIT 技能库的两种同步路径,并说明勾选后进入发布向导的衔接步骤。</p>
 
 <div class="tut-doc-meta">
   <span class="badge">PATH 01 · 启程</span>
   <span class="dot"></span>
-  <span>约 3 分钟读完</span>
-  <span class="dot"></span>
-  <span>实操约 2 分钟</span>
-  <span class="dot"></span>
-  <span>最后更新 2026-09</span>
+  <span>预计实操 2 分钟</span>
 </div>
 
 <div class="callout">
-  <strong>本教程适合谁?</strong> 刚在 QBuilder 里做出第一个技能、准备把它发到 QUSEIT 的创作者。读完你会知道两条同步路径怎么选、上传后怎么在「技能库」页核对标记,以及怎么勾选发布成智能体。
+  <strong>前置条件</strong>技能包根目录须直接包含 <code>SKILL.md</code>(大小写敏感),且该文件须给出 name、description、instructions 三项基本字段;整个压缩包不得大于 200 MB。部署为 direct 模式(未配置平台模型网关)的创作者,还需先在「账号设置 → 模型与密钥」中配置自有模型密钥,否则后续发布流程将被前端拦截。
 </div>
 
-<p>这是 PATH 01「启程」的第 1 课。后面还有 4 课,跑完你就会拿到第一个上线链接:</p>
+<p>登录成功后,系统默认进入「控制面板」页:</p>
 
-<ol>
-  <li><strong>把技能同步进智空间</strong>(本课)</li>
-  <li>三步发布向导:身份 · 收费 · 上线</li>
-  <li>拿到第一个链接与二维码</li>
-  <li>走查访问者视角</li>
-  <li>改完「更新版本」才生效</li>
-</ol>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/01-control-panel.png" alt="登录后落到控制面板,右上角账号与点数余额,主区域两条发技能入口" loading="lazy">
+  <figcaption class="figure-cap">图 1 · 「控制面板」页:右上角显示账号与点数余额,主区域提供「从 QBuilder 同步」与「直接提交技能包」两个入口。</figcaption>
+</figure>
 
-<h2 id="before-you-start">开始之前</h2>
+<h2 id="pick-a-path">两条同步路径</h2>
 
-<p>无论走哪条路,你的技能包必须满足一个硬条件:<strong>包里要有 <code>SKILL.md</code></strong>。</p>
-
-<ul class="checklist">
-  <li>技能包根目录有 <code>SKILL.md</code>(大小写敏感)。</li>
-  <li><code>SKILL.md</code> 里写了 name / description / instructions 三件套,具体怎么写见 QBuilder 教程的「5 分钟创建你的第一个智能体」。</li>
-  <li>整个压缩包 <strong>≤ 200 MB</strong>(超过会被前端直接拦截)。</li>
-</ul>
-
-<div class="callout">
-  <strong>直连还是走网关?</strong> 如果你部署的是 <strong>direct 模式</strong>(没有平台模型网关),这一课要确保你已经在 <strong>「账号设置 → 模型与密钥」页面</strong>配了自己的模型密钥 — 否则后面第 2 课的发布按钮会被红卡拦截,这里先查好。
-</div>
-
-<h2 id="pick-a-path">两条路,先选一条</h2>
-
-<p>QUSEIT 的<strong>「发布技能」页</strong>给了两条同步路径:</p>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/03-publish-page.png" alt="发布技能页:左卡从 QBuilder 同步,右卡上传技能包" loading="lazy">
+  <figcaption class="figure-cap">图 2 · 「发布技能」页将两种同步路径并列展示,并附后续三步流程提示。</figcaption>
+</figure>
 
 <table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
   <thead>
     <tr style="border-bottom:1.5px solid var(--ink);">
       <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">路径</th>
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">触发方式</th>
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">技能标记</th>
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">适合</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">入库标记</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">适用场景</th>
     </tr>
   </thead>
   <tbody>
     <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px; font-weight:600;">路径 A · QBuilder 对话触发同步</td>
-      <td style="padding:12px 8px;">在 QBuilder 对话里让 Agent 推送</td>
+      <td style="padding:12px 8px; font-weight:600;">路径 A · QBuilder 同步</td>
       <td style="padding:12px 8px;"><code>来自 QBuilder</code></td>
-      <td style="padding:12px 8px;">日常迭代、改了再发(顺带直接发布成智能体)</td>
+      <td style="padding:12px 8px;">已在本地维护技能、需频繁迭代的场景(推荐)</td>
     </tr>
     <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px; font-weight:600;">路径 B · 手动上传 zip</td>
-      <td style="padding:12px 8px;">在「发布技能」页拖文件</td>
-      <td style="padding:12px 8px;"><code>自建</code>(默认类别 <code>未分类</code>)</td>
-      <td style="padding:12px 8px;">没有客户端、一次性导入</td>
+      <td style="padding:12px 8px; font-weight:600;">路径 B · 上传 zip</td>
+      <td style="padding:12px 8px;"><code>自建</code></td>
+      <td style="padding:12px 8px;">未安装 QBuilder 客户端、仅做一次性导入</td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>默认推荐路径 A</strong>:它带上你的登录态,服务端无需再做身份校验,而且技能标记是「来自 QBuilder」 — 后面在技能库里筛选时一眼就能找出本地迭代的版本。路径 B 是给「我只有个 zip 包、没有 QBuilder 客户端」这种场景准备的。</p>
-
-<h2 id="path-a">路径 A · 从 QBuilder 对话触发同步(推荐)</h2>
+<h2 id="path-a">路径 A · QBuilder 同步(推荐)</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 01</span>
-    <h3 class="step-title">在 QBuilder 里完成技能的构建</h3>
-    <span class="step-time">几分钟到几十分钟</span>
+    <h3 class="step-title">在 QBuilder 中完成技能的开发与自测</h3>
   </div>
-  <p>在 QBuilder 桌面端里把技能写到能跑通:本地的 <code>SKILL.md</code>、示例输入输出、必要的工具挂载 — 这些都在 QBuilder 客户端里完成,具体怎么写见 QBuilder 教程的「5 分钟创建你的第一个智能体」。</p>
-  <div class="callout">
-    <strong>关于登录态:</strong> 第一次同步前,客户端会引导你关联 QUSEIT 账号(凭票 + SSO,10 分钟内有效);关联完成后,以后每次同步都不用再输密码。
-  </div>
+  <p>在 QBuilder 桌面端内编写 <code>SKILL.md</code>、示例输入输出及必要的工具挂载,并完成本地联调,确认技能在本地可调用。撰写规范见 QBuilder 教程的「5 分钟创建你的第一个智能体」一文。</p>
+  <p>首次执行同步前,客户端将引导用户关联 QUSEIT 账号。该流程基于凭票与 SSO,凭票有效期为 10 分钟。完成关联后,后续同步不再要求重新登录。</p>
 </div>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 02</span>
-    <h3 class="step-title">在 QBuilder 对话里让 Agent「将技能发布到智能体空间」</h3>
-    <span class="step-time">约 1 分钟</span>
+    <h3 class="step-title">通过对话触发同步</h3>
   </div>
-  <p>技能构建完成后,继续在 QBuilder 对话里跟 Agent 协作,告诉它「将技能发布到智能体空间」。客户端会带登录态,主动把技能包推过来;服务端按 <code>SKILL.md</code> 校验后入库。</p>
-  <p>同步完成后,技能自动出现在「技能库」页,卡片上会标记「来自 QBuilder」。</p>
+  <p>在 QBuilder 对话中向 Agent 发出指令「将技能发布到智能体空间」。客户端凭登录态将技能包推送至服务端;服务端按 <code>SKILL.md</code> 校验通过后写入技能库,标记为「来自 QBuilder」。</p>
 </div>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 03</span>
-    <h3 class="step-title">在「技能库」页勾选技能,点击右下角的「发布为智能体」</h3>
-    <span class="step-time">约 2 分钟</span>
+    <h3 class="step-title">勾选并进入发布向导</h3>
   </div>
-  <p>在「技能库」页找到刚才从 QBuilder 推过来的那张卡(标记「来自 QBuilder」),勾选卡片右上角的复选框 — 至少勾 1 个时,底部会出现常驻条,右下角的主按钮是「发布为智能体」。点击后进入三步发布向导(身份 → 收费 → 上线),这部分的细节会在 PATH 01 第 2 课展开。</p>
-  <ul>
-    <li>若列表没出现 — 看 QBuilder 对话里的报错;常见原因是 <code>SKILL.md</code> 缺字段或包结构有问题。</li>
-    <li>勾选后没看到「发布为智能体」按钮 — 检查是否真的勾上了(卡片会变成金色描边)。</li>
-  </ul>
+  <p>在「技能库」页定位刚入库的卡片(标记「来自 QBuilder」),勾选其右上角的复选框。勾选数 ≥ 1 时,页面底部将出现常驻操作条,右侧主按钮为「发布成智能体 →」。点击后即进入 PATH 01 第 2 课所述的三步发布向导。</p>
 </div>
 
-<blockquote>
-  <strong>注意</strong>:你这次看到的是<strong>「技能库」页</strong>(不是浏览器里那个「发布技能」页)。同步动作由 QBuilder 客户端发起;勾选 + 「发布为智能体」这条动作在浏览器里完成。
-</blockquote>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/05-card-selected-publish-cta.png" alt="勾选后卡片变金色描边,底部出现「已选 1 个技能」+「发布成智能体 →」" loading="lazy">
+  <figcaption class="figure-cap">图 3 · 勾选后状态:卡片切换为金色描边,底部出现「已选 N 个技能」与「发布成智能体 →」操作条。</figcaption>
+</figure>
 
-<h2 id="path-b">路径 B · 手动上传 zip</h2>
+<h2 id="path-b">路径 B · 上传 zip</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 01</span>
-    <h3 class="step-title">把技能打包成 .zip</h3>
-    <span class="step-time">约 1 分钟</span>
+    <h3 class="step-title">将技能目录打包</h3>
   </div>
-  <p>把整个技能目录打包成 <code>.zip</code>。包根目录必须直接包含 <code>SKILL.md</code> — 不要把它再套一层目录。</p>
-  <ul>
-    <li>macOS / Linux: <code>zip -r my-skill.zip ./my-skill</code></li>
-    <li>Windows: 在资源管理器里右键 → 压缩到 <code>.zip</code></li>
-  </ul>
+  <p>将技能目录打包为 <code>.zip</code>。要求 <code>SKILL.md</code> 位于压缩包根目录,不得嵌套于子目录中。</p>
   <ul class="redline">
-    <li>把 <code>SKILL.md</code> 放到子目录里 → 服务端找不到,直接报错。</li>
-    <li>压缩包超过 <strong>200 MB</strong> → 前端直接拦截,后端根本收不到。</li>
+    <li><code>SKILL.md</code> 置于子目录 → 服务端无法定位,直接报错。</li>
+    <li>压缩包超过 200 MB → 前端直接拦截,后端不接收。</li>
   </ul>
 </div>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 02</span>
-    <h3 class="step-title">拖到上传卡片</h3>
-    <span class="step-time">约 30 秒</span>
+    <h3 class="step-title">上传并核对入库结果</h3>
   </div>
-  <p>在<strong>「发布技能」页</strong>,有两种交互:点「选择文件」按钮弹出文件选择器,或者直接把 <code>.zip</code> 拖到卡片上。单文件 ≤ 200 MB。</p>
+  <p>在「发布技能」页点击「选择文件」或直接将 <code>.zip</code> 拖至卡片。上传成功后,页面自动跳转至「技能库」。新条目标记为「自建」,默认分类为「未分类」。随后的衔接操作与路径 A 一致:勾选卡片 → 点击「发布成智能体 →」进入发布向导。</p>
 </div>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">STEP 03</span>
-    <h3 class="step-title">跳回技能库核对</h3>
-    <span class="step-time">约 30 秒</span>
-  </div>
-  <p>上传成功后会自动跳回<strong>「技能库」页</strong>。新技能显示在列表里,标记为「自建」、默认类别「未分类」(你需要后续手动给它分类)。下一步:勾选这张卡,点右下角的「发布为智能体」,走三步发布向导。</p>
-</div>
-
-<h2 id="after-upload">上传完,接下来该看哪里</h2>
-
-<p>走完本课你已经在「技能库」页看到那张卡。<strong>路径 A</strong> 通常在三步发布向导里就能直接发布成智能体;<strong>路径 B</strong> 需要回到「技能库」页,勾选后点「发布成智能体」,才走完从「技能」到「智能体」的最后一步。</p>
-
-<p>在「技能库」页核对一下,这张卡应该是这样:</p>
-
-<ul class="checklist">
-  <li>来源标记正确(「来自 QBuilder」/「自建」)</li>
-  <li>分类已设置(路径 A 通常自动跟 QBuilder 一致;路径 B 默认「未分类」,需要手动改)</li>
-  <li>技能详情里 <code>SKILL.md</code> 全文可读</li>
-  <li><strong>暂未</strong>被任何智能体使用(下一步才会勾选)</li>
-</ul>
-
-<p>核对完毕 → 进入第 2 课「三步发布向导」,详细走一遍身份 / 收费 / 上线三件事。</p>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/04-skill-library-after-upload.png" alt="上传后的技能库:1 张卡,元数据「通用 · 自建 · vv1」,右下角标签「未被使用」" loading="lazy">
+  <figcaption class="figure-cap">图 4 · 上传后核对项:分类(此处为「通用」,亦可能为「未分类」)、来源(「自建」)、状态(「未被使用」)。版本号 vv1 由系统在首次入库时自动分配。</figcaption>
+</figure>
 
 <h2 id="pitfalls">常见踩坑</h2>
 
 <ul>
-  <li><strong>想用路径 A 但客户端没登录</strong>: 第一次同步会被引导走 SSO 关联(凭票跳到 SSO 登录页,10 分钟内有效)。密码连续输错会让凭据失效,得回客户端重发。</li>
-  <li><strong>路径 B 上传后看到「未分类」</strong>: 这是预期行为 — zip 上传没有客户端携带的分类元数据,服务端给一个「未分类」占位,需要你在技能库里手动改。</li>
-  <li><strong>想删技能但删不掉</strong>: 弹窗底部会显示「正在被 N 个智能体使用」 — 凡是还有引用的都不能删,先去那些智能体里换掉再回来删。</li>
+  <li><strong>入库后列表中未见新条目</strong>:首先在 QBuilder 对话中查看错误日志,常见原因为 <code>SKILL.md</code> 字段缺失或包结构不符合要求。</li>
+  <li><strong>勾选后未出现「发布成智能体 →」按钮</strong>:说明勾选未生效 — 再次点击卡片右上角的复选框,确认卡片描边变为金色。</li>
+  <li><strong>上传后分类显示为「未分类」</strong>:属预期行为。zip 上传不携带客户端所维护的分类元数据,系统占位「未分类」,需在「技能库」页手动调整。</li>
+  <li><strong>删除技能时弹出拒绝提示</strong>:删除对话框将列出「正在被 N 个智能体使用」,凡存在引用的技能均不可删除;须先在相关智能体中替换该技能,再行删除。</li>
 </ul>
 
 </article>
