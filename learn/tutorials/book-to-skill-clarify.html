@@ -4,15 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>用 book-to-skill 把文档转为智能体技能 — QUSEIT 教程</title>
-<meta name="description" content="在 QBuilder Desktop 里把一份文档(PDF / Markdown / EPUB)转为可加载的智能体技能。本教程以 4 页扫描型 PDF 为案例,讲清 book-to-skill 多轮澄清 + ⚡ YOLO 模式怎么配合,最终产出符合生产规范的技能包。">
+<meta name="description" content="在 QBuilder Desktop 中将 PDF、Markdown 或 EPUB 文档通过多轮澄清与 book-to-skill 流水线转化为可加载技能。">
 <link rel="icon" type="image/svg+xml" href="../../logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css">
 <style>
-  /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
-  /* fixed nav 高度约 64px + 留 32px 视觉缓冲 → top padding 至少 96px */
   .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
   .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
   .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
@@ -21,7 +19,7 @@
   .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
   .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
   .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
-  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
   .tut-doc .tut-doc-meta .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; background: rgba(184, 134, 11, 0.12); color: #8b6508; font-weight: 600; }
   .tut-doc .tut-doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: 0.5; }
   .tut-doc h2 { font-family: "Noto Serif SC", serif; font-size: 26px; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--text); }
@@ -34,7 +32,7 @@
   .tut-doc pre code { background: none; padding: 0; color: inherit; }
   .tut-doc blockquote { margin: 20px 0; padding: 14px 22px; border-left: 4px solid #b8860b; background: rgba(184, 134, 11, 0.05); border-radius: 0 8px 8px 0; color: var(--text); font-style: italic; }
   .tut-doc .step { background: var(--card-bg, #fff); border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 24px 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
-  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .tut-doc .step-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #8b6508; background: rgba(184, 134, 11, 0.15); padding: 4px 10px; border-radius: 6px; }
   .tut-doc .step-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; margin: 0; color: var(--text); }
   .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
@@ -69,12 +67,12 @@
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
         <div class="nav-dropdown-menu" role="menu">
-          <a href="../qbuilder-tutorial.html" class="is-active" data-i18n="nav.learn.tutorials">QBuilder教程</a>
+          <a href="../qbuilder-tutorial.html" data-i18n="nav.learn.tutorials">QBuilder教程</a>
           <a href="../agentspace-tutorial.html" data-i18n="nav.learn.courses">智空间教程</a>
           <a href="../use-cases.html" data-i18n="nav.learn.use-cases">案例</a>
         </div>
       </div>
-      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">企业版</a>
+      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">面向 FDE</a>
     </nav>
     <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
     <div class="nav-cta">
@@ -94,116 +92,112 @@
   <span class="current">book-to-skill 多轮澄清</span>
 </nav>
 <h1>用 book-to-skill 把文档转为智能体技能</h1>
-<p class="tut-doc-sub">在 QBuilder Desktop 里,走多轮澄清 + ⚡ YOLO 模式,把你手里那份文档(PDF / Markdown / EPUB)转为可加载的智能体技能。本教程以一份 4 页扫描型 PDF 为真实案例,带你看到 book-to-skill 的 11 步流水线在 Desktop 里是如何被压成几张卡片对话的。</p>
+<p class="tut-doc-sub">本课介绍在 QBuilder Desktop 中将文档(PDF、Markdown 或 EPUB)通过多轮澄清与 book-to-skill 流水线转化为可加载智能体技能的方法。本教程以一份 4 页扫描型 PDF 为案例,展示 book-to-skill 11 步流水线在 Desktop 中如何被压缩为 5 张澄清卡片。</p>
 
 <div class="tut-doc-meta">
   <span class="badge">入门 · BEGINNER</span>
   <span class="dot"></span>
-  <span>约 6 分钟读完</span>
-  <span class="dot"></span>
-  <span>实操约 10 分钟(含 AI 生成)</span>
-  <span class="dot"></span>
-  <span>最后更新 2026-09</span>
+  <span>预计实操 10 分钟(含 AI 生成)</span>
 </div>
 
 <div class="callout">
-  <strong>本教程适合谁?</strong> 手里有一份 PDF / Markdown / EPUB,想把它"教会"给 agent 的人 — 创作者、研究者、想把内部资料结构化的人。读完你会看到 <code>book-to-skill</code> 的 11 步流水线在 Desktop 里是如何被压成 5 张澄清卡片的,以及遇到扫描型 PDF 时 AI 会怎么停下来等你拍板。
+  <strong>本教程适合谁?</strong>手头持有 PDF、Markdown 或 EPUB 等格式文档,拟将其结构化为可供 Agent 调用的技能的创作者或研究者。读后可了解 book-to-skill 11 步流水线在 Desktop 中如何被压缩为 5 张澄清卡片,以及面对扫描型 PDF 时 AI 如何主动上报待用户决策。
 </div>
 
 <h2>流程一览</h2>
-<p>整个过程分两大段:</p>
+
+<p>整个流程分为两段:</p>
+
 <ol>
-  <li><strong>第 1–3 步</strong>:在 Desktop 里把 PDF 拖进输入框、点卡片选 <strong>"从文档生成技能"</strong>,走完 5 轮澄清(内容类型 / DEPTH / slug / SKILLS_HOME / OCR 决策)。</li>
+  <li><strong>第 1–3 步</strong>:在 Desktop 中将 PDF 拖入输入框,点击「从文档生成技能」卡片,完成 5 轮澄清(内容类型 / DEPTH / slug / SKILLS_HOME / OCR 决策)。</li>
   <li><strong>第 4–6 步</strong>:AI 在后台调用 <code>book-to-skill</code> 技能,产出符合生产规范的技能包。</li>
 </ol>
-<blockquote>关键观察:book-to-skill 在 CLI 模式下要打字问 Step 1.5/4/5,Desktop 里这三步被压成 3 张澄清卡片(<code>需要澄清</code>),写两三个字就能跳到下一步。但 blocker 仍会拦你 — 比如这次碰到扫描型 PDF,AI 就主动停下来问 OCR 怎么处理。</blockquote>
 
-<h2 id="step-1">第 1 步 · 选 "从文档生成技能" 入口</h2>
+<blockquote>关键观察:book-to-skill 在 CLI 模式下需手动响应 Step 1.5/4/5;在 Desktop 中,这三步被压缩为 3 张澄清卡片(<code>需要澄清</code>),写两三个字即可跳至下一步。Blocker 仍会拦截用户决策 — 本教程的扫描型 PDF 即触发 AI 主动停下询问 OCR 处理方式。</blockquote>
+
+<h2 id="step-1">第 1 步 · 选择「从文档生成技能」入口</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 01</span>
-    <h3 class="step-title">登录 → Dashboard → 上传 PDF</h3>
-    <span class="step-time">~1 分钟</span>
+    <h3 class="step-title">登录、Dashboard、上传 PDF</h3>
   </div>
 
-  <h3>1.1 找到 "从文档生成技能" 卡片</h3>
-  <p>Dashboard 上半区的 "技能构建" 分类里有 4 张入口卡,第二张就是 <strong>从文档生成技能</strong>。</p>
+  <h3>1.1 定位「从文档生成技能」卡片</h3>
+  <p>Dashboard 上半区「技能构建」分类下包含 4 张入口卡,其中第二张为 <strong>从文档生成技能</strong>。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-02-after-login.png" alt="Dashboard 启动态,技能构建 4 卡片">
     <div class="figure-cap">Dashboard · 技能构建分类下的 4 张入口卡</div>
   </div>
 
-  <h3>1.2 点击卡片 → prompt 自动预填</h3>
-  <p>点击后,任务模板 <code>/book-to-skill 根据所选文档生成技能</code> 会自动填进输入框。你也可以手动改写,但保留这个开头能让 AI 路由到正确的技能。</p>
+  <h3>1.2 点击卡片,提示词自动预填</h3>
+  <p>点击后,任务模板 <code>/book-to-skill 根据所选文档生成技能</code> 自动填入输入框。亦可手动修改,但保留该前缀有助于 AI 路由至相应技能。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-03-card-prompt-prefilled.png" alt="点击卡片后,prompt 自动填入输入框">
-    <div class="figure-cap">点击卡片 · prompt 预填到主输入框</div>
+    <div class="figure-cap">点击卡片 · prompt 预填至主输入框</div>
   </div>
 
   <div class="callout">
-    <strong>提示:</strong> Desktop 窗口比较小时,底部工具条(profile / workspace / 模型 / reasoning 那一排)会被裁。建议把窗口调到 <strong>1920×1080</strong> 以上,或全屏查看。
+    Desktop 窗口较小时,底部工具条(profile / workspace / 模型 / reasoning 控件)将被裁切。建议将窗口尺寸调整至 1920 × 1080 以上,或使用全屏模式查看。
   </div>
 </div>
 
-<h2 id="step-2">第 2 步 · 卡片触发 → 输入框自动填写</h2>
+<h2 id="step-2">第 2 步 · 卡片触发,输入框自动填充</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 02</span>
-    <h3 class="step-title">点 "从文档生成技能" → prompt 预填</h3>
-    <span class="step-time">~30 秒</span>
+    <h3 class="step-title">点击「从文档生成技能」,prompt 自动预填</h3>
   </div>
 
-  <h3>2.1 卡片点击 → 输入框自动出现预设提示词</h3>
-  <p>点击 "从文档生成技能" 卡片后,任务模板 <code>/book-to-skill 根据所选文档生成技能</code> 会自动填进输入框 — 这个预设提示词就是调用 <code>book-to-skill</code> 技能的入口。</p>
+  <h3>2.1 卡片点击后,输入框自动出现预设提示词</h3>
+  <p>点击「从文档生成技能」卡片后,任务模板 <code>/book-to-skill 根据所选文档生成技能</code> 自动填入输入框 — 该预设提示词即 <code>book-to-skill</code> 技能的调用入口。</p>
 
-  <p>你也可以手动改写,但保留这个开头能让 AI 路由到正确的技能。改写时建议保留 <code>/book-to-skill</code> 这个技能路径前缀。</p>
+  <p>亦可手动修改,但建议保留 <code>/book-to-skill</code> 这一技能路径前缀。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-03-card-prompt-prefilled.png" alt="点击卡片后,prompt 自动填入输入框">
-    <div class="figure-cap">点击卡片 · prompt 预填到主输入框</div>
+    <div class="figure-cap">点击卡片 · prompt 预填至主输入框</div>
   </div>
 
   <div class="callout">
-    <strong>为什么需要保留 /book-to-skill 前缀?</strong> 这是 Desktop 的 slash command 路由机制 — 看到这个前缀,AI 会自动加载 <code>book-to-skill</code> 技能,而不是走通用对话。如果你手写了更长提示词但忘了带前缀,AI 也可能猜到要做技能蒸馏,但保留前缀是最稳的。
+    <strong>关于 <code>/book-to-skill</code> 前缀</strong> 该前缀是 Desktop 的 slash command 路由机制。AI 见到该前缀后自动加载 <code>book-to-skill</code> 技能,而非进入通用对话。若自定义提示词时遗漏前缀,AI 仍可能推断需进行技能蒸馏,但保留前缀最为稳妥。
   </div>
 
-  <h3>2.2 上传文档 → 附件栏出现附件标签</h3>
-  <p>输入框左下角有一排图标按钮,第一个形状像回形针的就是上传附件按钮。点击它可以选择想要转化为技能的文档。</p>
+  <h3>2.2 上传文档,附件栏出现附件标签</h3>
+  <p>输入框左下角的图标按钮中,第一个回形针形状按钮即为上传附件按钮。点击后可选择拟转化为技能的文档。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-04-before-attach-click.png" alt="上传按钮 click 之前的工具条">
-    <div class="figure-cap">工具条 · 📎 按钮在输入框左下角</div>
+    <div class="figure-cap">工具条 · 📎 按钮位于输入框左下角</div>
   </div>
 
   <div class="callout">
-    <strong>什么文件适合转化为技能?</strong> 优先选择<strong>有清晰章节结构</strong>的 PDF / Markdown / EPUB — 比如教程、教科书、白皮书、研报、操作手册。book-to-skill 会按章节抽取核心框架、术语表、决策规则。纯扫描的 PDF(只有图像没有文本层)、聊天记录、图片合集不适合 — 这类内容没有可蒸馏的结构。
+    <strong>文档选择建议</strong> 优先选择具有清晰章节结构的 PDF、Markdown 或 EPUB 文件(如教程、教科书、白皮书、研报、操作手册)。book-to-skill 将按章节抽取核心框架、术语表与决策规则。纯扫描型 PDF(仅含图像、无文本层)、聊天记录或图片合集不具备可蒸馏的结构,不适合作为输入。
   </div>
 
-  <p>选完文档之后,输入框上方会出现附件栏,文件名 + 大小会显示成一张小卡片(叫 "附件标签")。</p>
+  <p>选择文档后,输入框上方将出现附件栏,以小型卡片形式显示文件名与文件大小(即「附件标签」)。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-06-pdf-attached.png" alt="文档已挂载到 textarea 上方">
-    <div class="figure-cap">文档已挂载 · 附件标签显示文件名 + 大小</div>
+    <div class="figure-cap">文档已挂载 · 附件标签显示文件名与大小</div>
   </div>
 </div>
 
-<h2 id="step-3">第 3 步 · 发送 → 多轮澄清对话</h2>
+<h2 id="step-3">第 3 步 · 发送,进入多轮澄清</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 03</span>
-    <h3 class="step-title">关键:你的回答决定 book-to-skill 创建出来的技能</h3>
-    <span class="step-time">~3–5 分钟</span>
+    <h3 class="step-title">关键:用户的回答决定 book-to-skill 产出的技能</h3>
   </div>
 
-  <p>附件挂好后,点右下角的 ↑ 按钮发送。Desktop 会自动加载 <code>book-to-skill</code> 技能、读 PDF 摘要,然后抛出第一张澄清卡片。</p>
+  <p>附件挂载后,点击右下角的 ↑ 按钮发送。Desktop 将自动加载 <code>book-to-skill</code> 技能、读取 PDF 摘要,并抛出第一张澄清卡片。</p>
 
   <div class="callout">
-    <strong>这一阶段最重要的事:</strong> 你对 AI 澄清问题的回答,直接决定 book-to-skill 最终会创建出一个什么样的技能。内容类型决定了提取方式,比如深度决定了章文件详略,slug 决定了产物命名,技能根目录决定了技能保存在哪里。你的每一句回答都会进入后续 技能生产流水线的输入。
+    <strong>本阶段的关键</strong> 用户对 AI 澄清问题的回答,将直接决定 book-to-skill 最终产出的技能特性。内容类型决定提取策略,深度决定章文件详略,slug 决定产物命名,技能根目录决定产物保存位置。每一条回答均将进入后续技能生产流水线。
   </div>
 
   <div class="figure">
@@ -211,35 +205,35 @@
     <div class="figure-cap">AI 响应 · 触发第一张澄清卡片</div>
   </div>
 
-  <h3>3.1 理解澄清卡片分别问什么</h3>
-  <p>book-to-skill 把需要从你上传的PDF文件所需要提前了解的内容,压成几张桌面卡片(<code>需要澄清</code>),你只需要在输入框写一句话提交。</p>
+  <h3>3.1 各张澄清卡片的内容</h3>
+  <p>book-to-skill 将需要预先获取的信息压缩为若干澄清卡片(<code>需要澄清</code>),用户只需在输入框中撰写一句话提交即可。</p>
 
   <table style="width:100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;">
     <thead>
       <tr style="border-bottom: 1px solid rgba(0,0,0,.1); text-align: left;">
         <th style="padding: 8px;">轮次</th>
         <th style="padding: 8px;">对应 book-to-skill 工作流</th>
-        <th style="padding: 8px;">回答方向示例</th>
+        <th style="padding: 8px;">回答示例</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td style="padding: 8px;"><strong>澄清 #1</strong></td><td style="padding: 8px;">Step 1.5 内容类型</td><td style="padding: 8px;"><code>将文章按照漫剧剧本来处理</code></td></tr>
-      <tr><td style="padding: 8px;"><strong>澄清 #2</strong></td><td style="padding: 8px;">Step 4 DEPTH(study / reference)</td><td style="padding: 8px;"><code>让 agent 按框架生成漫剧剧本,所以 DEPTH=study</code></td></tr>
+      <tr><td style="padding: 8px;"><strong>澄清 #1</strong></td><td style="padding: 8px;">Step 1.5 内容类型</td><td style="padding: 8px;"><code>将文章按漫剧剧本来处理</code></td></tr>
+      <tr><td style="padding: 8px;"><strong>澄清 #2</strong></td><td style="padding: 8px;">Step 4 DEPTH(study / reference)</td><td style="padding: 8px;"><code>让 Agent 按框架生成漫剧剧本,DEPTH=study</code></td></tr>
       <tr><td style="padding: 8px;"><strong>澄清 #3</strong></td><td style="padding: 8px;">Step 5 技能 slug</td><td style="padding: 8px;"><code>ai-manga-drama-screenplay</code></td></tr>
-      <tr><td style="padding: 8px;"><strong>澄清 #4</strong></td><td style="padding: 8px;">Step 5 SKILLS_HOME</td><td style="padding: 8px;"><code>&lt;工作区&gt;/skills/</code></td></tr>
+      <tr><td style="padding: 8px;"><strong>澄清 #4</strong></td><td style="padding: 8px;">Step 5 SKILLS_HOME</td><td style="padding: 8px;"><code><工作区>/skills/</code></td></tr>
       <tr><td style="padding: 8px;"><strong>澄清 #5</strong></td><td style="padding: 8px;">Step 6 blocker(扫描型 PDF 等)</td><td style="padding: 8px;">取决于 PDF 类型(详见 <a href="#step-5">第 5 步</a>)</td></tr>
     </tbody>
   </table>
 
-  <h3>3.2 回答时该说什么 — 三条原则</h3>
+  <h3>3.2 回答的三条原则</h3>
   <ul>
-    <li><strong>具体优于抽象</strong>: 不要说"按用途处理",说"按漫剧剧本处理" — AI 会从你的用词里推断提取策略、章结构、术语保留方式。</li>
-    <li><strong>明确 DEPTH 取舍</strong>: 如果你的目标是让 agent 真正"按框架做事",答 DEPTH=study(每章更详尽 + 复现 Worked Example);如果只是"参考一下",DEPTH=reference 更省 token。</li>
-    <li><strong>slug 反映文档核心</strong>: 用小写连字符的英文短语,反映文档核心用途,例:<code>ai-manga-drama-screenplay</code> / <code>cialdini-influence</code>。</li>
+    <li><strong>具体优于抽象</strong>:不表述为「按用途处理」,而明确为「按漫剧剧本处理」 — AI 将根据用词推断提取策略、章节结构与术语保留方式。</li>
+    <li><strong>明确 DEPTH 取舍</strong>:若目标是使 Agent 真正按框架执行,选择 DEPTH=study(章节内容更详细,且复现 Worked Example);若仅作参考用途,DEPTH=reference 更节省 token。</li>
+    <li><strong>slug 反映文档核心</strong>:采用小写连字符的英文短语,体现文档核心用途。例如:<code>ai-manga-drama-screenplay</code> / <code>cialdini-influence</code>。</li>
   </ul>
 
-  <h3>3.3 5 轮走完 → 工具栏出现 ⚡ YOLO</h3>
-  <p>5 轮澄清答完后,工具栏会出现 <strong>⚡ YOLO</strong> 橙色 chip — 这是 Desktop 的"本次会话全部跳过审批"开关。book-to-skill 后续会调用 <code>extract.py</code>、生成章文件等,每一步都可能弹审批对话框,打开 YOLO 让它们自动放行。</p>
+  <h3>3.3 5 轮澄清完成,工具栏出现 ⚡ YOLO</h3>
+  <p>5 轮澄清完成后,工具栏将出现 <strong>⚡ YOLO</strong> 橙色 chip — 该开关启用后,本会话内所有 subprocess 命令将自动放行。book-to-skill 后续将调用 <code>extract.py</code>、生成章文件等,每一步可能触发审批对话框,启用 YOLO 可免除反复确认。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-16-skills-home-answered.png" alt="SKILLS_HOME 已答,extract.py 启动">
@@ -247,94 +241,90 @@
   </div>
 
   <div class="callout">
-    <strong>提示:</strong> 工具栏的 <code>Default</code> reasoning 强度建议保持默认 — book-to-skill 的 11 步流水线会自己决定要不要切 REPL,不需要你提前调参数。
+    工具栏的 <code>Default</code> 推理强度建议保持默认 — book-to-skill 的 11 步流水线会根据实际需要自行决定是否进入 REPL,无需用户预先调节参数。
   </div>
 </div>
 
-<h2 id="step-4">第 4 步 · AI 后台跑 book-to-skill 流水线</h2>
+<h2 id="step-4">第 4 步 · AI 后台运行 book-to-skill 流水线</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 04</span>
-    <h3 class="step-title">检测 PDF 类型 → 抽取文本 → 生成产物</h3>
-    <span class="step-time">~30 秒–2 分钟</span>
+    <h3 class="step-title">检测 PDF 类型,抽取文本,生成产物</h3>
   </div>
 
-  <p>5 轮澄清走完后,AI 自动调用 <code>book-to-skill</code> 技能,按工作流 Step 6–11 推进:用 <code>extract.py</code> 抽 PDF 文本、决定 token 预算、生成章文件、做安全扫描、写治理文件、出审计报告。</p>
+  <p>5 轮澄清完成后,AI 自动调用 <code>book-to-skill</code> 技能,按工作流 Step 6–11 推进:调用 <code>extract.py</code> 抽取 PDF 文本、确定 token 预算、生成章文件、执行安全扫描、撰写治理文件、产出审计报告。</p>
 
   <h3>4.1 依赖探测链</h3>
-  <p>AI 会按 <code>pypdf</code> → <code>pdfminer.six</code> → OCR 的顺序逐个探测 — 这些对话流会显示在主区域。</p>
+  <p>AI 按 <code>pypdf</code> → <code>pdfminer.six</code> → OCR 的顺序逐项探测 — 这些对话流将呈现于主区域。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-17-extract-running.png" alt="extract.py 探测依赖链">
-    <div class="figure-cap">book-to-skill 在跑 · 探测 pypdf / pdfminer / OCR</div>
+    <div class="figure-cap">book-to-skill 运行中 · 探测 pypdf / pdfminer / OCR</div>
   </div>
 
   <div class="callout">
-    <strong>关键观察:</strong> AI 自己 prompt 触发依赖探测,不需要你提前装任何东西。它会用 <code>--install-missing</code> 标志管理安装,但碰到 OCR 这种 200MB+ ML 套件时,会主动停下来等你拍板 — 而不是默默装盘。
+    <strong>关键观察</strong> AI 自动触发依赖探测,无需用户预装依赖。其使用 <code>--install-missing</code> 标志管理安装,但遇到 OCR 等 200MB+ ML 套件时,会主动停下等待用户决策,而非默默安装。
   </div>
 </div>
 
-<h2 id="step-5">踩坑提示 · 扫描型 PDF 抽不出正文时怎么办</h2>
+<h2 id="step-5">踩坑提示 · 扫描型 PDF 无法抽取正文时的处理</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">PITFALL 01</span>
-    <h3 class="step-title">你以为的"文字 PDF",其实是图片</h3>
-    <span class="step-time">~1 分钟看清 + 决策</span>
+    <h3 class="step-title">用户视为「文字 PDF」的文档可能实际为图片</h3>
   </div>
 
-  <h3>5.1 现场:抽出来的全是水印</h3>
-  <p>如果你拿的是扫描型 PDF(本次教程用的素材 <code>02-AI漫剧剧本的处理.pdf</code> 就是),book-to-skill 跑到 Step 6 时会撞墙 — <code>extract.py</code> 只能抽到某些水印文字(<code>108 字符</code>)。正文是图像,没有任何文本层。</p>
+  <h3>5.1 现象:抽取结果仅为水印</h3>
+  <p>若输入为扫描型 PDF(本教程素材 <code>02-AI漫剧剧本的处理.pdf</code> 即如此),book-to-skill 在 Step 6 时将遭遇障碍 — <code>extract.py</code> 仅能抽取部分水印文本(<code>108 字符</code>)。正文为图像,不含任何文本层。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/book-to-skill/cdp-18-final-state.png" alt="扫描型 PDF blocker + 澄清 #5">
-    <div class="figure-cap">Blocker · AI 主动上报扫描型 PDF,等待你的 OCR 决策</div>
+    <div class="figure-cap">Blocker · AI 主动上报扫描型 PDF,等待 OCR 决策</div>
   </div>
 
-  <p>AI 不会自己装 OCR 套件 — 它会停下来抛出第 5 张澄清卡片:</p>
-  <blockquote>正文是图片(扫描/渲染型 PDF),现有 pypdf + pdfminer 只能抽出水印。怎么处理?</blockquote>
+  <p>AI 不会自主安装 OCR 套件 — 此时抛出第 5 张澄清卡片:</p>
+  <blockquote>正文为图像(扫描型或渲染型 PDF),现有 pypdf + pdfminer 只能抽取水印。处理方案?</blockquote>
 
-  <h3>5.2 三个方向 — 选一个,继续</h3>
+  <h3>5.2 三个可选方向</h3>
   <ul>
-    <li><strong>装 Tesseract + chi_sim traineddata</strong>(约 200MB)→ AI 重跑 OCR 把图像转成文本。适合 PDF 不大且对识别精度有要求的情况。</li>
-    <li><strong>提供文本版本</strong>(Markdown / TXT)→ 让 AI 直接用 fast extractor 跳过 OCR,产物生成速度最快。</li>
-    <li><strong>跳过 extract</strong> → AI 基于 PDF 元信息(标题 / 作者 / 页数)生成一个"内容待补"占位技能,后续你手动填章节。</li>
+    <li><strong>安装 Tesseract + chi_sim traineddata</strong>(约 200MB) → AI 重跑 OCR,将图像转为文本。适用于 PDF 体积较小且对识别精度有较高要求的场景。</li>
+    <li><strong>提供文本版本</strong>(Markdown / TXT) → AI 使用 fast extractor 跳过 OCR,产物生成速度最快。</li>
+    <li><strong>跳过 extract</strong> → AI 基于 PDF 元信息(标题 / 作者 / 页数)生成「内容待补」占位技能,由用户后续手动补充章节。</li>
   </ul>
 
-  <h3>5.3 本次是怎么解决的</h3>
-  <p>我选了第二个方向 — 自己在输入框写 <code>提供文本版本,我自己先把 PDF 转 Markdown</code>。book-to-skill 拿到这个回答后不再要求 OCR,而是等待我在下一步把文本版本附上(或直接放弃该 PDF,改用其它已结构化的素材)。</p>
+  <h3>5.3 本教程的处理方式</h3>
+  <p>本教程选择第二个方向 — 在输入框中填写 <code>提供文本版本,我自己先把 PDF 转 Markdown</code>。book-to-skill 收到该答复后不再要求安装 OCR,而是等待用户在下一步附上文本版本,或直接放弃该 PDF、改用其他已结构化的素材。</p>
 
-  <h3>5.4 这次踩坑的收获</h3>
+  <h3>5.4 踩坑总结</h3>
   <ul class="checklist">
-    <li><strong>扫描型 PDF 不能默默跑 OCR</strong>: book-to-skill 拒绝默默装 200MB 套件,主动上报并让你拍板 — 这就是它"诚实边界"的体现。</li>
-    <li><strong>提前 OCR 比事后处理更省事</strong>: 如果你手里是扫描件,先用本地工具(Adobe / WPS / OneNote)把 PDF 转成可复制的文本,再交给 book-to-skill,跳过整个 blocker。</li>
-    <li><strong>watermark 是内容来源的指纹</strong>: 即使正文抽不出来,水印本身也是一条溯源线索 — book-to-skill 会把它写进 SKILL.md 的"诚实边界"段,作为版权声明的一部分。</li>
+    <li><strong>扫描型 PDF 不会被默默运行 OCR</strong>:book-to-skill 拒绝默默安装 200MB 套件,主动上报并等待用户决策 — 这正是其「诚实边界」的具体体现。</li>
+    <li><strong>预先 OCR 比事后处理更省时</strong>:若素材为扫描件,建议先用本地工具(Adobe、WPS、OneNote 等)将 PDF 转换为可复制的文本,再交给 book-to-skill,可绕过整个 blocker 流程。</li>
+    <li><strong>水印亦可作为内容来源的指纹</strong>:即使正文无法抽取,水印本身亦可作为溯源线索 — book-to-skill 会将其写入 SKILL.md 的「诚实边界」段,作为版权声明的一部分。</li>
   </ul>
 </div>
-</div>
 
-<h2 id="step-6">第 6 步 · 技能包落到 workspace</h2>
+<h2 id="step-6">第 6 步 · 技能包落入 workspace</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 06</span>
-    <h3 class="step-title">检查 &lt;工作区&gt;/skills/&lt;slug&gt;/ 目录</h3>
-    <span class="step-time">~30 秒–3 分钟</span>
+    <h3 class="step-title">检查 <工作区>/skills/<slug>/ 目录</h3>
   </div>
 
-  <p>blocker 解开(或跳过)后,AI 在后台继续走完 book-to-skill 工作流的剩余步骤 — 生成章文件、做安全扫描、写治理文件、出审计报告。</p>
+  <p>Blocker 解除(或跳过)后,AI 在后台继续走完 book-to-skill 工作流的剩余步骤 — 生成章文件、执行安全扫描、撰写治理文件、产出审计报告。</p>
 
-  <h3>6.1 看文件系统最快</h3>
-  <p>在你的 workspace 根目录(例如 <code>D:\Workspace\quseit-website\</code>)下,刷新文件管理器:</p>
+  <h3>6.1 通过文件系统判断</h3>
+  <p>在 workspace 根目录(例如 <code>D:\Workspace\quseit-website\</code>)中刷新文件管理器:</p>
 
-  <pre><code>D:\Workspace\quseit-website&gt; dir skills\
+  <pre><code>D:\Workspace\quseit-website> dir skills\
 [新目录]  ai-manga-drama-screenplay\</code></pre>
 
-  <h3>6.2 book-to-skill 产出的标准结构</h3>
-  <p>目录里会按 yao-meta-skill 生产布局落盘:</p>
+  <h3>6.2 book-to-skill 的标准产出结构</h3>
+  <p>目录内将按 yao-meta-skill 的生产布局落盘:</p>
 
-<pre><code>skills/ai-manga-drama-screenplay/
+  <pre><code>skills/ai-manga-drama-screenplay/
 ├── SKILL.md                        triggers + boundary + 5 框架一行式
 ├── README.md                       package map
 ├── manifest.json                   治理元数据
@@ -348,31 +338,31 @@
 └── reports/                        4 份 .md 审计 + 2 份 .html</code></pre>
 
   <div class="callout">
-    <strong>为什么产物要这么复杂?</strong> book-to-skill 输出遵循 yao-meta-skill 生产布局,目的是让技能既能被 hermes CLI 直接加载,也能通过 <code>yao install-simulate</code> 验证、发布到 hub、装到任何 Agent Skills 主机。
+    <strong>产出结构的设计目标</strong> book-to-skill 的产物遵循 yao-meta-skill 生产布局,旨在使技能既可由 hermes CLI 直接加载,亦可通过 <code>yao install-simulate</code> 验证、发布至 Hub、装入任意 Agent Skills 主机。
   </div>
 </div>
 
 <h2 id="result">最终结果</h2>
 
-<p>走完这 6 步,你会在 workspace 里得到:</p>
+<p>完成上述 6 步后,workspace 中将获得:</p>
 
 <ul class="checklist">
-  <li>完整的 <strong>SKILL.md</strong>(含触发词 + 红线 + 诚实边界)</li>
-  <li>面向用户的 <strong>README.md</strong>(quick start + 排除项)</li>
-  <li>治理元数据 <strong>manifest.json</strong>(版本 / 来源 / 加载策略)</li>
-  <li>yao 兼容 <strong>agents/interface.yaml</strong> + <strong>security/permission_policy.json</strong></li>
-  <li>按需加载 <strong>references/{glossary,patterns,cheatsheet,chapters/}</strong></li>
-  <li>审计证据 <strong>reports/</strong>(4 份 .md + 2 份 .html)</li>
+  <li>完整的 <strong>SKILL.md</strong>(含触发词、红线与诚实边界)</li>
+  <li>面向用户的 <strong>README.md</strong>(quick start 与排除项)</li>
+  <li>治理元数据 <strong>manifest.json</strong>(版本、来源、加载策略)</li>
+  <li>yao 兼容的 <strong>agents/interface.yaml</strong> 与 <strong>security/permission_policy.json</strong></li>
+  <li>按需加载的 <strong>references/{glossary,patterns,cheatsheet,chapters/}</strong></li>
+  <li>审计证据 <strong>reports/</strong>(4 份 .md 与 2 份 .html)</li>
 </ul>
 
-<p>它的能力会被 Desktop 全局识别,以后你可以直接用日常语言("按我这份漫剧 PDF 的格式,生成一集新剧本")触发它。</p>
+<p>其能力将被 Desktop 全局识别,后续可使用日常语言(如「按我这份漫剧 PDF 的格式,生成一集新剧本」)直接调用。</p>
 
 <h2 id="pitfalls">常见踩坑</h2>
 
 <ul class="redline">
-  <li><strong>扫描型 PDF 默默装 200MB OCR 套件</strong>: book-to-skill 不会。AI 会在抽出失败时主动停下来问你 — 你看到的"水印 + 正文是图片"提示就是它的诚实边界声明。</li>
-  <li><strong>extract.py 探测结果误导</strong>: <code>--install-missing no</code> 会跳过交互安装,但内部 probe 跟实际 import 偶尔会不一致。AI 看到 probe 失败后会直接绕过 probe 重跑 — 你不需要手动干预。</li>
-  <li><strong>审批弹窗反复弹</strong>: 在工具条里打开 <strong>⚡ YOLO</strong>(slug 提交后会提示),本次会话所有 subprocess 命令自动放行。</li>
+  <li><strong>扫描型 PDF 默默安装 200MB OCR 套件</strong>:book-to-skill 不会执行该操作。AI 抽取失败时会主动停下询问 —「水印 + 正文为图像」的提示即其诚实边界声明。</li>
+  <li><strong>extract.py 探测结果误导</strong>:<code>--install-missing no</code> 将跳过交互式安装,但内部探测与实际 import 偶尔不一致。AI 探测失败后将绕过探测重跑 — 无需手动干预。</li>
+  <li><strong>审批弹窗反复弹出</strong>:在工具条中开启 <strong>⚡ YOLO</strong>(slug 提交后会提示),本会话内所有 subprocess 命令将自动放行。</li>
 </ul>
 
 </article>

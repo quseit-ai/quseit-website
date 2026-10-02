@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QBuilder 下载安装与账户注册 — QUSEIT 教程</title>
-<meta name="description" content="按操作系统下载 QBuilder Desktop、安装、首次启动、登录与注册(含机构码)。完成后可立即开始使用 QBuilder。">
+<meta name="description" content="选择与操作系统对应的 QBuilder 安装包,完成本地安装,启动后注册 QUSEIT 账号。">
 <link rel="icon" type="image/svg+xml" href="../../logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css">
 <style>
-  /* ── 教程详情页 (跟兄弟教程对齐) ───────────────────────── */
   .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
   .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
   .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
@@ -39,10 +38,9 @@
   .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
   .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
   .tut-doc .callout strong { color: #0288a8; }
-  .tut-doc .callout-warn { background: rgba(232, 137, 12, 0.08); border-color: rgba(232, 137, 12, 0.3); }
-  .tut-doc .callout-warn strong { color: #b0480a; }
+  .tut-doc .callout callout-warn { background: rgba(184, 134, 11, 0.08); border: 1px solid rgba(184, 134, 11, 0.35); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
   .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
-  .tut-doc .figure img, .tut-doc .figure svg { display: block; width: 100%; height: auto; }
+  .tut-doc .figure img { display: block; width: 100%; height: auto; }
   .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
   .tut-doc .checklist { list-style: none; padding-left: 0; margin: 16px 0; }
   .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
@@ -51,7 +49,6 @@
   .tut-doc .redline li { padding: 8px 0 8px 32px; position: relative; }
   .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
   .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
-  .tut-doc .coming-soon { color: var(--muted); font-style: italic; }
 </style>
 </head>
 <body class="learn-page">
@@ -61,7 +58,7 @@
     <a href="../../index.html" class="brand">
       <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
       <span class="brand-name">QUSEIT</span>
-      <span class="brand-tag personal">创作者</span>
+      <span class="brand-tag personal" data-i18n="brand.tag">创作者</span>
     </a>
     <nav class="nav-links">
       <a href="../../index.html#how">发布流程</a>
@@ -71,7 +68,7 @@
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
         <div class="nav-dropdown-menu" role="menu">
-          <a href="../qbuilder-tutorial.html" class="is-active" data-i18n="nav.learn.tutorials">QBuilder教程</a>
+          <a href="../qbuilder-tutorial.html" data-i18n="nav.learn.tutorials">QBuilder教程</a>
           <a href="../agentspace-tutorial.html" data-i18n="nav.learn.courses">智空间教程</a>
           <a href="../use-cases.html" data-i18n="nav.learn.use-cases">案例</a>
         </div>
@@ -96,37 +93,38 @@
   <span class="current">QBuilder 下载安装与账户注册</span>
 </nav>
 <h1>QBuilder 下载安装与账户注册</h1>
-<p class="tut-doc-sub">挑对系统的安装包,装好后启动并注册 QUSEIT 账号。</p>
+<p class="tut-doc-sub">本课介绍选择与操作系统对应的 QBuilder 安装包、本地安装流程,以及首次启动后的账号注册步骤。</p>
 
 <div class="tut-doc-meta">
   <span class="badge">入门 · BEGINNER</span>
   <span class="dot"></span>
-  <span>约 8 分钟读完</span>
-  <span class="dot"></span>
-  <span>实操约 10–15 分钟(含下载时间)</span>
-  <span class="dot"></span>
-  <span>最后更新 2026-09</span>
+  <span>预计实操 10–15 分钟(含下载时间)</span>
+</div>
+
+<div class="callout">
+  <strong>本教程适合谁?</strong>首次使用 QBuilder Desktop,需在本地完成安装与账号注册的创作者。读后可了解 Windows、macOS、Linux 三平台的安装差异及注册流程。
 </div>
 
 <h2 id="overview">流程一览</h2>
-<p>整个过程分四段:</p>
+
+<p>整个流程分为四段:</p>
+
 <ol>
-  <li><strong>第 0 步</strong>:打开 <a href="../../download.html">下载页</a>,根据你的操作系统选对应的 QBuilder 安装包。</li>
-  <li><strong>第 1–3 步</strong>:按平台安装 — Windows 解压后双击安装包,macOS 在「隐私与安全」放行,Linux 用 <code>sudo apt install</code>。</li>
-  <li><strong>第 4 步</strong>:启动 QBuilder Desktop,点 <strong>登录</strong>。</li>
-  <li><strong>第 5 步</strong>:没账号点 <strong>注册</strong>,填邮箱密码 + 机构码(<em>默认可填 <code>C2372QJ2</code></em>),完成后自动登录。</li>
+  <li><strong>第 0 步</strong>:打开 <a href="../../download.html">下载页</a>,根据操作系统选择对应的 QBuilder 安装包。</li>
+  <li><strong>第 1–3 步</strong>:按平台执行安装 — Windows 解压后双击安装包,macOS 在「隐私与安全」中放行,Linux 使用 <code>sudo apt install</code>。</li>
+  <li><strong>第 4 步</strong>:启动 QBuilder Desktop,点击「登录」。</li>
+  <li><strong>第 5 步</strong>:若无账号,点击「注册」,填写邮箱、密码与机构码(默认值 <code>C2372QJ2</code>),完成后自动登录。</li>
 </ol>
 
-<h2 id="step-0">第 0 步 · 从下载页选对安装包</h2>
+<h2 id="step-0">第 0 步 · 选择与操作系统对应的安装包</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 00</span>
-    <h3 class="step-title">在下载页选对应操作系统的安装包</h3>
-    <span class="step-time">~1 分钟</span>
+    <h3 class="step-title">从下载页选择对应平台的安装包</h3>
   </div>
 
-  <p>打开 <a href="../../download.html">quseit.com/download.html</a>。页面下半部"桌面端下载"那一栏里有三张卡片,分别对应 Windows、Linux、macOS。<strong>按当前操作系统选一张</strong>,点卡片底部的下载按钮拿到压缩包。</p>
+  <p>访问 <a href="../../download.html">quseit.com/download.html</a>。页面下半部「桌面端下载」一栏包含三张卡片,分别对应 Windows、Linux、macOS。<strong>按当前操作系统选择相应卡片</strong>,点击卡片底部的下载按钮获取压缩包。</p>
 
   <div class="figure">
     <svg viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="下载页三张系统卡片示意">
@@ -165,23 +163,22 @@
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 01</span>
-    <h3 class="step-title">解压压缩包 → 双击安装包</h3>
-    <span class="step-time">~3 分钟</span>
+    <h3 class="step-title">解压压缩包并双击安装包</h3>
   </div>
 
-  <p>Windows 版是 <code>.zip</code> 压缩包,<strong>先解压再装</strong>。在下载目录里右键 <code>QBuilder-Setup-<最新版本>-Windows.zip</code> → <strong>全部解压</strong>,你会看到 <code>QBuilder-Setup-<最新版本>.exe</code>。</p>
+  <p>Windows 版为 <code>.zip</code> 压缩包,<strong>需先解压再执行安装</strong>。在下载目录中右键 <code>QBuilder-Setup-<版本>-Windows.zip</code> → 选择「全部解压」,将得到 <code>QBuilder-Setup-<版本>.exe</code>。</p>
 
   <h3>1.1 解压后双击安装包</h3>
-  <p>双击 <code>QBuilder-Setup-<最新版本>.exe</code>,弹出 <em>"你要允许此应用对设备进行更改吗?"</em> 的 UAC 提示时,点 <strong>是</strong>。</p>
+  <p>双击 <code>QBuilder-Setup-<版本>.exe</code>,弹出「您要允许此应用对设备进行更改吗?」UAC 提示时,选择「是」。</p>
 
-  <h3>1.3 走完安装向导</h3>
-  <p>安装器会依次弹:</p>
+  <h3>1.2 走完安装向导</h3>
+  <p>安装器将依次提示:</p>
   <ol>
     <li>许可协议 — 勾选同意,下一步。</li>
-    <li>安装目录 — 默认 <code>C:\Program Files\QBuilder</code>,可以改,但新手保持默认最稳。</li>
-    <li>快捷方式 — 桌面 + 开始菜单都勾上,下一步。</li>
-    <li>点 <strong>安装</strong>,等进度条走完。</li>
-    <li>勾选 <strong>启动 QBuilder</strong>,点 <strong>完成</strong>。</li>
+    <li>安装目录 — 默认 <code>C:\Program Files\QBuilder</code>,可修改;建议初次安装保持默认。</li>
+    <li>快捷方式 — 同时勾选桌面与开始菜单,下一步。</li>
+    <li>点击「安装」,等待进度条完成。</li>
+    <li>勾选「启动 QBuilder」,点击「完成」。</li>
   </ol>
 
   <div class="figure">
@@ -210,13 +207,13 @@
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1610"/>
         </marker>
       </defs>
-      <text x="40" y="155" font-family="ui-sans-serif, sans-serif" font-size="12" fill="#5c5344">默认安装路径 C:\Program Files\QBuilder · 桌面 / 开始菜单都会生成快捷方式</text>
+      <text x="40" y="155" font-family="ui-sans-serif, sans-serif" font-size="12" fill="#5c5344">默认安装路径 C:\Program Files\QBuilder · 桌面 / 开始菜单均会生成快捷方式</text>
     </svg>
     <div class="figure-cap">Windows 安装流程 · 解压 → 双击 setup.exe → 走完向导</div>
   </div>
 
-  <div class="callout callout-warn">
-    <strong>Windows SmartScreen 拦截怎么办?</strong> 第一次安装时 Windows Defender SmartScreen 可能弹"<em>Windows 已保护你的电脑</em>"蓝条,点 <strong>更多信息</strong> → <strong>仍要运行</strong>。这是因为 QBuilder 还没有广泛的发布历史,不是恶意软件。
+  <div class="callout">
+    <strong>Windows SmartScreen 拦截时的处理</strong> 首次安装时,Windows Defender SmartScreen 可能弹出「Windows 已保护你的电脑」蓝色提示。选择「更多信息」→「仍要运行」即可。该提示仅因 QBuilder 尚未积累广泛的发布历史,而非软件本身存在安全问题。
   </div>
 </div>
 
@@ -225,17 +222,16 @@
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 02</span>
-    <h3 class="step-title">先允许该程序运行,再启动</h3>
-    <span class="step-time">~3 分钟</span>
+    <h3 class="step-title">在「隐私与安全」中放行应用</h3>
   </div>
 
-  <p><strong>先确认芯片再下载:</strong> 下载页的 macOS 按钮点开会展开两项,<strong>Apple Silicon 芯片</strong>选 <code>arm64</code>、<strong>Intel 芯片</strong>选 <code>x64</code>。不确定就看左上角 <strong>苹果菜单 → 关于本机 → 芯片</strong>那一行 — 写着 "Apple M…" 是 Apple Silicon,写着 "Intel" 则是 Intel。</p>
+  <p><strong>下载前需确认芯片类型:</strong> 下载页的 macOS 按钮点击后会展开两项 — <strong>Apple Silicon 芯片</strong> 选择 <code>arm64</code>、<strong>Intel 芯片</strong> 选择 <code>x64</code>。如不确定,可通过左上角 <strong>苹果菜单 → 关于本机 → 芯片</strong> 查看 — 显示「Apple M…」为 Apple Silicon,显示「Intel」则为 Intel。</p>
 
-  <h3>2.1 启动 macOS 版 QBuilder 一次</h3>
-  <p>从下载的 <code>.dmg</code> 拖入 <code>/Applications</code> 后,双击 <strong>QBuilder.app</strong> 启动一次。系统会弹"<em>QBuilder 是从互联网下载的 App,您确定要打开吗?</em>"或 "<em>无法打开,因为 Apple 无法检查其是否包含恶意软件</em>",点 <strong>取消</strong>(先不要强行打开)。</p>
+  <h3>2.1 启动一次以触发系统拦截</h3>
+  <p>将下载的 <code>.dmg</code> 中的 <code>QBuilder.app</code> 拖入 <code>/Applications</code> 后,双击 <strong>QBuilder.app</strong> 启动一次。系统将提示「QBuilder 是从互联网下载的 App,您确定要打开吗?」或「无法打开,因为 Apple 无法检查其是否包含恶意软件」,此时选择「取消」,先不强行打开。</p>
 
-  <h3>2.2 打开「设置 → 隐私与安全」放行</h3>
-  <p>打开 <strong>系统设置</strong>(macOS 13+) / <strong>系统偏好设置</strong>(macOS 12) → <strong>隐私与安全</strong>。向下滚到页面底部,你会看到一行 "<em>QBuilder 已被阻止打开,因为它不是来自已识别的开发者</em>",旁边有 <strong>仍要打开</strong> 按钮,点击它。</p>
+  <h3>2.2 在「隐私与安全」中放行</h3>
+  <p>打开 <strong>系统设置</strong>(macOS 13+) / <strong>系统偏好设置</strong>(macOS 12) → <strong>隐私与安全</strong>。向下滚动至页面底部,可看到一行「QBuilder 已被阻止打开,因为它不是来自已识别的开发者」,右侧有「仍要打开」按钮,点击该按钮。</p>
 
   <div class="figure">
     <svg viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="macOS 隐私与安全放行路径示意">
@@ -256,18 +252,18 @@
         <text x="20" y="24" font-family="ui-monospace, monospace" font-size="11" fill="#8a8172">页面底部 · 安全 区</text>
         <text x="20" y="46" font-family="ui-sans-serif, sans-serif" font-size="13" fill="#1a1610">"QBuilder 已被阻止打开,因为它不是来自已识别的开发者"</text>
       </g>
-      <text x="40" y="220" font-family="ui-sans-serif, sans-serif" font-size="12" fill="#5c5344">点击「仍要打开」后 macOS 会要求 Touch ID / 密码验证,完成后回到 Finder 双击 QBuilder.app 即可正常启动</text>
+      <text x="40" y="220" font-family="ui-sans-serif, sans-serif" font-size="12" fill="#5c5344">点击「仍要打开」后 macOS 将要求 Touch ID / 密码验证,完成后回到 Finder 双击 QBuilder.app 即可正常启动</text>
       <defs>
         <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1610"/>
         </marker>
       </defs>
     </svg>
-    <div class="figure-cap">macOS 放行路径 · 系统设置 → 隐私与安全 → 滚到底部 → 「仍要打开」</div>
+    <div class="figure-cap">macOS 放行路径 · 系统设置 → 隐私与安全 → 滚至底部 → 「仍要打开」</div>
   </div>
 
   <h3>2.3 再次启动 QBuilder</h3>
-  <p>回到 Finder 双击 <strong>QBuilder.app</strong>,系统会再问一次指纹 / 密码,确认后 QBuilder 就启动了。<em>之后这个应用会被系统记住,以后双击直接启动,不再问。</em></p>
+  <p>回到 Finder 双击 <strong>QBuilder.app</strong>,系统将再次要求 Touch ID 或密码验证,确认后 QBuilder 即启动。<em>系统将记住该应用的放行状态,后续双击直接启动,不再提示。</em></p>
 </div>
 
 <h2 id="step-3">第 3 步 · Linux 安装</h2>
@@ -275,8 +271,7 @@
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 03</span>
-    <h3 class="step-title">用 apt 直接装</h3>
-    <span class="step-time">~3 分钟</span>
+    <h3 class="step-title">通过 apt 安装</h3>
   </div>
 
   <p><span class="coming-soon">(Linux 包暂未发布,以下为发布后的标准路径。)</span></p>
@@ -284,23 +279,24 @@
   <p>Linux 版以 <code>.deb</code> 包形式分发,使用系统包管理器安装。</p>
 
   <h3>3.1 确认发行版</h3>
-  <p>QBuilder 当前支持 <strong>Ubuntu / Debian 系</strong>(含 Ubuntu 22.04+、Debian 12+)。其它发行版可以用 <code>.deb</code> 工具转 <code>.rpm</code> 等,但官方仓库暂未覆盖。</p>
+  <p>QBuilder 当前支持 <strong>Ubuntu / Debian 系</strong>(含 Ubuntu 22.04+、Debian 12+)。其他发行版可通过 <code>.deb</code> 转 <code>.rpm</code> 等工具转换,但官方仓库暂未覆盖。</p>
 
-  <h3>3.2 用 apt 安装</h3>
-  <p>把下面命令里的 <code>&lt;最新版本&gt;</code> 换成下载页上标注的当前版本号即可。</p>
+  <h3>3.2 使用 apt 安装</h3>
+  <p>将下列命令中的 <code><版本></code> 替换为下载页标注的当前版本号即可。</p>
+
   <pre><code># 1. 下载安装包(到 ~/Downloads)
 cd ~/Downloads
-wget https://quseit.aipy.org/qbuilder/QBuilder-&lt;最新版本&gt;-1ubuntu1_amd64.deb
+wget https://quseit.aipy.org/qbuilder/QBuilder-<版本>-1ubuntu1_amd64.deb
 
-# 2. 装包(会自动解包依赖并放到 /opt/qbuilder)
-sudo apt install ./QBuilder-&lt;最新版本&gt;-1ubuntu1_amd64.deb
+# 2. 装包(自动解包依赖并部署到 /opt/qbuilder)
+sudo apt install ./QBuilder-<版本>-1ubuntu1_amd64.deb
 
-# 3. 验证:二进制路径 + 版本
+# 3. 验证:二进制路径与版本号
 which qbuilder       # /usr/bin/qbuilder
-qbuilder --version   # 期望输出 QBuilder &lt;最新版本&gt;</code></pre>
+qbuilder --version   # 预期输出 QBuilder <版本></code></pre>
 
   <h3>3.3 启动 GUI</h3>
-  <p>安装完后,从应用菜单点 QBuilder 图标启动 GUI 主进程,或在命令行直接跑 <code>qbuilder</code>。</p>
+  <p>安装完成后,可从应用菜单点击 QBuilder 图标启动 GUI,或在命令行直接运行 <code>qbuilder</code>。</p>
 </div>
 
 <h2 id="step-4">第 4 步 · 启动 QBuilder 并点击「登录」</h2>
@@ -309,16 +305,16 @@ qbuilder --version   # 期望输出 QBuilder &lt;最新版本&gt;</code></pre>
   <div class="step-head">
     <span class="step-num">STEP 04</span>
     <h3 class="step-title">启动 QBuilder,点击「登录」</h3>
-    <span class="step-time">~30 秒</span>
   </div>
 
-  <p>从桌面快捷方式 / 开始菜单 / 应用程序目录 / 命令行启动 QBuilder,首次启动约 10–15 秒。进入主界面后,提示 <strong>「请先登录,再继续使用。」</strong> — 点旁边的 <strong>登录</strong> 按钮,弹出登录对话框:</p>
+  <p>通过桌面快捷方式、开始菜单、应用程序目录或命令行启动 QBuilder,首次启动约 10–15 秒。进入主界面后,系统提示「请先登录,再继续使用。」 — 点击旁边的「登录」按钮,弹出登录对话框:</p>
+
   <ul>
-    <li><strong>邮箱</strong>输入框</li>
-    <li><strong>密码</strong>输入框(右侧有显示 / 隐藏密码的眼睛按钮)</li>
-    <li><strong>登录</strong>主按钮</li>
-    <li><strong>注册新账号</strong>链接 — 没账号就点这个</li>
-    <li><strong>忘记密码?</strong>链接</li>
+    <li>邮箱输入框</li>
+    <li>密码输入框(右侧有显示/隐藏密码的眼睛按钮)</li>
+    <li>「登录」主按钮</li>
+    <li>「注册新账号」链接 — 无账号时使用</li>
+    <li>「忘记密码?」链接</li>
   </ul>
 
   <div class="figure">
@@ -332,45 +328,45 @@ qbuilder --version   # 期望输出 QBuilder &lt;最新版本&gt;</code></pre>
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 05</span>
-    <h3 class="step-title">填邮箱 + 密码 + 机构码</h3>
-    <span class="step-time">~2 分钟</span>
+    <h3 class="step-title">填写邮箱、密码与机构码</h3>
   </div>
 
-  <p>点登录页右下角的 <strong>注册</strong>,会跳到注册表单。</p>
+  <p>点击登录页右下角的「注册」,跳转至注册表单。</p>
 
   <h3>5.1 基本字段</h3>
   <ul>
-    <li><strong>邮箱</strong> — 用常用邮箱,作为你的登录账号。</li>
-    <li><strong>密码</strong> — 至少 8 位,字母 + 数字组合。</li>
-    <li><strong>确认密码</strong> — 再输一次。</li>
-    <li><strong>显示名</strong> — 出现在你发布的「智空间」顶部的名字,后续可在设置里改。</li>
+    <li><strong>邮箱</strong>:常用邮箱,作为登录账号。</li>
+    <li><strong>密码</strong>:不少于 8 位,字母与数字组合。</li>
+    <li><strong>确认密码</strong>:再次输入。</li>
+    <li><strong>显示名</strong>:出现在所发布的「智空间」顶部;后续可在设置中修改。</li>
   </ul>
 
-  <h3>5.2 机构码 · 怎么填</h3>
-  <p>注册表单里有一个 <strong>机构码(Organization Code)</strong> 字段,这是 QUSEIT 给推荐渠道(合作机构、企业内购、线下推广等)的合作识别码。</p>
+  <h3>5.2 机构码的填写方式</h3>
+  <p>注册表单中包含 <strong>机构码(Organization Code)</strong> 字段,为 QUSEIT 为推荐渠道(合作机构、企业内购、线下推广等)分配的合作识别码。</p>
 
   <ul>
-    <li><strong>有推荐渠道</strong>:渠道方会告诉你他们的机构码,直接填他们的码。</li>
-    <li><strong>没有推荐渠道</strong>:填默认机构码 <code>C2372QJ2</code>,不影响功能使用,只是不归属任何渠道。</li>
+    <li><strong>有推荐渠道</strong>:渠道方将提供其机构码,直接填写。</li>
+    <li><strong>无推荐渠道</strong>:填写默认机构码 <code>C2372QJ2</code>;不影响功能使用,仅表示不归属任何特定渠道。</li>
   </ul>
 
   <div class="callout">
-    <strong>为什么要填机构码?</strong> 渠道方通过这个码追溯推广效果,可以给你更好的服务(更快的人工支持、定制化模板、活动邀请)。不影响你的账号功能 — 没填或填默认值,功能完全一样。
+    <strong>机构码的作用</strong> 渠道方通过该码追溯推广效果,可为用户提供更优质的服务(如更快的支持响应、定制化模板、活动邀请)。该字段不影响账号功能 — 留空或填默认值,功能完全一致。
   </div>
 
   <h3>5.3 提交注册</h3>
   <ol>
-    <li>勾选 <em>"我已阅读并同意《用户协议》和《隐私政策》"</em>(链接会展开对应文档)。</li>
-    <li>点 <strong>创建账号</strong> — 注册不需要邮箱验证,提交即完成。</li>
-    <li>系统自动登录,直接进入 QBuilder Desktop。</li>
+    <li>勾选「我已阅读并同意《用户协议》和《隐私政策》」(点击链接可查看对应文档)。</li>
+    <li>点击「创建账号」 — 注册流程无需邮箱验证,提交即完成。</li>
+    <li>系统将自动登录,直接进入 QBuilder Desktop。</li>
   </ol>
 </div>
 
 <h2 id="pitfalls">常见踩坑</h2>
+
 <ul class="redline">
-  <li><strong>下载后没解压就双击 zip</strong> — Windows 默认会用资源管理器查看 zip,双击是预览不是解压。右键 → 全部解压。</li>
-  <li><strong>macOS 上双击 .dmg 后没把 App 拖入 /Applications</strong> — 拖进去才算"安装",不然 .dmg 卸载后 App 也消失了。</li>
-  <li><strong>Linux 用 <code>dpkg -i</code> 装 .deb</strong> — 缺依赖时 dpkg 不会自动拉,要手动 <code>apt install -f</code>。直接用 <code>sudo apt install ./xxx.deb</code> 让 apt 一把搞定。</li>
+  <li><strong>下载后未解压即双击 zip</strong>:Windows 资源管理器默认仅预览 zip 内容,双击并不执行解压。需右键 → 选择「全部解压」。</li>
+  <li><strong>macOS 上双击 .dmg 后未将 App 拖入 /Applications</strong>:拖入 Applications 才算完成安装,否则 .dmg 卸载后 App 也将随之消失。</li>
+  <li><strong>Linux 使用 <code>dpkg -i</code> 安装 .deb</strong>:<code>dpkg</code> 不会自动解决依赖,缺失依赖时需手动执行 <code>apt install -f</code>。建议直接使用 <code>sudo apt install ./xxx.deb</code>,由 apt 统一处理依赖。</li>
 </ul>
 
 </article>

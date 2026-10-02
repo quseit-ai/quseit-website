@@ -94,54 +94,52 @@
   <span class="current">5 分钟创建智能体</span>
 </nav>
 <h1>5 分钟创建你的第一个智能体</h1>
-<p class="tut-doc-sub">手把手带你跑完:开启网关 → 在 Skill Studio 通过持续问答完成 5 维度评估 → 把需求交给 yao-meta-skill 生成最终技能。</p>
+<p class="tut-doc-sub">本课系统介绍从开启 QBuilder 网关、在 Skill Studio 通过多轮问答完成 5 维度评估,到将需求交由 yao-meta-skill 生成最终技能的完整流程。</p>
 
 <div class="tut-doc-meta">
   <span class="badge">入门 · BEGINNER</span>
   <span class="dot"></span>
-  <span>约 5 分钟读完</span>
-  <span class="dot"></span>
-  <span>实操约 8–12 分钟(含 AI 生成)</span>
-  <span class="dot"></span>
-  <span>最后更新 2026-09</span>
+  <span>预计实操 8–12 分钟(含 AI 生成)</span>
 </div>
 
 <div class="callout">
-  <strong>本教程适合谁?</strong> 第一次用 QBuilder Desktop、想从 0 到 1 跑通"创建一个技能"完整闭环的创作者。读完你会看到 Skill Studio、AI 向导、yao-meta-skill 这三层是怎么衔接起来的。
+  <strong>本教程适合谁?</strong>首次使用 QBuilder Desktop、拟从 0 到 1 跑通技能创建闭环的创作者。读后可了解 Skill Studio、AI 向导与 yao-meta-skill 三层之间的衔接关系。
 </div>
 
 <h2>流程一览</h2>
-<p>整个过程分三大段:</p>
-<ol>
-  <li><strong>第 0 步</strong>:本地开启 QBuilder 网关(技能构建依赖它)。</li>
-  <li><strong>第 1–4 步</strong>:在 <code>Skill Studio → AI 创建技能</code> 里跟 AI 多轮对话,完成<strong>定位 / 场景 / 操作流程 / 运行环境 / 验收标准</strong>五个维度的评估。右侧覆盖率面板实时跟踪。</li>
-  <li><strong>第 5–6 步</strong>:点击 <strong>编译 Skill</strong>,AI 把问答整理成一份需求文档,然后交给 <code>yao-meta-skill</code> 在你的 workspace 里写出 <code>SKILL.md</code> + 可执行脚本 + 测试用例。</li>
-</ol>
-<blockquote>关键观察:即使 Desktop UI 偶尔弹出"agent not responding"提示,后端网关仍可能在跑。你只要在文件系统里看到 <code>csv-to-xlsx-browser/SKILL.md</code>(或你命名的技能目录)被生成,就说明 yao-meta-skill 跑通了。</blockquote>
 
-<h2 id="step-0">第 0 步 · 开启 QBuilder 网关</h2>
+<p>整个流程分为三段:</p>
+
+<ol>
+  <li><strong>第 0 步</strong>:本地启动 QBuilder 网关,后续步骤均依赖此网关。</li>
+  <li><strong>第 1–4 步</strong>:在 <code>Skill Studio → AI 创建技能</code> 中与 AI 进行多轮对话,完成定位、场景、操作流程、运行环境、验收标准五个维度的评估。右侧覆盖率面板实时更新。</li>
+  <li><strong>第 5–6 步</strong>:点击 <strong>编译 Skill</strong>,AI 将问答内容整理为需求文档,并交由 <code>yao-meta-skill</code> 在 workspace 中生成 <code>SKILL.md</code>、可执行脚本与测试用例。</li>
+</ol>
+
+<blockquote>关键观察:即便 Desktop UI 偶尔弹出「agent not responding」提示,后端网关仍可能正在运行。如在文件系统中观察到 <code>csv-to-xlsx-browser/SKILL.md</code>(或自定义技能目录)被生成,则可确认 yao-meta-skill 已完成。</blockquote>
+
+<h2 id="step-0">第 0 步 · 启动 QBuilder 网关</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 00</span>
     <h3 class="step-title">启动本地网关</h3>
-    <span class="step-time">~30 秒</span>
   </div>
 
-  <p>QBuilder Desktop 与 yao-meta-skill 都跑在本地网关上。网关没起来,后面所有 Desktop 交互都会"调用失败"或者停留在 loading。</p>
+  <p>QBuilder Desktop 与 yao-meta-skill 均依赖本地网关。若网关未启动,后续所有 Desktop 交互均会出现调用失败或持续 loading。</p>
 
   <h3>启动方式</h3>
-  <p>从桌面快捷方式 / 开始菜单启动 <code>QBuilder</code>。桌面上的快捷方式图标是 QBuilder logo 那个橙红色方块。</p>
+  <p>从桌面快捷方式或开始菜单启动 <code>QBuilder</code>。桌面快捷方式图标为橙红色方块,QBuilder logo 居中。</p>
 
-  <h3>如果看不到登录界面</h3>
+  <h3>未显示登录界面时的排查</h3>
   <ul>
-    <li>看任务栏 / 系统托盘有没有 QBuilder 图标在闪烁 — 启动中。</li>
-    <li>等 10–15 秒,首次启动比较慢。</li>
-    <li>仍不行就右键托盘图标 → <code>退出</code> → 再启动一次。</li>
+    <li>查看任务栏或系统托盘是否有 QBuilder 图标闪烁 — 表示正在启动。</li>
+    <li>首次启动耗时较长,通常 10–15 秒。</li>
+    <li>若仍未显示,右键托盘图标 → 选择「退出」 → 重新启动。</li>
   </ul>
 
   <div class="callout">
-    <strong>提示:</strong> 网关一旦启动就在后台常驻,你不需要为每次创建技能都重启它。
+    网关启动后将在后台常驻,无需为每次创建技能而重启。
   </div>
 </div>
 
@@ -150,15 +148,14 @@
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 01</span>
-    <h3 class="step-title">登录 → Dashboard → 从向导构建技能</h3>
-    <span class="step-time">~1 分钟</span>
+    <h3 class="step-title">登录、Dashboard,进入技能向导</h3>
   </div>
 
   <h3>1.1 启动 QBuilder Desktop</h3>
-  <p>启动 QBuilder Desktop → 登录页填邮箱密码(或者第三方登录) → 进入 Dashboard。</p>
+  <p>启动 QBuilder Desktop → 在登录页填写邮箱密码(亦可使用第三方登录) → 进入 Dashboard。</p>
 
-  <h3>1.2 找到 "从向导构建技能" 卡片</h3>
-  <p>Dashboard 上半区有一组工作流卡片,第一张就是 <strong>从向导构建技能</strong>(workflow id: <code>workflow-1-1</code>)。</p>
+  <h3>1.2 定位「从向导构建技能」卡片</h3>
+  <p>Dashboard 上半区为工作流卡片网格,其中第一张卡片即 <strong>从向导构建技能</strong>(workflow id: <code>workflow-1-1</code>)。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-01-before-click.png" alt="Dashboard 上的工作流卡片网格">
@@ -166,7 +163,7 @@
   </div>
 
   <h3>1.3 点击卡片,进入 AI 创建技能</h3>
-  <p>系统会自动跳到 Skill Studio 面板,左侧 "我的技能 / 商店 / 导入技能 / 从文档学习 / AI 创建" 那一列中 <strong>AI 创建</strong> 被高亮选中。</p>
+  <p>系统将自动跳转至 Skill Studio 面板,左侧导航栏中 <strong>AI 创建</strong> 项处于高亮选中状态。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-02-after-click.png" alt="点击卡片后,Skill Studio 自动进入 AI 创建技能">
@@ -174,57 +171,56 @@
   </div>
 
   <div class="callout">
-    <strong>提示:</strong> Desktop 窗口比较小时,右侧的"技能覆盖率"面板会被裁掉。建议把 Desktop 窗口调到 <strong>1920×1080</strong> 以上,或全屏查看。
+    Desktop 窗口较小时,右侧「技能覆盖率」面板可能被裁切。建议将窗口尺寸调整至 1920 × 1080 以上,或使用全屏模式查看。
   </div>
 </div>
 
-<h2 id="step-2">第 2 步 · 回答 AI 的第一问(填 5 个维度)</h2>
+<h2 id="step-2">第 2 步 · 回答 AI 的第一问(填写 5 维度)</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 02</span>
-    <h3 class="step-title">把你的想法按 5 维度描述清楚</h3>
-    <span class="step-time">~3 分钟(你打字) + ~30 秒(AI 响应)</span>
+    <h3 class="step-title">按 5 维度描述需求</h3>
   </div>
 
-  <h3>2.1 AI 抛出的第一问</h3>
-  <p>进入 AI 创建后,系统立刻开始多轮对话,第一问是:</p>
+  <h3>2.1 AI 的首轮提问</h3>
+  <p>进入 AI 创建后,系统立即开启多轮对话,首轮提问如下:</p>
   <blockquote>请从定位、场景、操作流程、运行环境、验收标准五个维度描述你的问题,我来帮你编译成专业技能。首先,你希望解决什么问题?</blockquote>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-03-first-question.png" alt="AI 的第一问">
-    <div class="figure-cap">wizard-03-first-question.png · AI 抛出 5 维度第一问</div>
+    <div class="figure-cap">wizard-03-first-question.png · AI 抛出 5 维度首问</div>
   </div>
 
-  <h3>2.2 一次性把 5 维写满(降低轮次)</h3>
-  <p>你不需要等 AI 一个一个问。把下面 5 个维度一次写满,后面 AI 只需要少量追问确认,效率最高。</p>
+  <h3>2.2 一次性填写 5 维度(降低轮次)</h3>
+  <p>无需等待 AI 逐个提问。一次性填写下列 5 个维度,可显著减少后续追问轮次。</p>
 
   <table style="width:100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;">
     <thead>
       <tr style="border-bottom: 1px solid rgba(0,0,0,.1); text-align: left;">
         <th style="padding: 8px;">维度</th>
-        <th style="padding: 8px;">回答什么</th>
+        <th style="padding: 8px;">回答要点</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td style="padding: 8px;"><strong>定位</strong></td><td style="padding: 8px;">这个技能为谁服务,解决哪类问题</td></tr>
-      <tr><td style="padding: 8px;"><strong>场景</strong></td><td style="padding: 8px;">用户在什么具体情境下会用到它</td></tr>
-      <tr><td style="padding: 8px;"><strong>操作流程</strong></td><td style="padding: 8px;">从输入到输出的步骤,越具体越好</td></tr>
-      <tr><td style="padding: 8px;"><strong>运行环境</strong></td><td style="padding: 8px;">依赖什么语言 / 框架 / 库 / 部署方式</td></tr>
-      <tr><td style="padding: 8px;"><strong>验收标准</strong></td><td style="padding: 8px;">用户怎么判断"成功了"</td></tr>
+      <tr><td style="padding: 8px;"><strong>定位</strong></td><td style="padding: 8px;">本技能面向的用户群体及其拟解决的问题类型</td></tr>
+      <tr><td style="padding: 8px;"><strong>场景</strong></td><td style="padding: 8px;">用户调用本技能的具体使用情境</td></tr>
+      <tr><td style="padding: 8px;"><strong>操作流程</strong></td><td style="padding: 8px;">从输入到输出的步骤,描述越具体越好</td></tr>
+      <tr><td style="padding: 8px;"><strong>运行环境</strong></td><td style="padding: 8px;">依赖的语言、框架、库、部署方式等</td></tr>
+      <tr><td style="padding: 8px;"><strong>验收标准</strong></td><td style="padding: 8px;">判定执行成功的客观条件</td></tr>
     </tbody>
   </table>
 
-  <h3>2.3 提交回答,等 AI 流式响应</h3>
-  <p>写完点文本框右下角的 <strong>发送</strong> 按钮(或者回车)。AI 会先复述一遍你的需求、确认理解,然后开始右侧覆盖率面板的更新。</p>
+  <h3>2.3 提交回答,等待 AI 流式响应</h3>
+  <p>完成填写后,点击文本框右下角的 <strong>发送</strong> 按钮(或按回车)。AI 将先复述需求、确认理解,随后右侧覆盖率面板开始更新。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-06-ai-response.png" alt="AI 完成 5 维度总结,右侧覆盖率 100%">
-    <div class="figure-cap">wizard-06-ai-response.png · AI 完成 5 维度评估,出现第一个 followup</div>
+    <div class="figure-cap">wizard-06-ai-response.png · AI 完成 5 维度评估,出现首个 followup</div>
   </div>
 
   <div class="callout">
-    <strong>右侧的覆盖率面板</strong>会从 0% 跳到 100%。这表示 AI 已经"理解"了你的需求,但还会有一两个 <strong>followup 追问</strong> 需要你拍板。
+    右侧覆盖率面板将由 0% 跳至 100%。该值表明 AI 已「理解」需求,但仍会有 1–2 个 followup 追问需由用户确认。
   </div>
 </div>
 
@@ -233,66 +229,64 @@
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 03</span>
-    <h3 class="step-title">3 答 1 跳,把追问清光</h3>
-    <span class="step-time">~3 分钟</span>
+    <h3 class="step-title">逐项处理追问</h3>
   </div>
 
-  <p>覆盖率到 100% 之后,AI 还会问几个 followup 来消除歧义。本教程实测有 4 个:</p>
+  <p>覆盖率到达 100% 后,AI 会提出若干 followup 用于消除歧义。本教程实测共 4 个:</p>
 
   <ol>
-    <li>列类型推断是只用于格式化(对齐/日期显示),还是要把数值列真的存成 number 类型?</li>
-    <li>SheetJS 走 CDN 还是 npm 本地打包?</li>
-    <li>目标是独立 index.html(双击即用),还是嵌入到 Hermes Desktop 拖拽区?</li>
-    <li>以上五维度总结有无需要调整?(若无偏差,即作为技能创建的需求输入)</li>
+    <li>列类型推断是仅用于格式化(对齐、日期显示),还是需要将数值列实际存储为 number 类型?</li>
+    <li>SheetJS 是经 CDN 加载,还是经 npm 本地打包?</li>
+    <li>目标产物是独立 index.html(双击即用),还是嵌入到 Hermes Desktop 拖拽区?</li>
+    <li>上述 5 维度总结是否有需要调整之处?(若无偏差,即作为技能创建的需求输入)</li>
   </ol>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-07-followup-typed.png" alt="第一个追问,准备回答">
-    <div class="figure-cap">wizard-07-followup-typed.png · 第一个 followup 准备回答</div>
+    <div class="figure-cap">wizard-07-followup-typed.png · 首个 followup 准备回答</div>
   </div>
 
-  <h3>每个追问的两种处理</h3>
+  <h3>每个追问的两种处理方式</h3>
   <ul>
-    <li><strong>点 "发送"</strong>:你给具体回答(2–4 句最合适)。AI 会更新覆盖率摘要。</li>
-    <li><strong>点 "跳过"</strong>:你不想回答,默认按 AI 当前的合理理解继续。</li>
+    <li><strong>点击「发送」</strong>:提供具体回答(2–4 句为佳)。AI 将更新覆盖率摘要。</li>
+    <li><strong>点击「跳过」</strong>:不提供回答,默认按 AI 当前理解继续。</li>
   </ul>
 
-  <p>如果对追问没什么特别想法,通常 3 答 + 1 跳(对最终确认那个 meta 问)是最快的节奏。</p>
+  <p>若对追问无明确倾向,通常「3 答 + 1 跳」节奏最节省时间,其中「1 跳」对应最终的确认问。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-15-after-followup3.png" alt="回答第三个追问后,AI 给出最终确认问">
-    <div class="figure-cap">wizard-15-after-followup3.png · 第三个追问已答,出现最终确认</div>
+    <div class="figure-cap">wizard-15-after-followup3.png · 第 3 个追问已答,出现最终确认</div>
   </div>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-18-after-skip.png" alt="跳过后,准备进入编译阶段">
-    <div class="figure-cap">wizard-18-after-skip.png · 跳过最终确认,准备编译</div>
+    <div class="figure-cap">wizard-18-after-skip.png · 跳过最终确认,准备进入编译</div>
   </div>
 </div>
 
-<h2 id="step-4">第 4 步 · 点击 "编译 Skill"</h2>
+<h2 id="step-4">第 4 步 · 点击「编译 Skill」</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 04</span>
-    <h3 class="step-title">让 AI 把问答整理成需求文档</h3>
-    <span class="step-time">~5–30 秒</span>
+    <h3 class="step-title">由 AI 整理需求文档</h3>
   </div>
 
-  <p>所有追问都答完(或跳过)后,右上角的 <strong>编译 Skill</strong> 按钮会从 disabled 变 enabled。点击它,AI 会做两件事:</p>
+  <p>所有追问均已回答(或跳过)后,右上角的 <strong>编译 Skill</strong> 按钮将由 disabled 转为 enabled。点击后,AI 将执行以下两步:</p>
 
   <ol>
-    <li>把你这一路的所有问答 + 追问整理成一份 markdown 需求文档。</li>
-    <li>把这个文档塞进 yao-meta-skill 的输入,跳转到新 session 让 yao-meta-skill 接手。</li>
+    <li>将本轮所有问答与追问整理为 markdown 格式的需求文档。</li>
+    <li>将该文档注入 yao-meta-skill 的输入,并跳转至新 session 由 yao-meta-skill 接手。</li>
   </ol>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-19-compile-pre.png" alt="点击编译前">
-    <div class="figure-cap">wizard-19-compile-pre.png · 准备点击编译 Skill</div>
+    <div class="figure-cap">wizard-19-compile-pre.png · 准备点击「编译 Skill」</div>
   </div>
 
   <div class="callout">
-    QBuilder 会将需求整理为文档,随后进入对话流程开始创建技能。
+    QBuilder 将整理需求为文档,并启动新 session 进入技能创建流程。
   </div>
 
   <div class="figure">
@@ -301,28 +295,28 @@
   </div>
 </div>
 
-<h2 id="step-5">第 5 步 · 等 yao-meta-skill 把技能写到 workspace</h2>
+<h2 id="step-5">第 5 步 · 等待 yao-meta-skill 落盘</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 05</span>
-    <h3 class="step-title">监控 handoff session + 关注文件系统变化</h3>
-    <span class="step-time">~30 秒–3 分钟</span>
+    <h3 class="step-title">监控 handoff session 与文件系统变化</h3>
   </div>
 
-  <p>handoff session 会启动 yao-meta-skill 来在你的 workspace 里创建技能。<strong>不要看 UI 是不是还显示 "agent not responding" banner</strong>——这个 banner 是 Desktop UI 心跳机制的误报,后端大概率仍在跑。</p>
+  <p>handoff session 启动后,yao-meta-skill 将在 workspace 中创建技能。<strong>UI 是否仍显示「agent not responding」banner 不构成判断依据</strong> — 此为 Desktop UI 心跳机制的误报,后端大概率仍在运行。</p>
 
-  <h3>看文件系统最快</h3>
-  <p>在你的 workspace 根目录(例如 <code>D:\Workspace\quseit-website\</code>)下,刷新一下文件管理器:</p>
+  <h3>通过文件系统判断</h3>
+  <p>在 workspace 根目录(例如 <code>D:\Workspace\quseit-website\</code>)刷新文件管理器:</p>
 
-  <pre><code>D:\Workspace\quseit-website\&gt; dir
+  <pre><code>D:\Workspace\quseit-website> dir
 ...
-&lt;新建目录&gt;  csv-to-xlsx-browser\
+<新建目录>  csv-to-xlsx-browser\
 ...</code></pre>
 
-  <p>看到 <code>csv-to-xlsx-browser\</code>(或你自己命名的目录)出现,就说明 yao-meta-skill 在落盘了。</p>
+  <p>若 <code>csv-to-xlsx-browser\</code>(或自定义命名目录)出现,则可确认 yao-meta-skill 正在落盘。</p>
 
-  <h3>yao-meta-skill 产出的标准结构</h3>
+  <h3>yao-meta-skill 的标准产出结构</h3>
+
   <pre><code>csv-to-xlsx-browser/
 ├── SKILL.md            触发词 + 红线 + 诚实边界
 ├── manifest.json       结构化元数据
@@ -338,11 +332,11 @@
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-21-final.png" alt="handoff session 持续在跑">
-    <div class="figure-cap">wizard-21-final.png · handoff session 持续在跑(可能 banner 误报)</div>
+    <div class="figure-cap">wizard-21-final.png · handoff session 持续在跑(banner 可能误报)</div>
   </div>
 
   <div class="callout">
-    <strong>如果 banner 出现 & "Restart Service" 按钮</strong>: 这是 Desktop UI 心跳检测的误报,正常情况下后端仍在工作。<strong>不要点 Restart</strong>,点 Dismiss 关掉 banner 继续等文件系统出现新目录即可。
+    <strong>出现 banner 与「Restart Service」按钮时</strong>:此为 Desktop UI 心跳检测的误报,后端仍正常工作。<strong>勿点击 Restart</strong>,Dismiss 该 banner 后继续观察文件系统即可。
   </div>
 </div>
 
@@ -351,11 +345,10 @@
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 06</span>
-    <h3 class="step-title">跑 fixtures 端到端检查</h3>
-    <span class="step-time">~30 秒</span>
+    <h3 class="step-title">执行 fixtures 端到端检查</h3>
   </div>
 
-  <p>yao-meta-skill 通常会同时产出可执行的验证脚本。在 <code>scripts/</code> 目录下找到 <code>headless_convert.js</code>(或类似名)和 <code>verify_xlsx.py</code>(或类似名),跑一遍:</p>
+  <p>yao-meta-skill 通常会同时产出可执行的验证脚本。在 <code>scripts/</code> 目录下找到 <code>headless_convert.js</code>(或类似名)与 <code>verify_xlsx.py</code>(或类似名),依次执行:</p>
 
   <pre><code>cd csv-to-xlsx-browser\scripts
 npm install                # 装 SheetJS 等依赖
@@ -372,7 +365,7 @@ python verify_xlsx.py ..\_verify_out\sample.xlsx
   ]
 }</code></pre>
 
-  <p>所有 <code>"ok": true</code> 就是产物合格。</p>
+  <p>全部 <code>"ok": true</code> 即代表产物合格。</p>
 
   <div class="figure">
     <img src="../../tutorials/screenshots/first-skill-5min/wizard-25-verify-output.png" alt="verify_xlsx.py 终端输出,3 项检查全 ok:true">
@@ -382,23 +375,23 @@ python verify_xlsx.py ..\_verify_out\sample.xlsx
 
 <h2 id="result">最终结果</h2>
 
-<p>走完这 6 步,你已经在 workspace 里得到一个:</p>
+<p>完成上述 6 步后,workspace 中已生成:</p>
 
 <ul class="checklist">
-  <li>包含完整 <strong>SKILL.md</strong>(含触发词 + 红线 + 诚实边界)</li>
-  <li>包含可执行 <strong>scripts/</strong>(含真实 npm 依赖 + Python 校验)</li>
+  <li>完整的 <strong>SKILL.md</strong>(含触发词、红线与诚实边界)</li>
+  <li>可执行 <strong>scripts/</strong>(含真实 npm 依赖与 Python 校验脚本)</li>
   <li>覆盖边界场景的 <strong>fixtures/</strong></li>
-  <li>面向用户/开发者的 <strong>README.md</strong></li>
+  <li>面向用户与开发者的 <strong>README.md</strong></li>
 </ul>
 
-<p>它的能力会被 QBuilder 全局识别,以后你可以直接用日常语言("把这份 CSV 转成 xlsx")触发它。</p>
+<p>其能力将由 QBuilder 全局识别,后续可使用日常语言(如「把这份 CSV 转成 xlsx」)直接调用。</p>
 
 <h2 id="pitfalls">常见踩坑</h2>
 
 <ul>
-  <li><strong>Desktop banner 报 "agent not responding"</strong>: 这是 Desktop 心跳检测的误报,后端还在跑。看文件系统是不是有新目录出现比看 banner 重要。</li>
-  <li><strong>想修改之前的回答</strong>: 对话里没有"上一步"按钮,只能点 cell 旁边的删除按钮删掉,或重新打开 Skill Studio 走一遍。</li>
-  <li><strong>想跳过 followup 但页面没动</strong>: 确认你点的是追问 cell 旁边的"跳过",而不是覆盖率面板里的项目。</li>
+  <li><strong>Desktop banner 报「agent not responding」</strong>:该提示为 Desktop 心跳检测的误报,后端仍在运行。以文件系统是否出现新目录为准,不要以 banner 状态为判断依据。</li>
+  <li><strong>需要修改之前的回答</strong>:对话流中没有「上一步」按钮。修改已提交回答需点击对应 cell 旁的删除按钮,或重新打开 Skill Studio 走一遍。</li>
+  <li><strong>点击「跳过」无响应</strong>:请确认点击的是追问 cell 旁的「跳过」,而非覆盖率面板内的项目。</li>
 </ul>
 
 </article>
