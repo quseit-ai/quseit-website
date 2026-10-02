@@ -15,6 +15,9 @@
   const LINK_MAP = {
     '1-1': 'agentspace/01-sync-skill-to-quseit.html',
     '1-2': 'agentspace/02-three-step-wizard.html',
+    '1-3': 'agentspace/03-link-and-qr.html',
+    '1-4': 'agentspace/04-walkthrough-visitor.html',
+    '1-5': 'agentspace/05-update-version.html',
   };
 
   function render(lang) {

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>把技能同步进智空间 — 智空间教程</title>
-<meta name="description" content="PATH 01 第 1 课:把第一个技能放进 QUSEIT 技能库,准备好勾选发布。">
+<title>改完「更新版本」才生效 — QUSEIT 智空间教程</title>
+<meta name="description" content="PATH 01 第 5 课:为什么改了「配置」/「技能」tab 必须点右上角「更新版本」才生效,以及哪些字段是「保存即生效」。">
 <link rel="icon" type="image/svg+xml" href="../../logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,8 @@
   .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
   .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
   .tut-doc .callout strong { color: #0288a8; }
+  .tut-doc .callout-red { background: rgba(198, 40, 40, 0.06); border: 1px solid rgba(198, 40, 40, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout-red strong { color: #c62828; }
   .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
   .tut-doc .figure img { display: block; width: 100%; height: auto; }
   .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
@@ -45,7 +47,6 @@
   .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
   .tut-doc .checklist li::before { content: "✓"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(46, 125, 50, 0.15); color: #2e7d32; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
   .tut-doc .redline { list-style: none; padding-left: 0; margin: 16px 0; }
-  .tut-doc .redline li { padding: 8px 0 8px 32px; position: relative; }
   .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
   .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
 </style>
@@ -89,135 +90,168 @@
   <span class="sep">/</span>
   <a href="../agentspace-tutorial.html">智空间教程</a>
   <span class="sep">/</span>
-  <span class="current">PATH 01 · 同步技能</span>
+  <span class="current">PATH 01 · 更新版本</span>
 </nav>
-<h1>把技能同步进智空间</h1>
-<p class="tut-doc-sub">PATH 01 第 1 课。本课介绍将本地技能导入 QUSEIT 技能库的两种同步路径,并说明勾选后进入发布向导的衔接步骤。</p>
+<h1>改完「更新版本」才生效</h1>
+<p class="tut-doc-sub">PATH 01 第 5 课。本课解释 QUSEIT 的「配置层」与「版本层」分离机制,说明哪些字段的修改需经「更新版本」才生效,以及版本回滚的操作方法。</p>
 
 <div class="tut-doc-meta">
   <span class="badge">PATH 01 · 启程</span>
   <span class="dot"></span>
-  <span>预计实操 2 分钟</span>
+  <span>预计实操 3 分钟</span>
 </div>
+
+<h2 id="why">为何需要「更新版本」</h2>
+
+<p>访客所访问的智能体实为某一「版本」的快照,而非配置的实时视图。因此,在「配置」tab 中修改开场白等内容后,访客端展示的仍是修改前的快照;须经「更新版本」操作将当前配置与技能重新打包为新版本并切换上线后,访客才会看到新内容。</p>
 
 <div class="callout">
-  <strong>前置条件</strong>技能包根目录须直接包含 <code>SKILL.md</code>(大小写敏感),且该文件须给出 name、description、instructions 三项基本字段;整个压缩包不得大于 200 MB。部署为 direct 模式(未配置平台模型网关)的创作者,还需先在「账号设置 → 模型与密钥」中配置自有模型密钥,否则后续发布流程将被前端拦截。
+  <strong>设计动机</strong>沙箱中的会话以特定版本(模型、角色设定、工具挂载、系统 prompt 等)为运行基线。若允许在会话进行过程中修改角色设定,将导致「对话中途智能体性格突变」之类的不可预期行为。「版本」机制由此引入隔离边界 — 每次更新将整个版本切换;旧会话继续以旧版本运行直至结束,新会话则使用新版本。
 </div>
 
-<p>登录成功后,系统默认进入「控制面板」页:</p>
+<h2 id="which-tabs">哪些字段需触发「更新版本」</h2>
 
-<figure class="figure">
-  <img src="../../tutorials/screenshots/agentspace/01-control-panel.png" alt="登录后落到控制面板,右上角账号与点数余额,主区域两条发技能入口" loading="lazy">
-  <figcaption class="figure-cap">图 1 · 「控制面板」页:右上角显示账号与点数余额,主区域提供「从 QBuilder 同步」与「直接提交技能包」两个入口。</figcaption>
-</figure>
-
-<h2 id="pick-a-path">两条同步路径</h2>
-
-<figure class="figure">
-  <img src="../../tutorials/screenshots/agentspace/03-publish-page.png" alt="发布技能页:左卡从 QBuilder 同步,右卡上传技能包" loading="lazy">
-  <figcaption class="figure-cap">图 2 · 「发布技能」页将两种同步路径并列展示,并附后续三步流程提示。</figcaption>
-</figure>
+<p>并非所有修改都需要「更新版本」。下表给出字段与生效方式的对应关系:</p>
 
 <table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
   <thead>
     <tr style="border-bottom:1.5px solid var(--ink);">
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">路径</th>
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">入库标记</th>
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">适用场景</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">位置</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">是否需更新版本</th>
     </tr>
   </thead>
   <tbody>
     <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px; font-weight:600;">路径 A · QBuilder 同步</td>
-      <td style="padding:12px 8px;"><code>来自 QBuilder</code></td>
-      <td style="padding:12px 8px;">已在本地维护技能、需频繁迭代的场景(推荐)</td>
+      <td style="padding:12px 8px; font-weight:600;">「配置」tab 全部字段(头像、名称、角色设定、开场白、引导问题、主题色、模型、运行引擎)</td>
+      <td style="padding:12px 8px;"><strong>需要</strong></td>
     </tr>
     <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px; font-weight:600;">路径 B · 上传 zip</td>
-      <td style="padding:12px 8px;"><code>自建</code></td>
-      <td style="padding:12px 8px;">未安装 QBuilder 客户端、仅做一次性导入</td>
+      <td style="padding:12px 8px; font-weight:600;">「技能」tab 装配清单</td>
+      <td style="padding:12px 8px;"><strong>需要</strong></td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">「分享」tab 全部字段(地址后缀、密码访问、智空间可见性、API 密钥)</td>
+      <td style="padding:12px 8px;">不需要 — 保存即生效</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">「收费」tab 全部字段</td>
+      <td style="padding:12px 8px;">不需要 — 保存即生效</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="path-a">路径 A · QBuilder 同步(推荐)</h2>
+<p><strong>简要规则</strong>:修改「配置」或「技能」tab 后必须执行「更新版本」;修改「分享」或「收费」tab 后直接保存即可生效。</p>
+
+<h2 id="config-tab">「配置」tab 的更新流程</h2>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 01</span>
-    <h3 class="step-title">在 QBuilder 中完成技能的开发与自测</h3>
+    <h3 class="step-title">进入「配置」tab</h3>
   </div>
-  <p>在 QBuilder 桌面端内编写 <code>SKILL.md</code>、示例输入输出及必要的工具挂载,并完成本地联调,确认技能在本地可调用。撰写规范见 QBuilder 教程的「5 分钟创建你的第一个智能体」一文。</p>
-  <p>首次执行同步前,客户端将引导用户关联 QUSEIT 账号。该流程基于凭票与 SSO,凭票有效期为 10 分钟。完成关联后,后续同步不再要求重新登录。</p>
+  <p>默认展示为只读视图,所有字段均反映上一版本上线时的状态:</p>
 </div>
+
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/17-config-tab.png" alt="配置 tab 只读态:身份与开场 + 编辑 + 已装配技能 + 模型/运行时 + 当前版本 v1" loading="lazy">
+  <figcaption class="figure-cap">图 17 · 「配置」tab 只读态。当前生效版本的快照;右上角橙色「更新版本」按钮即触发 v1 → v2 切换;底部金色提示明示「改完不会立刻生效」。</figcaption>
+</figure>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 02</span>
-    <h3 class="step-title">通过对话触发同步</h3>
+    <h3 class="step-title">编辑字段并保存</h3>
   </div>
-  <p>在 QBuilder 对话中向 Agent 发出指令「将技能发布到智能体空间」。客户端凭登录态将技能包推送至服务端;服务端按 <code>SKILL.md</code> 校验通过后写入技能库,标记为「来自 QBuilder」。</p>
+  <p>点击「身份与开场」区块右上角的「编辑」,弹出编辑对话框。修改若干字段(如开场白),点击「保存」,系统给出「已保存」提示。<strong>该提示并不意味着访客端已生效</strong>。</p>
+
+  <figure class="figure">
+    <img src="../../tutorials/screenshots/agentspace/18-config-edit-dialog.png" alt="编辑对话框,底部金底提示「保存不会自动重新打包」" loading="lazy">
+    <figcaption class="figure-cap">图 18 · 编辑对话框。底部金色提示明示:「保存不会自动重新打包;模型、运行引擎与角色设定的改动随下一次『更新版本』生效」。</figcaption>
+  </figure>
+
+  <div class="callout-red">
+    <strong>常见误区</strong>「已保存」提示易被误解为「已生效」 — 实际仍需后续执行「更新版本」操作。
+  </div>
 </div>
 
 <div class="step">
   <div class="step-head">
     <span class="step-num">STEP 03</span>
-    <h3 class="step-title">勾选并进入发布向导</h3>
+    <h3 class="step-title">执行「更新版本」</h3>
   </div>
-  <p>在「技能库」页定位刚入库的卡片(标记「来自 QBuilder」),勾选其右上角的复选框。勾选数 ≥ 1 时,页面底部将出现常驻操作条,右侧主按钮为「发布成智能体 →」。点击后即进入 PATH 01 第 2 课所述的三步发布向导。</p>
+  <p>返回页面顶部,点击右上角「更新版本」。后端将基于「当前配置 + 当前技能」打包新版本并切换上线。</p>
+
+  <figure class="figure">
+    <img src="../../tutorials/screenshots/agentspace/19-version-v2-confirmed.png" alt="更新版本后:tab 显示版本 v2,当前版本 v2 运行中 刚刚,开场白新版" loading="lazy">
+    <figcaption class="figure-cap">图 19 · 「更新版本」执行后:顶部 tab 标签由「版本 v1」变为「版本 v2」,右下「当前版本 v1 运行中 · 1 小时前」变为「当前版本 v2 运行中 · 刚刚」,开场白亦显示已修改内容 — 此即「生效」的可视化信号。</figcaption>
+  </figure>
 </div>
+
+<h2 id="versions-tab">版本历史与回滚</h2>
+
+<p>点击页面顶部「版本 v2」tab,即可查看完整版本历史及回滚入口:</p>
 
 <figure class="figure">
-  <img src="../../tutorials/screenshots/agentspace/05-card-selected-publish-cta.png" alt="勾选后卡片变金色描边,底部出现「已选 1 个技能」+「发布成智能体 →」" loading="lazy">
-  <figcaption class="figure-cap">图 3 · 勾选后状态:卡片切换为金色描边,底部出现「已选 N 个技能」与「发布成智能体 →」操作条。</figcaption>
+  <img src="../../tutorials/screenshots/agentspace/20-versions-tab.png" alt="版本 tab:v2 运行中,v1 历史 + 回滚按钮" loading="lazy">
+  <figcaption class="figure-cap">图 20 · 「版本」tab。每次「更新版本」操作追加一行记录;v2 标记为「运行中」,v1 标记为「历史」。若 v2 上线后需回滚,点击 v1 行的「回滚到这一版」即可。</figcaption>
 </figure>
 
-<h2 id="path-b">路径 B · 上传 zip</h2>
-
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">STEP 01</span>
-    <h3 class="step-title">将技能目录打包</h3>
-  </div>
-  <p>将技能目录打包为 <code>.zip</code>。要求 <code>SKILL.md</code> 位于压缩包根目录,不得嵌套于子目录中。</p>
-  <ul class="redline">
-    <li><code>SKILL.md</code> 置于子目录 → 服务端无法定位,直接报错。</li>
-    <li>压缩包超过 200 MB → 前端直接拦截,后端不接收。</li>
-  </ul>
+<div class="callout">
+  <strong>回滚机制</strong>「回滚」操作的语义并非「删除 v2」,而是「将 v2 标记为历史、将 v1 重新激活为运行中」。版本本身不被删除,可在 v1、v2、v3 等任意历史版本之间来回切换。因此新版本上线后可放心试错,出现严重问题时可一键回滚,访客端约 30 秒内即可恢复。
 </div>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">STEP 02</span>
-    <h3 class="step-title">上传并核对入库结果</h3>
-  </div>
-  <p>在「发布技能」页点击「选择文件」或直接将 <code>.zip</code> 拖至卡片。上传成功后,页面自动跳转至「技能库」。新条目标记为「自建」,默认分类为「未分类」。随后的衔接操作与路径 A 一致:勾选卡片 → 点击「发布成智能体 →」进入发布向导。</p>
+<h2 id="when-effective">新版本的生效时机</h2>
+
+<ul>
+  <li><strong>新会话</strong>:立即使用新版本</li>
+  <li><strong>已开始的会话</strong>:继续使用旧版本直至结束,不会中断或切换</li>
+  <li><strong>已暂停的会话</strong>(5 分钟空闲后自动暂停):访客端再次访问时被唤醒,使用新版本</li>
+</ul>
+
+<div class="callout-red">
+  <strong>避免使用「关闭全部会话」强制切换</strong>该操作将强制结束所有正在进行的会话。仅当 v2 存在严重缺陷需立即将所有用户切回 v1 时,才建议使用。
 </div>
 
-<figure class="figure">
-  <img src="../../tutorials/screenshots/agentspace/04-skill-library-after-upload.png" alt="上传后的技能库:1 张卡,元数据「通用 · 自建 · vv1」,右下角标签「未被使用」" loading="lazy">
-  <figcaption class="figure-cap">图 4 · 上传后核对项:分类(此处为「通用」,亦可能为「未分类」)、来源(「自建」)、状态(「未被使用」)。版本号 vv1 由系统在首次入库时自动分配。</figcaption>
-</figure>
+<h2 id="checklist">PATH 01 完成判定</h2>
+
+<p>PATH 01 的 5 课全部走完后,智能体应处于以下状态:</p>
+
+<ul class="checklist">
+  <li>已有 1 个技能从技能库勾选并发布(第 1 课)</li>
+  <li>身份、收费、上线三步均已完成并成功上线(第 2 课)</li>
+  <li>已获得分享链接与二维码,且确认访客可正常访问(第 3 课)</li>
+  <li>已使用另一账号或隐身窗口完成至少一次对话,「数据」tab 数据卡 +1(第 4 课)</li>
+  <li>已成功修改至少一个字段并执行「更新版本」,当前版本号 ≥ v2(本课)</li>
+</ul>
+
+<p>全部条件满足即视为 PATH 01「启程」完成。</p>
 
 <h2 id="pitfalls">常见踩坑</h2>
 
 <ul>
-  <li><strong>入库后列表中未见新条目</strong>:首先在 QBuilder 对话中查看错误日志,常见原因为 <code>SKILL.md</code> 字段缺失或包结构不符合要求。</li>
-  <li><strong>勾选后未出现「发布成智能体 →」按钮</strong>:说明勾选未生效 — 再次点击卡片右上角的复选框,确认卡片描边变为金色。</li>
-  <li><strong>上传后分类显示为「未分类」</strong>:属预期行为。zip 上传不携带客户端所维护的分类元数据,系统占位「未分类」,需在「技能库」页手动调整。</li>
-  <li><strong>删除技能时弹出拒绝提示</strong>:删除对话框将列出「正在被 N 个智能体使用」,凡存在引用的技能均不可删除;须先在相关智能体中替换该技能,再行删除。</li>
+  <li><strong>误以为「已保存」即「已生效」</strong>:「保存」仅将修改写入草稿,须经「更新版本」才会对访客生效。可通过「版本」tab 中版本号是否递增进行确认。</li>
+  <li><strong>v2 上线后访客反馈「未变化」</strong>:请访客刷新页面,或新开一次会话。已开始的会话将沿用旧版本直至结束。</li>
+  <li><strong>点击「更新版本」后发现改动内容与预期不符</strong>:「更新版本」基于「当前配置」生成新版本,并非基于「刚刚编辑后又回滚的内容」。</li>
+  <li><strong>回滚后 v1 仍有缺陷</strong>回滚仅「激活」旧版本,不会删除新版本。修复后再次执行「更新版本」将生成 v3,以此类推。</li>
+  <li><strong>点击「更新版本」无响应或报错</strong>通常由后端校验失败引起,如模型密钥缺失或角色设定留空。具体原因由 toast 提示给出。</li>
 </ul>
 
 </article>
 
 <nav class="learn-pager" aria-label="tutorial pager">
   <div class="container learn-pager-inner">
-    <span class="learn-pager-empty" aria-hidden="true"></span>
-    <span class="learn-pager-label mono">继续学习</span>
-    <a class="learn-pager-link next" href="02-three-step-wizard.html">
+    <a class="learn-pager-link prev" href="04-walkthrough-visitor.html">
+      <span class="learn-pager-arrow">←</span>
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">上一步</span>
+        <span class="learn-pager-title">走查访问者视角</span>
+      </span>
+    </a>
+    <span class="learn-pager-label mono">PATH 01 完成</span>
+    <a class="learn-pager-link next" href="../agentspace-tutorial.html">
       <span class="learn-pager-text">
         <span class="learn-pager-eyebrow">下一步</span>
-        <span class="learn-pager-title">三步发布向导:身份 · 收费 · 上线</span>
+        <span class="learn-pager-title">回到智空间教程目录</span>
       </span>
       <span class="learn-pager-arrow">→</span>
     </a>

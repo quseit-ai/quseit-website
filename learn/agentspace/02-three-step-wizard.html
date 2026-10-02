@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>三步发布向导:身份 · 收费 · 上线 — QUSEIT 智空间教程</title>
-<meta name="description" content="PATH 01 第 2 课:走完身份(你是谁、怎么开场) → 收费(免费还是按轮扣点) → 上线(地址、主题色、密码、出现在智空间)三步,搞定一个能对外服务的智能体。">
+<meta name="description" content="PATH 01 第 2 课:走完身份 → 收费 → 上线三步,你的智能体就正式对外了。">
 <link rel="icon" type="image/svg+xml" href="../../logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css">
 <style>
-  /* ── 教程详情页 (在 learn 样式基础上扩展) ───────────────────────── */
   .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
   .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
   .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
@@ -39,8 +38,6 @@
   .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
   .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
   .tut-doc .callout strong { color: #0288a8; }
-  .tut-doc .callout-red { background: rgba(198, 40, 40, 0.06); border: 1px solid rgba(198, 40, 40, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
-  .tut-doc .callout-red strong { color: #c62828; }
   .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
   .tut-doc .figure img { display: block; width: 100%; height: auto; }
   .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
@@ -95,340 +92,113 @@
   <span class="current">PATH 01 · 发布向导</span>
 </nav>
 <h1>三步发布向导:身份 · 收费 · 上线</h1>
-<p class="tut-doc-sub">从「技能库」页勾选的卡点进来,走完身份 → 收费 → 上线三步,你的智能体就正式对外了。</p>
+<p class="tut-doc-sub">PATH 01 第 2 课。在「技能库」页完成勾选后,系统进入三步发布向导;本课介绍每步的字段含义、必填项与典型值。</p>
 
 <div class="tut-doc-meta">
   <span class="badge">PATH 01 · 启程</span>
   <span class="dot"></span>
-  <span>约 5 分钟读完</span>
-  <span class="dot"></span>
-  <span>实操约 5–10 分钟</span>
-  <span class="dot"></span>
-  <span>最后更新 2026-09</span>
+  <span>预计实操 5–10 分钟</span>
 </div>
 
 <div class="callout">
-  <strong>本教程适合谁?</strong> 已经在「技能库」页勾选了一张卡(或几张)、准备好让智能体对外服务的创作者。读完你会知道三步里每一步都填什么、哪些字段留空也允许、以及点「确认上线」那一刻可能遇到的三种失败。
-</div>
-
-<p>这是 PATH 01「启程」的第 2 课。整条路径:</p>
-
-<ol>
-  <li><a href="01-sync-skill-to-quseit.html">把技能同步进智空间</a>(上一课)</li>
-  <li><strong>三步发布向导:身份 · 收费 · 上线</strong>(本课)</li>
-  <li><a href="#">拿到第一个链接与二维码</a>(下一课)</li>
-  <li><a href="#">走查访问者视角</a></li>
-  <li><a href="#">改完「更新版本」才生效</a></li>
-</ol>
-
-<h2 id="before-you-start">开始之前</h2>
-
-<p>从「技能库」页勾选一张卡 + 点右下角的「发布为智能体」,会进入「发布向导」页(在浏览器里)。这个向导分三步 — 你可以随时点上方的步骤标签来回切,但「确认上线」只能在第三步点。</p>
-
-<div class="callout-red">
-  <strong>关键前置</strong>: 如果你部署的是 <strong>direct 模式</strong>(没有平台模型网关),第一步顶部会出现一张<strong>红色提示卡</strong>,强制你点「去配置密钥」配自己的模型密钥 — 没配就不能往下走。如果你已经配好,这张卡不会出现。
+  <strong>前置条件</strong>采用 direct 模式(未配置平台模型网关)的创作者,在步 1 顶部将看到红色提示卡,要求先于「账号设置 → 模型与密钥」完成密钥配置,否则后续步骤将被锁定。已配置密钥的创作者不会看到该提示。
 </div>
 
 <h2 id="step-1">步 1:身份</h2>
 
-<p>这一步把所有"让访问者一眼认识这个智能体"的字段填齐。表单从上到下分六块:</p>
+<p>该页面默认展示基于 <code>SKILL.md</code> 自动起草的字段值,创作者可直接使用或修改后再进入下一步。</p>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">必填</span>
-    <h3 class="step-title">智能体名称</h3>
-    <span class="step-time">必填</span>
-  </div>
-  <p>会显示在卡片标题、对话窗口标题、以及访问者分享链接时看到的第一行字。给个能让人秒懂"这智能体能干啥"的名字 — 后续所有页面的引用、消息推送、智空间卡片都用这个名字。</p>
-</div>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/06-wizard-step1-identity.png" alt="步 1 身份对话框:三步指示器,装配的技能行,头像,名称,角色设定,开场白,引导问题,运行引擎 OpenCode" loading="lazy">
+  <figcaption class="figure-cap">图 6 · 步 1「身份」页:UI 已根据 SKILL.md 起草名称、角色设定、开场白、输入框提示语与引导问题;运行引擎默认为 OpenCode。</figcaption>
+</figure>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">选填</span>
-    <h3 class="step-title">角色设定</h3>
-    <span class="step-time">多行文本</span>
-  </div>
-  <p>告诉智能体"你是谁、你能做什么、什么时候该拒绝"。留空也允许 — 但开场会更机械,像个无差别助手;写几句话,后面整个对话的气质都会不一样。</p>
-  <p>写得越具体越好。比如不要写"我是一个写作助手",而是写"我是一名资深科技作者,擅长把复杂技术概念改成 200 字以内的口语化解释,只回答与编程 / AI / 工程实践相关的问题,其他话题礼貌推掉"。</p>
-</div>
+<p>本步骤共 6 个字段,按必填/选填分组说明:</p>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">选填</span>
-    <h3 class="step-title">开场白</h3>
-    <span class="step-time">一行</span>
-  </div>
-  <p>访问者第一眼看到的大字。留空时回落成智能体名称 — 比如智能体叫"代码审计员",访问者看到的就是"代码审计员",不再多一行欢迎语。建议写一句"我是做什么 + 我能帮你 + 一个具体例子",例如:</p>
-  <blockquote>你好,我是 Code Auditor — 把你的 diff 贴给我,我帮你找出潜在的并发、边界条件、安全问题。一段 diff 通常 30 秒内能给到意见。</blockquote>
-</div>
+<p><strong>智能体名称</strong>(实际可空,建议必填):将用于卡片标题、对话窗口标题与分享链接预览。空值时「下一步」按钮不校验,可正常提交;但空名称会使智能体访问页与智空间卡片回退至 ID 形式,阅读体验欠佳。</p>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">选填</span>
-    <h3 class="step-title">输入框提示语</h3>
-    <span class="step-time">一行</span>
-  </div>
-  <p>桌面输入框里的灰色占位符。留空用默认值 <code>「把你的问题告诉我。」</code>。可逐智能体定制 — 让访问者知道"这里是用来问什么的"。比如写作类智能体可以填 <code>「贴一段文字,我帮你改。」</code>。</p>
-</div>
-
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">选填</span>
-    <h3 class="step-title">引导问题</h3>
-    <span class="step-time">0–3 个</span>
-  </div>
-  <p>冷启动页面(访问者第一次打开 智能体访问页 时)会渲染成卡片,点哪个就触发哪个对话。0–3 个都行 — 写得好可以显著降低访问者的"第一次对话成本"。</p>
-  <p>卡片标题和实际发出去的提问填一样的就行(都是给访问者看的)。例如:</p>
-  <ul class="checklist">
-    <li>卡片标题和实际提问都填 <code>「帮我审一段 Python 代码」</code></li>
-    <li>卡片标题和实际提问都填 <code>「找一处并发 bug」</code></li>
-    <li>卡片标题和实际提问都填 <code>「讲讲这函数的时间复杂度」</code></li>
-  </ul>
-</div>
-
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">必选</span>
-    <h3 class="step-title">运行引擎</h3>
-    <span class="step-time">二选一</span>
-  </div>
-  <p>两个选项,首次发布建议选 <strong>opencode</strong>(兜底更稳):</p>
-
-  <table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
-    <thead>
-      <tr style="border-bottom:1.5px solid var(--ink);">
-        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">引擎</th>
-        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">适合</th>
-        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">成本</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-        <td style="padding:12px 8px; font-weight:600;"><strong>opencode</strong></td>
-        <td style="padding:12px 8px;">通用编码、资料检索、问答、文档生成 — 大多数场景</td>
-        <td style="padding:12px 8px;">基线</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-        <td style="padding:12px 8px; font-weight:600;"><strong>hermes</strong></td>
-        <td style="padding:12px 8px;">需要"产出文件、报表、文档"等实物的工作流</td>
-        <td style="padding:12px 8px;">同类任务 token 消耗约为 opencode 的 <strong>3 倍</strong></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>后续想换引擎 — 不是这一步能改的,要去「智能体详情 · 配置」编辑对话框里改(详见 PATH 05 进阶)。</p>
-</div>
+<p><strong>其余 5 项</strong>(选填):</p>
+<ul>
+  <li><strong>角色设定</strong>:界定智能体的身份、能力范围及拒绝条件。空值将导致首轮对话风格趋同。建议给出具体身份与处理边界(例如,「资深科技作者,擅长将复杂技术改写为 200 字内的口语化解释;只回答与编程、AI、工程实践相关的问题,其他话题礼貌拒答」)。</li>
+  <li><strong>开场白</strong>:访客首屏标题。空值时回退至智能体名称。</li>
+  <li><strong>输入框提示语</strong>:对话框输入框的灰色占位文字。空值时使用默认文案「把你的问题告诉我。」。</li>
+  <li><strong>引导问题</strong>:0–3 项,访客首次进入时可见的可点击提示卡,用于降低首轮对话门槛。</li>
+  <li><strong>运行引擎</strong>:OpenCode(默认,基线成本)或 Hermes(用于产出文件、报表等实物工作流,同类任务 token 消耗约为 OpenCode 的 3 倍)。上线后可在「配置」tab 中调整。</li>
+</ul>
 
 <h2 id="step-2">步 2:收费</h2>
 
-<p>这一步只有两个选项 — 二选一,没法同时存在。</p>
+<p>本步骤包含「免费」与「按轮扣点」两种互斥方案,二者由用户单选。</p>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">选项 A</span>
-    <h3 class="step-title">免费</h3>
-    <span class="step-time">默认</span>
-  </div>
-  <p>智能体的每一轮都不扣点,访问者也不会看到任何价格。如果你刚上线想先试水,先用这个。</p>
-</div>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/07-wizard-step2-pricing-free.png" alt="步 2 收费:两个选项卡「免费」和「按轮收费」并排,免费被选中" loading="lazy">
+  <figcaption class="figure-cap">图 7 · 「免费」选项被选中(金色描边)的状态,适用于上线试水期。</figcaption>
+</figure>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">选项 B</span>
-    <h3 class="step-title">按轮扣点</h3>
-    <span class="step-time">两件套</span>
-  </div>
-  <p>同一访问者<strong>前 N 轮免费,第 N+1 轮起每轮扣 单价 点</strong>。</p>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/08-wizard-step2-pricing-per-turn.png" alt="按轮收费被选中,展开「每轮点数」输入 + 「免费轮次」chips" loading="lazy">
+  <figcaption class="figure-cap">图 8 · 「按轮扣点」被选中时展开两个子字段:「每轮点数」(支持两位小数)与「免费轮次」(下拉选项 0/1/2/3/5/10)。截图所示为示例组合「1 点 / 前 3 轮免费」。</figcaption>
+</figure>
 
-  <ul>
-    <li><strong>免费轮次</strong>:默认 <strong>0</strong>(立即开始扣)。可填 1、2、3 … 给新访问者一点"试聊"机会。</li>
-    <li><strong>单价</strong>:允许两位小数。展示形如「2 点 / 轮」(约 ¥0.02 / 轮)。</li>
-  </ul>
+<p>选择「按轮扣点」时,需设置两项参数:</p>
+<ul>
+  <li><strong>免费轮次</strong>:同一访客账号在开始扣点前可享受的免费对话轮数;默认 0。亦可填入 1、2、3 等以提供试用额度。</li>
+  <li><strong>单价</strong>:每轮扣点的数值,允许两位小数。UI 展示形式如「2 点 / 轮」(约 ¥0.02 / 轮)。</li>
+</ul>
 
-  <p>三个常见组合:</p>
-  <table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
-    <thead>
-      <tr style="border-bottom:1.5px solid var(--ink);">
-        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;"></th>
-        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">单价</th>
-        <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">访问者体验</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-        <td style="padding:12px 8px;"><code>0</code></td>
-        <td style="padding:12px 8px;"><code>2</code></td>
-        <td style="padding:12px 8px;">每一轮扣 2 点</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-        <td style="padding:12px 8px;"><code>3</code></td>
-        <td style="padding:12px 8px;"><code>1</code></td>
-        <td style="padding:12px 8px;">前 3 轮免费,第 4 轮起每轮扣 1 点</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-        <td style="padding:12px 8px;"><code>10</code></td>
-        <td style="padding:12px 8px;"><code>5</code></td>
-        <td style="padding:12px 8px;">前 10 轮免费,第 11 轮起每轮扣 5 点 — 用作"先深度体验"</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="callout">
-    <strong>关于钱的两条事实</strong>:
-    <ul style="margin: 8px 0 0;">
-      <li>扣的是<strong>你自己的</strong>点数(创作者钱包),不是访问者付钱给你 — 没有第三方支付、没有平台服务费、没有提现。</li>
-      <li>扣点在<strong>回合结束时</strong>执行,所以最后一轮可能把你的余额扣成负数,但 UI 仍会显示余额。</li>
-    </ul>
-  </div>
+<div class="callout">
+  <strong>计费规则</strong>:沙箱运行时长始终从创作者钱包扣除,标准费率 2.58 点 / 分钟;免费与按轮模式均照此扣除,沙箱暂停时不计。若选择「按轮扣点」,访客侧按轮次扣点;UI 顶部会显示「访客每轮付多少点数,你分得 80%」,即访客付费、平台分成、创作者获得 80%。
 </div>
 
 <h2 id="step-3">步 3:上线</h2>
 
-<p>这一步决定智能体怎么"对外被找到"。四个开关,前两个必看,后两个看你的运营策略。</p>
+<p>本步骤设定智能体的对外可访问性,包含 4 个字段。</p>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">字段 1</span>
-    <h3 class="step-title">地址后缀</h3>
-    <span class="step-time">2–50 位字符串</span>
-  </div>
-  <p>智能体的访问地址由「<strong>你的域名</strong> + <strong>智能体访问页路径</strong>」组成。<strong>地址后缀留空会让后端自动生成</strong>(可后续改),但自动生成的字符串通常不那么好记 — 建议自己想一个。</p>
-  <p>命名规则:</p>
-  <ul class="checklist">
-    <li>小写字母、数字、连字符(<code>-</code>)</li>
-    <li>以字母或数字开头(不能以 <code>-</code> 开头)</li>
-    <li>总长度 2–50 位</li>
-    <li>已被你的其他智能体占用的话,会被实时拒绝(输入框会变红)</li>
-  </ul>
-  <p>几个示例:</p>
-  <ul>
-    <li><code>code-auditor</code> · <code>writing-coach</code> · <code>math-tutor-7</code></li>
-  </ul>
-</div>
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/09-wizard-step3-launch.png" alt="步 3 上线:地址后缀,主题色 5 色,密码开关,智空间开关,上线确认 summary" loading="lazy">
+  <figcaption class="figure-cap">图 9 · 步 3 全貌:地址后缀(默认自动填充,可编辑)、主题色(5 选 1)、密码访问开关、智空间显示开关,以及汇总前三步关键值的「上线确认」块。</figcaption>
+</figure>
 
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">字段 2</span>
-    <h3 class="step-title">主题色</h3>
-    <span class="step-time">五色单选</span>
-  </div>
-  <p>五色单选:amber(金) / blue(蓝) / emerald(绿) / rose(粉) / violet(紫)。主题色会出现在两个地方:</p>
-  <ul>
-    <li>智能体页 智能体访问页 — 冷启动能力块、按钮、产出侧栏强调色。</li>
-    <li>智空间卡片 — 头像字颜色和"推荐"角标颜色。</li>
-  </ul>
-  <p>主题色是品牌气质的一部分,跟你的定位/受众有关 — 教学类常用 blue 或 emerald,情感/创作类常用 rose 或 amber,工具/技术类常用 violet。</p>
-</div>
-
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">开关 1</span>
-    <h3 class="step-title">需要密码访问?</h3>
-    <span class="step-time">可选开关</span>
-  </div>
-  <p>开启后,弹窗让你输入 4 位以上密码 — 访问者必须先输对密码才能进对话页。适合:</p>
-  <ul>
-    <li>内测阶段不想公开链接</li>
-    <li>只对特定客户群开放的咨询类智能体</li>
-    <li>教学场景里只给某班学生</li>
-  </ul>
-  <p>密码错会返回 <strong>passwordInvalid</strong>(HTTP 403)— <strong>不是</strong> 401,所以不会触发刷新流程;用户重输就好。</p>
-</div>
-
-<div class="step">
-  <div class="step-head">
-    <span class="step-num">开关 2</span>
-    <h3 class="step-title">出现在智空间?</h3>
-    <span class="step-time">默认勾选</span>
-  </div>
-  <p>如果你已经建过智空间,这里默认勾选 — 勾上之后,智能体 ID 会被加到智空间的 智空间的智能体顺序 顶端,自动出现在 <code>你的智空间主页</code> 的列表最前面。</p>
-  <div class="callout">
-    <strong>还没建智空间?</strong> 这个开关即使勾了也不会生效 — 因为没有 智空间配置 可以挂。要先到 <strong>「智空间」配置页</strong>(顶栏「智空间」)建好之后,这个开关才真正起作用。
-  </div>
-</div>
-
-<h2 id="confirm-launch">点「确认上线」之后会发生什么</h2>
-
-<p>点完「确认上线」,向导会按以下顺序提交:</p>
-
-<ol>
-  <li>把 6 个身份字段 + 运行引擎一次性写进智能体配置</li>
-  <li>把 收费三件套(免费 / 按轮扣点 + 免费轮次数 + 单价)写进去(保存即生效,不必等「更新版本」)</li>
-  <li>把 地址 / 主题色 / 密码 写入</li>
-  <li>(可选)如果勾了「出现在智空间」,把这个智能体加到智空间主页列表的最前面</li>
-</ol>
-
-<p>成功时:toast 提示 + 跳到「智能体详情 · 概览」页。</p>
-
-<p>失败时,有三种分支:</p>
-
-<ul class="redline">
-  <li><strong>engine_not_supported</strong>(后端不接受你选的引擎):<strong>自动退回步 1</strong>,引擎选择器旁边就地显示错误提示 — 不会弹 toast。改个引擎再点上线。</li>
-  <li><strong>llm_credential_missing</strong>(direct 模式下模型密钥缺失):<strong>留在步 1</strong>,顶部那张红色提示卡就地显示(带 trace_id),也不会弹 toast。回「账号设置 → 模型与密钥」页面配好再来。</li>
-  <li><strong>其它失败</strong>:toast 提示(同样带 trace_id),留在步 3 让你改完再试。</li>
+<ul>
+  <li><strong>地址后缀</strong>(必填,2–50 位):由小写字母、数字、连字符组成,且必须以字母或数字开头。已被本账号下其他智能体占用的后缀将被实时拒绝(输入框变红提示)。</li>
+  <li><strong>主题色</strong>(5 选 1):amber、blue、emerald、rose、violet。该色值将作用于访客访问页的冷启动模块、按钮与产出侧栏,以及智空间卡片头像字色与「推荐」角标颜色。</li>
+  <li><strong>需要密码才能访问</strong>(开关):开启后,访客须先输入不少于 4 位的密码方可进入对话页。密码错误时服务端返回 HTTP 403 与 <code>passwordInvalid</code>,并非 401,因此不会触发登录刷新流程,访客重新输入即可。</li>
+  <li><strong>出现在智空间</strong>(开关):开启后,智能体 ID 将被置于智空间主页列表首位。<em>若智空间主页尚未创建,该开关将处于禁用(disabled)状态,即使尝试勾选也不会生效。</em></li>
 </ul>
 
-<h2 id="after-publish">上线完,接下来能干什么</h2>
+<blockquote>
+  <strong>操作提示</strong>在任意步骤可点击「上一步」返回编辑;「确认上线 →」按钮仅在第 3 步可用。
+</blockquote>
 
-<p>点完「确认上线」跳到「智能体详情 · 概览」页。这个页面有 7 个 tab,你会在后续 PATH 学到 — 这里先告诉你哪个 tab 改什么、要不要"更新版本":</p>
+<h2 id="confirm-launch">点「确认上线」之后</h2>
 
-<table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
-  <thead>
-    <tr style="border-bottom:1.5px solid var(--ink);">
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">tab</th>
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">改的东西</th>
-      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">要不要"更新版本"</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px;"><strong>概览 overview</strong></td>
-      <td style="padding:12px 8px;">看今日对话 / 累计对话 / 本月消耗</td>
-      <td style="padding:12px 8px;">—</td>
-    </tr>
-    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px;"><strong>配置 config</strong></td>
-      <td style="padding:12px 8px;">身份、开场、主题色、引导问题 + 已装配技能</td>
-      <td style="padding:12px 8px;">要</td>
-    </tr>
-    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px;"><strong>技能 skills</strong></td>
-      <td style="padding:12px 8px;">全技能库 + 勾选 + 保存</td>
-      <td style="padding:12px 8px;">要</td>
-    </tr>
-    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px;"><strong>版本 versions</strong></td>
-      <td style="padding:12px 8px;">回滚到某一版(把那个 bundle 重新激活)</td>
-      <td style="padding:12px 8px;">—</td>
-    </tr>
-    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px;"><strong>数据 data</strong></td>
-      <td style="padding:12px 8px;">看 N 日对话 / 热门任务 / 最近任务</td>
-      <td style="padding:12px 8px;">—</td>
-    </tr>
-    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px;"><strong>收费 pricing</strong></td>
-      <td style="padding:12px 8px;">修改收费三件套</td>
-      <td style="padding:12px 8px;">不用 — 保存即生效</td>
-    </tr>
-    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
-      <td style="padding:12px 8px;"><strong>分享 share</strong></td>
-      <td style="padding:12px 8px;">访问地址、二维码、链接预览卡、API 密钥</td>
-      <td style="padding:12px 8px;">—</td>
-    </tr>
-  </tbody>
-</table>
+<p>服务端按下列顺序提交:身份字段 + 运行引擎 → 收费三件套(免费 / 按轮扣点 + 免费轮次数 + 单价)→ 地址、主题色、密码 → 智空间挂载(若勾选)。提交成功时,系统跳转至「智能体详情 · 概览」页,并以 toast 提示。</p>
 
-<p>第三课 <a href="#">拿到第一个链接与二维码</a> 会聚焦 share tab — 拿到对外可分享的链接和二维码,这才算 PATH 01 走完。</p>
+<p>失败情形可分为三类:</p>
+
+<ul class="redline">
+  <li><strong>engine_not_supported</strong>:所选运行引擎未被后端接受。系统自动退回步 1,错误就地显示于引擎选择器旁,不弹出 toast。改选其他引擎后再次提交即可。</li>
+  <li><strong>llm_credential_missing</strong>:direct 模式下未配置模型密钥。系统停留于步 1,顶部红色卡显示提示(含 trace_id)。完成「账号设置 → 模型与密钥」配置后再次提交。</li>
+  <li><strong>其它失败</strong>:toast 提示(含 trace_id),停留于步 3 以便修改后重试。</li>
+</ul>
+
+<h2 id="after-publish">上线完成后</h2>
+
+<p>系统跳转至「智能体详情 · 概览」页。该页顶部包含 7 个 tab:概览、配置、技能、版本、数据、收费、分享。其中「分享」tab 用于获取访问链接与二维码,详见 PATH 01 第 3 课。</p>
+
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/10-agent-overview.png" alt="智能体详情 · 概览页:7 个 tab,运行中,访问地址,复制/访问/暂停/更新版本,数据卡" loading="lazy">
+  <figcaption class="figure-cap">图 10 · 「智能体详情 · 概览」页全貌,7 个 tab 位于顶部一行。</figcaption>
+</figure>
 
 <h2 id="pitfalls">常见踩坑</h2>
 
 <ul>
-  <li><strong>地址后缀已被占用</strong>: 输入框会实时变红 + 显示「已被使用」;换一个新的就好。</li>
-  <li><strong>不写角色设定直接发布</strong>: 不是错,但开场会很机械 — 访问者会问"你是谁"得到一个无差别的回答。建议至少花 30 秒写 2 句话。</li>
-  <li><strong>选了 hermes 但没意识到成本</strong>: hermes 同类任务 token 消耗约为 opencode 的 3 倍 — 如果你钱包余额不多,先用 opencode 跑一段时间,看数据再决定。</li>
-  <li><strong>勾了"出现在智空间"但智空间还没建</strong>: 不会有错误提示,但功能也没生效 — 你会发现 智空间主页 看不到这张卡。回「智空间」配置页先把智空间建好。</li>
-  <li><strong>改完「确认上线」发现忘了字段</strong>: 直接去「智能体详情 · 配置」编辑 — 改完点右上角的「更新版本」对访问者生效;改收费直接保存即可。</li>
+  <li><strong>地址后缀已被占用</strong>:输入框实时变红提示,需更换为新的后缀。</li>
+  <li><strong>角色设定留空并直接发布</strong>:系统不报错,但首轮对话风格将趋于机械。建议至少给出 2 句具体描述。</li>
+  <li><strong>选用 hermes 而未评估成本</strong>:hermes 同类任务 token 消耗约为 OpenCode 的 3 倍。若创作者钱包余额有限,建议先用 OpenCode,根据后续数据再行调整。</li>
+  <li><strong>勾选「出现在智空间」而智空间未创建</strong>:系统不报错,但功能亦不生效 — 智空间主页不会出现该卡片。须先于「智空间」配置页完成智空间创建。</li>
+  <li><strong>上线后发现遗漏字段</strong>:进入「智能体详情 · 配置」编辑;若改动涉及身份、主题色或已装配技能,完成后须点「更新版本」以对新会话生效;若仅调整收费,直接保存即可。</li>
 </ul>
 
 </article>
