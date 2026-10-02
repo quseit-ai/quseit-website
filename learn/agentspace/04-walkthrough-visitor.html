@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>走查访问者视角 — QUSEIT 智空间教程</title>
+<meta name="description" content="PATH 01 第 4 课:用另一个账号或隐身窗口完整走一遍智能体访问页 — 从冷启动到一次对话,再到创作者后台的「数据」tab 看回放。">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
+  .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
+  .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
+  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
+  .tut-doc .tut-doc-meta .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; background: rgba(184, 134, 11, 0.12); color: #8b6508; font-weight: 600; }
+  .tut-doc .tut-doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: 0.5; }
+  .tut-doc h2 { font-family: "Noto Serif SC", serif; font-size: 26px; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--text); }
+  .tut-doc h3 { font-family: "Noto Sans SC", sans-serif; font-size: 19px; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+  .tut-doc p { line-height: 1.75; margin: 0 0 16px; color: var(--text); }
+  .tut-doc ol, .tut-doc ul { line-height: 1.75; margin: 0 0 20px; padding-left: 28px; }
+  .tut-doc li { margin: 6px 0; }
+  .tut-doc code { background: rgba(0,0,0,.05); padding: 2px 6px; border-radius: 4px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #b0480a; }
+  .tut-doc pre { background: #1a1610; color: #f5e9c8; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.6; margin: 16px 0 24px; }
+  .tut-doc pre code { background: none; padding: 0; color: inherit; }
+  .tut-doc blockquote { margin: 20px 0; padding: 14px 22px; border-left: 4px solid #b8860b; background: rgba(184, 134, 11, 0.05); border-radius: 0 8px 8px 0; color: var(--text); font-style: italic; }
+  .tut-doc .step { background: var(--card-bg, #fff); border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 24px 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .tut-doc .step-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #8b6508; background: rgba(184, 134, 11, 0.15); padding: 4px 10px; border-radius: 6px; }
+  .tut-doc .step-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; margin: 0; color: var(--text); }
+  .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
+  .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout strong { color: #0288a8; }
+  .tut-doc .callout-red { background: rgba(198, 40, 40, 0.06); border: 1px solid rgba(198, 40, 40, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout-red strong { color: #c62828; }
+  .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
+  .tut-doc .figure img { display: block; width: 100%; height: auto; }
+  .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
+  .tut-doc .checklist { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .checklist li::before { content: "✓"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(46, 125, 50, 0.15); color: #2e7d32; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .redline { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
+</style>
+</head>
+<body class="learn-page">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <span class="brand-name">QUSEIT</span>
+      <span class="brand-tag personal" data-i18n="brand.tag">创作者</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../../index.html#contact">联系我们</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../qbuilder-tutorial.html" data-i18n="nav.learn.tutorials">QBuilder教程</a>
+          <a href="../agentspace-tutorial.html" class="is-active" data-i18n="nav.learn.courses">智空间教程</a>
+          <a href="../use-cases.html" data-i18n="nav.learn.use-cases">案例</a>
+        </div>
+      </div>
+      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">企业版</a>
+    </nav>
+    <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
+    <div class="nav-cta">
+      <a href="../../download.html" class="btn btn-solid">立即构建</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+
+<article class="tut-doc">
+
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../agentspace-tutorial.html">智空间教程</a>
+  <span class="sep">/</span>
+  <span class="current">PATH 01 · 走查访问者视角</span>
+</nav>
+<h1>走查访问者视角</h1>
+<p class="tut-doc-sub">PATH 01 第 4 课。本课介绍端到端验证流程:在隐身窗口中以访客身份完成从冷启动页到首次对话的完整路径,再回到创作者后台「数据」tab 核对回放与计费。</p>
+
+<div class="tut-doc-meta">
+  <span class="badge">PATH 01 · 启程</span>
+  <span class="dot"></span>
+  <span>预计实操 5 分钟</span>
+</div>
+
+<div class="callout-red">
+  <strong>关键事实</strong>系统默认要求访客完成登录方可使用智能体。访客首次访问链接时,系统将首先弹出「请先登录」对话框;登录成功后,方进入冷启动页。该设计旨在防止匿名滥用、保证扣点可归属到具体账号,并保证「数据」tab 能按账号区分会话。
+</div>
+
+<p>为完整观察非创作者视角下的页面表现,可使用以下任一方式:</p>
+
+<ul>
+  <li><strong>隐身窗口</strong>(<code>Ctrl/Cmd + Shift + N</code>):cookie 与登录态独立,等同于另一干净身份。</li>
+  <li><strong>另注册一个账号</strong>:使用个人邮箱注册新账号,体验最贴近真实访客,注册流程约 2 分钟。</li>
+</ul>
+
+<p>本课截图均取自隐身窗口演示。</p>
+
+<h2 id="first-step">走查 1 · 未登录访客的登录弹窗</h2>
+
+<p>在隐身窗口中打开访问链接,登录对话框将浮于冷启动页之上:</p>
+
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/14-visitor-login-required.png" alt="未登录访客打开链接:背景是冷启动页蒙灰,前景登录弹窗" loading="lazy">
+  <figcaption class="figure-cap">图 14 · 未登录访客访问链接时的初始界面。背景冷启动页(介绍 + 引导问题)被半透明遮罩覆盖但仍可见。</figcaption>
+</figure>
+
+<p>若将链接发送给客户群,多数收件人通常已具备 QUSEIT 账号,直接登录即可。无账号者将看到「注册新账号」入口,注册流程约 30 秒。</p>
+
+<h2 id="second-step">走查 2 · 登录后的冷启动页与首次对话</h2>
+
+<p>访客登录后,登录对话框关闭,页面转为冷启动页(智能体介绍 + 引导问题 chip + 输入框)。与登录态访客的差异如下:</p>
+
+<ul class="checklist">
+  <li>页面顶部不显示「vip」等创作者标识</li>
+  <li>页面底部显示「按轮 1 PTS · 每个账号前 3 轮免费」(本示例智能体采用按轮扣点)</li>
+  <li>页面右下不显示「切换到暗色」按钮(创作者专属)</li>
+</ul>
+
+<p>引导问题 chip 用于降低访客首轮对话的输入成本,访客无需自行组织问句即可发起对话。以下以「2x + 5 = 13 我不会,但不知道卡在哪」为例:</p>
+
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/15-conversation-first-turn.png" alt="第一轮对话已发生:用户消息在右,AI 消息在左,AI 按 SKILL.md 列出 A-E 选项" loading="lazy">
+  <figcaption class="figure-cap">图 15 · 首次对话。右侧为访客通过引导问题发出的提问,左侧为智能体依据 SKILL.md 角色设定给出的回复 — 先询问学段,再列出 A-E 选项请访客自评卡点。</figcaption>
+</figure>
+
+<p>需要留意以下几点技术细节:</p>
+<ul>
+  <li><strong>沙箱预热</strong>:首次对话前显示「正在准备工作台…」,由 E2B 沙箱冷启动引起,通常耗时 10–20 秒;后续对话由于 5 分钟空闲保活机制而显著加速。</li>
+  <li><strong>模型推理占位</strong>:模型思考过程中显示「正在思考…」占位消息,访客端不可见推理细节。</li>
+  <li><strong>消息气泡方向</strong>:访客消息右对齐,智能体消息左对齐,与主流 IM 工具保持一致。</li>
+</ul>
+
+<h2 id="third-step">走查 3 · 在「数据」tab 核对回放</h2>
+
+<p>对话发生后,无需等待即可切回创作者后台,刷新智能体详情页并选择「数据」tab:</p>
+
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/16-data-tab.png" alt="数据 tab:4 张数据卡 + 时间窗 + 对话趋势柱状图 + 热门任务 + 最近任务" loading="lazy">
+  <figcaption class="figure-cap">图 16 · 「数据」tab:四张数据卡、对话趋势柱状图、热门任务区、最近任务区。「最近任务」中可点击进入完整回放。</figcaption>
+</figure>
+
+<p>四块统计字段含义如下:</p>
+
+<ul>
+  <li><strong>30 日对话</strong>:30 天内的总对话轮次(用户发送一条 + 智能体回复一条 = 1 轮)。</li>
+  <li><strong>30 日会话数</strong>:按会话去重的独立会话数(同一访客的多次来回视为 1 个会话)。</li>
+  <li><strong>今日对话</strong>:今日已发生的对话轮次。</li>
+  <li><strong>累计对话</strong>:智能体上线以来的对话轮次总和。</li>
+</ul>
+
+<p><em>会话与对话的区别</em>:同一会话内进行 3 轮交互将记为「会话数 +0 / 对话数 +3」。</p>
+
+<p><strong>最近任务</strong>是排查与回放的核心入口 — 每次新会话均显示一行,内容包含「用户的首条提问 + 会话 ID + 时间」。点击可进入完整回放,查看用户提问、智能体回复、沙箱预热时长及扣点明细。</p>
+
+<div class="callout">
+  <strong>重要</strong>「最近任务」展示的是该智能体下的全部会话记录,不仅限于创作者本人的自测。这是产品定位的一部分:创作者对自家智能体的全部对话具有完整可见性。
+</div>
+
+<h2 id="fourth-step">走查 4 · 核对「钱包」的扣费</h2>
+
+<p>回到页面顶部,可观察到点数余额变化。以本课演示为例:从初始的「1,000 点」变为「984.80 点」,差额 15.20 点由沙箱运行时长扣费所致,按 2.58 点 / 分钟计费:<code>2.58 × 5.89 分钟 ≈ 15.20 点</code>。</p>
+
+<div class="callout">
+  <strong>两类扣费口径须区分</strong>:
+  <ul style="margin: 8px 0 0;">
+    <li><strong>沙箱时长</strong>(从创作者钱包扣除):2.58 点 / 分钟,无论收费模式,沙箱暂停不计费。</li>
+    <li><strong>按轮扣点</strong>(从访客钱包扣除):本示例配置「前 3 轮免费,1 点 / 轮」 — 本课自测仅触发 1 轮,处于免费额度内,访客未扣费。</li>
+  </ul>
+</div>
+
+<p>若需查询完整计费明细,可点击顶栏「我的钱包」进入钱包页面,查看每笔扣费的时间、原因与金额。</p>
+
+<h2 id="after-walk">走查通过判定</h2>
+
+<p>以下检查项全部通过,即可视为上线验证完成:</p>
+
+<ul class="checklist">
+  <li>未登录访客访问链接时弹出登录对话框(图 14),而非 404</li>
+  <li>登录后展示冷启动页,含介绍文案与引导问题</li>
+  <li>点击引导问题可触发首轮对话,沙箱预热时长 ≤ 20 秒</li>
+  <li>智能体回复内容与 SKILL.md 角色设定一致(图 15)</li>
+  <li>「数据」tab 的「最近任务」中出现新会话记录(图 16)</li>
+  <li>「今日对话」数值 +1</li>
+  <li>钱包余额相应减少</li>
+</ul>
+
+<p>任一检查项未通过时,优先回到「配置」tab 检查 — 多由 SKILL.md 起草的角色设定不够具体所致。修改完成后须点击右上角「更新版本」(详见 PATH 01 第 5 课)。</p>
+
+<h2 id="pitfalls">常见踩坑</h2>
+
+<ul>
+  <li><strong>「数据」tab 暂未出现新会话</strong>:数据写入存在约 60 秒延迟。请刷新页面并等待约 1 分钟。</li>
+  <li><strong>「最近任务」中仅有自测对话</strong>:尚未收到真实访客访问 — 等待链接被首次访问后,数据将自动写入。</li>
+  <li><strong>沙箱时长扣费超出预期</strong>:长对话使沙箱持续运行数十分钟,创作者钱包将被显著扣减。建议先用低单价配置进行测试,正式运营后再调整。</li>
+  <li><strong>截图中出现「vip」字样而真访客不可见</strong>:以创作者账号自测时,系统会显示「你是创作者」与「vip」字样;此为面向创作者本人的明示,不影响真实访客视角。</li>
+  <li><strong>对话趋势柱状图始终显示为 0</strong>:数据存在缓存,刷新页面或切换至「7 日」窗口重新加载即可。</li>
+</ul>
+
+</article>
+
+<nav class="learn-pager" aria-label="tutorial pager">
+  <div class="container learn-pager-inner">
+    <a class="learn-pager-link prev" href="03-link-and-qr.html">
+      <span class="learn-pager-arrow">←</span>
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">上一步</span>
+        <span class="learn-pager-title">拿到第一个链接与二维码</span>
+      </span>
+    </a>
+    <span class="learn-pager-label mono">继续学习</span>
+    <a class="learn-pager-link next" href="05-update-version.html">
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">下一步</span>
+        <span class="learn-pager-title">改完「更新版本」才生效</span>
+      </span>
+      <span class="learn-pager-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <div>
+        <b>QUSEIT · 创作者</b>
+        <p>知识工作者的 AI 智能体平台</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../agentspace-tutorial.html">学习教程</a>
+      <a href="../../privacy.html" data-i18n="nav.privacy">隐私政策</a>
+      <a href="https://github.com/quseit-ai/" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+    </div>
+    <div class="footer-copy-row">
+      <p class="footer-copy mono">© 2026 QUSEIT · ALL RIGHTS RESERVED</p>
+      <a class="footer-icp mono" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17072685号-11</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../i18n.js"></script>
+<script src="../../main.js"></script>
+</body>
+</html>

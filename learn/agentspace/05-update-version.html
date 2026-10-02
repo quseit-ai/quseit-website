@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>改完「更新版本」才生效 — QUSEIT 智空间教程</title>
+<meta name="description" content="PATH 01 第 5 课:为什么改了「配置」/「技能」tab 必须点右上角「更新版本」才生效,以及哪些字段是「保存即生效」。">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  .tut-doc { max-width: 880px; margin: 0 auto; padding: 110px 24px 96px; }
+  .tut-doc .tut-doc-crumbs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+  .tut-doc .tut-doc-crumbs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .tut-doc .tut-doc-crumbs a:hover { color: #8b6508; text-decoration: underline; }
+  .tut-doc .tut-doc-crumbs .sep { opacity: .45; }
+  .tut-doc .tut-doc-crumbs .current { color: var(--text); opacity: .7; }
+  .tut-doc h1 { font-family: "Noto Serif SC", serif; font-size: 38px; line-height: 1.25; margin: 0 0 8px; color: var(--text, #1a1610); }
+  .tut-doc .tut-doc-sub { color: var(--muted, #5c5344); font-size: 16px; margin: 0 0 32px; }
+  .tut-doc .tut-doc-meta { display: flex; gap: 12px; align-items: center; margin: 0 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
+  .tut-doc .tut-doc-meta .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; background: rgba(184, 134, 11, 0.12); color: #8b6508; font-weight: 600; }
+  .tut-doc .tut-doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: 0.5; }
+  .tut-doc h2 { font-family: "Noto Serif SC", serif; font-size: 26px; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--text); }
+  .tut-doc h3 { font-family: "Noto Sans SC", sans-serif; font-size: 19px; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+  .tut-doc p { line-height: 1.75; margin: 0 0 16px; color: var(--text); }
+  .tut-doc ol, .tut-doc ul { line-height: 1.75; margin: 0 0 20px; padding-left: 28px; }
+  .tut-doc li { margin: 6px 0; }
+  .tut-doc code { background: rgba(0,0,0,.05); padding: 2px 6px; border-radius: 4px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #b0480a; }
+  .tut-doc pre { background: #1a1610; color: #f5e9c8; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.6; margin: 16px 0 24px; }
+  .tut-doc pre code { background: none; padding: 0; color: inherit; }
+  .tut-doc blockquote { margin: 20px 0; padding: 14px 22px; border-left: 4px solid #b8860b; background: rgba(184, 134, 11, 0.05); border-radius: 0 8px 8px 0; color: var(--text); font-style: italic; }
+  .tut-doc .step { background: var(--card-bg, #fff); border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 24px 28px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+  .tut-doc .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .tut-doc .step-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #8b6508; background: rgba(184, 134, 11, 0.15); padding: 4px 10px; border-radius: 6px; }
+  .tut-doc .step-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; margin: 0; color: var(--text); }
+  .tut-doc .step-time { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; }
+  .tut-doc .callout { background: rgba(124, 185, 255, 0.08); border: 1px solid rgba(124, 185, 255, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout strong { color: #0288a8; }
+  .tut-doc .callout-red { background: rgba(198, 40, 40, 0.06); border: 1px solid rgba(198, 40, 40, 0.3); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 14px; }
+  .tut-doc .callout-red strong { color: #c62828; }
+  .tut-doc .figure { margin: 28px 0; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; background: #fff; }
+  .tut-doc .figure img { display: block; width: 100%; height: auto; }
+  .tut-doc .figure-cap { padding: 10px 18px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(0,0,0,.02); border-top: 1px solid rgba(0,0,0,.06); }
+  .tut-doc .checklist { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .checklist li { padding: 8px 0 8px 32px; position: relative; }
+  .tut-doc .checklist li::before { content: "✓"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(46, 125, 50, 0.15); color: #2e7d32; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .redline { list-style: none; padding-left: 0; margin: 16px 0; }
+  .tut-doc .redline li::before { content: "✗"; position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: rgba(198, 40, 40, 0.15); color: #c62828; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .tut-doc .bignum { display: inline-block; font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px; color: #8b6508; margin-right: 8px; }
+</style>
+</head>
+<body class="learn-page">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <span class="brand-name">QUSEIT</span>
+      <span class="brand-tag personal" data-i18n="brand.tag">创作者</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../../index.html#contact">联系我们</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">学习</button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../qbuilder-tutorial.html" data-i18n="nav.learn.tutorials">QBuilder教程</a>
+          <a href="../agentspace-tutorial.html" class="is-active" data-i18n="nav.learn.courses">智空间教程</a>
+          <a href="../use-cases.html" data-i18n="nav.learn.use-cases">案例</a>
+        </div>
+      </div>
+      <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer">企业版</a>
+    </nav>
+    <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
+    <div class="nav-cta">
+      <a href="../../download.html" class="btn btn-solid">立即构建</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="菜单"><span></span><span></span></button>
+  </div>
+</header>
+
+<article class="tut-doc">
+
+<nav class="tut-doc-crumbs" aria-label="面包屑">
+  <a href="../../index.html">首页</a>
+  <span class="sep">/</span>
+  <a href="../agentspace-tutorial.html">智空间教程</a>
+  <span class="sep">/</span>
+  <span class="current">PATH 01 · 更新版本</span>
+</nav>
+<h1>改完「更新版本」才生效</h1>
+<p class="tut-doc-sub">PATH 01 第 5 课。本课解释 QUSEIT 的「配置层」与「版本层」分离机制,说明哪些字段的修改需经「更新版本」才生效,以及版本回滚的操作方法。</p>
+
+<div class="tut-doc-meta">
+  <span class="badge">PATH 01 · 启程</span>
+  <span class="dot"></span>
+  <span>预计实操 3 分钟</span>
+</div>
+
+<h2 id="why">为何需要「更新版本」</h2>
+
+<p>访客所访问的智能体实为某一「版本」的快照,而非配置的实时视图。因此,在「配置」tab 中修改开场白等内容后,访客端展示的仍是修改前的快照;须经「更新版本」操作将当前配置与技能重新打包为新版本并切换上线后,访客才会看到新内容。</p>
+
+<div class="callout">
+  <strong>设计动机</strong>沙箱中的会话以特定版本(模型、角色设定、工具挂载、系统 prompt 等)为运行基线。若允许在会话进行过程中修改角色设定,将导致「对话中途智能体性格突变」之类的不可预期行为。「版本」机制由此引入隔离边界 — 每次更新将整个版本切换;旧会话继续以旧版本运行直至结束,新会话则使用新版本。
+</div>
+
+<h2 id="which-tabs">哪些字段需触发「更新版本」</h2>
+
+<p>并非所有修改都需要「更新版本」。下表给出字段与生效方式的对应关系:</p>
+
+<table style="width:100%; border-collapse:collapse; margin: 16px 0 24px;">
+  <thead>
+    <tr style="border-bottom:1.5px solid var(--ink);">
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">位置</th>
+      <th style="text-align:left; padding:10px 8px; font-family:'IBM Plex Mono',monospace; font-size:12px;">是否需更新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">「配置」tab 全部字段(头像、名称、角色设定、开场白、引导问题、主题色、模型、运行引擎)</td>
+      <td style="padding:12px 8px;"><strong>需要</strong></td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">「技能」tab 装配清单</td>
+      <td style="padding:12px 8px;"><strong>需要</strong></td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">「分享」tab 全部字段(地址后缀、密码访问、智空间可见性、API 密钥)</td>
+      <td style="padding:12px 8px;">不需要 — 保存即生效</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,0,0,.08);">
+      <td style="padding:12px 8px; font-weight:600;">「收费」tab 全部字段</td>
+      <td style="padding:12px 8px;">不需要 — 保存即生效</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>简要规则</strong>:修改「配置」或「技能」tab 后必须执行「更新版本」;修改「分享」或「收费」tab 后直接保存即可生效。</p>
+
+<h2 id="config-tab">「配置」tab 的更新流程</h2>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 01</span>
+    <h3 class="step-title">进入「配置」tab</h3>
+  </div>
+  <p>默认展示为只读视图,所有字段均反映上一版本上线时的状态:</p>
+</div>
+
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/17-config-tab.png" alt="配置 tab 只读态:身份与开场 + 编辑 + 已装配技能 + 模型/运行时 + 当前版本 v1" loading="lazy">
+  <figcaption class="figure-cap">图 17 · 「配置」tab 只读态。当前生效版本的快照;右上角橙色「更新版本」按钮即触发 v1 → v2 切换;底部金色提示明示「改完不会立刻生效」。</figcaption>
+</figure>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 02</span>
+    <h3 class="step-title">编辑字段并保存</h3>
+  </div>
+  <p>点击「身份与开场」区块右上角的「编辑」,弹出编辑对话框。修改若干字段(如开场白),点击「保存」,系统给出「已保存」提示。<strong>该提示并不意味着访客端已生效</strong>。</p>
+
+  <figure class="figure">
+    <img src="../../tutorials/screenshots/agentspace/18-config-edit-dialog.png" alt="编辑对话框,底部金底提示「保存不会自动重新打包」" loading="lazy">
+    <figcaption class="figure-cap">图 18 · 编辑对话框。底部金色提示明示:「保存不会自动重新打包;模型、运行引擎与角色设定的改动随下一次『更新版本』生效」。</figcaption>
+  </figure>
+
+  <div class="callout-red">
+    <strong>常见误区</strong>「已保存」提示易被误解为「已生效」 — 实际仍需后续执行「更新版本」操作。
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <span class="step-num">STEP 03</span>
+    <h3 class="step-title">执行「更新版本」</h3>
+  </div>
+  <p>返回页面顶部,点击右上角「更新版本」。后端将基于「当前配置 + 当前技能」打包新版本并切换上线。</p>
+
+  <figure class="figure">
+    <img src="../../tutorials/screenshots/agentspace/19-version-v2-confirmed.png" alt="更新版本后:tab 显示版本 v2,当前版本 v2 运行中 刚刚,开场白新版" loading="lazy">
+    <figcaption class="figure-cap">图 19 · 「更新版本」执行后:顶部 tab 标签由「版本 v1」变为「版本 v2」,右下「当前版本 v1 运行中 · 1 小时前」变为「当前版本 v2 运行中 · 刚刚」,开场白亦显示已修改内容 — 此即「生效」的可视化信号。</figcaption>
+  </figure>
+</div>
+
+<h2 id="versions-tab">版本历史与回滚</h2>
+
+<p>点击页面顶部「版本 v2」tab,即可查看完整版本历史及回滚入口:</p>
+
+<figure class="figure">
+  <img src="../../tutorials/screenshots/agentspace/20-versions-tab.png" alt="版本 tab:v2 运行中,v1 历史 + 回滚按钮" loading="lazy">
+  <figcaption class="figure-cap">图 20 · 「版本」tab。每次「更新版本」操作追加一行记录;v2 标记为「运行中」,v1 标记为「历史」。若 v2 上线后需回滚,点击 v1 行的「回滚到这一版」即可。</figcaption>
+</figure>
+
+<div class="callout">
+  <strong>回滚机制</strong>「回滚」操作的语义并非「删除 v2」,而是「将 v2 标记为历史、将 v1 重新激活为运行中」。版本本身不被删除,可在 v1、v2、v3 等任意历史版本之间来回切换。因此新版本上线后可放心试错,出现严重问题时可一键回滚,访客端约 30 秒内即可恢复。
+</div>
+
+<h2 id="when-effective">新版本的生效时机</h2>
+
+<ul>
+  <li><strong>新会话</strong>:立即使用新版本</li>
+  <li><strong>已开始的会话</strong>:继续使用旧版本直至结束,不会中断或切换</li>
+  <li><strong>已暂停的会话</strong>(5 分钟空闲后自动暂停):访客端再次访问时被唤醒,使用新版本</li>
+</ul>
+
+<div class="callout-red">
+  <strong>避免使用「关闭全部会话」强制切换</strong>该操作将强制结束所有正在进行的会话。仅当 v2 存在严重缺陷需立即将所有用户切回 v1 时,才建议使用。
+</div>
+
+<h2 id="checklist">PATH 01 完成判定</h2>
+
+<p>PATH 01 的 5 课全部走完后,智能体应处于以下状态:</p>
+
+<ul class="checklist">
+  <li>已有 1 个技能从技能库勾选并发布(第 1 课)</li>
+  <li>身份、收费、上线三步均已完成并成功上线(第 2 课)</li>
+  <li>已获得分享链接与二维码,且确认访客可正常访问(第 3 课)</li>
+  <li>已使用另一账号或隐身窗口完成至少一次对话,「数据」tab 数据卡 +1(第 4 课)</li>
+  <li>已成功修改至少一个字段并执行「更新版本」,当前版本号 ≥ v2(本课)</li>
+</ul>
+
+<p>全部条件满足即视为 PATH 01「启程」完成。</p>
+
+<h2 id="pitfalls">常见踩坑</h2>
+
+<ul>
+  <li><strong>误以为「已保存」即「已生效」</strong>:「保存」仅将修改写入草稿,须经「更新版本」才会对访客生效。可通过「版本」tab 中版本号是否递增进行确认。</li>
+  <li><strong>v2 上线后访客反馈「未变化」</strong>:请访客刷新页面,或新开一次会话。已开始的会话将沿用旧版本直至结束。</li>
+  <li><strong>点击「更新版本」后发现改动内容与预期不符</strong>:「更新版本」基于「当前配置」生成新版本,并非基于「刚刚编辑后又回滚的内容」。</li>
+  <li><strong>回滚后 v1 仍有缺陷</strong>回滚仅「激活」旧版本,不会删除新版本。修复后再次执行「更新版本」将生成 v3,以此类推。</li>
+  <li><strong>点击「更新版本」无响应或报错</strong>通常由后端校验失败引起,如模型密钥缺失或角色设定留空。具体原因由 toast 提示给出。</li>
+</ul>
+
+</article>
+
+<nav class="learn-pager" aria-label="tutorial pager">
+  <div class="container learn-pager-inner">
+    <a class="learn-pager-link prev" href="04-walkthrough-visitor.html">
+      <span class="learn-pager-arrow">←</span>
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">上一步</span>
+        <span class="learn-pager-title">走查访问者视角</span>
+      </span>
+    </a>
+    <span class="learn-pager-label mono">PATH 01 完成</span>
+    <a class="learn-pager-link next" href="../agentspace-tutorial.html">
+      <span class="learn-pager-text">
+        <span class="learn-pager-eyebrow">下一步</span>
+        <span class="learn-pager-title">回到智空间教程目录</span>
+      </span>
+      <span class="learn-pager-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="../../logo.svg" alt="QUSEIT Logo" class="brand-logo">
+      <div>
+        <b>QUSEIT · 创作者</b>
+        <p>知识工作者的 AI 智能体平台</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../../index.html#how">发布流程</a>
+      <a href="../../index.html#audience">适用人群</a>
+      <a href="../../index.html#features">产品特性</a>
+      <a href="../agentspace-tutorial.html">学习教程</a>
+      <a href="../../privacy.html" data-i18n="nav.privacy">隐私政策</a>
+      <a href="https://github.com/quseit-ai/" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+    </div>
+    <div class="footer-copy-row">
+      <p class="footer-copy mono">© 2026 QUSEIT · ALL RIGHTS RESERVED</p>
+      <a class="footer-icp mono" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17072685号-11</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../i18n.js"></script>
+<script src="../../main.js"></script>
+</body>
+</html>
