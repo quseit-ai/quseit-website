@@ -24,7 +24,7 @@
     'hero.title3': '<em>“AI Agent”</em>',
     'hero.sub': 'Create your AI agent and <strong>publish it to your personal Agent Space</strong>,<br>so anyone can <strong>buy and use</strong> your expertise and skills.',
     'hero.action1': 'Start Building',
-    'hero.action2': 'See the 3 Steps <span class="arrow">→</span>',
+    'hero.action2': 'Browse Spaces <span class="arrow">→</span>',
     'hero.imgAlt': 'QUSEIT Creator Edition',
     'hero.caption': '<span class="mono">FIG.01</span> Your knowledge, open for business',
 
@@ -466,7 +466,7 @@
     'hero.title3': '<em>「AI 智能体」</em>',
     'hero.sub': '创建你的 AI 智能体,<strong>发布到个人的智空间</strong>,<br>让任何人都能<strong>购买和使用</strong>你的专业知识和技能。',
     'hero.action1': '立即构建',
-    'hero.action2': '了解发布流程 <span class="arrow">→</span>',
+    'hero.action2': '浏览智空间 <span class="arrow">→</span>',
     'hero.imgAlt': 'QUSEIT 创作者',
     'hero.caption': '<span class="mono">FIG.01</span> 你的知识,即将上线营业',
 
