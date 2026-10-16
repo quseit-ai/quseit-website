@@ -23,9 +23,20 @@
       <span class="brand-tag personal" data-i18n="brand.tag">创作者</span>
     </a>
     <nav class="nav-links">
-      <a href="#how" data-i18n="nav.how">发布流程</a>
-      <a href="#audience" data-i18n="nav.audience">适用人群</a>
-      <a href="#features" data-i18n="nav.features">产品特性</a>
+      <a href="about.html" data-i18n="nav.about">为什么选QUSEIT</a>
+
+      <!-- Product dropdown -->
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav.product">产品</button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="#how" data-i18n="nav.product.how">发布流程</a>
+          <a href="#audience" data-i18n="nav.product.audience">适用人群</a>
+          <a href="#features" data-i18n="nav.product.features">产品特性</a>
+          <a href="#contact" data-i18n="nav.product.contact">联系我们</a>
+        </div>
+      </div>
+
+      <a href="#pricing" data-i18n="nav.pricing">定价</a>
 
       <!-- Learn dropdown -->
       <div class="nav-dropdown">
@@ -37,9 +48,7 @@
         </div>
       </div>
 
-      <a href="about.html" data-i18n="nav.about">关于</a>
       <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer" data-i18n="nav.enterprise">企业版</a>
-      <a href="#contact" data-i18n="nav.contact">联系我们</a>
     </nav>
     <button class="lang-switch mono" id="langSwitch" aria-label="切换语言">EN</button>
     <div class="nav-cta">
@@ -220,7 +229,7 @@
         <p class="pricing-card-fit" data-i18n="pricing.tier1.fit">个人探索 / 给自己用</p>
         <ul class="pricing-card-features">
           <li data-i18n="pricing.tier1.f1">QBuilder 桌面端完整功能</li>
-          <li data-i18n="pricing.tier1.f2">不可自定义企业品牌</li>
+          <li data-i18n="pricing.tier1.f2">公共技能库</li>
           <li data-i18n="pricing.tier1.f3">基础对话 / 智能体配置</li>
           <li data-i18n="pricing.tier1.f4">可上智空间,带"大众版"水印</li>
         </ul>
@@ -237,10 +246,10 @@
         </div>
         <p class="pricing-card-fit" data-i18n="pricing.tier2.fit">小团队 / 工作室 / 服务商</p>
         <ul class="pricing-card-features">
-          <li data-i18n="pricing.tier2.f1">建 1 个组织 + 自定义企业品牌</li>
-          <li data-i18n="pricing.tier2.f2">团队成员(限 3 人)免费加入</li>
+          <li data-i18n="pricing.tier2.f1">建 1 个组织 + 组织私有技能库</li>
+          <li data-i18n="pricing.tier2.f2">团队成员(限 5 人)免费加入</li>
           <li data-i18n="pricing.tier2.f3">含 QBuilder 桌面端所有功能</li>
-          <li data-i18n="pricing.tier2.f4">可上智空间,去"大众版"水印</li>
+          <li data-i18n="pricing.tier2.f4">可上智空间,去"专业版"水印</li>
         </ul>
         <a href="mailto:pro@quseit.com?subject=Create%20QBuilder%20Pro%20organization" class="pricing-card-btn is-solid" data-i18n="pricing.tier2.btn">创建组织</a>
       </article>
@@ -275,6 +284,8 @@
       <p class="pricing-enterprise-text" data-i18n="pricing.enterprise.text">企业内部 / 私有化 / 10人以上团队, 推荐企业版。</p>
       <a href="https://enterprise.quseit.com" target="_blank" rel="noopener noreferrer" class="pricing-enterprise-cta" data-i18n="pricing.enterprise.cta">了解企业版 →</a>
     </div>
+
+    <p class="pricing-fee-note" data-i18n="pricing.fee.note">上述服务费仅指 QUSEIT 提供的服务;算力费、沙箱运行费按需另收。</p>
   </div>
 </section>
 

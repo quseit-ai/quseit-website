@@ -72,7 +72,7 @@ a{color:inherit;text-decoration:none}
 .brand-name{font-family:var(--serif);font-weight:900;font-size:20px}
 .brand-tag{font-size:11px;color:var(--ink-3);border:1px solid var(--line);padding:2px 8px;margin-left:2px}
 .brand-tag.personal{color:var(--accent);border-color:var(--accent)}
-.nav-links{display:flex;gap:28px;margin-left:auto}
+.nav-links{display:flex;gap:28px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--ink-2);position:relative;padding:4px 0}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .3s}
 .nav-links a:hover{color:var(--ink)}
@@ -82,6 +82,7 @@ a{color:inherit;text-decoration:none}
 .lang-switch{
   background:none;border:1.5px solid var(--ink);color:var(--ink);
   font-size:12px;font-weight:600;padding:6px 12px;cursor:pointer;
+  margin-left:auto;
   transition:background .25s,color .25s,transform .25s;
 }
 .lang-switch:hover{background:var(--ink);color:var(--paper);transform:translate(-1px,-1px)}
@@ -874,12 +875,16 @@ a{color:inherit;text-decoration:none}
 .pricing-section .sec-head { margin-bottom: 48px; }
 
 .pricing-grid {
-  display: grid;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
   gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   max-width: 1200px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
+
+.pricing-card { flex: 1 1 280px; max-width: 360px; }
 
 .pricing-card {
   background: #fff;
@@ -1032,7 +1037,7 @@ a{color:inherit;text-decoration:none}
   display: flex;
   align-items: center;
   justify-content: center;
-  /* grid auto-fit 会把分隔符也算一格,这里让它的 grid 跨度跟卡片一致 */
+  flex: 0 0 44px;
   align-self: stretch;
 }
 .pricing-divider-icon {
@@ -1100,6 +1105,19 @@ a{color:inherit;text-decoration:none}
   white-space: nowrap;
 }
 .pricing-enterprise-cta:hover { border-bottom-color: var(--accent); }
+
+/* 灰色补充说明 — 算力 / 沙箱按需另收 */
+.pricing-fee-note {
+  max-width: 1200px;
+  margin: 18px auto 0;
+  padding: 0 20px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  color: var(--ink-3);
+  text-align: center;
+}
 
 @media (max-width: 720px) {
   .pricing-section .sec-head { margin-bottom: 32px; }
