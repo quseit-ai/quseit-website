@@ -33,7 +33,7 @@
     's1.desc': 'Pick a skill template and configure your AI agent. Built-in professional scenarios, ready out of the box.',
     's1.foot': 'No code — configure through conversation',
     's2.h3': 'One-Click Publish',
-    's2.desc': 'Auto-generates an Agent chat interface and an OpenAI-compatible API. Zero deployment needed.',
+    's2.desc': 'Auto-generates an Agent chat interface and OpenAI-compatible / REST / MCP / A2A endpoints. Zero deployment needed.',
     's2.foot': 'No ops — published means live',
     's3.h3': 'Share the Link',
     's3.desc': 'Showcase all your agents on your Agent Space personal toolbox — one link to share with anyone.',
@@ -475,7 +475,7 @@
     's1.desc': '选择技能模板,配置你的 AI 智能体。内置多种专业场景,开箱即用。',
     's1.foot': '无需代码,对话式配置',
     's2.h3': '一键发布',
-    's2.desc': '自动生成智能体对话页和 OpenAI 兼容 API,无需任何部署。',
+    's2.desc': '自动生成智能体对话页与 OpenAI 兼容 / REST / MCP / A2A 协议,无需任何部署。',
     's2.foot': '零运维,发布即上线',
     's3.h3': '分享链接',
     's3.desc': '通过智空间个人工具箱展示所有智能体,一个链接分享给任何人。',
@@ -981,5 +981,6 @@
   // 注意:仅在浏览器环境暴露,不要在 server-side import 时被引用
   window._QDict = { en, zh };
 
-  if (lang === 'en') apply('en');
+  // 首次加载:无论默认语种,都要把字典注入 DOM。否则 index.html 里写死的中文旧文案会一直显示,直到用户点切换按钮。
+  apply(lang);
 })();
