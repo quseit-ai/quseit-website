@@ -865,3 +865,251 @@ a{color:inherit;text-decoration:none}
   .c100-banner-inner { gap: 24px; }
   .c100-banner-btn { width: 100%; justify-content: center; }
 }
+
+/* ===== 定价模块 (首页 features 之后、contact 之前) ===== */
+.pricing-section {
+  /* 复用 .section 全局容器,只覆盖必要的间距与底色 */
+  background: var(--paper);
+}
+.pricing-section .sec-head { margin-bottom: 48px; }
+
+.pricing-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s, border-color .3s;
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(22, 19, 14, .08);
+  border-color: var(--ink-3);
+}
+
+/* 专业版 — 主推卡,顶部加 accent 描边 */
+.pricing-card.is-popular {
+  border-color: var(--accent);
+  border-width: 2px;
+  padding-top: 31px; /* 补偿 1px border,保持内容对齐 */
+}
+
+/* 智空间 — 顶部 4px accent 实线 */
+.pricing-card.is-feature::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+
+.pricing-card-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ink-3);
+  padding: 4px 8px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  text-transform: uppercase;
+}
+.pricing-card.is-popular .pricing-card-tag,
+.pricing-card.is-feature .pricing-card-tag {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.pricing-card-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0;
+}
+
+.pricing-card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 4px 0 8px;
+  border-bottom: 1px solid var(--line);
+}
+.pricing-card-amount {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -.01em;
+}
+.pricing-card-unit {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--ink-3);
+}
+
+.pricing-card-fit {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0;
+  min-height: 2.6em; /* 3 张卡让"适合谁"高度对齐 */
+}
+
+.pricing-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1; /* 让 features 区域吃掉剩余空间,保证 3 张卡的按钮底部对齐 */
+}
+.pricing-card-features li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  padding-left: 22px;
+  position: relative;
+}
+.pricing-card-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pricing-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  transition: all .2s ease;
+  margin-top: 4px;
+}
+.pricing-card-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.pricing-card-btn.is-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+.pricing-card-btn.is-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* "+" 分隔符 — QBuilder 与智空间之间 */
+.pricing-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* grid auto-fit 会把分隔符也算一格,这里让它的 grid 跨度跟卡片一致 */
+  align-self: stretch;
+}
+.pricing-divider-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1;
+  border-radius: 50%;
+  user-select: none;
+}
+@media (max-width: 720px) {
+  .pricing-divider { padding: 4px 0; }
+  .pricing-divider-icon { width: 36px; height: 36px; font-size: 18px; }
+}
+
+/* 企业版出口行 */
+.pricing-enterprise {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 48px auto 0;
+  padding: 24px 28px;
+  max-width: 1200px;
+  background: #fff;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+.pricing-enterprise-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ink-3);
+  padding: 4px 8px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  text-transform: uppercase;
+}
+.pricing-enterprise-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0;
+  flex: 1 1 280px;
+  min-width: 0;
+  text-align: left;
+}
+.pricing-enterprise-cta {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease;
+  white-space: nowrap;
+}
+.pricing-enterprise-cta:hover { border-bottom-color: var(--accent); }
+
+@media (max-width: 720px) {
+  .pricing-section .sec-head { margin-bottom: 32px; }
+  .pricing-card { padding: 26px 22px; }
+  .pricing-card-amount { font-size: 32px; }
+  .pricing-enterprise {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 20px 22px;
+  }
+  .pricing-enterprise-text { text-align: center; }
+}
