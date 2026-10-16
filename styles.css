@@ -763,3 +763,105 @@ a{color:inherit;text-decoration:none}
 @media(max-width:640px){
   .learn-cat-head{flex-direction:column;gap:6px}
 }
+
+/* ===== 100 创作者计划 横幅 (首页 Hero 下方) ===== */
+.c100-banner {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 56px 0;
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  position: relative;
+}
+.c100-banner::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid rgba(232, 137, 12, .35);
+  pointer-events: none;
+}
+.c100-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.c100-banner-text {
+  flex: 1 1 480px;
+  min-width: 0;
+}
+.c100-banner-eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.c100-banner-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.3;
+  color: var(--paper);
+  margin: 0 0 14px;
+  letter-spacing: .01em;
+}
+.c100-banner-sub {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, .78);
+  margin: 0 0 18px;
+  max-width: 640px;
+}
+.c100-banner-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.c100-banner-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .04em;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: var(--paper);
+}
+.c100-banner-cta {
+  flex-shrink: 0;
+}
+.c100-banner-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  transition: all .2s ease;
+  white-space: nowrap;
+}
+.c100-banner-btn:hover {
+  background: var(--paper);
+  color: var(--accent);
+  border-color: var(--paper);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+@media (max-width: 720px) {
+  .c100-banner { padding: 40px 0; }
+  .c100-banner-inner { gap: 24px; }
+  .c100-banner-btn { width: 100%; justify-content: center; }
+}
