@@ -92,7 +92,7 @@
 
     // ===== 100-creators.html =====
     '100c.meta.title': 'QUSEIT 100 Creators Program — Turn your expertise into an AI agent',
-    '100c.meta.desc': 'QUSEIT is looking for 100 professionals to 1v1-coach from skill to published agent on Agent Space, and co-build real case studies.',
+    '100c.meta.desc': '100 professionals are using AI agents to amplify their expertise — Agent Space free for 1 year, 1v1 publishing coaching, full media exposure.',
     '100c.eyebrow': 'CAMPAIGN · 100 CREATORS PROGRAM',
     '100c.crumb': '100 Creators Program',
     '100c.title': '100 professionals are using AI agents to amplify their expertise',
@@ -656,7 +656,7 @@
 
     // ===== 100-creators.html =====
     '100c.meta.title': 'QUSEIT 100 创作者计划 — 把你的技能变成 AI 智能体',
-    '100c.meta.desc': 'QUSEIT 寻找 100 位专业人士,1v1 协助把技能发布到智空间,共创真实案例。',
+    '100c.meta.desc': '100 位专业人士正在用 AI 智能体放大自己的专业 —— 智空间 1 年免费,1v1 陪跑上架,案例全网露出。',
     '100c.eyebrow': 'CAMPAIGN · 100 创作者计划',
     '100c.crumb': '100 创作者计划',
     '100c.title': '100 位专业人士,正在用 AI 智能体放大自己的专业',
