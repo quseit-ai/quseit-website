@@ -176,6 +176,7 @@
     '100c.cta.title': 'If you want to be one of them',
     '100c.cta.sub': 'Cohort 2 public recruitment opens soon. Join the community now to be notified first.',
     '100c.cta.btn': 'Apply now →',
+    '100c.modal.title': '100 Creators Program — Application Form',
 
     // ===== learn/qbuilder-tutorial.html =====
     'learn.tut.meta.title': 'QBuilder Tutorial — QUSEIT Academy',
@@ -740,6 +741,7 @@
     '100c.cta.title': '如果你愿意成为其中一位',
     '100c.cta.sub': '第二期公开招募即将开放。先加社群,第一时间收到通知。',
     '100c.cta.btn': '申请加入 →',
+    '100c.modal.title': '100 创作者计划 · 申请表单',
 
     // ===== learn/qbuilder-tutorial.html =====
     'learn.tut.meta.title': 'QBuilder教程 — QUSEIT 学院',
