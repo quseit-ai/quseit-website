@@ -166,10 +166,22 @@
         </span>
         <div class="dl-platform-meta">
           <h3 data-i18n="dl.pl.lin.h3">Linux</h3>
-          <p class="dl-platform-note" data-i18n="dl.pl.lin.note">Ubuntu / Debian · x64</p>
+          <p class="dl-platform-note" data-i18n="dl.pl.lin.note">Debian / Ubuntu · x64</p>
         </div>
-        <a class="btn btn-line btn-block disabled" aria-disabled="true" tabindex="-1" data-i18n="dl.pl.lin.btn">即将推出</a>
-        <p class="dl-platform-foot mono" data-i18n="dl.pl.lin.foot">COMING SOON</p>
+        <div class="dl-dropdown">
+          <button type="button" class="btn btn-line btn-block dl-dropdown-toggle" aria-expanded="false" aria-controls="linDlMenu" data-i18n="dl.pl.lin.btn">下载安装包</button>
+          <div class="dl-dropdown-menu" id="linDlMenu">
+            <a href="https://quseit.aipy.org/qbuilder/1.3.0/linux-desktop-amd64.deb" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="dl.pl.lin.deb">Debian / Ubuntu (deb 包)</span>
+              <span class="dl-dropdown-tag mono" data-i18n="dl.pl.lin.deb.tag">amd64</span>
+            </a>
+            <a href="https://quseit.aipy.org/qbuilder/1.3.0/linux-server-x86_64.AppImage" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="dl.pl.lin.appimage">Linux 服务器 / 便携版 (AppImage)</span>
+              <span class="dl-dropdown-tag mono" data-i18n="dl.pl.lin.appimage.tag">x86_64</span>
+            </a>
+          </div>
+        </div>
+        <p class="dl-platform-foot mono" data-i18n="dl.pl.lin.foot">v1.3.0 · 2026-10</p>
       </article>
 
       <article class="dl-platform-card reveal d2">
