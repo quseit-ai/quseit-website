@@ -1144,6 +1144,64 @@ a{color:inherit;text-decoration:none}
   .pricing-divider-icon { width: 32px; height: 32px; font-size: 16px; }
 }
 
+/* ===== 统计同意横幅 (由 analytics.js 动态注入) ===== */
+.qa-consent {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 9998;
+  max-width: 420px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 32px rgba(22, 19, 14, .14);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--sans);
+}
+.qa-consent[hidden] { display: none; }
+.qa-consent-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin: 0;
+}
+.qa-consent-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.qa-consent-link {
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  margin-right: auto;
+}
+.qa-consent-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.qa-consent-btn:hover { background: var(--ink); color: var(--paper); }
+.qa-consent-btn.is-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+.qa-consent-btn.is-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
 /* ===== 微信二维码悬浮框(右下角 fixed,hover / tap 展开) ===== */
 .qr-float {
   position: fixed;

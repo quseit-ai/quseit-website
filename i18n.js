@@ -98,6 +98,10 @@
 
     // ===== changelog.html =====
     'nav.changelog': 'Updates',
+    'consent.text': 'We use analytics cookies to understand how this site is used. Your data stays anonymous.',
+    'consent.more': 'Privacy Policy',
+    'consent.accept': 'Accept',
+    'consent.reject': 'Reject',
     'changelog.meta.title': 'Updates — QUSEIT',
     'changelog.meta.desc': 'Key changes and milestones for QUSEIT, Agent Space, and QBuilder.',
     'changelog.eyebrow': 'UPDATE · CHANGELOG',
@@ -743,6 +747,10 @@
 
     // ===== changelog.html =====
     'nav.changelog': '项目更新',
+    'consent.text': '本站使用统计 Cookie 了解访问情况,数据均为匿名采集。',
+    'consent.more': '隐私政策',
+    'consent.accept': '接受',
+    'consent.reject': '拒绝',
     'changelog.meta.title': '项目更新 — QUSEIT',
     'changelog.meta.desc': 'QUSEIT 平台、智空间、QBuilder 的关键变动与里程碑。',
     'changelog.eyebrow': 'UPDATE · 项目更新',
