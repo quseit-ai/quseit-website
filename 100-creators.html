@@ -287,7 +287,7 @@
 .c100-roster-grid {
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   margin-top: 16px;
 }
 .c100-roster-cell {
@@ -317,6 +317,12 @@
   color: var(--ink-3);
   font-family: var(--mono);
   letter-spacing: .04em;
+}
+.c100-roster-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 .c100-roster-empty {
   text-align: center;
@@ -561,7 +567,7 @@
     <h1 data-i18n="100c.title">100 位专业人士,正在用 AI 智能体放大自己的专业</h1>
     <p class="sub" data-i18n="100c.subtitle">智空间 1 座席 + 专业版 QBuilder 1 年免费 · 1v1 陪跑上架 · 案例全网露出</p>
     <div class="c100-status" aria-live="polite">
-      <span class="c100-status-chip"><span data-i18n="100c.status.joined">已加入</span> <span class="num" data-i100c-count="joined">0</span> / 100</span>
+      <span class="c100-status-chip"><span data-i18n="100c.status.joined">已加入</span> <span class="num" data-i100c-count="joined">3</span> / 100</span>
       <span class="c100-status-chip is-stage" data-i18n="100c.status.stage">当前阶段:第一期 · 首批创作者</span>
       <span class="c100-status-chip" data-i18n="100c.status.window">招募窗口:2026 Q4</span>
     </div>
@@ -716,10 +722,32 @@
   <div class="c100-section-inner">
     <p class="c100-block-label" data-i18n="100c.roster.label">ROSTER · 已加入</p>
     <h2 class="c100-block-title" data-i18n="100c.roster.title">首批创作者(滚动公示)</h2>
-    <p class="c100-prose" data-i18n="100c.roster.intro">第一期 10 位正在确认中,公开招募启动后每周更新。</p>
+    <p class="c100-prose" data-i18n="100c.roster.intro">已确认 3 位,其余席位正在确认中,每周滚动公示。</p>
 
     <div class="c100-roster" id="c100Roster">
-      <div class="c100-roster-empty" data-i18n="100c.roster.empty">首批 10 位正在确认中,第二期公开招募启动后陆续更新。</div>
+      <div class="c100-roster-grid">
+        <div class="c100-roster-cell">
+          <span class="c100-roster-avatar">01</span>
+          <span class="c100-roster-meta">
+            <span class="c100-roster-name" data-i18n="100c.roster.1.name">内容创作者</span>
+            <span class="c100-roster-tag" data-i18n="100c.roster.tag">COHORT 1 · 待公示</span>
+          </span>
+        </div>
+        <div class="c100-roster-cell">
+          <span class="c100-roster-avatar">02</span>
+          <span class="c100-roster-meta">
+            <span class="c100-roster-name" data-i18n="100c.roster.2.name">独立开发者</span>
+            <span class="c100-roster-tag" data-i18n="100c.roster.tag">COHORT 1 · 待公示</span>
+          </span>
+        </div>
+        <div class="c100-roster-cell">
+          <span class="c100-roster-avatar">03</span>
+          <span class="c100-roster-meta">
+            <span class="c100-roster-name" data-i18n="100c.roster.3.name">教育 / 培训</span>
+            <span class="c100-roster-tag" data-i18n="100c.roster.tag">COHORT 1 · 待公示</span>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,314 @@
+pageType: final
+background: {type: solid, color: "$paper"}
+elements:
+  # ---- 节标题 ----
+  - elementId: sec-dot
+    elementType: shape
+    bounds: [74, 62, 8, 8]
+    shapeName: rect
+    rotation: 45
+    fill: {type: solid, color: "$accent"}
+  - elementId: sec-num
+    elementType: text
+    bounds: [92, 56, 120, 20]
+    content:
+      style: "$kicker"
+      wrap: false
+      align: [left, middle]
+      text: SECTION 07
+  - elementId: sec-line
+    elementType: shape
+    bounds: [184, 66, 48, 1]
+    shapeName: rect
+    fill: {type: solid, color: "$accent"}
+  - elementId: sec-tag
+    elementType: text
+    bounds: [246, 56, 220, 20]
+    content:
+      fontFamily: IBM Plex Mono
+      fontSize: 11
+      letterSpacing: 2
+      color: "$ink3"
+      wrap: false
+      align: [left, middle]
+      text: CAMPAIGN
+  - elementId: title
+    elementType: text
+    bounds: [72, 86, 640, 46]
+    content:
+      style: "$sectitle"
+      wrap: false
+      align: [left, middle]
+      text: 「100 创作者计划」
+  - elementId: subtitle
+    elementType: text
+    bounds: [72, 140, 760, 22]
+    content:
+      style: "$sub"
+      wrap: false
+      align: [left, middle]
+      text: 100 位专业人士，正在用 AI 智能体放大自己的专业——1v1 陪跑上架，跑通「上架 → 首次成交」全链路
+
+  # ---- 状态条 ----
+  - elementId: chip1
+    elementType: shape
+    bounds: [72, 182, 150, 26]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: solid, width: 1, color: "$line"}
+  - elementId: chip1-text
+    elementType: text
+    bounds: [72, 182, 150, 26]
+    content:
+      wrap: false
+      align: [center, middle]
+      text: |
+        <p style="text-align:center"><span style="font-family:Noto Sans SC;font-size:11px;color:$ink2">已加入 </span><span style="font-family:IBM Plex Mono;font-size:11px;color:$accent"><strong>3 / 100</strong></span></p>
+  - elementId: chip2
+    elementType: shape
+    bounds: [234, 182, 230, 26]
+    shapeName: rect
+    fill: {type: solid, color: "$ink"}
+  - elementId: chip2-text
+    elementType: text
+    bounds: [234, 182, 230, 26]
+    content:
+      wrap: false
+      align: [center, middle]
+      text: |
+        <p style="text-align:center"><span style="font-family:Noto Sans SC;font-size:11px;color:$paper">当前阶段：第一期 · 首批创作者</span></p>
+  - elementId: chip3
+    elementType: shape
+    bounds: [476, 182, 180, 26]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: solid, width: 1, color: "$line"}
+  - elementId: chip3-text
+    elementType: text
+    bounds: [476, 182, 180, 26]
+    content:
+      wrap: false
+      align: [center, middle]
+      text: |
+        <p style="text-align:center"><span style="font-family:Noto Sans SC;font-size:11px;color:$ink2">招募窗口：</span><span style="font-family:IBM Plex Mono;font-size:11px;color:$ink2">2026 Q4</span></p>
+
+  # ---- 时间轴主线 ----
+  - elementId: tl-line
+    elementType: shape
+    bounds: [72, 232, 816, 1.5]
+    shapeName: rect
+    fill: {type: solid, color: "$line"}
+  - elementId: tl-node1
+    elementType: shape
+    bounds: [72, 227, 12, 12]
+    shapeName: rect
+    rotation: 45
+    fill: {type: solid, color: "$accent"}
+  - elementId: tl-node2
+    elementType: shape
+    bounds: [360, 227, 12, 12]
+    shapeName: rect
+    rotation: 45
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: solid, width: 1.5, color: "$ink"}
+  - elementId: tl-node3
+    elementType: shape
+    bounds: [648, 227, 12, 12]
+    shapeName: rect
+    rotation: 45
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: solid, width: 1.5, color: "$ink"}
+
+  # ---- 第一期 ----
+  - elementId: ph1-chip
+    elementType: shape
+    bounds: [72, 252, 118, 22]
+    shapeName: rect
+    fill: {type: solid, color: "$accent"}
+  - elementId: ph1-chip-text
+    elementType: text
+    bounds: [72, 252, 118, 22]
+    content:
+      fontFamily: Noto Sans SC
+      fontSize: 10.5
+      bold: true
+      color: "#FFFFFF"
+      wrap: false
+      align: [center, middle]
+      text: 第一期 · 进行中
+  - elementId: ph1-title
+    elementType: text
+    bounds: [72, 284, 250, 26]
+    content:
+      fontFamily: Noto Serif SC
+      fontSize: 18
+      bold: true
+      color: "$ink"
+      wrap: false
+      align: [left, middle]
+      text: 首批创作者 · 10 人
+  - elementId: ph1-meta
+    elementType: text
+    bounds: [72, 314, 250, 16]
+    content:
+      fontFamily: IBM Plex Mono
+      fontSize: 10
+      color: "$ink3"
+      wrap: false
+      align: [left, middle]
+      text: 熟人 + 知名创作者 · 2 周
+  - elementId: ph1-desc
+    elementType: text
+    bounds: [72, 336, 240, 60]
+    content:
+      fontFamily: Noto Sans SC
+      fontSize: 12
+      color: "$ink2"
+      lineHeight: 1.55
+      align: [left, top]
+      text: 5 位熟人 / 老用户 + 5 位行业知名创作者，跑通陪跑流程，产出首批真实案例。
+
+  # ---- 第二期 ----
+  - elementId: ph2-chip
+    elementType: shape
+    bounds: [360, 252, 130, 22]
+    shapeName: rect
+    border: {style: solid, width: 1, color: "$ink3"}
+  - elementId: ph2-chip-text
+    elementType: text
+    bounds: [360, 252, 130, 22]
+    content:
+      fontFamily: Noto Sans SC
+      fontSize: 10.5
+      color: "$ink2"
+      wrap: false
+      align: [center, middle]
+      text: 第二期 · 即将开放
+  - elementId: ph2-title
+    elementType: text
+    bounds: [360, 284, 250, 26]
+    content:
+      fontFamily: Noto Serif SC
+      fontSize: 18
+      bold: true
+      color: "$ink"
+      wrap: false
+      align: [left, middle]
+      text: 公开招募 · 40 人
+  - elementId: ph2-meta
+    elementType: text
+    bounds: [360, 314, 250, 16]
+    content:
+      fontFamily: IBM Plex Mono
+      fontSize: 10
+      color: "$ink3"
+      wrap: false
+      align: [left, middle]
+      text: 公开申请 · 4-6 周
+  - elementId: ph2-desc
+    elementType: text
+    bounds: [360, 336, 240, 60]
+    content:
+      fontFamily: Noto Sans SC
+      fontSize: 12
+      color: "$ink2"
+      lineHeight: 1.55
+      align: [left, top]
+      text: 第三方问卷 + 站内申请页公开招募，验证漏斗转化率，收集早期案例。
+
+  # ---- 第三期 ----
+  - elementId: ph3-chip
+    elementType: shape
+    bounds: [648, 252, 118, 22]
+    shapeName: rect
+    border: {style: solid, width: 1, color: "$ink3"}
+  - elementId: ph3-chip-text
+    elementType: text
+    bounds: [648, 252, 118, 22]
+    content:
+      fontFamily: Noto Sans SC
+      fontSize: 10.5
+      color: "$ink2"
+      wrap: false
+      align: [center, middle]
+      text: 第三期 · 计划中
+  - elementId: ph3-title
+    elementType: text
+    bounds: [648, 284, 250, 26]
+    content:
+      fontFamily: Noto Serif SC
+      fontSize: 18
+      bold: true
+      color: "$ink"
+      wrap: false
+      align: [left, middle]
+      text: 口碑放量 · 50 人
+  - elementId: ph3-meta
+    elementType: text
+    bounds: [648, 314, 250, 16]
+    content:
+      fontFamily: IBM Plex Mono
+      fontSize: 10
+      color: "$ink3"
+      wrap: false
+      align: [left, middle]
+      text: 转介绍 + 媒体宣传 · 6-8 周
+  - elementId: ph3-desc
+    elementType: text
+    bounds: [648, 336, 240, 60]
+    content:
+      fontFamily: Noto Sans SC
+      fontSize: 12
+      color: "$ink2"
+      lineHeight: 1.55
+      align: [left, top]
+      text: 靠前两期口碑与媒体素材放量，验证规模化陪跑能力，完成 100 人收官。
+
+  # ---- 底部支持条 ----
+  - elementId: band
+    elementType: shape
+    bounds: [72, 424, 816, 50]
+    shapeName: rect
+    fill: {type: solid, color: "$accentSoft"}
+  - elementId: band-dot
+    elementType: shape
+    bounds: [98, 444, 10, 10]
+    shapeName: rect
+    rotation: 45
+    fill: {type: solid, color: "$accent"}
+  - elementId: band-text
+    elementType: text
+    bounds: [124, 424, 750, 50]
+    content:
+      fontFamily: Noto Serif SC
+      fontSize: 15
+      bold: true
+      color: "$ink"
+      wrap: false
+      align: [left, middle]
+      text: 入选即得：智空间 1 座席 + 专业版 QBuilder 1 年免费 · 1v1 陪跑上架 · 案例全网露出
+
+  # ---- 页脚 ----
+  - elementId: foot-line
+    elementType: shape
+    bounds: [72, 500, 816, 1]
+    shapeName: rect
+    fill: {type: solid, color: "$line"}
+  - elementId: foot-left
+    elementType: text
+    bounds: [72, 510, 300, 16]
+    content:
+      style: "$footnote"
+      wrap: false
+      align: [left, middle]
+      text: QUSEIT AGENT · 项目介绍
+  - elementId: foot-right
+    elementType: text
+    bounds: [788, 510, 100, 16]
+    content:
+      fontFamily: IBM Plex Mono
+      fontSize: 10
+      color: "$ink3"
+      wrap: false
+      align: [right, middle]
+      text: 10 / 10
