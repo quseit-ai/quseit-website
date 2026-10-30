@@ -20,7 +20,7 @@
 
     'hero.kicker': '<span class="kicker-dot"></span>AI AGENT PLATFORM FOR KNOWLEDGE WORKERS',
     'hero.title1': 'Turn Your Knowledge',
-    'hero.title2': 'Into Your Own',
+    'hero.title2': 'Into a Paid',
     'hero.title3': '<em>“AI Agent”</em>',
     'hero.sub': 'Create your AI agent and <strong>publish it to your personal Agent Space</strong>,<br>so anyone can <strong>buy and use</strong> your expertise and skills.',
     'hero.action1': 'Start Building',
@@ -672,8 +672,8 @@
     'nav.enterprise': '企业版',
 
     'hero.kicker': '<span class="kicker-dot"></span>AI AGENT PLATFORM · 知识工作者的 AI 发布平台',
-    'hero.title1': '把你的知识',
-    'hero.title2': '变成',
+    'hero.title1': '把你的知识,',
+    'hero.title2': '变成能赚钱的',
     'hero.title3': '<em>「AI 智能体」</em>',
     'hero.sub': '创建你的 AI 智能体,<strong>发布到个人的智空间</strong>,<br>让任何人都能<strong>购买和使用</strong>你的专业知识和技能。',
     'hero.action1': '立即构建',
