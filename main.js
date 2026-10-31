@@ -11,6 +11,46 @@ document.querySelectorAll('.nav-links a').forEach(a =>
   a.addEventListener('click', () => nav.classList.remove('open'))
 );
 
+// ===== 导航下拉:窄屏(<=1024px)改为点击展开 =====
+// 桌面端纯 CSS hover 即可;窄屏下 hover 不可靠(触屏无 hover),
+// 面板若常驻展开会撑高导航条,故由 JS 切换 .is-open。
+const narrow = window.matchMedia('(max-width:1024px)');
+document.querySelectorAll('.nav-dropdown').forEach(dd => {
+  const toggle = dd.querySelector('.nav-dropdown-toggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', e => {
+    if (!narrow.matches) return;          // 桌面保持纯 hover
+    e.stopPropagation();
+    const open = dd.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // 同时只开一个
+    if (open) {
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(other => {
+        if (other !== dd) {
+          other.classList.remove('is-open');
+          other.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  });
+});
+// 点击外部 / Esc 关闭
+document.addEventListener('click', e => {
+  document.querySelectorAll('.nav-dropdown.is-open').forEach(dd => {
+    if (!dd.contains(e.target)) {
+      dd.classList.remove('is-open');
+      dd.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('.nav-dropdown.is-open').forEach(dd => {
+    dd.classList.remove('is-open');
+    dd.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+  });
+});
+
 // 滚动显现动画
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
